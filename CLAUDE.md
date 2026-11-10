@@ -46,7 +46,7 @@ pnpm typecheck
 ```
 Landing: http://localhost:3000/uk or /en; `?theme=day|evening` forces a theme.
 Sign-in in dev: the e-mail link is printed in the API console (no mail service yet).
-Deck: only 13 of 117 cards have questions (from the prototype) and 11 have images; replace with the author's v3 PDF and card list. Card images are served by the API (`apps/api/card-images`), not from `public/`.
+Deck: all 351 questions come from the author's PDF «Світи – додаткові питання до карт» v3 (parsed into `packages/db/deck/deck.json`). Only 11 cards have images matched to their numbers so far (4, 6, 11, 12, 20, 21, 22, 23, 25, 26, 29); the rest need the card list. Cards without an image are not drawn. Card images are served by the API (`apps/api/card-images`), not from `public/`.
 Next.js is v16 (proxy.ts instead of middleware.ts); read `apps/web/node_modules/next/dist/docs/` before using unfamiliar APIs.
 
 ## Workflow

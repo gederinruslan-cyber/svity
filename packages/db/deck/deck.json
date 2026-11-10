@@ -1,5 +1,5 @@
 {
- "_source": "Cards: spec §3 (shadow candidates, resource card 11). Questions: prototype, 13 of 117 cards; replace with the v3 PDF. Tones: spec §3 flagged questions; final markup is the author's.",
+ "_source": "Questions: «Світи – додаткові питання до карт (UA/EN)» v3, all 117 × 3. Cards: spec §3 (shadow candidates by image, resource card 11). Question tones and request-only flags: spec §3; the final tone/theme markup is the author's, with a psychologist. Images: only 11 cards matched to numbers so far.",
  "cards": [
   {
    "id": 1,
@@ -706,6 +706,96 @@
  ],
  "questions": [
   {
+   "card": 1,
+   "index": 1,
+   "text": {
+    "uk": "Куди вказує твій внутрішній компас, коли ніхто не підказує напрямку?",
+    "en": "Where does your inner compass point when no one is telling you the way?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 1,
+   "index": 2,
+   "text": {
+    "uk": "Яка зірка веде тебе зараз – і чи це твій власний вибір?",
+    "en": "Which star is guiding you now, and did you choose it yourself?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 1,
+   "index": 3,
+   "text": {
+    "uk": "Що зміниться в ситуації, яка тебе турбує, якщо подивитися на неї з відстані п'яти років?",
+    "en": "What changes in the situation that troubles you if you look at it from five years away?"
+   },
+   "tone": "neutral",
+   "needsRequest": true
+  },
+  {
+   "card": 2,
+   "index": 1,
+   "text": {
+    "uk": "Який плід твоєї праці тобі найдорожчий?",
+    "en": "Which fruit of your labour is most precious to you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 2,
+   "index": 2,
+   "text": {
+    "uk": "Який урожай цього року ще чекає твого визнання?",
+    "en": "Which of this year's harvests is still waiting for you to call it your own?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 2,
+   "index": 3,
+   "text": {
+    "uk": "Що заважає тобі дозволити собі відпочити після зробленого?",
+    "en": "What keeps you from letting yourself rest after the work is done?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 3,
+   "index": 1,
+   "text": {
+    "uk": "Що вже потрапило у твою сітку – і чи на це ти чекаєш?",
+    "en": "What has already landed in your net, and is it what you were hoping for?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 3,
+   "index": 2,
+   "text": {
+    "uk": "Що для тебе означає «щедрий улов» у житті?",
+    "en": "What does a 'good catch' mean to you in life?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 3,
+   "index": 3,
+   "text": {
+    "uk": "Що ти береш із потоку життя для себе, а що відпускаєш назад?",
+    "en": "What do you take from life's flow for yourself, and what do you release back?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
    "card": 4,
    "index": 1,
    "text": {
@@ -736,6 +826,36 @@
    "needsRequest": false
   },
   {
+   "card": 5,
+   "index": 1,
+   "text": {
+    "uk": "Що ти захищаєш, навіть не замислюючись про це?",
+    "en": "What do you defend without even thinking about it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 5,
+   "index": 2,
+   "text": {
+    "uk": "Як відчувається в тілі твоя сила, коли її не треба доводити?",
+    "en": "How does your strength feel in your body when it doesn't have to be proven?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 5,
+   "index": 3,
+   "text": {
+    "uk": "Де тобі варто опустити меч, а де – нарешті його підняти?",
+    "en": "Where might you lower your sword, and where is it time to finally raise it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
    "card": 6,
    "index": 1,
    "text": {
@@ -761,6 +881,126 @@
    "text": {
     "uk": "Що ти бачиш у відображенні, чого не помічаєш у реальності?",
     "en": "What do you see in the reflection that you miss in reality?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 7,
+   "index": 1,
+   "text": {
+    "uk": "Яка половина тобі зараз ближча – і що ти відчуваєш до іншої?",
+    "en": "Which half feels closer to you now, and what do you feel toward the other?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 7,
+   "index": 2,
+   "text": {
+    "uk": "Що дає тобі твоя «темна» сторона, про що світла не знає?",
+    "en": "What does your 'dark' side give you that the light one knows nothing about?"
+   },
+   "tone": "shadow",
+   "needsRequest": false
+  },
+  {
+   "card": 7,
+   "index": 3,
+   "text": {
+    "uk": "Якщо ситуація, що тебе турбує, має дві сторони, – яку з них ти досі не дозволяєш собі побачити?",
+    "en": "If the situation that troubles you has two sides, which one have you not yet let yourself see?"
+   },
+   "tone": "neutral",
+   "needsRequest": true
+  },
+  {
+   "card": 8,
+   "index": 1,
+   "text": {
+    "uk": "Як тобі, коли тебе бачать у всій твоїй силі?",
+    "en": "How does it feel when you are seen in your full power?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 8,
+   "index": 2,
+   "text": {
+    "uk": "Хто чи що колись навчило тебе приглушувати своє світло?",
+    "en": "Who or what once taught you to dim your light?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 8,
+   "index": 3,
+   "text": {
+    "uk": "Кому зараз могло б стати тепліше від твого світла?",
+    "en": "Who could feel warmer from your light right now?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 9,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, ступаючи в завеликих туфлях?",
+    "en": "What do you feel stepping in shoes too big for you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 9,
+   "index": 2,
+   "text": {
+    "uk": "Чиї «туфлі» ти носиш, хоча вони не твого розміру?",
+    "en": "Whose 'shoes' are you wearing even though they aren't your size?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 9,
+   "index": 3,
+   "text": {
+    "uk": "Яку дорослу роль ти поспішаєш приміряти – і що пропускаєш, поспішаючи?",
+    "en": "Which grown-up role are you rushing to try on, and what do you miss by hurrying?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 10,
+   "index": 1,
+   "text": {
+    "uk": "Чого тобі хочеться «великими ковтками» – без міри й без дозволу?",
+    "en": "What do you want in big gulps, without measure or permission?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 10,
+   "index": 2,
+   "text": {
+    "uk": "Що було дозволено тобі в дитинстві й забулося тепер?",
+    "en": "What were you allowed as a child that you have forgotten to allow yourself now?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 10,
+   "index": 3,
+   "text": {
+    "uk": "Де для тебе сьогодні межа між «досить» і «ще»?",
+    "en": "Where is the line between 'enough' and 'more' for you today?"
    },
    "tone": "neutral",
    "needsRequest": false
@@ -826,6 +1066,36 @@
    "needsRequest": false
   },
   {
+   "card": 13,
+   "index": 1,
+   "text": {
+    "uk": "Що ти хочеш висвітлити, але досі обходиш стороною?",
+    "en": "What do you want to shed light on but keep stepping around?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 13,
+   "index": 2,
+   "text": {
+    "uk": "Які твої грані стають видимими лише під певним кутом?",
+    "en": "Which of your facets become visible only from a certain angle?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 13,
+   "index": 3,
+   "text": {
+    "uk": "Що в ситуації, яка тебе турбує, – факт, а що – твоя фантазія?",
+    "en": "In the situation that troubles you, what is fact and what is your fantasy?"
+   },
+   "tone": "neutral",
+   "needsRequest": true
+  },
+  {
    "card": 14,
    "index": 1,
    "text": {
@@ -856,6 +1126,96 @@
    "needsRequest": false
   },
   {
+   "card": 15,
+   "index": 1,
+   "text": {
+    "uk": "Якби дзеркало показувало не обличчя, а душу, – що б у ньому відбилося?",
+    "en": "If the mirror showed your soul instead of your face, what would it reflect?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 15,
+   "index": 2,
+   "text": {
+    "uk": "Чиїми очима ти зазвичай дивишся на себе?",
+    "en": "Through whose eyes do you usually look at yourself?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 15,
+   "index": 3,
+   "text": {
+    "uk": "Яку свою рису ти досі не дозволяєш собі помічати?",
+    "en": "Which of your traits do you still not allow yourself to notice?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 16,
+   "index": 1,
+   "text": {
+    "uk": "Яка зараз година у твоєму житті – ранок, полудень чи вечір? Чому це так відчувається?",
+    "en": "What time of day is it in your life right now: morning, noon or evening? Why does it feel that way?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 16,
+   "index": 2,
+   "text": {
+    "uk": "Що ти відкладаєш «на потім» – і котра це насправді година?",
+    "en": "What are you putting off 'for later', and what time is 'later' really?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 16,
+   "index": 3,
+   "text": {
+    "uk": "Кому чи чому ти віддаєш свій час, не обираючи цього?",
+    "en": "To whom or what do you give your time without really choosing to?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 17,
+   "index": 1,
+   "text": {
+    "uk": "Яку частину цього «світу» ти несеш не за себе, а за когось?",
+    "en": "Which part of this 'world' are you carrying for someone else?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 17,
+   "index": 2,
+   "text": {
+    "uk": "Що для тебе означає бути сильним – і чого це тобі коштує?",
+    "en": "What does being strong mean to you, and what does it cost you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 17,
+   "index": 3,
+   "text": {
+    "uk": "Що відчуває твоє тіло, коли ти думаєш про свою відповідальність?",
+    "en": "What does your body feel when you think about your responsibilities?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
    "card": 18,
    "index": 1,
    "text": {
@@ -881,6 +1241,36 @@
    "text": {
     "uk": "Що зігріває тебе зсередини, коли зовні холодно?",
     "en": "What warms you from within when it's cold outside?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 19,
+   "index": 1,
+   "text": {
+    "uk": "Що зберігається в цьому сосуді – і хто має право його відкрити?",
+    "en": "What is kept in this vessel, and who has the right to open it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 19,
+   "index": 2,
+   "text": {
+    "uk": "Що наповнює тебе найбільше?",
+    "en": "What fills you most?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 19,
+   "index": 3,
+   "text": {
+    "uk": "Що переповнює тебе та вже починає виливатися назовні?",
+    "en": "What overflows in you and is already starting to spill out?"
    },
    "tone": "neutral",
    "needsRequest": false
@@ -1006,6 +1396,36 @@
    "needsRequest": false
   },
   {
+   "card": 24,
+   "index": 1,
+   "text": {
+    "uk": "Що вітер заніс у твоє життя останнім часом?",
+    "en": "What has the wind blown into your life lately?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 24,
+   "index": 2,
+   "text": {
+    "uk": "Що в тобі вже не таке, як рік тому, – і з чого це помітно?",
+    "en": "What in you is no longer as it was a year ago, and how does it show?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 24,
+   "index": 3,
+   "text": {
+    "uk": "Що відчуває твоє тіло, коли поруч щось змінюється без твого дозволу?",
+    "en": "What does your body feel when something changes around you without your permission?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
    "card": 25,
    "index": 1,
    "text": {
@@ -1066,6 +1486,66 @@
    "needsRequest": false
   },
   {
+   "card": 27,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, коли уявляєш себе в цьому коконі?",
+    "en": "What do you feel when you imagine yourself in this cocoon?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 27,
+   "index": 2,
+   "text": {
+    "uk": "Що зі старого тобі доведеться залишити в коконі, щоб розправити крила?",
+    "en": "What of the old will you have to leave in the cocoon to spread your wings?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 27,
+   "index": 3,
+   "text": {
+    "uk": "Кому ти вже показуєш свої нові «крила», а від кого їх ховаєш?",
+    "en": "To whom do you already show your new 'wings', and from whom do you hide them?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 28,
+   "index": 1,
+   "text": {
+    "uk": "Що відбувається всередині цього кокона, чого не видно ззовні?",
+    "en": "What is happening inside this cocoon that can't be seen from outside?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 28,
+   "index": 2,
+   "text": {
+    "uk": "Скільки часу тобі потрібно, щоб «дозріти»?",
+    "en": "How much time do you need to 'ripen'?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 28,
+   "index": 3,
+   "text": {
+    "uk": "Що для тебе означає довіряти процесу, коли результату ще не видно?",
+    "en": "What does trusting the process mean to you when the result isn't visible yet?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
    "card": 29,
    "index": 1,
    "text": {
@@ -1091,6 +1571,2646 @@
    "text": {
     "uk": "Що ти відчуваєш, коли помічаєш у собі те, що зазвичай засуджуєш в інших?",
     "en": "What do you feel when you notice in yourself what you usually judge in others?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 30,
+   "index": 1,
+   "text": {
+    "uk": "Чому в цьому дзеркалі нікого немає – і хто мав би в ньому з'явитися?",
+    "en": "Why is there no one in this mirror, and who should appear in it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 30,
+   "index": 2,
+   "text": {
+    "uk": "Що дзеркало показує позаду тебе – те, до чого ти стоїш спиною?",
+    "en": "What does the mirror show behind you, the things you stand with your back to?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 30,
+   "index": 3,
+   "text": {
+    "uk": "Як ти звертаєшся до себе подумки, коли помиляєшся?",
+    "en": "How do you speak to yourself in your head when you make a mistake?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 31,
+   "index": 1,
+   "text": {
+    "uk": "Що допомагає тобі рухатися в темряві?",
+    "en": "What helps you move through the dark?"
+   },
+   "tone": "shadow",
+   "needsRequest": false
+  },
+  {
+   "card": 31,
+   "index": 2,
+   "text": {
+    "uk": "З якої «клітки» тобі вже вдалося вилетіти – і як це сталося?",
+    "en": "Which 'cage' have you already flown out of, and how did it happen?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 31,
+   "index": 3,
+   "text": {
+    "uk": "Що ти вже точно знаєш, але не наважуєшся сказати вголос?",
+    "en": "What do you already know for sure but don't dare to say out loud?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 32,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, дивлячись на світло за дверима?",
+    "en": "What do you feel looking at the light behind the door?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 32,
+   "index": 2,
+   "text": {
+    "uk": "Що тримає тебе на порозі?",
+    "en": "What keeps you on the threshold?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 32,
+   "index": 3,
+   "text": {
+    "uk": "Що ти залишиш по цей бік дверей, коли нарешті зайдеш?",
+    "en": "What will you leave on this side of the door when you finally walk through?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 33,
+   "index": 1,
+   "text": {
+    "uk": "Що з'явилося б у цих порожніх рамках, якби вибір був лише за тобою?",
+    "en": "What would appear in these empty frames if the choice were yours alone?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 33,
+   "index": 2,
+   "text": {
+    "uk": "Яка частина твоєї історії ще не має своєї рамки?",
+    "en": "Which part of your story doesn't have its frame yet?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 33,
+   "index": 3,
+   "text": {
+    "uk": "Яке твоє коріння дає тобі силу, навіть коли ти про нього не думаєш?",
+    "en": "Which of your roots give you strength even when you don't think about them?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 34,
+   "index": 1,
+   "text": {
+    "uk": "Яку рамку на цьому дереві тобі хочеться роздивитися ближче?",
+    "en": "Which frame on this tree would you like to look at more closely?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 34,
+   "index": 2,
+   "text": {
+    "uk": "Яка сімейна історія досі живе у твоїх рішеннях?",
+    "en": "Which family story still lives in your decisions?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 34,
+   "index": 3,
+   "text": {
+    "uk": "Яке місце на цьому дереві ти обираєш для себе?",
+    "en": "What place on this tree do you choose for yourself?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 35,
+   "index": 1,
+   "text": {
+    "uk": "Що ти бачиш за поворотом кожної з цих доріг?",
+    "en": "What do you see beyond the bend of each road?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 35,
+   "index": 2,
+   "text": {
+    "uk": "Що ти втратиш і що отримаєш на кожній із доріг?",
+    "en": "What would you lose and what would you gain on each road?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 35,
+   "index": 3,
+   "text": {
+    "uk": "Що підказує тіло, коли ти уявляєш себе на одній дорозі, а потім на іншій?",
+    "en": "What does your body tell you when you picture yourself on one road, then on the other?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 36,
+   "index": 1,
+   "text": {
+    "uk": "Від чого колись захищали тебе ці обладунки?",
+    "en": "What did this armour once protect you from?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 36,
+   "index": 2,
+   "text": {
+    "uk": "Що проросло там, де раніше була броня?",
+    "en": "What has grown where the armour used to be?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 36,
+   "index": 3,
+   "text": {
+    "uk": "Як тобі, коли тебе бачать без захисту?",
+    "en": "How does it feel to be seen without protection?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 37,
+   "index": 1,
+   "text": {
+    "uk": "Куди тече те, що ти віддаєш, – і чи доходить воно туди, куди ти хочеш?",
+    "en": "Where does what you give flow, and does it reach where you want it to?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 37,
+   "index": 2,
+   "text": {
+    "uk": "Що наповнює твій глечик, коли він порожніє?",
+    "en": "What refills your jug when it runs empty?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 37,
+   "index": 3,
+   "text": {
+    "uk": "Кому ти віддаєш більше, ніж маєш?",
+    "en": "To whom do you give more than you have?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 38,
+   "index": 1,
+   "text": {
+    "uk": "Що в цьому періоді добігає кінця, і що ти залишаєш собі з нього?",
+    "en": "What in this period is coming to an end, and what do you keep from it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 38,
+   "index": 2,
+   "text": {
+    "uk": "Чому в цьому періоді ти хочеш подякувати, перш ніж відпустити?",
+    "en": "What in this period would you like to thank before letting it go?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 38,
+   "index": 3,
+   "text": {
+    "uk": "Що ти відчуваєш у час переходу – коли старе вже минуло, а нове ще не почалося?",
+    "en": "What do you feel in times of transition, when the old is over and the new hasn't begun?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 39,
+   "index": 1,
+   "text": {
+    "uk": "Що поруч з іншим дозволяє твоїм крилам розкритися?",
+    "en": "What, when you are with someone, lets your wings open?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 39,
+   "index": 2,
+   "text": {
+    "uk": "З чого ти розумієш, що поруч із людиною можна бути собою?",
+    "en": "How do you know that you can be yourself with someone?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 39,
+   "index": 3,
+   "text": {
+    "uk": "Що ти даєш у стосунках, щоб іншому було безпечно з тобою?",
+    "en": "What do you give in a relationship so the other person feels safe with you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 40,
+   "index": 1,
+   "text": {
+    "uk": "Які ланцюги вже розірвано, а що досі тягнеться за тобою?",
+    "en": "Which chains are already broken, and what still trails behind you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 40,
+   "index": 2,
+   "text": {
+    "uk": "Що ти бачиш, коли піднімаєш смолоскип вище?",
+    "en": "What do you see when you raise the torch higher?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 40,
+   "index": 3,
+   "text": {
+    "uk": "Що дає тобі сили залишатися на волі й не повертатися до старого?",
+    "en": "What gives you the strength to stay free and not go back to the old ways?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 41,
+   "index": 1,
+   "text": {
+    "uk": "Що відображається у твоєму дзеркалі?",
+    "en": "What is reflected in your mirror?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 41,
+   "index": 2,
+   "text": {
+    "uk": "Як ти зберігаєш рівновагу, коли під ногами слизько?",
+    "en": "How do you keep your balance when the ground underfoot is slippery?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 41,
+   "index": 3,
+   "text": {
+    "uk": "Яка частина бурі – зовні, а яка – всередині тебе?",
+    "en": "Which part of the storm is outside, and which part is inside you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 42,
+   "index": 1,
+   "text": {
+    "uk": "Що станеться з відображенням, якщо торкнутися води?",
+    "en": "What happens to the reflection when you touch the water?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 42,
+   "index": 2,
+   "text": {
+    "uk": "Яким ти хочеш себе побачити – і чим це відрізняється від того, що ти бачиш зараз?",
+    "en": "How do you want to see yourself, and how does it differ from what you see now?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 42,
+   "index": 3,
+   "text": {
+    "uk": "Що в тобі змінюється, коли ти дивишся на себе з ніжністю?",
+    "en": "What changes in you when you look at yourself with tenderness?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 43,
+   "index": 1,
+   "text": {
+    "uk": "Що саме ти бачиш на ярлику цих крил?",
+    "en": "What exactly do you see on the tag of these wings?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 43,
+   "index": 2,
+   "text": {
+    "uk": "Яку ціну тобі потрібно заплатити, щоб ці крила стали твоїми?",
+    "en": "What price do you need to pay for these wings to become yours?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 43,
+   "index": 3,
+   "text": {
+    "uk": "Як зміниться твоє життя, якщо ці крила стануть твоїми?",
+    "en": "How will your life change if these wings become yours?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 44,
+   "index": 1,
+   "text": {
+    "uk": "Де ти можеш іти повільніше, щоб дійти до своєї цілі?",
+    "en": "Where could you go more slowly in order to reach your goal?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 44,
+   "index": 2,
+   "text": {
+    "uk": "Коли тобі потрібен свій «панцир» – і коли час із нього визирнути?",
+    "en": "When do you need your own 'shell', and when is it time to peek out?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 44,
+   "index": 3,
+   "text": {
+    "uk": "Що в твоєму житті росте саме завдяки повільності?",
+    "en": "What in your life grows precisely because it's slow?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 45,
+   "index": 1,
+   "text": {
+    "uk": "Про що ти думаєш, коли навколо тебе нікого немає?",
+    "en": "What do you think about when there is no one around you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 45,
+   "index": 2,
+   "text": {
+    "uk": "Що ти скажеш собі, якщо на мить перестанеш шукати правильну відповідь?",
+    "en": "What would you tell yourself if you stopped looking for the right answer for a moment?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 45,
+   "index": 3,
+   "text": {
+    "uk": "Яке рішення в тобі вже дозріло, але ще не прозвучало?",
+    "en": "Which decision has already ripened in you but hasn't been spoken yet?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 46,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, сидячи за таким столом?",
+    "en": "What do you feel sitting at a table like this?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 46,
+   "index": 2,
+   "text": {
+    "uk": "Якби в цій тиші прозвучало одне речення, яким би воно було?",
+    "en": "If one sentence were spoken into this silence, what would it be?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 46,
+   "index": 3,
+   "text": {
+    "uk": "Що заважає тобі сказати те, що хочеться?",
+    "en": "What stops you from saying what you want to say?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 47,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, коли хтось стоїть до тебе так близько?",
+    "en": "What do you feel when someone stands this close to you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 47,
+   "index": 2,
+   "text": {
+    "uk": "Що ти відчуваєш без слів, коли поруч близька людина?",
+    "en": "What do you sense without words when someone close is beside you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 47,
+   "index": 3,
+   "text": {
+    "uk": "Як ти показуєш свою любов, коли слова зайві?",
+    "en": "How do you show your love when words aren't needed?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 48,
+   "index": 1,
+   "text": {
+    "uk": "Що це за нитка між тобою та кимось важливим – і наскільки вона міцна?",
+    "en": "What is the thread between you and someone important, and how strong is it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 48,
+   "index": 2,
+   "text": {
+    "uk": "Що змінилося б, якщо обернутися першим саме тобі?",
+    "en": "What would change if you were the one to turn around first?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 48,
+   "index": 3,
+   "text": {
+    "uk": "Яка частка відстані між вами – твоя?",
+    "en": "What share of the distance between you is yours?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 49,
+   "index": 1,
+   "text": {
+    "uk": "Кому тобі хочеться подарувати цю корону? Якщо іншому – то чому не собі?",
+    "en": "Whom would you like to give this crown to? If to someone else, why not to yourself?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 49,
+   "index": 2,
+   "text": {
+    "uk": "За що ти можеш поважати себе вже сьогодні?",
+    "en": "What can you respect yourself for already today?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 49,
+   "index": 3,
+   "text": {
+    "uk": "Що заважає тобі приймати визнання від інших?",
+    "en": "What makes it hard for you to accept recognition from others?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 50,
+   "index": 1,
+   "text": {
+    "uk": "Де ти зараз у цьому лабіринті?",
+    "en": "Where are you in this labyrinth right now?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 50,
+   "index": 2,
+   "text": {
+    "uk": "Як ти зазвичай ідеш до своєї цілі – напряму чи обхідним шляхом?",
+    "en": "How do you usually move toward your goal: directly or by a roundabout way?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 50,
+   "index": 3,
+   "text": {
+    "uk": "Що допомагає тобі не здатися, коли шлях здається заплутаним?",
+    "en": "What helps you not give up when the path seems tangled?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 51,
+   "index": 1,
+   "text": {
+    "uk": "Де ти в цьому колі?",
+    "en": "Where are you in this circle?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 51,
+   "index": 2,
+   "text": {
+    "uk": "Як ти просиш про підтримку – і чи вмієш її приймати?",
+    "en": "How do you ask for support, and are you able to accept it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 51,
+   "index": 3,
+   "text": {
+    "uk": "Кого тобі хотілося б обійняти прямо зараз?",
+    "en": "Whom would you like to hug right now?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 52,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш у своєму «акваріумі»?",
+    "en": "What do you feel in your own 'aquarium'?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 52,
+   "index": 2,
+   "text": {
+    "uk": "Які стіни твого «акваріума» – твої власні, а які поставили інші?",
+    "en": "Which walls of your 'aquarium' are your own, and which were put up by others?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 52,
+   "index": 3,
+   "text": {
+    "uk": "Якого простору тобі бракує?",
+    "en": "What kind of space are you missing?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 53,
+   "index": 1,
+   "text": {
+    "uk": "Що ти бачиш по той бік паркану – і по який бік стоїш ти?",
+    "en": "What do you see on the other side of the fence, and which side are you on?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 53,
+   "index": 2,
+   "text": {
+    "uk": "Де твоя межа зараз занадто висока, а де її майже немає?",
+    "en": "Where is your boundary too high right now, and where is it almost missing?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 53,
+   "index": 3,
+   "text": {
+    "uk": "Що станеться, якщо ти скажеш «ні» там, де зазвичай кажеш «так»?",
+    "en": "What happens if you say 'no' where you usually say 'yes'?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 54,
+   "index": 1,
+   "text": {
+    "uk": "Що відчуває твоє тіло, коли ти розкриваєш руки так, як він?",
+    "en": "What does your body feel when you open your arms the way he does?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 54,
+   "index": 2,
+   "text": {
+    "uk": "Яку свою перемогу ти знецінюєш, називаючи її «дрібницею»?",
+    "en": "Which of your victories do you dismiss as 'a trifle'?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 54,
+   "index": 3,
+   "text": {
+    "uk": "З ким тобі хочеться розділити свою радість?",
+    "en": "With whom would you like to share your joy?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 55,
+   "index": 1,
+   "text": {
+    "uk": "Як змінилася б твоя хода, якби в ній була спокійна певність цього лева?",
+    "en": "How would your walk change if it carried this lion's calm certainty?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 55,
+   "index": 2,
+   "text": {
+    "uk": "Де ти применшуєш себе, щоб нікому не заважати?",
+    "en": "Where do you make yourself smaller so as not to bother anyone?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 55,
+   "index": 3,
+   "text": {
+    "uk": "Як звучав би твій голос, якби в ньому була спокійна сила лева?",
+    "en": "How would your voice sound if it carried the lion's calm strength?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 56,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, коли дивишся на тих, про кого дбаєш?",
+    "en": "What do you feel when you look at those you care for?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 56,
+   "index": 2,
+   "text": {
+    "uk": "Хто дбає про тебе так, як ця лисиця про малечу, – або хто міг би?",
+    "en": "Who cares for you the way this fox cares for her young, or who could?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 56,
+   "index": 3,
+   "text": {
+    "uk": "Що ти робиш для інших, бо так треба, а що – бо так хочеш?",
+    "en": "What do you do for others because you must, and what because you want to?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 57,
+   "index": 1,
+   "text": {
+    "uk": "Що ти зараз «прядеш» – і для кого?",
+    "en": "What are you 'spinning' now, and for whom?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 57,
+   "index": 2,
+   "text": {
+    "uk": "Які нитки твого минулого вплітаються в те, що ти робиш сьогодні?",
+    "en": "Which threads of your past are woven into what you do today?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 57,
+   "index": 3,
+   "text": {
+    "uk": "Яку нитку тобі хочеться обірвати, а яку – зміцнити?",
+    "en": "Which thread do you want to cut, and which to strengthen?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 58,
+   "index": 1,
+   "text": {
+    "uk": "Що ти оберігаєш – і від чого?",
+    "en": "What are you guarding, and from what?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 58,
+   "index": 2,
+   "text": {
+    "uk": "Де ти відчуваєш, що належиш, і тобі не треба доводити своє право бути там?",
+    "en": "Where do you feel you belong, with no need to prove your right to be there?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 58,
+   "index": 3,
+   "text": {
+    "uk": "Чому навчила тебе твоя «зграя» – і що з цього тобі вже не потрібно?",
+    "en": "What did your 'pack' teach you, and what of it do you no longer need?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 59,
+   "index": 1,
+   "text": {
+    "uk": "Що написано в листі, який ти тримаєш у руках?",
+    "en": "What is written in the letter you hold in your hands?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 59,
+   "index": 2,
+   "text": {
+    "uk": "Хто міг би написати тобі лист, на який ти давно чекаєш?",
+    "en": "Who could write you the letter you have long been waiting for?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 59,
+   "index": 3,
+   "text": {
+    "uk": "Кому ти хочеш написати лист, який досі не наважуєшся надіслати?",
+    "en": "To whom would you like to write a letter you still don't dare to send?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 60,
+   "index": 1,
+   "text": {
+    "uk": "Для кого ти майструєш свої «крила» – для себе чи для когось іншого?",
+    "en": "Whom are you making your 'wings' for: yourself or someone else?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 60,
+   "index": 2,
+   "text": {
+    "uk": "Яка твоя справа потребує терпіння, а не швидкості?",
+    "en": "Which of your projects needs patience rather than speed?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 60,
+   "index": 3,
+   "text": {
+    "uk": "Що допомагає тобі не кидати почате, коли результат ще далеко?",
+    "en": "What helps you not abandon what you've started when the result is still far off?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 61,
+   "index": 1,
+   "text": {
+    "uk": "Хто або що є маяком для тебе – і чи бачиш ти його зараз?",
+    "en": "Who or what is a lighthouse for you, and can you see it now?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 61,
+   "index": 2,
+   "text": {
+    "uk": "Для кого маяком є ти – можливо, навіть не знаючи про це?",
+    "en": "For whom are you a lighthouse, perhaps without even knowing it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 61,
+   "index": 3,
+   "text": {
+    "uk": "Що в тобі залишається нерухомим, коли хвилі б'ють найсильніше?",
+    "en": "What in you stays still when the waves hit hardest?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 62,
+   "index": 1,
+   "text": {
+    "uk": "Що ти так дбайливо притискаєш до себе?",
+    "en": "What are you holding so carefully against yourself?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 62,
+   "index": 2,
+   "text": {
+    "uk": "Якби твоя втома могла попросити про турботу, про що б вона попросила?",
+    "en": "If your tiredness could ask for care, what would it ask for?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 62,
+   "index": 3,
+   "text": {
+    "uk": "Який маленький жест турботи про себе ти можеш зробити вже сьогодні?",
+    "en": "What small act of self-care can you offer yourself today?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 63,
+   "index": 1,
+   "text": {
+    "uk": "Хто натягнув цей лук – і куди полетить стріла?",
+    "en": "Who drew this bow, and where will the arrow fly?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 63,
+   "index": 2,
+   "text": {
+    "uk": "Що ти відчуваєш, коли уявляєш, що ціль уже досягнуто?",
+    "en": "What do you feel when you imagine the target already reached?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 63,
+   "index": 3,
+   "text": {
+    "uk": "Яке напруження тобі потрібне, щоб рухатися, а яке – вже зайве?",
+    "en": "Which tension do you need to move forward, and which is already too much?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 64,
+   "index": 1,
+   "text": {
+    "uk": "Що написано в сувої твоєї власної мудрості?",
+    "en": "What is written in the scroll of your own wisdom?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 64,
+   "index": 2,
+   "text": {
+    "uk": "Яку пораду ти даєш іншим, але не чуєш для себе?",
+    "en": "What advice do you give others but don't hear for yourself?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 64,
+   "index": 3,
+   "text": {
+    "uk": "Чому навчив тебе власний досвід?",
+    "en": "What has your own experience taught you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 65,
+   "index": 1,
+   "text": {
+    "uk": "Що це за туман, який огортає тебе, – і звідки він?",
+    "en": "What is this mist around you, and where does it come from?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 65,
+   "index": 2,
+   "text": {
+    "uk": "Яке почуття ти найчастіше відсуваєш, бо «зараз не час»?",
+    "en": "Which feeling do you most often push aside because 'now is not the time'?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 65,
+   "index": 3,
+   "text": {
+    "uk": "Що станеться, якщо ти побудеш з цим почуттям ще хвилину, не втікаючи?",
+    "en": "What happens if you stay with this feeling one more minute without running away?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 66,
+   "index": 1,
+   "text": {
+    "uk": "Яку музику ти хочеш слухати разом із кимось близьким – і про що вона?",
+    "en": "What music would you like to listen to with someone close, and what is it about?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 66,
+   "index": 2,
+   "text": {
+    "uk": "Що ти відчуваєш, коли тишу поруч з іншим не треба заповнювати?",
+    "en": "What do you feel when the silence beside someone doesn't need filling?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 66,
+   "index": 3,
+   "text": {
+    "uk": "Кому ти хочеш запропонувати просто побути поруч, без приводу?",
+    "en": "To whom would you like to offer simply being together, for no reason?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 67,
+   "index": 1,
+   "text": {
+    "uk": "Що допомагає тобі нарешті видихнути?",
+    "en": "What helps you finally exhale?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 67,
+   "index": 2,
+   "text": {
+    "uk": "Що тебе виснажує насправді – справи чи щось інше?",
+    "en": "What really drains you: the tasks or something else?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 67,
+   "index": 3,
+   "text": {
+    "uk": "Який вигляд має твій ідеальний вечір без жодних обов'язків?",
+    "en": "What does your perfect evening without any obligations look like?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 68,
+   "index": 1,
+   "text": {
+    "uk": "Що тримає цю сову в клітці – замок чи звичка?",
+    "en": "What keeps this owl in the cage: the lock or habit?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 68,
+   "index": 2,
+   "text": {
+    "uk": "Які правила колись захищали тебе, а тепер обмежують?",
+    "en": "Which rules once protected you and now hold you back?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 68,
+   "index": 3,
+   "text": {
+    "uk": "Що ти зробиш першим, опинившись на волі?",
+    "en": "What will you do first once you are free?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 69,
+   "index": 1,
+   "text": {
+    "uk": "Хто з вас тримає нитку міцніше – і що ти при цьому відчуваєш?",
+    "en": "Which of you holds the thread more tightly, and how does that feel to you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 69,
+   "index": 2,
+   "text": {
+    "uk": "Що можна сказати чи зробити, поки нитка ще ціла?",
+    "en": "What can be said or done while the thread is still whole?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 69,
+   "index": 3,
+   "text": {
+    "uk": "Що ти відчуваєш, коли уявляєш, що ця нитка обірвалася?",
+    "en": "What do you feel when you imagine this thread breaking?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 70,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш у мить, коли ланцюги розриваються?",
+    "en": "What do you feel the moment the chains break?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 70,
+   "index": 2,
+   "text": {
+    "uk": "Ким ти є без тих обмежень, що стали звичними?",
+    "en": "Who are you without the limits that have become a habit?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 70,
+   "index": 3,
+   "text": {
+    "uk": "Що допоможе тобі не повернутися до старих ланцюгів?",
+    "en": "What will help you not return to the old chains?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 71,
+   "index": 1,
+   "text": {
+    "uk": "Куди падає цей промінь – і що він освітлює у твоєму житті?",
+    "en": "Where does this ray fall, and what does it light up in your life?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 71,
+   "index": 2,
+   "text": {
+    "uk": "Що важкий період відкрив тобі про себе?",
+    "en": "What did the hard time reveal to you about yourself?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 71,
+   "index": 3,
+   "text": {
+    "uk": "Чим ти можеш підтримати себе, поки хмари ще не розійшлися повністю?",
+    "en": "How can you support yourself while the clouds haven't fully cleared yet?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 72,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, коли покидаєш своє «гніздо», – і коли хтось покидає твоє?",
+    "en": "What do you feel when you leave your 'nest', and when someone leaves yours?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 72,
+   "index": 2,
+   "text": {
+    "uk": "Від чого тобі треба відштовхнутися, щоб полетіти?",
+    "en": "What do you have to push off from in order to fly?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 72,
+   "index": 3,
+   "text": {
+    "uk": "Що допоможе тобі ризикнути, навіть якщо страшно?",
+    "en": "What will help you take the risk even if you're afraid?"
+   },
+   "tone": "shadow",
+   "needsRequest": false
+  },
+  {
+   "card": 73,
+   "index": 1,
+   "text": {
+    "uk": "Що горить у твоїй долоні – і що ти відчуваєш у серці?",
+    "en": "What burns in your palm, and what do you feel in your heart?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 73,
+   "index": 2,
+   "text": {
+    "uk": "Що гасить твій вогонь – і хто чи що допомагає розпалити його знову?",
+    "en": "What puts out your fire, and who or what helps rekindle it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 73,
+   "index": 3,
+   "text": {
+    "uk": "Як відчувається в тілі твоє натхнення?",
+    "en": "How does inspiration feel in your body?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 74,
+   "index": 1,
+   "text": {
+    "uk": "Що в цій клітці намагається вирости назовні?",
+    "en": "What in this cage is trying to grow outward?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 74,
+   "index": 2,
+   "text": {
+    "uk": "Які умови твого життя здаються тісними, але дають опору?",
+    "en": "Which conditions of your life feel tight yet give you support?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 74,
+   "index": 3,
+   "text": {
+    "uk": "Куди тягнеться твій пагінець, коли йому ніщо не заважає?",
+    "en": "Where does your shoot reach when nothing stands in its way?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 75,
+   "index": 1,
+   "text": {
+    "uk": "Хто стоїть за штурвалом твого корабля?",
+    "en": "Who is at the helm of your ship?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 75,
+   "index": 2,
+   "text": {
+    "uk": "Які вітри в твоєму житті попутні, а які – зустрічні?",
+    "en": "Which winds in your life are with you, and which are against you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 75,
+   "index": 3,
+   "text": {
+    "uk": "Що ти можеш змінити у своїх «вітрилах», якщо не можеш змінити вітер?",
+    "en": "What can you adjust in your 'sails' if you can't change the wind?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 76,
+   "index": 1,
+   "text": {
+    "uk": "Що ти шукаєш своїм ліхтариком у темряві?",
+    "en": "What are you looking for with your flashlight in the dark?"
+   },
+   "tone": "shadow",
+   "needsRequest": false
+  },
+  {
+   "card": 76,
+   "index": 2,
+   "text": {
+    "uk": "Що лякало тебе в дитинстві – і що з цього живе в тобі досі?",
+    "en": "What scared you as a child, and what of it still lives in you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 76,
+   "index": 3,
+   "text": {
+    "uk": "Що відкривається, коли ти дивишся на невідоме з цікавістю дитини?",
+    "en": "What opens up when you look at the unknown with a child's curiosity?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 77,
+   "index": 1,
+   "text": {
+    "uk": "Хто веслує у твоєму човні – і куди ви пливете?",
+    "en": "Who is rowing your boat, and where are you heading?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 77,
+   "index": 2,
+   "text": {
+    "uk": "Як у твоїх стосунках розподілено «весла»?",
+    "en": "How are the 'oars' shared in your relationships?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 77,
+   "index": 3,
+   "text": {
+    "uk": "Що ти відчуваєш, коли дозволяєш іншому вести?",
+    "en": "What do you feel when you let someone else steer?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 78,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш у таких обіймах?",
+    "en": "What do you feel in an embrace like this?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 78,
+   "index": 2,
+   "text": {
+    "uk": "Як твоє тіло реагує на дотик – розслабляється чи напружується?",
+    "en": "How does your body respond to touch: does it relax or tense up?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 78,
+   "index": 3,
+   "text": {
+    "uk": "Про які обійми ти можеш попросити вже сьогодні?",
+    "en": "What kind of hug could you ask for today?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 79,
+   "index": 1,
+   "text": {
+    "uk": "Що допомогло цьому паростку пробитися крізь камінь?",
+    "en": "What helped this sprout break through the stone?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 79,
+   "index": 2,
+   "text": {
+    "uk": "Яка твоя якість тихо росла наперекір усім обставинам?",
+    "en": "Which of your qualities quietly grew against all odds?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 79,
+   "index": 3,
+   "text": {
+    "uk": "Що потрібно твоєму «паростку», щоб він міцнішав?",
+    "en": "What does your 'sprout' need to grow stronger?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 80,
+   "index": 1,
+   "text": {
+    "uk": "Що для тебе – як склянка чистої води в спеку?",
+    "en": "What is, for you, like a glass of clean water in the heat?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 80,
+   "index": 2,
+   "text": {
+    "uk": "Що каламутить твої думки останнім часом?",
+    "en": "What has been clouding your thoughts lately?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 80,
+   "index": 3,
+   "text": {
+    "uk": "Що ти відчуваєш, коли нарешті все стає прозорим?",
+    "en": "What do you feel when everything finally becomes clear?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 81,
+   "index": 1,
+   "text": {
+    "uk": "Що ти знайдеш на своєму «горищі» – і чи є в тебе готовність це побачити?",
+    "en": "What will you find in your own 'attic', and are you ready to see it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 81,
+   "index": 2,
+   "text": {
+    "uk": "Яка давня мрія чи вміння чекає, поки ти до неї повернешся?",
+    "en": "Which old dream or skill is waiting for you to come back to it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 81,
+   "index": 3,
+   "text": {
+    "uk": "Що зі «старого багажу» вже можна залишити на горищі назавжди?",
+    "en": "What from your 'old baggage' can now be left in the attic for good?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 82,
+   "index": 1,
+   "text": {
+    "uk": "Якби сьогоднішній день був першим днем чогось нового, – чого саме?",
+    "en": "If today were the first day of something new, what would it be?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 82,
+   "index": 2,
+   "text": {
+    "uk": "Що ти хочеш відчути до кінця цього дня?",
+    "en": "What would you like to feel by the end of this day?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 82,
+   "index": 3,
+   "text": {
+    "uk": "З яким наміром тобі хотілося б провести цей день?",
+    "en": "With what intention would you like to spend this day?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 83,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, коли сили закінчуються, – і що тобі тоді потрібно?",
+    "en": "What do you feel when your strength runs out, and what do you need then?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 83,
+   "index": 2,
+   "text": {
+    "uk": "Що в тобі втомилося триматися?",
+    "en": "What in you is tired of holding on?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 83,
+   "index": 3,
+   "text": {
+    "uk": "Чи помічаєш ти маленький паросток поруч – у своєму житті?",
+    "en": "Do you notice the small sprout nearby, in your own life?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 84,
+   "index": 1,
+   "text": {
+    "uk": "Що ти бачиш із висоти, чого не видно знизу?",
+    "en": "What do you see from up high that can't be seen from below?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 84,
+   "index": 2,
+   "text": {
+    "uk": "Яка частина проблеми зникає, коли ти піднімаєшся над деталями?",
+    "en": "Which part of the problem disappears when you rise above the details?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 84,
+   "index": 3,
+   "text": {
+    "uk": "Яку вершину вже подолано – і чи дозволяєш ти собі цим пишатися?",
+    "en": "Which peak have you already climbed, and do you let yourself feel proud of it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 85,
+   "index": 1,
+   "text": {
+    "uk": "Що за цими червоними дверима – і як твоє тіло це відчуває?",
+    "en": "What is behind this red door, and how does your body sense it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 85,
+   "index": 2,
+   "text": {
+    "uk": "Чого більше в твоєму бажанні відчинити двері – цікавості чи страху?",
+    "en": "What is stronger in your wish to open the door: curiosity or fear?"
+   },
+   "tone": "shadow",
+   "needsRequest": false
+  },
+  {
+   "card": 85,
+   "index": 3,
+   "text": {
+    "uk": "Що найгірше і що найкраще може статися, якщо ти постукаєш?",
+    "en": "What is the worst and the best that could happen if you knock?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 86,
+   "index": 1,
+   "text": {
+    "uk": "Для чого тобі мотузка – щоб пришвартуватися чи щоб вирушити?",
+    "en": "What is your rope for: mooring or setting sail?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 86,
+   "index": 2,
+   "text": {
+    "uk": "Що з твого «багажу» тобі справді знадобиться в дорозі?",
+    "en": "What from your 'luggage' will you really need on the road?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 86,
+   "index": 3,
+   "text": {
+    "uk": "Що ти залишаєш на березі, вирушаючи в дорогу?",
+    "en": "What are you leaving on the shore as you set off?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 87,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, коли уявляєш себе в цьому колі?",
+    "en": "What do you feel when you imagine yourself in this circle?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 87,
+   "index": 2,
+   "text": {
+    "uk": "Де ти можеш бути собою серед людей, не підлаштовуючись?",
+    "en": "Where can you be yourself among people without adjusting to them?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 87,
+   "index": 3,
+   "text": {
+    "uk": "Що в тобі хоче руху, радості й легкості?",
+    "en": "What in you longs for movement, joy and lightness?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 88,
+   "index": 1,
+   "text": {
+    "uk": "Що каже тобі старша, мудріша частина тебе – і що ти їй відповідаєш?",
+    "en": "What does the older, wiser part of you say, and what do you answer?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 88,
+   "index": 2,
+   "text": {
+    "uk": "Ким ти є в цій парі зараз – тим, хто вчиться, чи тим, хто передає?",
+    "en": "Who are you in this pair right now: the one who learns or the one who passes on?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 88,
+   "index": 3,
+   "text": {
+    "uk": "Що ти хочеш сказати собі з минулого – і собі з майбутнього?",
+    "en": "What would you like to say to your past self, and to your future self?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 89,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, дивлячись на цей водоспад?",
+    "en": "What do you feel looking at this waterfall?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 89,
+   "index": 2,
+   "text": {
+    "uk": "Що в тобі довго стримувалося і тепер проситься назовні?",
+    "en": "What in you has long been held back and now asks to come out?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 89,
+   "index": 3,
+   "text": {
+    "uk": "Де в твоєму житті після бурхливого потоку з'являється веселка?",
+    "en": "Where in your life does a rainbow appear after a rushing torrent?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 90,
+   "index": 1,
+   "text": {
+    "uk": "Хто чекає на тебе в цьому будинку?",
+    "en": "Who is waiting for you in this house?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 90,
+   "index": 2,
+   "text": {
+    "uk": "Чи є в тебе місце, куди хочеться повертатися, – і чи є таке місце в тобі?",
+    "en": "Is there a place you want to come back to, and is there such a place inside you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 90,
+   "index": 3,
+   "text": {
+    "uk": "Що робить простір домом – люди, речі, ритуали чи тиша?",
+    "en": "What makes a space a home: people, things, rituals or silence?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 91,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, тримаючи цю чашу з заплющеними очима?",
+    "en": "What do you feel holding this bowl with your eyes closed?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 91,
+   "index": 2,
+   "text": {
+    "uk": "Який твій «скол» з часом став джерелом сили?",
+    "en": "Which of your 'chips' became a source of strength over time?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 91,
+   "index": 3,
+   "text": {
+    "uk": "Що зміниться, якщо дивитися на свої шрами як на золоті шви?",
+    "en": "What changes if you look at your scars as golden seams?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 92,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, махаючи вслід тому, що відпливає?",
+    "en": "What do you feel waving after what is sailing away?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 92,
+   "index": 2,
+   "text": {
+    "uk": "Що тобі важко відпустити, хоча ти розумієш, що час?",
+    "en": "What is hard for you to let go of, though you know it's time?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 92,
+   "index": 3,
+   "text": {
+    "uk": "Що залишається з тобою після прощання – і як ти можеш це берегти?",
+    "en": "What stays with you after the farewell, and how can you take care of it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 93,
+   "index": 1,
+   "text": {
+    "uk": "Кому ти хочеш простягнути оливкову гілку – і що тебе стримує?",
+    "en": "To whom would you like to hold out an olive branch, and what holds you back?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 93,
+   "index": 2,
+   "text": {
+    "uk": "Що тобі потрібно, щоб помиритися із собою?",
+    "en": "What do you need in order to make peace with yourself?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 93,
+   "index": 3,
+   "text": {
+    "uk": "Що ти досі носиш у собі, хоча це вже можна відпустити?",
+    "en": "What do you still carry inside, though it could already be let go?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 94,
+   "index": 1,
+   "text": {
+    "uk": "Що ти вирішуєш, тримаючи руку на засувці своєї хвіртки?",
+    "en": "What are you deciding with your hand on the latch of your gate?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 94,
+   "index": 2,
+   "text": {
+    "uk": "З чого ти розумієш, що когось варто впустити ближче?",
+    "en": "How do you know that someone should be let closer?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 94,
+   "index": 3,
+   "text": {
+    "uk": "Де тобі важко зачинити хвіртку перед тим, що тобі не на користь?",
+    "en": "Where is it hard for you to close the gate on what isn't good for you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 95,
+   "index": 1,
+   "text": {
+    "uk": "Яка з цих масок найбільше схожа на ту, що носиш ти?",
+    "en": "Which of these masks most resembles the one you wear?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 95,
+   "index": 2,
+   "text": {
+    "uk": "Від чого захищає тебе твоя маска – і чого позбавляє?",
+    "en": "What does your mask protect you from, and what does it deprive you of?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 95,
+   "index": 3,
+   "text": {
+    "uk": "Хто бачив тебе без маски – і як тобі було тоді?",
+    "en": "Who has seen you without a mask, and how did that feel?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 96,
+   "index": 1,
+   "text": {
+    "uk": "Які камені ти складаєш у свій мішок – і навіщо вони тобі?",
+    "en": "What stones are you putting into your sack, and why do you need them?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 96,
+   "index": 2,
+   "text": {
+    "uk": "Що світиться у твоєму мішку попри вагу каміння?",
+    "en": "What glows in your sack despite the weight of the stones?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 96,
+   "index": 3,
+   "text": {
+    "uk": "Що відчуває твоє тіло, коли мішок стає дедалі важчим?",
+    "en": "What does your body feel as the sack grows heavier?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 97,
+   "index": 1,
+   "text": {
+    "uk": "Що ти показуєш світові про себе, а що бачиш, коли залишаєшся наодинці?",
+    "en": "What do you show the world about yourself, and what do you see when you are alone?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 97,
+   "index": 2,
+   "text": {
+    "uk": "Яка твоя посмішка справжня, а яка – для інших?",
+    "en": "Which of your smiles is real, and which is for others?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 97,
+   "index": 3,
+   "text": {
+    "uk": "Яку свою частину ти ховаєш, хоча без неї картина неповна?",
+    "en": "Which part of yourself do you hide, though the picture is incomplete without it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 98,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, коли приймаєш щось із чужих рук?",
+    "en": "What do you feel when you receive something from another's hands?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 98,
+   "index": 2,
+   "text": {
+    "uk": "Що тобі важче – давати чи приймати?",
+    "en": "Which is harder for you: giving or receiving?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 98,
+   "index": 3,
+   "text": {
+    "uk": "Як ти дякуєш, коли тобі дають щось щире?",
+    "en": "How do you give thanks when you're given something sincere?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 99,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, коли йдеш наосліп, довіряючи іншому, – і коли ведеш ти?",
+    "en": "What do you feel walking blind and trusting another, and when you are the one leading?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 99,
+   "index": 2,
+   "text": {
+    "uk": "Що тобі потрібно від людини, щоб дозволити їй вести тебе?",
+    "en": "What do you need from someone before you let them lead you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 99,
+   "index": 3,
+   "text": {
+    "uk": "Кого ведеш ти – і чого це від тебе вимагає?",
+    "en": "Whom do you lead, and what does it ask of you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 100,
+   "index": 1,
+   "text": {
+    "uk": "Про що ти сумуєш зараз?",
+    "en": "What are you sad about right now?"
+   },
+   "tone": "shadow",
+   "needsRequest": false
+  },
+  {
+   "card": 100,
+   "index": 2,
+   "text": {
+    "uk": "Що допомагає тобі дозволити собі сум, не поспішаючи його прогнати?",
+    "en": "What helps you allow yourself sadness without rushing to chase it away?"
+   },
+   "tone": "shadow",
+   "needsRequest": false
+  },
+  {
+   "card": 100,
+   "index": 3,
+   "text": {
+    "uk": "Що вже ледь помітно змінюється на краще, навіть якщо поки важко?",
+    "en": "What is already quietly changing for the better, even if it's still hard?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 101,
+   "index": 1,
+   "text": {
+    "uk": "Що з усього, що ти тримаєш у повітрі, справді твоє, а що – чуже?",
+    "en": "Of everything you keep in the air, what is truly yours and what belongs to others?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 101,
+   "index": 2,
+   "text": {
+    "uk": "Що станеться, якщо одна річ таки впаде?",
+    "en": "What happens if one thing does fall?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 101,
+   "index": 3,
+   "text": {
+    "uk": "Яка з твоїх «куль» дає тобі радість, а яка – лише втому?",
+    "en": "Which of your 'balls' brings you joy, and which only tiredness?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 102,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, коли стоїш спиною до близької людини?",
+    "en": "What do you feel standing with your back to someone close?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 102,
+   "index": 2,
+   "text": {
+    "uk": "Що світиться між вами попри образу?",
+    "en": "What glows between you despite the hurt?"
+   },
+   "tone": "shadow",
+   "needsRequest": false
+  },
+  {
+   "card": 102,
+   "index": 3,
+   "text": {
+    "uk": "Що допомогло б тобі зробити перший крок назустріч?",
+    "en": "What would help you take the first step toward the other?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 103,
+   "index": 1,
+   "text": {
+    "uk": "Що ти простягаєш людям – і чого вони просять у тебе?",
+    "en": "What do you hold out to people, and what do they ask of you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 103,
+   "index": 2,
+   "text": {
+    "uk": "Скільки рук тобі під силу тримати одночасно?",
+    "en": "How many hands can you hold at once?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 103,
+   "index": 3,
+   "text": {
+    "uk": "Від кого тобі найважче приймати допомогу?",
+    "en": "From whom is it hardest for you to accept help?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 104,
+   "index": 1,
+   "text": {
+    "uk": "Що ти бережеш у долонях, коли довкола все догоріло?",
+    "en": "What are you sheltering in your palms when everything around has burned down?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 104,
+   "index": 2,
+   "text": {
+    "uk": "Яка іскра в тобі пережила найважчі часи?",
+    "en": "Which spark in you survived the hardest times?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 104,
+   "index": 3,
+   "text": {
+    "uk": "Що може стати для цього вогника «сухою гілочкою», щоб він знову розгорівся?",
+    "en": "What could be a 'dry twig' that helps this little flame catch again?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 105,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш на порозі дому після довгої відсутності?",
+    "en": "What do you feel on the threshold of home after a long absence?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 105,
+   "index": 2,
+   "text": {
+    "uk": "Що змінилося в тобі за час відсутності?",
+    "en": "What has changed in you while you were away?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 105,
+   "index": 3,
+   "text": {
+    "uk": "З чого ти зрозумієш, що вже вдома – у собі?",
+    "en": "How will you know that you're home, within yourself?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 106,
+   "index": 1,
+   "text": {
+    "uk": "Чий порожній стілець є у твоєму житті – і що він для тебе означає?",
+    "en": "Whose empty chair is there in your life, and what does it mean to you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 106,
+   "index": 2,
+   "text": {
+    "uk": "Що в цьому спогаді досі зігріває тебе?",
+    "en": "What in this memory still warms you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 106,
+   "index": 3,
+   "text": {
+    "uk": "Що з того, що дала тобі ця людина чи подія, ти несеш далі?",
+    "en": "What of what this person or event gave you do you carry forward?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 107,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, тримаючи пелюстку на долоні?",
+    "en": "What do you feel holding a petal in your palm?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 107,
+   "index": 2,
+   "text": {
+    "uk": "Що ти так боїшся втратити, що не дозволяєш собі цим тішитися?",
+    "en": "What are you so afraid to lose that you don't let yourself enjoy it?"
+   },
+   "tone": "shadow",
+   "needsRequest": false
+  },
+  {
+   "card": 107,
+   "index": 3,
+   "text": {
+    "uk": "Як прожити цю мить повністю, знаючи, що вона мине?",
+    "en": "How can you live this moment fully, knowing it will pass?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 108,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, коли можеш отак притулитися до когось?",
+    "en": "What do you feel when you can lean on someone like this?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 108,
+   "index": 2,
+   "text": {
+    "uk": "Чиє плече для тебе – найнадійніше?",
+    "en": "Whose shoulder is the most reliable for you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 108,
+   "index": 3,
+   "text": {
+    "uk": "Для кого твоє плече є таким прихистком?",
+    "en": "For whom is your shoulder such a refuge?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 109,
+   "index": 1,
+   "text": {
+    "uk": "Що ти відчуваєш, коли тримаєш у руках щось зовсім нове й тендітне?",
+    "en": "What do you feel holding something brand new and fragile?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 109,
+   "index": 2,
+   "text": {
+    "uk": "Що нове ти зараз «виношуєш» – ідею, стосунки, частину себе?",
+    "en": "What new thing are you 'carrying' now: an idea, a relationship, a part of yourself?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 109,
+   "index": 3,
+   "text": {
+    "uk": "Хто може підтримати тебе, поки це нове ще зовсім тендітне?",
+    "en": "Who can support you while this new thing is still very fragile?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 110,
+   "index": 1,
+   "text": {
+    "uk": "Що ти чуєш, коли прислухаєшся, – і що звучить для тебе найголосніше?",
+    "en": "What do you hear when you listen closely, and what sounds loudest to you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 110,
+   "index": 2,
+   "text": {
+    "uk": "Який внутрішній голос ти найчастіше заглушуєш?",
+    "en": "Which inner voice do you most often drown out?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 110,
+   "index": 3,
+   "text": {
+    "uk": "Що підказує тобі тиша щодо ситуації, яка тебе турбує?",
+    "en": "What does silence tell you about the situation that troubles you?"
+   },
+   "tone": "neutral",
+   "needsRequest": true
+  },
+  {
+   "card": 111,
+   "index": 1,
+   "text": {
+    "uk": "На кого ти чекаєш – і хто так і не прийшов?",
+    "en": "Whom are you waiting for, and who never came?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 111,
+   "index": 2,
+   "text": {
+    "uk": "Що ти відчуваєш, коли обіймаєш себе?",
+    "en": "What do you feel when you hug yourself?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 111,
+   "index": 3,
+   "text": {
+    "uk": "Що допомагає тобі бути собі добрим другом, коли поруч нікого немає?",
+    "en": "What helps you be a good friend to yourself when no one else is around?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 112,
+   "index": 1,
+   "text": {
+    "uk": "Що відбувається за цим вікном – і чим це схоже на твою мрію?",
+    "en": "What is happening behind this window, and how is it like your dream?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 112,
+   "index": 2,
+   "text": {
+    "uk": "Що з побаченого за чужим вікном тобі хочеться мати у своєму житті – і про яку потребу це говорить?",
+    "en": "What that you see in someone else's window would you like in your own life, and what need does it speak of?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 112,
+   "index": 3,
+   "text": {
+    "uk": "Що вже світиться у твоєму власному вікні, але ти цього не помічаєш?",
+    "en": "What is already glowing in your own window that you don't notice?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 113,
+   "index": 1,
+   "text": {
+    "uk": "Про що ти думаєш, дивлячись услід птахам?",
+    "en": "What do you think about as you watch the birds fly away?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 113,
+   "index": 2,
+   "text": {
+    "uk": "Що в тобі зараз «зимує» і чекає свого часу?",
+    "en": "What in you is 'wintering' now and waiting for its time?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 113,
+   "index": 3,
+   "text": {
+    "uk": "Як ти дбаєш про себе в холодні пори свого життя?",
+    "en": "How do you care for yourself in the cold seasons of your life?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 114,
+   "index": 1,
+   "text": {
+    "uk": "З ким тобі так спокійно, що можна говорити про все, – і про що ви говорите?",
+    "en": "With whom are you so at ease that you can talk about anything, and what do you talk about?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 114,
+   "index": 2,
+   "text": {
+    "uk": "Яка дружба в твоєму житті витримала «погану погоду»?",
+    "en": "Which friendship in your life has weathered 'bad weather'?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 114,
+   "index": 3,
+   "text": {
+    "uk": "Що ти хочеш налити в чашку людині, яка поруч у важкий день?",
+    "en": "What would you pour into the cup of someone who stays beside you on a hard day?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 115,
+   "index": 1,
+   "text": {
+    "uk": "Що допомагає тобі посміхатися посеред бурі?",
+    "en": "What helps you smile in the middle of a storm?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 115,
+   "index": 2,
+   "text": {
+    "uk": "Яке «світло» ти несеш із собою, коли довкола темно?",
+    "en": "What 'light' do you carry with you when it's dark all around?"
+   },
+   "tone": "shadow",
+   "needsRequest": false
+  },
+  {
+   "card": 115,
+   "index": 3,
+   "text": {
+    "uk": "Яку бурю тобі вже вдалося пройти – і що вона тобі залишила?",
+    "en": "Which storm have you already come through, and what did it leave you with?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 116,
+   "index": 1,
+   "text": {
+    "uk": "Що ти приносиш у своєму вузлику – і для кого?",
+    "en": "What are you bringing in your bundle, and for whom?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 116,
+   "index": 2,
+   "text": {
+    "uk": "Що ти відчуваєш біля чужих дверей?",
+    "en": "What do you feel at someone else's door?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 116,
+   "index": 3,
+   "text": {
+    "uk": "Хто, можливо, теж чекає, що ти постукаєш?",
+    "en": "Who might also be waiting for you to knock?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 117,
+   "index": 1,
+   "text": {
+    "uk": "Що відчуває твоє тіло в цю мить, якщо стати так, як вона?",
+    "en": "What does your body feel in this moment if you stand the way she does?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 117,
+   "index": 2,
+   "text": {
+    "uk": "Що змінюється, коли ти дихаєш повільніше?",
+    "en": "What changes when you breathe more slowly?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 117,
+   "index": 3,
+   "text": {
+    "uk": "Де в тілі ти відчуваєш опору, коли просто стоїш на землі?",
+    "en": "Where in your body do you feel support when you simply stand on the ground?"
    },
    "tone": "neutral",
    "needsRequest": false
