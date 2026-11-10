@@ -2,12 +2,21 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { BetaApplicationInput, WaitlistInput, type SubmitResult } from "@svity/contracts";
 import { betaApplications, waitlistEntries, type Db } from "@svity/db";
+import { authRoutes, requireUser, toMe, type AuthEnv } from "./auth";
+import type { Mailer } from "./mailer";
 import { rateLimit } from "./rate-limit";
 
-export function createApp(db: Db, { webOrigin }: { webOrigin: string }) {
-  const app = new Hono();
+export interface AppOptions {
+  webOrigin: string;
+  mailer: Mailer;
+  secureCookies: boolean;
+}
 
-  app.use("/v1/*", cors({ origin: webOrigin }));
+export function createApp(db: Db, opts: AppOptions) {
+  const app = new Hono<AuthEnv>();
+  const { webOrigin } = opts;
+
+  app.use("/v1/*", cors({ origin: webOrigin, credentials: true }));
   app.get("/health", (c) => c.json({ ok: true }));
 
   const forms = rateLimit({ limit: 10, windowMs: 10 * 60_000 });
@@ -32,6 +41,9 @@ export function createApp(db: Db, { webOrigin }: { webOrigin: string }) {
     }
     return c.json<SubmitResult>({ ok: true });
   });
+
+  app.route("/v1/auth", authRoutes(db, opts));
+  app.get("/v1/me", requireUser(db), (c) => c.json({ ok: true, me: toMe(c.get("user")) }));
 
   app.onError((err, c) => {
     console.error(err);

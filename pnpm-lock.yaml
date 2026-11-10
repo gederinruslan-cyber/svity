@@ -20,6 +20,9 @@ importers:
       '@svity/contracts':
         specifier: workspace:*
         version: link:../../packages/contracts
+      '@svity/core':
+        specifier: workspace:*
+        version: link:../../packages/core
       '@svity/db':
         specifier: workspace:*
         version: link:../../packages/db
@@ -110,6 +113,9 @@ importers:
       drizzle-kit:
         specifier: ^0.31.11
         version: 0.31.11
+      tsx:
+        specifier: ^4.23.15
+        version: 4.23.15
 
   packages/i18n: {}
 

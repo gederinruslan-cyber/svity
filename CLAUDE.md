@@ -40,10 +40,13 @@ cp .env.example .env          # first time
 pnpm install
 pnpm db:up                    # Postgres in Docker on :5433
 pnpm db:migrate               # apply migrations (pnpm db:generate after schema changes)
+pnpm deck:import              # load packages/db/deck/deck.json (cards + questions); safe to re-run
 pnpm dev                      # api on :4000 + web on :3000 (or dev:api / dev:web)
 pnpm typecheck
 ```
 Landing: http://localhost:3000/uk or /en; `?theme=day|evening` forces a theme.
+Sign-in in dev: the e-mail link is printed in the API console (no mail service yet).
+Deck: only 13 of 117 cards have questions (from the prototype) and 11 have images; replace with the author's v3 PDF and card list. Card images are served by the API (`apps/api/card-images`), not from `public/`.
 Next.js is v16 (proxy.ts instead of middleware.ts); read `apps/web/node_modules/next/dist/docs/` before using unfamiliar APIs.
 
 ## Workflow

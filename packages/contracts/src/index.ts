@@ -29,3 +29,40 @@ export const BetaApplicationInput = z.object({
 export type BetaApplicationInput = z.infer<typeof BetaApplicationInput>;
 
 export type SubmitResult = { ok: true } | { ok: false; error: "invalid" | "rate_limited" | "server" };
+
+// ---------- auth ----------
+
+export const SignInInput = z.object({
+  email: z.email().max(254),
+  locale: Locale,
+});
+export type SignInInput = z.infer<typeof SignInInput>;
+
+export const VerifyInput = z.object({
+  token: z.string().min(20).max(200),
+  /** The browser's IANA zone; stored on first sign-in for the daily-card timer. */
+  timezone: z.string().min(1).max(64),
+  /** Language of the page the link opened; becomes the account language on first sign-in. */
+  locale: Locale,
+});
+export type VerifyInput = z.infer<typeof VerifyInput>;
+
+export const addressForms = ["f", "m", "n"] as const;
+
+export interface Me {
+  id: string;
+  email: string;
+  role: "personal" | "professional";
+  locale: Locale;
+  addressForm: (typeof addressForms)[number];
+  timezone: string;
+  createdAt: string;
+}
+
+export type ApiError = { ok: false; error: string };
+
+// ---------- daily card ----------
+
+export const feelings = ["calm", "hope", "tenderness", "tiredness", "sadness", "anxiety", "anger"] as const;
+export const Feeling = z.enum(feelings);
+export type Feeling = z.infer<typeof Feeling>;

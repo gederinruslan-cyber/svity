@@ -1,0 +1,1099 @@
+{
+ "_source": "Cards: spec §3 (shadow candidates, resource card 11). Questions: prototype, 13 of 117 cards; replace with the v3 PDF. Tones: spec §3 flagged questions; final markup is the author's.",
+ "cards": [
+  {
+   "id": 1,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 2,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 3,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 4,
+   "image": "4.webp",
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 5,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 6,
+   "image": "6.webp",
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 7,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 8,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 9,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 10,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 11,
+   "image": "11.webp",
+   "tone": "neutral",
+   "isResource": true
+  },
+  {
+   "id": 12,
+   "image": "12.webp",
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 13,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 14,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 15,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 16,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 17,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 18,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 19,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 20,
+   "image": "20.webp",
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 21,
+   "image": "21.webp",
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 22,
+   "image": "22.webp",
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 23,
+   "image": "23.webp",
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 24,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 25,
+   "image": "25.webp",
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 26,
+   "image": "26.webp",
+   "tone": "shadow",
+   "isResource": false
+  },
+  {
+   "id": 27,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 28,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 29,
+   "image": "29.webp",
+   "tone": "shadow",
+   "isResource": false
+  },
+  {
+   "id": 30,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 31,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 32,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 33,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 34,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 35,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 36,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 37,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 38,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 39,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 40,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 41,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 42,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 43,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 44,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 45,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 46,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 47,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 48,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 49,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 50,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 51,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 52,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 53,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 54,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 55,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 56,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 57,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 58,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 59,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 60,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 61,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 62,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 63,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 64,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 65,
+   "image": null,
+   "tone": "shadow",
+   "isResource": false
+  },
+  {
+   "id": 66,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 67,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 68,
+   "image": null,
+   "tone": "shadow",
+   "isResource": false
+  },
+  {
+   "id": 69,
+   "image": null,
+   "tone": "shadow",
+   "isResource": false
+  },
+  {
+   "id": 70,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 71,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 72,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 73,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 74,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 75,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 76,
+   "image": null,
+   "tone": "shadow",
+   "isResource": false
+  },
+  {
+   "id": 77,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 78,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 79,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 80,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 81,
+   "image": null,
+   "tone": "shadow",
+   "isResource": false
+  },
+  {
+   "id": 82,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 83,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 84,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 85,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 86,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 87,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 88,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 89,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 90,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 91,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 92,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 93,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 94,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 95,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 96,
+   "image": null,
+   "tone": "shadow",
+   "isResource": false
+  },
+  {
+   "id": 97,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 98,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 99,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 100,
+   "image": null,
+   "tone": "shadow",
+   "isResource": false
+  },
+  {
+   "id": 101,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 102,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 103,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 104,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 105,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 106,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 107,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 108,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 109,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 110,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 111,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 112,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 113,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 114,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 115,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 116,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  },
+  {
+   "id": 117,
+   "image": null,
+   "tone": "neutral",
+   "isResource": false
+  }
+ ],
+ "questions": [
+  {
+   "card": 4,
+   "index": 1,
+   "text": {
+    "uk": "Яке бажання ти загадуєш, але боїшся вимовити вголос?",
+    "en": "What wish do you make but are afraid to say out loud?"
+   },
+   "tone": "shadow",
+   "needsRequest": false
+  },
+  {
+   "card": 4,
+   "index": 2,
+   "text": {
+    "uk": "Що в тобі вже готове розлетітися й прорости в нових місцях?",
+    "en": "What in you is ready to scatter and take root in new places?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 4,
+   "index": 3,
+   "text": {
+    "uk": "Що станеться, якщо ти перестанеш контролювати, куди полетить насіння?",
+    "en": "What happens if you stop controlling where the seeds will land?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 6,
+   "index": 1,
+   "text": {
+    "uk": "Що повіз би цей паперовий човник, якби плив від тебе?",
+    "en": "What would this paper boat carry if it sailed away from you?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 6,
+   "index": 2,
+   "text": {
+    "uk": "Що в твоєму житті тендітне, але все одно тримається на плаву?",
+    "en": "What in your life is fragile, yet still stays afloat?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 6,
+   "index": 3,
+   "text": {
+    "uk": "Що ти бачиш у відображенні, чого не помічаєш у реальності?",
+    "en": "What do you see in the reflection that you miss in reality?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 11,
+   "index": 1,
+   "text": {
+    "uk": "Кого або що тобі хочеться обійняти так само – із заплющеними очима?",
+    "en": "Whom or what would you like to hold just like this, with your eyes closed?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 11,
+   "index": 2,
+   "text": {
+    "uk": "Яка частина тебе потребує такої самої ніжності?",
+    "en": "Which part of you needs this same tenderness?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 11,
+   "index": 3,
+   "text": {
+    "uk": "Як твоє тіло підказує тобі, що ти в безпеці?",
+    "en": "How does your body tell you that you are safe?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 12,
+   "index": 1,
+   "text": {
+    "uk": "Ким ти себе бачиш на цій карті – тим, хто тримає, чи тим, кого тримають?",
+    "en": "Who are you in this card: the one holding or the one being held?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 12,
+   "index": 2,
+   "text": {
+    "uk": "Хто тримає тебе на плаву, навіть коли ти цього не помічаєш?",
+    "en": "Who keeps you afloat, even when you don't notice it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 12,
+   "index": 3,
+   "text": {
+    "uk": "Що допомогло б тобі довірити свою вагу іншим – хоча б трохи?",
+    "en": "What would help you trust others with your weight, even a little?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 14,
+   "index": 1,
+   "text": {
+    "uk": "Що тобі зараз підказує час – поспішати, чекати чи відпустити?",
+    "en": "What is time telling you now: hurry, wait or let go?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 14,
+   "index": 2,
+   "text": {
+    "uk": "Як ти відчуваєш, що «час іде», – у тілі, у думках, у почуттях?",
+    "en": "How do you sense that 'time is running': in your body, thoughts or feelings?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 14,
+   "index": 3,
+   "text": {
+    "uk": "Що в тобі вже зазнало змін, навіть якщо зовні цього ще не видно?",
+    "en": "What in you has already changed, even if it doesn't show yet?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 18,
+   "index": 1,
+   "text": {
+    "uk": "Де в цьому пейзажі тобі хочеться опинитися – і що ти там робиш?",
+    "en": "Where in this landscape would you like to be, and what are you doing there?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 18,
+   "index": 2,
+   "text": {
+    "uk": "Куди веде тебе ця стежка – що тобі хочеться взяти з собою, а що залишити позаду?",
+    "en": "Where does this path lead you: what would you like to take along, and what to leave behind?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 18,
+   "index": 3,
+   "text": {
+    "uk": "Що зігріває тебе зсередини, коли зовні холодно?",
+    "en": "What warms you from within when it's cold outside?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 20,
+   "index": 1,
+   "text": {
+    "uk": "Якби один із цих ключів був потрібний тобі саме зараз, – які двері він відчинив би?",
+    "en": "If one of these keys were the one you need right now, which door would it open?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 20,
+   "index": 2,
+   "text": {
+    "uk": "Які ключі вже лежать у тебе в кишені, поки ти шукаєш нові?",
+    "en": "Which keys are already in your pocket while you keep looking for new ones?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 20,
+   "index": 3,
+   "text": {
+    "uk": "Хто міг би допомогти тобі знайти потрібний ключ?",
+    "en": "Who could help you find the right key?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 21,
+   "index": 1,
+   "text": {
+    "uk": "Що ти бачиш у глибині цього саду – і що тягне тебе туди?",
+    "en": "What do you see deep in this garden, and what draws you there?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 21,
+   "index": 2,
+   "text": {
+    "uk": "Що в твоєму житті вже квітне, хоча колись здавалося безнадійним?",
+    "en": "What in your life is already blooming, though it once seemed hopeless?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 21,
+   "index": 3,
+   "text": {
+    "uk": "Що тобі потрібно, щоб зробити перший крок під цю арку?",
+    "en": "What do you need to take the first step under this arch?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 22,
+   "index": 1,
+   "text": {
+    "uk": "Що написано в книзі, яка лежить тут відкритою?",
+    "en": "What is written in the open book lying here?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 22,
+   "index": 2,
+   "text": {
+    "uk": "Що обов'язково має бути у твоєму затишку – і чого там точно не буде?",
+    "en": "What must be in your cozy corner, and what will definitely not be there?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 22,
+   "index": 3,
+   "text": {
+    "uk": "Від чого тобі хочеться сховатися – і від чого просто відпочити?",
+    "en": "What do you want to hide from, and what do you simply want to rest from?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 23,
+   "index": 1,
+   "text": {
+    "uk": "Що з'єднує цей міст у твоєму житті – і що лежить під ним у тумані?",
+    "en": "What does this bridge connect in your life, and what lies beneath it in the mist?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 23,
+   "index": 2,
+   "text": {
+    "uk": "Що ти вже знаєш про протилежний берег, навіть не бачачи його?",
+    "en": "What do you already know about the far side without seeing it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 23,
+   "index": 3,
+   "text": {
+    "uk": "Який один крок ти можеш зробити, не знаючи всього шляху?",
+    "en": "What one step can you take without knowing the whole way?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 25,
+   "index": 1,
+   "text": {
+    "uk": "Що ти бачиш за цим вікном – і чого тобі хочеться, коли дивишся туди?",
+    "en": "What do you see beyond this window, and what do you long for as you look out?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 25,
+   "index": 2,
+   "text": {
+    "uk": "Що в твоєму житті потребує «свіжого повітря»?",
+    "en": "What in your life needs 'fresh air'?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 25,
+   "index": 3,
+   "text": {
+    "uk": "Яке вікно ти тримаєш зачиненим – і що буде, якщо його відчинити?",
+    "en": "Which window do you keep shut, and what would happen if you opened it?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 26,
+   "index": 1,
+   "text": {
+    "uk": "Що в тобі тихо тліє, поки зовні все спокійно?",
+    "en": "What in you is quietly smouldering while everything outside looks calm?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 26,
+   "index": 2,
+   "text": {
+    "uk": "Як ти зазвичай поводишся зі своїм гнівом?",
+    "en": "How do you usually deal with your anger?"
+   },
+   "tone": "shadow",
+   "needsRequest": false
+  },
+  {
+   "card": 26,
+   "index": 3,
+   "text": {
+    "uk": "Що потрібно, щоб енергія цього «вулкана» стала теплом, а не руйнуванням?",
+    "en": "What would it take for this 'volcano's' energy to become warmth rather than destruction?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  },
+  {
+   "card": 29,
+   "index": 1,
+   "text": {
+    "uk": "Яка з цих тіней найбільше схожа на тебе – і чим саме?",
+    "en": "Which of these shadows resembles you most, and in what way?"
+   },
+   "tone": "shadow",
+   "needsRequest": false
+  },
+  {
+   "card": 29,
+   "index": 2,
+   "text": {
+    "uk": "Що могла б зробити для тебе твоя прихована частина, якби їй дозволили вийти з тіні?",
+    "en": "What could your hidden part do for you if it were allowed to step out of the shadow?"
+   },
+   "tone": "shadow",
+   "needsRequest": false
+  },
+  {
+   "card": 29,
+   "index": 3,
+   "text": {
+    "uk": "Що ти відчуваєш, коли помічаєш у собі те, що зазвичай засуджуєш в інших?",
+    "en": "What do you feel when you notice in yourself what you usually judge in others?"
+   },
+   "tone": "neutral",
+   "needsRequest": false
+  }
+ ]
+}

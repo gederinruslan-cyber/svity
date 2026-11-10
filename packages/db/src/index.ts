@@ -9,3 +9,6 @@ export function createDb(url: string) {
   return drizzle(pool, { schema });
 }
 export type Db = ReturnType<typeof createDb>;
+
+// Query helpers, re-exported so apps use the same drizzle-orm instance.
+export { and, asc, count, desc, eq, gt, gte, inArray, isNull, lt, lte, sql } from "drizzle-orm";
