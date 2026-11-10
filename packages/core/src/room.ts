@@ -15,7 +15,7 @@ export type Spread = 1 | 3;
 export type ChoiceMode = "down" | "up";
 
 /** Position keys; the labels live in i18n. 3 cards: "What is — What's in the way — What will help". */
-export const SPREAD_POSITIONS: Record<Spread, readonly string[]> = {
+export const SPREAD_POSITIONS: Record<Spread, readonly ("focus" | "is" | "blocks" | "helps")[]> = {
   1: ["focus"],
   3: ["is", "blocks", "helps"],
 };

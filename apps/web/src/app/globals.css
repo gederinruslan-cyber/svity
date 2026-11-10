@@ -3103,3 +3103,459 @@ section,
     align-items: start;
   }
 }
+
+/* room: client (phone first) */
+.room-main {
+  padding-bottom: 40px;
+}
+.room-msg {
+  max-width: 460px;
+  margin: 40px auto;
+  padding: 22px;
+  border-radius: 20px;
+  text-align: center;
+}
+.room-lobby {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  border-radius: 24px;
+}
+.room-lobby .h2 {
+  margin: 4px 0 16px;
+}
+.room-lobby .h3 {
+  margin: 0 0 6px;
+}
+.room-lobby__points {
+  margin: 0 0 12px;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+}
+.room-lobby__pin {
+  display: block;
+  margin: 0 0 14px;
+}
+.room-lobby__pin .field {
+  width: 9ch;
+  font-size: 24px;
+  letter-spacing: 0.4em;
+  text-align: center;
+}
+.room-client {
+  max-width: 520px;
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  text-align: center;
+}
+.room-client__top {
+  display: grid;
+  gap: 2px;
+  justify-items: center;
+}
+.room-client__top .app-hint {
+  margin: 0;
+}
+.room-client__video {
+  color: var(--link);
+  font-weight: 600;
+}
+.room-slots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.room-slot {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  width: 76px;
+}
+.room-slot__card {
+  position: relative;
+  display: block;
+  width: 56px;
+  aspect-ratio: 9 / 16;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px dashed var(--line);
+}
+.room-slot.is-current .room-slot__card {
+  border: 1px solid var(--accent);
+}
+.room-slot__card img,
+.room-choice img,
+.summary__card img,
+.session__slot-card img,
+.diary-session__thumb img {
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.room-slot__label {
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--text-muted);
+}
+.room-client__held,
+.room-client__deck {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+}
+.room-client__card {
+  position: relative;
+}
+.room-client__tap {
+  position: absolute;
+  inset: 0;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+.room-client__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.room-client__held .app-hint {
+  margin: 0;
+}
+.room-choices {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  width: min(480px, 100%);
+}
+@media (max-width: 420px) {
+  .room-choices {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.room-choice {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border: 0;
+  padding: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.room-choice:hover,
+.room-choice:focus-visible {
+  transform: translateY(-3px);
+}
+.room-client__seen {
+  margin: 0;
+  color: var(--link);
+  font-weight: 600;
+}
+.room-pause {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(18, 26, 37, 0.45);
+}
+.room-pause__inner {
+  width: min(420px, 100%);
+  padding: 24px;
+  border-radius: 24px;
+  text-align: center;
+  background: var(--bg);
+}
+.summary {
+  width: 100%;
+  padding: 20px;
+  border-radius: 22px;
+  text-align: left;
+}
+.summary__cards {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  margin: 8px 0 16px;
+  padding: 0;
+}
+.summary__cards li {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  text-align: center;
+}
+.summary__card {
+  position: relative;
+  display: block;
+  width: 96px;
+  aspect-ratio: 9 / 16;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* cabinet + session (desktop / tablet first) */
+.cabinet__grid {
+  display: grid;
+  gap: 24px;
+}
+@media (min-width: 900px) {
+  .cabinet__grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+.cabinet__panel {
+  padding: 20px;
+  border-radius: 22px;
+  margin-bottom: 16px;
+}
+.cabinet__panel .h3 {
+  margin: 0 0 6px;
+}
+.cabinet__panel .profile__field {
+  display: block;
+}
+.cabinet__panel .field {
+  width: 100%;
+}
+.cabinet__create {
+  margin-top: 18px;
+}
+.cabinet__inline {
+  display: flex;
+  gap: 8px;
+}
+.cabinet__inline .field {
+  flex: 1;
+  min-width: 0;
+}
+.cabinet__pin {
+  margin: 0 0 6px;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+}
+.cabinet__rooms {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.cabinet__room {
+  display: grid;
+  gap: 2px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  color: var(--text);
+  text-decoration: none;
+}
+.cabinet__room-name {
+  font-weight: 700;
+}
+.cabinet__room-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.cabinet__room.is-live .cabinet__room-meta {
+  color: var(--link);
+}
+.cabinet__room.is-ended,
+.cabinet__room.is-expired {
+  opacity: 0.7;
+}
+.session__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.session__head .h2 {
+  margin: 0;
+}
+.session__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 0;
+  color: var(--text-muted);
+}
+.session__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--line);
+}
+.session__status.is-inRoom .session__dot {
+  background: #5d9b6f;
+}
+.session__tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.session__slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 200px));
+  justify-content: center;
+  gap: 16px;
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+.session__slot {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.session__slot:disabled {
+  cursor: default;
+}
+.session__slot-card {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px dashed var(--line);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.session__slot.is-selected .session__slot-card {
+  border: 0;
+  box-shadow: 0 0 0 3px var(--accent);
+}
+.session__empty {
+  padding: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.session__grid {
+  display: grid;
+  gap: 16px;
+}
+@media (min-width: 900px) {
+  .session__grid {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+.session__panel,
+.session__notes,
+.session__finish,
+.session__pause {
+  padding: 20px;
+  border-radius: 20px;
+}
+.session__questions {
+  margin: 6px 0 18px;
+  padding-left: 22px;
+  display: grid;
+  gap: 10px;
+}
+.session__questions .question {
+  font-size: 19px;
+  margin: 0;
+}
+.session__deeper {
+  margin: 6px 0 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+}
+.session__side {
+  display: grid;
+  gap: 12px;
+}
+.session__notes {
+  display: block;
+}
+.session__notes .field {
+  width: 100%;
+}
+.session__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.session__finish {
+  margin-top: 18px;
+}
+.session__option {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.session__option input {
+  margin-top: 4px;
+  accent-color: var(--accent);
+}
+.session__ended {
+  margin-top: 20px;
+  display: grid;
+  gap: 12px;
+}
+.diary-sessions {
+  margin: 0 0 18px;
+}
+.diary-sessions .h3 {
+  margin: 0 0 8px;
+}
+.diary-sessions ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.diary-session {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 16px;
+  color: inherit;
+  text-decoration: none;
+}
+.diary-session__thumbs {
+  display: flex;
+  gap: 4px;
+}
+.diary-session__thumb {
+  position: relative;
+  display: block;
+  width: 30px;
+  aspect-ratio: 9 / 16;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.diary-session__q {
+  display: block;
+  font-family: var(--font-serif), serif;
+  font-size: 17px;
+}

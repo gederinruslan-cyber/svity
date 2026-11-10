@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, localeHref, usePathname } from "@/i18n/navigation";
 import { Star4 } from "../icons";
+import { getMe } from "@/lib/api";
 import { HelpButton } from "./HelpSheet";
 
 /** The signed-in header: Today, Diary, language, sign out. */
@@ -10,12 +12,20 @@ export function AppHeader() {
   const t = useTranslations("app.nav");
   const locale = useLocale();
   const pathname = usePathname();
+  const [pro, setPro] = useState(false);
 
-  const links = [
+  useEffect(() => {
+    getMe()
+      .then((m) => setPro(m.role === "professional"))
+      .catch(() => {});
+  }, []);
+
+  const links: [string, string][] = [
     ["/today", t("today")],
     ["/diary", t("diary")],
+    ...(pro ? ([["/cabinet", t("cabinet")]] as [string, string][]) : []),
     ["/profile", t("profile")],
-  ] as const;
+  ];
 
   return (
     <header className="app-header">

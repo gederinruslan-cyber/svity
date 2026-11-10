@@ -201,6 +201,10 @@ export type ShadowView =
 
 // ---------- rooms (spec §10) ----------
 
+/** Spread positions; labels in i18n `app.room.positions`. */
+export const positionKeys = ["focus", "is", "blocks", "helps"] as const;
+export type PositionKey = (typeof positionKeys)[number];
+
 export const RoomCreateInput = z.object({
   clientLabel: z.string().trim().min(1).max(60),
   spread: z.union([z.literal(1), z.literal(3)]),
@@ -269,7 +273,7 @@ export interface RoomCard {
 export interface SessionSummaryView {
   id: string;
   psychologistName: string | null;
-  cards: { position: string; card: RoomCard }[];
+  cards: { position: PositionKey; card: RoomCard }[];
   weekQuestion: string | null;
   sentAt: string;
 }
@@ -278,7 +282,7 @@ export interface ClientRoomView {
   role: "client";
   code: string;
   psychologistName: string | null;
-  positions: string[];
+  positions: PositionKey[];
   choiceMode: "down" | "up";
   /** Position being filled now; null when the spread is complete. */
   current: number | null;
@@ -304,7 +308,7 @@ export interface PsychologistRoomView {
   id: string;
   code: string;
   clientLabel: string;
-  positions: string[];
+  positions: PositionKey[];
   choiceMode: "down" | "up";
   includeShadow: boolean;
   questionLanguage: Locale;

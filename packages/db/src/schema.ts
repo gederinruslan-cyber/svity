@@ -232,7 +232,7 @@ export const sessionSummaries = pgTable("session_summaries", {
   clientUserId: uuid("client_user_id").references(() => users.id, { onDelete: "cascade" }),
   psychologistName: text("psychologist_name"),
   /** [{ position, cardId }] */
-  cards: jsonb("cards").$type<{ position: string; cardId: number }[]>().notNull(),
+  cards: jsonb("cards").$type<{ position: "focus" | "is" | "blocks" | "helps"; cardId: number }[]>().notNull(),
   weekCardId: integer("week_card_id"),
   weekQuestionIndex: smallint("week_question_index"),
   language: text("language").notNull(),

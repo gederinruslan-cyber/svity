@@ -8,6 +8,8 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { ApiError, getEntries } from "@/lib/api";
 import { Heart } from "../icons";
 import { Mosaic } from "./Mosaic";
+import type { SessionSummaryView } from "@svity/contracts";
+import { api } from "@/lib/api";
 
 /** The diary (spec §7): newest first, filter by feeling (before or after). */
 export function Diary() {
@@ -49,6 +51,7 @@ export function Diary() {
     <section className="diary-page container container--narrow">
       <h1 className="h2">{t("title")}</h1>
       <Mosaic />
+      <Sessions />
 
       <div className="chips diary-page__filter" role="group" aria-label={t("filter")}>
         <button
@@ -130,5 +133,47 @@ export function Diary() {
         </button>
       )}
     </section>
+  );
+}
+
+/** Session summaries from a psychologist (spec §10.8), newest first. Hidden when there are none. */
+function Sessions() {
+  const t = useTranslations("app.sessions");
+  const tr = useTranslations("app.room");
+  const locale = useLocale();
+  const [items, setItems] = useState<SessionSummaryView[]>([]);
+  useEffect(() => {
+    api<SessionSummaryView[]>("/v1/sessions")
+      .then(setItems)
+      .catch(() => {});
+  }, []);
+  if (!items.length) return null;
+  const date = new Intl.DateTimeFormat(locale, { day: "numeric", month: "long" });
+  return (
+    <div className="diary-sessions">
+      <h2 className="h3">{t("title")}</h2>
+      <ul>
+        {items.map((s) => (
+          <li key={s.id}>
+            <Link href={`/diary/session/${s.id}`} className="diary-session glass">
+              <span className="diary-session__thumbs" aria-hidden="true">
+                {s.cards.map((c) => (
+                  <span key={c.position} className="diary-session__thumb">
+                    <Image src={c.card.imageUrl} alt="" fill sizes="40px" unoptimized />
+                  </span>
+                ))}
+              </span>
+              <span>
+                <span className="entry__meta">
+                  {date.format(new Date(s.sentAt))}
+                  {s.psychologistName && <> · {tr("from", { name: s.psychologistName })}</>}
+                </span>
+                <span className="diary-session__q">{s.weekQuestion ?? t("open")}</span>
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

@@ -15,7 +15,7 @@ Web app for daily reflection with the metaphorical card deck "Світи" (117 c
 
 ## Architecture (pnpm monorepo, TypeScript strict)
 ```
-apps/api            Hono on Node: REST API (waitlist, beta applications); WebSocket for rooms later
+apps/api            Hono on Node: REST API; rooms push role-specific snapshots over WebSocket (@hono/node-server + ws)
 apps/web            Next.js: marketing/landing (SSG) + app UI
 packages/core       pure domain rules (timer, card selection, repicks, shadow access, entitlements); `pnpm --filter @svity/core test`
 packages/contracts  Zod schemas = API contract (web now, mobile later)
@@ -41,11 +41,12 @@ pnpm install
 pnpm db:up                    # Postgres in Docker on :5433
 pnpm db:migrate               # apply migrations (pnpm db:generate after schema changes)
 pnpm deck:import              # load packages/db/deck/deck.json (cards + questions); safe to re-run
+pnpm user:role <email>        # make an account a psychologist (beta; sign in once first)
 pnpm dev                      # api on :4000 + web on :3000 (or dev:api / dev:web)
 pnpm typecheck
 ```
 Landing: http://localhost:3000/uk or /en; `?theme=day|evening` forces a theme.
-App: http://localhost:3000/uk/signin → /today (daily card) and /diary. Sign-in in dev: the e-mail link is printed in the API console (no mail service yet).
+App: http://localhost:3000/uk/signin → /today (daily card), /diary, /profile, /shadow, /difficult-day; psychologists: /cabinet → room links /r/XXX-XXX (client, phone-first). Sign-in in dev: the e-mail link is printed in the API console (no mail service yet).
 Deck: all 351 questions come from the author's PDF «Світи – додаткові питання до карт» v3; card number ↔ image comes from the thumbnails in the same PDF, matched to the Figma export (`packages/db/deck/deck.json`). 98 cards have high-res art; 19 (1, 13, 17, 18, 19, 38, 40, 57, 59, 61, 65, 82, 92, 112, 113, 114, 115, 116, 117) only have the PDF's 240 px thumbnails until high-res files are exported. Card images are served by the API (`apps/api/card-images`), not from `public/`.
 Next.js is v16 (proxy.ts instead of middleware.ts); read `apps/web/node_modules/next/dist/docs/` before using unfamiliar APIs.
 

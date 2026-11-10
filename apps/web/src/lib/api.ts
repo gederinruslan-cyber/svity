@@ -6,6 +6,7 @@ export class ApiError extends Error {
   constructor(
     readonly status: number,
     readonly code: string,
+    readonly data: Record<string, unknown> = {},
   ) {
     super(code);
   }
@@ -20,7 +21,7 @@ export async function api<T>(path: string, init?: { method?: "GET" | "POST" | "P
     body: init?.body === undefined ? undefined : JSON.stringify(init.body),
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new ApiError(res.status, (data as { error?: string }).error ?? "server");
+  if (!res.ok) throw new ApiError(res.status, (data as { error?: string }).error ?? "server", data as Record<string, unknown>);
   return data as T;
 }
 
