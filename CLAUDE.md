@@ -13,11 +13,11 @@ Web app for daily reflection with the metaphorical card deck "Світи" (117 c
 - Product safety features from the spec are in scope (help button, "Трудний день" mode, safe exit).
 - Launch languages: Ukrainian (`uk`) and English (`en`). All UI text goes through i18n; no hard-coded strings, no text in images.
 
-## Architecture (pnpm monorepo, TypeScript strict; `core` arrives with M1)
+## Architecture (pnpm monorepo, TypeScript strict)
 ```
 apps/api            Hono on Node: REST API (waitlist, beta applications); WebSocket for rooms later
 apps/web            Next.js: marketing/landing (SSG) + app UI
-packages/core       pure domain rules (timer, card selection, repicks, shadow access, entitlements)
+packages/core       pure domain rules (timer, card selection, repicks, shadow access, entitlements); `pnpm --filter @svity/core test`
 packages/contracts  Zod schemas = API contract (web now, mobile later)
 packages/db         Drizzle schema, migrations, deck import
 packages/i18n       ICU messages (uk, en); gendered forms via `select`
@@ -47,5 +47,7 @@ Landing: http://localhost:3000/uk or /en; `?theme=day|evening` forces a theme.
 Next.js is v16 (proxy.ts instead of middleware.ts); read `apps/web/node_modules/next/dist/docs/` before using unfamiliar APIs.
 
 ## Workflow
-- Work milestone by milestone (M0 foundation + landing → M1 daily card → M2 profile & safety → M3 room → M4 hardening), on feature branches, as small reviewed PRs.
+- Work milestone by milestone (M0 foundation + landing → M1 daily card → M2 profile & safety → M3 room → M4 hardening).
+- Commit and push straight to `main`, no feature branches or PRs: one focused commit per finished, verified step.
+- The repo is public: never commit secrets or `.env`; commit as the personal identity (repo-local git config), not a work e-mail.
 - Before reporting a task done: typecheck passes and the feature works when run; for UI, check it in a browser (mobile width too).
