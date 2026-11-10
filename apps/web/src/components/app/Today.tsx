@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { feelings, type Feeling, type Me, type TodayView } from "@svity/contracts";
 import { motion } from "@svity/tokens";
 import { Link, useRouter } from "@/i18n/navigation";
-import { api, ApiError, getMe, getToday, preload } from "@/lib/api";
+import { api, ApiError, getMe, getMonth, getToday, preload } from "@/lib/api";
 import { RitualCard, type RitualStage } from "../ritual/RitualCard";
 import { Star4 } from "../icons";
 
@@ -285,6 +285,18 @@ function Done({
   const tf = useTranslations("feelings");
   const nextMs = Date.parse(view.nextAvailableAt);
   const [left, setLeft] = useState(() => nextMs - Date.now());
+  const locale = useLocale();
+  const [month, setMonth] = useState<{ name: string; count: number } | null>(null);
+
+  useEffect(() => {
+    getMonth(locale)
+      .then((m) => {
+        const [y, mo] = m.month.split("-").map(Number) as [number, number];
+        const name = new Intl.DateTimeFormat(locale, { month: "long" }).format(new Date(y, mo - 1, 1));
+        setMonth({ name: name.charAt(0).toUpperCase() + name.slice(1), count: m.count });
+      })
+      .catch(() => {});
+  }, [locale, view]);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -335,6 +347,7 @@ function Done({
           <p className="demo__muted">{t("closed")}</p>
         )}
 
+        {month && month.count > 0 && <p className="today__month">{t("monthCount", { month: month.name, count: month.count })}</p>}
         <Link href="/diary" className="btn">
           {t("toDiary")}
         </Link>

@@ -114,3 +114,43 @@ export function Ornament({ className }: { className?: string }) {
     </span>
   );
 }
+
+export function Heart({ size = 20, className, filled = false }: P & { filled?: boolean }) {
+  return (
+    <svg {...base(size)} className={className} fill={filled ? "currentColor" : "none"}>
+      <path d="M12 20s-7.5-4.4-7.5-10A4.5 4.5 0 0 1 12 7.6 4.5 4.5 0 0 1 19.5 10c0 5.6-7.5 10-7.5 10Z" />
+    </svg>
+  );
+}
+
+export function Share({ size = 20, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M5 13v6h14v-6" />
+    </svg>
+  );
+}
+
+export function Trash({ size = 20, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <path d="M4.5 7h15M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13M10.5 11v5.5M13.5 11v5.5" />
+    </svg>
+  );
+}
+
+export function ChevronLeft({ size = 20, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <path d="m14.5 5.5-6.5 6.5 6.5 6.5" />
+    </svg>
+  );
+}
+
+export function ChevronRight({ size = 20, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <path d="m9.5 5.5 6.5 6.5-6.5 6.5" />
+    </svg>
+  );
+}

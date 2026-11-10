@@ -332,7 +332,8 @@
       "toDiary": "Open your diary",
       "noNote": "No note. Just a moment with a card.",
       "error": "Something went wrong. Try again.",
-      "loading": "Loading…"
+      "loading": "Loading…",
+      "monthCount": "{month}: {count, plural, one {# card} other {# cards}}"
     },
     "diary": {
       "title": "Your diary",
@@ -342,7 +343,31 @@
       "emptyAll": "No entries yet. Your first card will be here.",
       "more": "Show older",
       "drawToday": "Draw today's card",
-      "noNote": "No note. Just a moment with a card."
+      "noNote": "No note. Just a moment with a card.",
+      "favorites": "Favourites",
+      "monthCount": "{month}: {count, plural, =0 {no cards yet} one {# card} other {# cards}}",
+      "prevMonth": "Previous month",
+      "nextMonth": "Next month",
+      "openDay": "Open the entry of {date}",
+      "open": "Open entry",
+      "back": "Back to the diary",
+      "edited": "edited",
+      "editNote": "Edit the note",
+      "addNote": "Add a note",
+      "saveNote": "Save",
+      "cancel": "Cancel",
+      "favoriteAdd": "Add to favourites",
+      "favoriteRemove": "Remove from favourites",
+      "delete": "Delete entry",
+      "deleteConfirm": "Delete this entry for good? This can't be undone.",
+      "deleteYes": "Delete",
+      "deleteNo": "Keep it",
+      "share": "Share the question",
+      "copied": "Question copied",
+      "shareText": "A question from Svity: “{q}”",
+      "notFound": "This entry doesn't exist any more.",
+      "request": "Your question to yourself",
+      "feelings": "Before → after"
     }
   }
 }

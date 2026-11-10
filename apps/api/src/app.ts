@@ -5,7 +5,8 @@ import { betaApplications, waitlistEntries, type Db } from "@svity/db";
 import { authRoutes, requireUser, toMe, type AuthEnv } from "./auth";
 import { cardImageRoutes, deckLoader, imageSigner } from "./deck";
 import type { Mailer } from "./mailer";
-import { entryRoutes, todayRoutes } from "./today";
+import { entryRoutes } from "./entries";
+import { todayRoutes } from "./today";
 import { rateLimit } from "./rate-limit";
 
 export interface AppOptions {
@@ -58,7 +59,7 @@ export function createApp(db: Db, opts: AppOptions) {
   app.use("/v1/entries/*", requireUser(db));
   app.use("/v1/entries", requireUser(db));
   app.route("/v1/today", today.app);
-  app.route("/v1/entries", entryRoutes(db, getDeck, today.entryView));
+  app.route("/v1/entries", entryRoutes(db, getDeck, signer, today.entryView));
   app.route("/v1/cards", cardImageRoutes(getDeck, signer));
 
   app.onError((err, c) => {

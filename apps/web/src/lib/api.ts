@@ -1,4 +1,4 @@
-import type { EntriesPage, Me, TodayView } from "@svity/contracts";
+import type { EntriesPage, EntryPatch, EntryView, Me, MonthView, TodayView } from "@svity/contracts";
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000";
 
@@ -12,7 +12,7 @@ export class ApiError extends Error {
 }
 
 /** Calls the Svity API with the session cookie. Throws ApiError on non-2xx. */
-export async function api<T>(path: string, init?: { method?: "GET" | "POST"; body?: unknown }): Promise<T> {
+export async function api<T>(path: string, init?: { method?: "GET" | "POST" | "PATCH" | "DELETE"; body?: unknown }): Promise<T> {
   const res = await fetch(`${API_URL}${path}`, {
     method: init?.method ?? "GET",
     credentials: "include",
@@ -26,12 +26,19 @@ export async function api<T>(path: string, init?: { method?: "GET" | "POST"; bod
 
 export const getMe = () => api<{ ok: true; me: Me }>("/v1/me").then((r) => r.me);
 export const getToday = (locale: string) => api<TodayView>(`/v1/today?locale=${locale}`);
-export const getEntries = (locale: string, opts: { before?: string; feeling?: string } = {}) => {
+export const getEntries = (locale: string, opts: { before?: string; feeling?: string; favorite?: boolean } = {}) => {
   const q = new URLSearchParams({ locale });
   if (opts.before) q.set("before", opts.before);
   if (opts.feeling) q.set("feeling", opts.feeling);
+  if (opts.favorite) q.set("favorite", "1");
   return api<EntriesPage>(`/v1/entries?${q}`);
 };
+export const getMonth = (locale: string, month?: string) =>
+  api<MonthView>(`/v1/entries/month?locale=${locale}${month ? `&month=${month}` : ""}`);
+export const getEntry = (id: string, locale: string) => api<EntryView>(`/v1/entries/${id}?locale=${locale}`);
+export const patchEntry = (id: string, locale: string, body: EntryPatch) =>
+  api<EntryView>(`/v1/entries/${id}?locale=${locale}`, { method: "PATCH", body });
+export const deleteEntry = (id: string) => api<{ ok: true }>(`/v1/entries/${id}`, { method: "DELETE" });
 
 /** Resolves when the image is in the browser cache (or after `timeoutMs`), so a flip never shows a blank face. */
 export function preload(src: string, timeoutMs = 4000) {

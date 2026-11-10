@@ -121,3 +121,24 @@ export interface EntriesPage {
   /** Pass as `?before=` to load older entries; null when there are none. */
   next: string | null;
 }
+
+export const EntryPatch = z
+  .object({
+    note: z.string().trim().max(10_000).nullable().optional(),
+    isFavorite: z.boolean().optional(),
+  })
+  .refine((p) => p.note !== undefined || p.isFavorite !== undefined, "nothing to update");
+export type EntryPatch = z.infer<typeof EntryPatch>;
+
+/** One local calendar month of the diary, for the mosaic (spec §7). */
+export interface MonthView {
+  /** "YYYY-MM" in the profile time zone. */
+  month: string;
+  /** Number of diary entries this month. */
+  count: number;
+  /** One cell per day that has entries: the latest card of that day. */
+  days: { day: number; entryId: string; card: CardView }[];
+  /** "YYYY-MM" of the months before/after with any entries; null when there are none. */
+  prev: string | null;
+  next: string | null;
+}

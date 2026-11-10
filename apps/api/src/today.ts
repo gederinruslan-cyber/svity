@@ -13,14 +13,13 @@ import {
 } from "@svity/core";
 import {
   DrawInput,
-  Feeling,
   Locale,
   SaveInput,
-  type EntriesPage,
   type EntryView,
+  type Feeling,
   type TodayView,
 } from "@svity/contracts";
-import { and, dailyDraws, desc, eq, entries, lt, or, sql, type Db } from "@svity/db";
+import { dailyDraws, desc, eq, entries, sql, type Db } from "@svity/db";
 import type { AuthEnv, User } from "./auth";
 import { cardView, type Deck, type ImageSigner } from "./deck";
 
@@ -37,7 +36,7 @@ const toCore = (r: DrawRow): DailyDraw => ({
 });
 
 /** Request-language override (`?locale=`), else the account language. */
-function localeOf(c: Context<AuthEnv>): Locale {
+export function localeOf(c: Context<AuthEnv>): Locale {
   const q = Locale.safeParse(c.req.query("locale"));
   return q.success ? q.data : (c.get("user").locale as Locale);
 }
@@ -191,38 +190,4 @@ export function todayRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
   });
 
   return { app, entryView };
-}
-
-const PAGE = 20;
-
-export function entryRoutes(db: Db, getDeck: () => Promise<Deck>, entryView: ReturnType<typeof todayRoutes>["entryView"]) {
-  const app = new Hono<AuthEnv>();
-
-  // Newest first; `?feeling=` matches the feeling before or after (spec §7).
-  app.get("/", async (c) => {
-    const user = c.get("user");
-    const before = c.req.query("before");
-    const f = Feeling.safeParse(c.req.query("feeling"));
-    const feeling = f.success ? f.data : undefined;
-    const rows = await db
-      .select()
-      .from(entries)
-      .where(
-        and(
-          eq(entries.userId, user.id),
-          before ? lt(entries.createdAt, new Date(before)) : undefined,
-          feeling ? or(eq(entries.feelingBefore, feeling), eq(entries.feelingAfter, feeling)) : undefined,
-        ),
-      )
-      .orderBy(desc(entries.createdAt))
-      .limit(PAGE + 1);
-    const deck = await getDeck();
-    const page = rows.slice(0, PAGE);
-    return c.json<EntriesPage>({
-      entries: page.map((e) => entryView(deck, e, localeOf(c))),
-      next: rows.length > PAGE ? page.at(-1)!.createdAt.toISOString() : null,
-    });
-  });
-
-  return app;
 }

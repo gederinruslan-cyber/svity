@@ -7,6 +7,8 @@ import {
   currentCard,
   eligibleCards,
   fromLocal,
+  localDateKey,
+  monthRange,
   nextAvailableAt,
   pickQuestion,
   repick,
@@ -160,5 +162,20 @@ describe("shadow cards (spec §8)", () => {
     expect(shadowAllowed({ progress, consentAt: null, enabled: true })).toBe(false);
     expect(shadowAllowed({ progress, consentAt: new Date(), enabled: false })).toBe(false);
     expect(shadowAllowed({ progress, consentAt: new Date(), enabled: true })).toBe(true);
+  });
+});
+
+describe("month range", () => {
+  it("is local, and spans the DST change in October", () => {
+    const { start, end } = monthRange(2026, 10, KYIV);
+    expect(local(start)).toBe("2026-10-01 00:00");
+    expect(local(end)).toBe("2026-11-01 00:00");
+    // 31 days plus the extra hour from clocks going back.
+    expect((end.getTime() - start.getTime()) / 36e5).toBe(31 * 24 + 1);
+    expect(localDateKey(new Date(end.getTime() - 1), KYIV)).toBe("2026-10-31");
+  });
+
+  it("rolls over the year", () => {
+    expect(local(monthRange(2026, 12, KYIV).end)).toBe("2027-01-01 00:00");
   });
 });

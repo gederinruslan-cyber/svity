@@ -6,6 +6,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { feelings, type EntryView, type Feeling } from "@svity/contracts";
 import { Link, useRouter } from "@/i18n/navigation";
 import { ApiError, getEntries } from "@/lib/api";
+import { Heart } from "../icons";
+import { Mosaic } from "./Mosaic";
 
 /** The diary (spec §7): newest first, filter by feeling (before or after). */
 export function Diary() {
@@ -16,6 +18,7 @@ export function Diary() {
   const router = useRouter();
 
   const [feeling, setFeeling] = useState<Feeling | null>(null);
+  const [favorite, setFavorite] = useState(false);
   const [items, setItems] = useState<EntryView[] | null>(null);
   const [next, setNext] = useState<string | null>(null);
   const [error, setError] = useState(false);
@@ -23,7 +26,7 @@ export function Diary() {
   const load = useCallback(
     async (before?: string) => {
       try {
-        const page = await getEntries(locale, { before, feeling: feeling ?? undefined });
+        const page = await getEntries(locale, { before, feeling: feeling ?? undefined, favorite });
         setItems((xs) => (before && xs ? [...xs, ...page.entries] : page.entries));
         setNext(page.next);
         setError(false);
@@ -32,7 +35,7 @@ export function Diary() {
         setError(true);
       }
     },
-    [locale, feeling, router],
+    [locale, feeling, favorite, router],
   );
 
   useEffect(() => {
@@ -44,10 +47,22 @@ export function Diary() {
   return (
     <section className="diary-page container container--narrow">
       <h1 className="h2">{t("title")}</h1>
+      <Mosaic />
 
       <div className="chips diary-page__filter" role="group" aria-label={t("filter")}>
-        <button type="button" className={`chip ${feeling === null ? "chip--selected" : ""}`} aria-pressed={feeling === null} onClick={() => setFeeling(null)}>
+        <button
+          type="button"
+          className={`chip ${feeling === null && !favorite ? "chip--selected" : ""}`}
+          aria-pressed={feeling === null && !favorite}
+          onClick={() => {
+            setFeeling(null);
+            setFavorite(false);
+          }}
+        >
           {t("all")}
+        </button>
+        <button type="button" className={`chip chip--icon ${favorite ? "chip--selected" : ""}`} aria-pressed={favorite} onClick={() => setFavorite((x) => !x)}>
+          <Heart size={14} filled={favorite} /> {t("favorites")}
         </button>
         {feelings.map((f) => (
           <button
@@ -67,8 +82,8 @@ export function Diary() {
       {items?.length === 0 && (
         <div className="diary-page__empty glass">
           <Image src="/brand/diary.webp" alt="" width={140} height={140} />
-          <p>{feeling ? t("empty") : t("emptyAll")}</p>
-          {!feeling && (
+          <p>{feeling || favorite ? t("empty") : t("emptyAll")}</p>
+          {!feeling && !favorite && (
             <Link href="/today" className="btn">
               {t("drawToday")}
             </Link>
@@ -79,13 +94,14 @@ export function Diary() {
       <ol className="diary-page__list">
         {items?.map((e) => (
           <li key={e.id}>
-            <article className="entry glass">
+            <Link href={`/diary/${e.id}`} className="entry entry--link glass" aria-label={`${t("open")}: ${e.card.question}`}>
               <span className="entry__thumb">
                 <Image src={e.card.imageUrl} alt={tt("cardAlt", { n: e.card.id })} fill sizes="72px" unoptimized />
               </span>
               <div>
                 <p className="entry__meta">
                   <time dateTime={e.createdAt}>{date.format(new Date(e.createdAt))}</time> · {tt("cardN", { n: e.card.id })}
+                  {e.editedAt && <> · {t("edited")}</>}
                 </p>
                 <p className="entry__q">{e.card.question}</p>
                 {e.request && <p className="today__req-text">“{e.request}”</p>}
@@ -96,7 +112,12 @@ export function Diary() {
                   <span className="chip chip--sm chip--sage">{tf(e.feelingAfter)}</span>
                 </p>
               </div>
-            </article>
+              {e.isFavorite && (
+                <span className="entry__fav" aria-hidden="true">
+                  <Heart size={16} filled />
+                </span>
+              )}
+            </Link>
           </li>
         ))}
       </ol>

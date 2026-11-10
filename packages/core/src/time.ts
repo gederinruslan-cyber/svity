@@ -100,3 +100,12 @@ export function calendarDaysBetween(a: Date, b: Date, tz: string): number {
     (Date.UTC(lb.year, lb.month - 1, lb.day) - Date.UTC(la.year, la.month - 1, la.day)) / 86_400_000,
   );
 }
+
+/** [start, end) instants of a local calendar month in `tz` (DST-safe). */
+export function monthRange(year: number, month: number, tz: string): { start: Date; end: Date } {
+  const next = month === 12 ? { year: year + 1, month: 1 } : { year, month: month + 1 };
+  return {
+    start: fromLocal({ year, month, day: 1, hour: 0, minute: 0 }, tz),
+    end: fromLocal({ ...next, day: 1, hour: 0, minute: 0 }, tz),
+  };
+}
