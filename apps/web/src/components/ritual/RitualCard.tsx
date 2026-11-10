@@ -13,6 +13,8 @@ type Props = {
   deckLabel: string;
   /** Shows the stack of cards under the top one (deck mode). */
   stacked?: boolean;
+  /** For signed API URLs: they must not go through (or be cached by) the image optimizer. */
+  unoptimized?: boolean;
 };
 
 const sparks = Array.from({ length: motion.ritual.sparks }, (_, i) => (360 / motion.ritual.sparks) * i + 15);
@@ -21,7 +23,7 @@ const sparks = Array.from({ length: motion.ritual.sparks }, (_, i) => (360 / mot
  * The daily-card ritual from spec §6/§13: the star on the card back wakes up
  * (gold glow + sparks), then the card flips. Reused by the product in M1.
  */
-export function RitualCard({ stage, front, onDraw, deckLabel, stacked = true }: Props) {
+export function RitualCard({ stage, front, onDraw, deckLabel, stacked = true, unoptimized = false }: Props) {
   const interactive = stage === "deck" && !!onDraw;
   return (
     <div className={`ritual ritual--${stage}`}>
@@ -40,7 +42,7 @@ export function RitualCard({ stage, front, onDraw, deckLabel, stacked = true }: 
             <span className="ritual__glow" aria-hidden="true" />
           </span>
           <span className="ritual__face ritual__face--front">
-            {front && <Image src={front.src} alt={front.alt} fill sizes="(max-width: 600px) 70vw, 300px" />}
+            {front && <Image src={front.src} alt={front.alt} fill sizes="(max-width: 600px) 70vw, 300px" unoptimized={unoptimized} draggable={false} />}
           </span>
         </span>
       </button>

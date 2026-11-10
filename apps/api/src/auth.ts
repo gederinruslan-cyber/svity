@@ -45,10 +45,12 @@ export function requireUser(db: Db): MiddlewareHandler<AuthEnv> {
 
 export function authRoutes(db: Db, opts: { webOrigin: string; mailer: Mailer; secureCookies: boolean }) {
   const app = new Hono<AuthEnv>();
-  const limited = rateLimit({ limit: 5, windowMs: 10 * 60_000 });
+  // Each request sends an e-mail, so this one is strict; confirming a link is cheap.
+  const emailLimit = rateLimit({ limit: 5, windowMs: 10 * 60_000 });
+  const verifyLimit = rateLimit({ limit: 30, windowMs: 10 * 60_000 });
 
   // Always answers ok, so the response never reveals whether an account exists.
-  app.post("/email", limited, async (c) => {
+  app.post("/email", emailLimit, async (c) => {
     const parsed = SignInInput.safeParse(await c.req.json().catch(() => null));
     if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
     const email = parsed.data.email.toLowerCase();
@@ -60,7 +62,7 @@ export function authRoutes(db: Db, opts: { webOrigin: string; mailer: Mailer; se
     return c.json({ ok: true });
   });
 
-  app.post("/verify", limited, async (c) => {
+  app.post("/verify", verifyLimit, async (c) => {
     const parsed = VerifyInput.safeParse(await c.req.json().catch(() => null));
     if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
     let timezone = parsed.data.timezone;

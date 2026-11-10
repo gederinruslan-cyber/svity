@@ -272,5 +272,77 @@
     "rights": "© {year} Svity",
     "top": "Back to top",
     "made": "Made with care in Ukrainian and English"
+  },
+  "app": {
+    "meta": {
+      "title": "Svity",
+      "signin": "Sign in · Svity",
+      "today": "Today · Svity",
+      "diary": "Diary · Svity"
+    },
+    "nav": {
+      "today": "Today",
+      "diary": "Diary",
+      "signOut": "Sign out",
+      "home": "Svity home"
+    },
+    "signin": {
+      "title": "Sign in to Svity",
+      "sub": "We'll e-mail you a link. No password needed.",
+      "email": "E-mail",
+      "submit": "Send me a link",
+      "sending": "Sending…",
+      "sentTitle": "Check your inbox",
+      "sent": "We sent a sign-in link to {email}. It works once, for 15 minutes.",
+      "devHint": "Local development: the link is printed in the API terminal.",
+      "again": "Use another e-mail",
+      "error": "Something went wrong. Try again in a minute.",
+      "rateLimited": "Too many attempts. Try again in a few minutes.",
+      "verifying": "Signing you in…",
+      "linkInvalid": "This link has expired or was already used.",
+      "newLink": "Get a new link"
+    },
+    "today": {
+      "ask": "How are you right now?",
+      "addRequest": "+ Add a question to yourself",
+      "requestLabel": "Your question to yourself",
+      "requestPlaceholder": "What would you like to look at today?",
+      "tap": "Tap the deck",
+      "deckLabel": "Deck of cards. Tap to draw your card.",
+      "cardAlt": "Card {n}",
+      "cardN": "Card {n}",
+      "questionLabel": "Your question",
+      "note": "A word, a page, or nothing at all",
+      "noteSaved": "Draft saved",
+      "repick": "Not my card · take another ({n} more)",
+      "lastCard": "This is your card for today",
+      "continue": "I'm done",
+      "close": "Close without saving",
+      "closeHint": "Nothing will be recorded, and today's card counts as used.",
+      "closeConfirm": "Close without saving",
+      "closeCancel": "Keep the card",
+      "after": "How are you now?",
+      "saved": "Saved to your diary",
+      "drawn": "{form, select, other {You've already drawn today's card}}",
+      "closed": "Today's card was put back without saving.",
+      "nextMidnight": "Next card at midnight",
+      "nextNoon": "Next card tomorrow at 12:00",
+      "countdown": "in {h} h {m} min",
+      "rule": "Drawn before 18:00, the next card comes at midnight. Drawn later, it comes the next day at 12:00.",
+      "toDiary": "Open your diary",
+      "noNote": "No note. Just a moment with a card.",
+      "error": "Something went wrong. Try again.",
+      "loading": "Loading…"
+    },
+    "diary": {
+      "title": "Your diary",
+      "filter": "Filter by feeling",
+      "all": "All",
+      "empty": "No entries with this feeling yet.",
+      "emptyAll": "No entries yet. Your first card will be here.",
+      "more": "Show older",
+      "drawToday": "Draw today's card",
+      "noNote": "No note. Just a moment with a card."
+    }
   }
 }

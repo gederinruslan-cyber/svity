@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/navigation";
+import { Link, localeHref, usePathname } from "@/i18n/navigation";
 import { Close, Menu, Moon, Star4, Sun } from "./icons";
 
 type ThemePref = "auto" | "day" | "evening";
@@ -86,15 +86,16 @@ export function Header() {
         <div className="site-header__tools">
           <div className="lang-switch" role="group" aria-label={t("language")}>
             {(["uk", "en"] as const).map((l) => (
-              <Link
+              // A full page load: switching the language re-renders the root <html>.
+              <a
                 key={l}
-                href={pathname}
-                locale={l}
+                href={localeHref(l, pathname)}
+                hrefLang={l}
                 className={l === locale ? "is-active" : ""}
                 aria-current={l === locale ? "true" : undefined}
               >
                 {l === "uk" ? "UA" : "EN"}
-              </Link>
+              </a>
             ))}
           </div>
           <button
