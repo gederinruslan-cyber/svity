@@ -48,6 +48,32 @@ export const VerifyInput = z.object({
 export type VerifyInput = z.infer<typeof VerifyInput>;
 
 export const addressForms = ["f", "m", "n"] as const;
+export const reminderTimes = ["09:00", "12:00", "20:00"] as const;
+
+export const ProfilePatch = z
+  .object({
+    locale: Locale,
+    addressForm: z.enum(addressForms),
+    timezone: z.string().min(1).max(64),
+    reminderTime: z.enum(reminderTimes).nullable(),
+  })
+  .partial()
+  .refine((p) => Object.keys(p).length > 0, "nothing to update");
+export type ProfilePatch = z.infer<typeof ProfilePatch>;
+
+export interface ProfileStats {
+  entries: number;
+  /** "After a card it felt lighter in X of Y entries". */
+  lighter: number;
+  topAfter: { feeling: Feeling; count: number }[];
+  shadow: {
+    days: number;
+    daysNeeded: number;
+    entries: number;
+    entriesNeeded: number;
+    eligible: boolean;
+  };
+}
 
 export interface Me {
   id: string;
@@ -56,6 +82,7 @@ export interface Me {
   locale: Locale;
   addressForm: (typeof addressForms)[number];
   timezone: string;
+  reminderTime: (typeof reminderTimes)[number] | null;
   createdAt: string;
 }
 

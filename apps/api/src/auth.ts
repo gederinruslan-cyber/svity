@@ -22,6 +22,7 @@ export function toMe(u: User): Me {
     locale: u.locale as Me["locale"],
     addressForm: u.addressForm,
     timezone: u.timezone,
+    reminderTime: u.reminderTime as Me["reminderTime"],
     createdAt: u.createdAt.toISOString(),
   };
 }

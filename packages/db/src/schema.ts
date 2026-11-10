@@ -41,6 +41,8 @@ export const users = pgTable("users", {
   addressForm: text("address_form", { enum: ["f", "m", "n"] }).notNull().default("n"),
   /** IANA zone; the daily-card timer runs in it (spec §6). */
   timezone: text("timezone").notNull(),
+  /** Local time of the daily reminder ("09:00", "12:00", "20:00") or null for off. Delivery comes with the app. */
+  reminderTime: text("reminder_time"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 

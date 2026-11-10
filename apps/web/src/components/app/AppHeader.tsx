@@ -1,25 +1,20 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { Link, localeHref, usePathname, useRouter } from "@/i18n/navigation";
-import { api } from "@/lib/api";
-import { DoorClose, Star4 } from "../icons";
+import { Link, localeHref, usePathname } from "@/i18n/navigation";
+import { Star4 } from "../icons";
+import { HelpButton } from "./HelpSheet";
 
 /** The signed-in header: Today, Diary, language, sign out. */
 export function AppHeader() {
   const t = useTranslations("app.nav");
   const locale = useLocale();
   const pathname = usePathname();
-  const router = useRouter();
-
-  async function signOut() {
-    await api("/v1/auth/logout", { method: "POST" }).catch(() => {});
-    router.replace("/signin");
-  }
 
   const links = [
     ["/today", t("today")],
     ["/diary", t("diary")],
+    ["/profile", t("profile")],
   ] as const;
 
   return (
@@ -31,7 +26,12 @@ export function AppHeader() {
         </Link>
         <nav className="app-nav" aria-label="Svity">
           {links.map(([href, label]) => (
-            <Link key={href} href={href} className={pathname === href ? "is-active" : ""} aria-current={pathname === href ? "page" : undefined}>
+            <Link
+              key={href}
+              href={href}
+              className={pathname === href || pathname.startsWith(`${href}/`) ? "is-active" : ""}
+              aria-current={pathname === href ? "page" : undefined}
+            >
               {label}
             </Link>
           ))}
@@ -44,10 +44,7 @@ export function AppHeader() {
               </a>
             ))}
           </div>
-          <button type="button" className="app-signout" onClick={signOut} aria-label={t("signOut")} title={t("signOut")}>
-            <DoorClose size={18} />
-            <span className="app-signout__text">{t("signOut")}</span>
-          </button>
+          <HelpButton />
         </div>
       </div>
     </header>

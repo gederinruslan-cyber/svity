@@ -10,9 +10,10 @@
   "dependencies": {
     "@hono/node-server": "^2.1.6",
     "@svity/contracts": "workspace:*",
+    "@svity/core": "workspace:*",
     "@svity/db": "workspace:*",
-    "hono": "^4.13.17",
-    "@svity/core": "workspace:*"
+    "@svity/i18n": "workspace:*",
+    "hono": "^4.13.17"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

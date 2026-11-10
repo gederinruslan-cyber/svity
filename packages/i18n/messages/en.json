@@ -278,13 +278,15 @@
       "title": "Svity",
       "signin": "Sign in · Svity",
       "today": "Today · Svity",
-      "diary": "Diary · Svity"
+      "diary": "Diary · Svity",
+      "profile": "Profile · Svity"
     },
     "nav": {
       "today": "Today",
       "diary": "Diary",
       "signOut": "Sign out",
-      "home": "Svity home"
+      "home": "Svity home",
+      "profile": "Profile"
     },
     "signin": {
       "title": "Sign in to Svity",
@@ -368,6 +370,69 @@
       "notFound": "This entry doesn't exist any more.",
       "request": "Your question to yourself",
       "feelings": "Before → after"
+    },
+    "help": {
+      "open": "I need help now",
+      "title": "You're not alone",
+      "danger": "If you are in danger, call {number}",
+      "call": "Call {number}",
+      "country": "Your country",
+      "choose": "Choose a country",
+      "other": "Another country",
+      "lines": "Support lines",
+      "find": "Find a helpline in your country",
+      "breathe": "Breathe together · 1 min",
+      "close": "Close",
+      "unverified": "Numbers are being checked before launch.",
+      "notService": "Svity is not an emergency service."
+    },
+    "breath": {
+      "in": "Breathe in",
+      "hold": "Hold",
+      "out": "Breathe out",
+      "start": "Start",
+      "again": "Once more",
+      "done": "Well done. Notice how you feel now.",
+      "seconds": "{n} s",
+      "title": "Breathe together",
+      "sub": "In for 4 · hold for 4 · out for 6. About a minute."
+    },
+    "profile": {
+      "title": "Profile",
+      "settings": "Settings",
+      "address": "How should we address you?",
+      "addressHint": "Only for word forms in Ukrainian and other languages.",
+      "f": "Feminine",
+      "m": "Masculine",
+      "n": "Neutral",
+      "language": "Language",
+      "timezone": "Time zone",
+      "timezoneHint": "Your daily card follows it. A change applies from the next card.",
+      "reminder": "Daily reminder",
+      "reminderOff": "Off",
+      "reminderHint": "Reminders arrive with the mobile app.",
+      "theme": "Theme",
+      "themeAuto": "Auto",
+      "themeDay": "Day",
+      "themeEvening": "Evening",
+      "saved": "Saved",
+      "feelings": "Feelings",
+      "lighter": "After a card, it felt lighter in {lighter} of {total} entries.",
+      "topAfter": "Most often after a card",
+      "noStats": "Your feelings will show up here after a few cards.",
+      "shadow": "Shadow cards",
+      "shadowDays": "Days with Svity",
+      "shadowEntries": "Entries",
+      "shadowLocked": "They open after a month of practice. Only if you want them.",
+      "data": "Your data",
+      "export": "Download my diary (text)",
+      "delete": "Delete my account",
+      "deleteConfirm": "This deletes your account and your whole diary. It can't be undone.",
+      "deleteYes": "Yes, delete everything",
+      "deleteNo": "Keep my account",
+      "write": "Write to the authors",
+      "signOut": "Sign out",
+      "email": "Signed in as {email}"
     }
   }
 }
