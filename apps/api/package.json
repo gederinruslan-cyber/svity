@@ -13,10 +13,12 @@
     "@svity/core": "workspace:*",
     "@svity/db": "workspace:*",
     "@svity/i18n": "workspace:*",
-    "hono": "^4.13.17"
+    "hono": "^4.13.17",
+    "ws": "^8.22.2"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
+    "@types/ws": "^8.18.2",
     "tsx": "^4.23.15"
   }
 }

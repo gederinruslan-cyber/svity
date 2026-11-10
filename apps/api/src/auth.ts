@@ -1,4 +1,4 @@
-import { Hono, type MiddlewareHandler } from "hono";
+import { Hono, type Context, type MiddlewareHandler } from "hono";
 import { deleteCookie, getCookie, setCookie } from "hono/cookie";
 import { assertTimeZone } from "@svity/core";
 import { SignInInput, VerifyInput, type Me } from "@svity/contracts";
@@ -22,24 +22,42 @@ export function toMe(u: User): Me {
     locale: u.locale as Me["locale"],
     addressForm: u.addressForm,
     timezone: u.timezone,
+    displayName: u.displayName,
     reminderTime: u.reminderTime as Me["reminderTime"],
     createdAt: u.createdAt.toISOString(),
   };
 }
 
+/** The signed-in user, or null. */
+export async function findUser(db: Db, c: Context): Promise<User | null> {
+  const token = getCookie(c, SESSION_COOKIE);
+  if (!token) return null;
+  const [row] = await db
+    .select({ user: users })
+    .from(sessions)
+    .innerJoin(users, eq(users.id, sessions.userId))
+    .where(and(eq(sessions.tokenHash, hashToken(token)), gt(sessions.expiresAt, new Date())))
+    .limit(1);
+  return row?.user ?? null;
+}
+
 /** Puts the signed-in user on the context, or answers 401. */
 export function requireUser(db: Db): MiddlewareHandler<AuthEnv> {
   return async (c, next) => {
-    const token = getCookie(c, SESSION_COOKIE);
-    if (!token) return c.json({ ok: false, error: "unauthorized" }, 401);
-    const [row] = await db
-      .select({ user: users })
-      .from(sessions)
-      .innerJoin(users, eq(users.id, sessions.userId))
-      .where(and(eq(sessions.tokenHash, hashToken(token)), gt(sessions.expiresAt, new Date())))
-      .limit(1);
-    if (!row) return c.json({ ok: false, error: "unauthorized" }, 401);
-    c.set("user", row.user);
+    const user = await findUser(db, c);
+    if (!user) return c.json({ ok: false, error: "unauthorized" }, 401);
+    c.set("user", user);
+    await next();
+  };
+}
+
+/** Psychologist-only routes (role "professional"). */
+export function requirePro(db: Db): MiddlewareHandler<AuthEnv> {
+  return async (c, next) => {
+    const user = await findUser(db, c);
+    if (!user) return c.json({ ok: false, error: "unauthorized" }, 401);
+    if (user.role !== "professional") return c.json({ ok: false, error: "forbidden" }, 403);
+    c.set("user", user);
     await next();
   };
 }

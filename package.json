@@ -16,7 +16,8 @@
     "db:up": "docker compose up -d postgres",
     "db:migrate": "pnpm --filter @svity/db migrate",
     "db:generate": "pnpm --filter @svity/db generate",
-    "deck:import": "pnpm --filter @svity/db deck:import"
+    "deck:import": "pnpm --filter @svity/db deck:import",
+    "user:role": "pnpm --filter @svity/db user:role"
   },
   "devDependencies": {
     "typescript": "^7.0.2"

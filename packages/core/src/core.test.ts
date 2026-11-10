@@ -235,3 +235,68 @@ describe("feeling stats", () => {
     });
   });
 });
+
+import { confirmCard, drawCard, faceUpChoices, psychologistState, replay, returnCard, RoomError, weekQuestionAllowed, type RoomEvent, type RoomSettings } from "./room";
+
+describe("room (spec §10)", () => {
+  const roomDeckCards = Array.from({ length: 20 }, (_, i) => ({ id: i + 1, tone: (i === 19 ? "shadow" : "neutral") as "shadow" | "neutral" }));
+  const settings: RoomSettings = { spread: 3, choiceMode: "down", includeShadow: false, showReturns: true };
+  const now = new Date("2026-11-10T10:00:00Z");
+  const run = (s: RoomSettings, events: RoomEvent[], step: (st: ReturnType<typeof replay>) => RoomEvent) => {
+    const e = step(replay(s, events));
+    return [...events, e];
+  };
+
+  it("needs the client to join, then fills positions in order", () => {
+    expect(() => drawCard(replay(settings, []), settings, roomDeckCards, { now })).toThrow(RoomError);
+    let ev: RoomEvent[] = [{ type: "joined", at: now }];
+    ev = run(settings, ev, (s) => drawCard(s, settings, roomDeckCards, { now, rng: () => 0 }));
+    expect(() => drawCard(replay(settings, ev), settings, roomDeckCards, { now })).toThrow("holding");
+    ev = run(settings, ev, (s) => confirmCard(s, "button", now));
+    const st = replay(settings, ev);
+    expect(st.confirmed).toEqual([1, null, null]);
+    expect(st.held).toBeNull();
+  });
+
+  it("the psychologist never sees the held or returned cards, only the count", () => {
+    let ev: RoomEvent[] = [{ type: "joined", at: now }];
+    ev = run(settings, ev, (s) => drawCard(s, settings, roomDeckCards, { now, rng: () => 0.5 }));
+    ev = run(settings, ev, (s) => returnCard(s, now));
+    ev = run(settings, ev, (s) => drawCard(s, settings, roomDeckCards, { now, rng: () => 0.1 }));
+    const view = psychologistState(replay(settings, ev), settings);
+    expect(view).toEqual({ joined: true, ended: false, confirmed: [null, null, null], returns: 1 });
+    expect(JSON.stringify(view)).not.toMatch(/held|cardId/);
+    expect(psychologistState(replay(settings, ev), { ...settings, showReturns: false }).returns).toBeNull();
+  });
+
+  it("returned cards go back into the deck; confirmed ones don't come out again", () => {
+    const one: RoomSettings = { ...settings, spread: 1 };
+    let ev: RoomEvent[] = [{ type: "joined", at: now }];
+    ev = run(one, ev, (s) => drawCard(s, one, roomDeckCards, { now, rng: () => 0 }));
+    ev = run(one, ev, (s) => returnCard(s, now));
+    ev = run(one, ev, (s) => drawCard(s, one, roomDeckCards, { now, rng: () => 0 }));
+    expect(replay(one, ev).held?.cardId).toBe(1);
+    ev = run(one, ev, (s) => confirmCard(s, "double_tap", now));
+    expect(() => drawCard(replay(one, ev), one, roomDeckCards, { now })).toThrow("full");
+  });
+
+  it("face up: only open cards can be chosen, shadows only when the room allows", () => {
+    const up: RoomSettings = { ...settings, choiceMode: "up" };
+    const st = replay(up, [{ type: "joined", at: now }]);
+    const choices = faceUpChoices(st, up, roomDeckCards);
+    expect(choices).toHaveLength(12);
+    expect(choices).not.toContain(20);
+    expect(() => drawCard(st, up, roomDeckCards, { now, cardId: 20 })).toThrow("not-available");
+    expect(drawCard(st, { ...up, includeShadow: true }, roomDeckCards, { now, cardId: 20 }).cardId).toBe(20);
+  });
+
+  it("the week question comes from a confirmed card", () => {
+    let ev: RoomEvent[] = [{ type: "joined", at: now }];
+    ev = run(settings, ev, (s) => drawCard(s, settings, roomDeckCards, { now, rng: () => 0 }));
+    ev = run(settings, ev, (s) => confirmCard(s, "button", now));
+    const st = replay(settings, ev);
+    expect(weekQuestionAllowed(st, { cardId: 1, index: 2 })).toBe(true);
+    expect(weekQuestionAllowed(st, { cardId: 2, index: 1 })).toBe(false);
+    expect(weekQuestionAllowed(st, { cardId: 1, index: 4 })).toBe(false);
+  });
+});

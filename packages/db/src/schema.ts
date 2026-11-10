@@ -37,6 +37,8 @@ export const users = pgTable("users", {
   id: uuid("id").primaryKey().defaultRandom(),
   email: text("email").notNull().unique(),
   role: text("role", { enum: ["personal", "professional"] }).notNull().default("personal"),
+  /** Shown to clients in rooms: "Olena invites you to a session". */
+  displayName: text("display_name"),
   locale: text("locale").notNull(),
   /** Only for grammatical forms (spec §5): f · m · n. */
   addressForm: text("address_form", { enum: ["f", "m", "n"] }).notNull().default("n"),
@@ -165,3 +167,74 @@ export const shadowDraws = pgTable(
   },
   (t) => [uniqueIndex("shadow_draws_user_day").on(t.userId, t.day)],
 );
+
+// ---------- rooms (spec §10) ----------
+
+export const rooms = pgTable(
+  "rooms",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    /** Short link code, e.g. 7KQ29F (shown as 7KQ-29F). */
+    code: text("code").notNull().unique(),
+    psychologistId: uuid("psychologist_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    clientLabel: text("client_label").notNull(),
+    spread: smallint("spread").notNull().default(3),
+    choiceMode: text("choice_mode", { enum: ["down", "up"] }).notNull().default("down"),
+    includeShadow: boolean("include_shadow").notNull().default(false),
+    questionLanguage: text("question_language").notNull(),
+    expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+    pinHash: text("pin_hash"),
+    pinAttempts: smallint("pin_attempts").notNull().default(0),
+    showReturns: boolean("show_returns").notNull().default(true),
+    videoUrl: text("video_url"),
+    /** SHA-256 of the client's room token (a guest has no account). */
+    clientTokenHash: text("client_token_hash"),
+    clientUserId: uuid("client_user_id").references(() => users.id, { onDelete: "set null" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    endedAt: timestamp("ended_at", { withTimezone: true }),
+  },
+  (t) => [index("rooms_psychologist").on(t.psychologistId, t.createdAt)],
+);
+
+export const roomEvents = pgTable(
+  "room_events",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    roomId: uuid("room_id")
+      .notNull()
+      .references(() => rooms.id, { onDelete: "cascade" }),
+    type: text("type", { enum: ["joined", "drawn", "returned", "confirmed", "pause", "ended"] }).notNull(),
+    cardId: integer("card_id"),
+    position: smallint("position"),
+    method: text("method", { enum: ["button", "double_tap"] }),
+    at: timestamp("at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("room_events_room").on(t.roomId, t.at)],
+);
+
+/** Private to the psychologist. */
+export const sessionNotes = pgTable("session_notes", {
+  roomId: uuid("room_id")
+    .primaryKey()
+    .references(() => rooms.id, { onDelete: "cascade" }),
+  text: text("text").notNull().default(""),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+/** "Session summary" sent to the client (spec §10.8); goes to their diary if they have an account. */
+export const sessionSummaries = pgTable("session_summaries", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  roomId: uuid("room_id")
+    .unique()
+    .references(() => rooms.id, { onDelete: "set null" }),
+  clientUserId: uuid("client_user_id").references(() => users.id, { onDelete: "cascade" }),
+  psychologistName: text("psychologist_name"),
+  /** [{ position, cardId }] */
+  cards: jsonb("cards").$type<{ position: string; cardId: number }[]>().notNull(),
+  weekCardId: integer("week_card_id"),
+  weekQuestionIndex: smallint("week_question_index"),
+  language: text("language").notNull(),
+  sentAt: timestamp("sent_at", { withTimezone: true }).notNull().defaultNow(),
+});

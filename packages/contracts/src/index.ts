@@ -56,6 +56,7 @@ export const ProfilePatch = z
     addressForm: z.enum(addressForms),
     timezone: z.string().min(1).max(64),
     reminderTime: z.enum(reminderTimes).nullable(),
+    displayName: z.string().trim().min(1).max(60),
   })
   .partial()
   .refine((p) => Object.keys(p).length > 0, "nothing to update");
@@ -87,6 +88,7 @@ export interface Me {
   addressForm: (typeof addressForms)[number];
   timezone: string;
   reminderTime: (typeof reminderTimes)[number] | null;
+  displayName: string | null;
   createdAt: string;
 }
 
@@ -196,3 +198,127 @@ export type ShadowView =
   | { state: "ready" }
   | { state: "open"; card: CardView; support: CardView; feelingBefore: Feeling }
   | { state: "used"; entry: EntryView | null };
+
+// ---------- rooms (spec §10) ----------
+
+export const RoomCreateInput = z.object({
+  clientLabel: z.string().trim().min(1).max(60),
+  spread: z.union([z.literal(1), z.literal(3)]),
+  choiceMode: z.enum(["down", "up"]),
+  includeShadow: z.boolean(),
+  questionLanguage: Locale,
+  expiryHours: z.union([z.literal(24), z.literal(72)]),
+  pin: z.boolean(),
+  showReturns: z.boolean(),
+  videoUrl: z.url({ protocol: /^https$/ }).max(500).optional().or(z.literal("")),
+});
+export type RoomCreateInput = z.infer<typeof RoomCreateInput>;
+
+export const DisplayNameInput = z.object({ displayName: z.string().trim().min(1).max(60) });
+
+/** A room in the psychologist's cabinet. */
+export interface RoomListItem {
+  id: string;
+  code: string;
+  clientLabel: string;
+  spread: 1 | 3;
+  status: "waiting" | "live" | "ended" | "expired";
+  expiresAt: string;
+  createdAt: string;
+}
+
+/** Created: the link and the PIN are shown once. */
+export interface RoomCreated {
+  id: string;
+  code: string;
+  pin: string | null;
+  expiresAt: string;
+}
+
+/** Before joining: what the client agrees to (spec §10.1). Public, by link code. */
+export interface RoomLobby {
+  code: string;
+  psychologistName: string | null;
+  clientLabel: string;
+  spread: 1 | 3;
+  showReturns: boolean;
+  pinRequired: boolean;
+  status: "open" | "joined" | "ended" | "expired" | "locked";
+  /** This browser is already the client of the room. */
+  isClient: boolean;
+  signedIn: boolean;
+}
+
+export const RoomJoinInput = z.object({
+  pin: z.string().regex(/^\d{4}$/).optional(),
+  agree: z.literal(true),
+});
+
+export const RoomDrawInput = z.object({ cardId: z.number().int().positive().optional() });
+export const RoomConfirmInput = z.object({ method: z.enum(["button", "double_tap"]) });
+export const RoomNotesInput = z.object({ text: z.string().max(20_000) });
+export const RoomSummaryInput = z.object({
+  weekQuestion: z.object({ cardId: z.number().int(), index: z.number().int().min(1).max(3) }).nullable(),
+});
+
+export interface RoomCard {
+  id: number;
+  imageUrl: string;
+}
+
+export interface SessionSummaryView {
+  id: string;
+  psychologistName: string | null;
+  cards: { position: string; card: RoomCard }[];
+  weekQuestion: string | null;
+  sentAt: string;
+}
+
+export interface ClientRoomView {
+  role: "client";
+  code: string;
+  psychologistName: string | null;
+  positions: string[];
+  choiceMode: "down" | "up";
+  /** Position being filled now; null when the spread is complete. */
+  current: number | null;
+  held: RoomCard | null;
+  confirmed: (RoomCard | null)[];
+  /** Face-up mode: open cards to choose from. */
+  choices: RoomCard[];
+  pauseAt: string | null;
+  psychologistOnline: boolean;
+  videoUrl: string | null;
+  showReturns: boolean;
+  ended: boolean;
+  summary: SessionSummaryView | null;
+}
+
+export interface PsychologistCard extends RoomCard {
+  questions: { index: number; text: string }[];
+}
+
+/** Only confirmed cards and the return count (spec §4). */
+export interface PsychologistRoomView {
+  role: "psychologist";
+  id: string;
+  code: string;
+  clientLabel: string;
+  positions: string[];
+  choiceMode: "down" | "up";
+  includeShadow: boolean;
+  questionLanguage: Locale;
+  expiresAt: string;
+  pinRequired: boolean;
+  videoUrl: string | null;
+  clientJoined: boolean;
+  clientOnline: boolean;
+  confirmed: (PsychologistCard | null)[];
+  returns: number | null;
+  pauseAt: string | null;
+  notes: string;
+  ended: boolean;
+  summary: SessionSummaryView | null;
+}
+
+export type RoomView = ClientRoomView | PsychologistRoomView;

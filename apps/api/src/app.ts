@@ -7,6 +7,7 @@ import { cardImageRoutes, deckLoader, imageSigner } from "./deck";
 import type { Mailer } from "./mailer";
 import { entryRoutes } from "./entries";
 import { meRoutes } from "./me";
+import { roomRoutes } from "./rooms";
 import { shadowRoutes } from "./shadow";
 import { todayRoutes } from "./today";
 import { rateLimit } from "./rate-limit";
@@ -67,6 +68,10 @@ export function createApp(db: Db, opts: AppOptions) {
   app.use("/v1/shadow", requireUser(db));
   app.route("/v1/shadow", shadowRoutes(db, getDeck, signer, today.entryView));
   app.route("/v1/cards", cardImageRoutes(getDeck, signer));
+  const roomApi = roomRoutes(db, getDeck, signer, opts);
+  app.route("/v1/rooms", roomApi.pro);
+  app.route("/v1/r", roomApi.client);
+  app.route("/v1/sessions", roomApi.sessions);
 
   app.onError((err, c) => {
     console.error(err);

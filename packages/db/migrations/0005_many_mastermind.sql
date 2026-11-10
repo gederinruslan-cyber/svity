@@ -1,0 +1,1 @@
+ALTER TABLE "session_summaries" ALTER COLUMN "room_id" DROP NOT NULL;
