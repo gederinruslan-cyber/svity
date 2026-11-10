@@ -66,3 +66,58 @@ export type ApiError = { ok: false; error: string };
 export const feelings = ["calm", "hope", "tenderness", "tiredness", "sadness", "anxiety", "anger"] as const;
 export const Feeling = z.enum(feelings);
 export type Feeling = z.infer<typeof Feeling>;
+
+export const DrawInput = z.object({
+  feelingBefore: Feeling,
+  /** Optional "question to myself" (spec §6 step 2). */
+  request: z.string().trim().max(500).optional(),
+});
+export type DrawInput = z.infer<typeof DrawInput>;
+
+export const SaveInput = z.object({
+  feelingAfter: Feeling,
+  note: z.string().trim().max(10_000).optional(),
+});
+export type SaveInput = z.infer<typeof SaveInput>;
+
+export interface CardView {
+  id: number;
+  /** Short-lived signed URL; never store it. */
+  imageUrl: string;
+  questionIndex: number;
+  question: string;
+}
+
+export type TodayView =
+  /** A new card can be drawn. */
+  | { state: "ready" }
+  /** Drawn and not yet saved or closed. */
+  | {
+      state: "open";
+      card: CardView;
+      repicksLeft: number;
+      feelingBefore: Feeling;
+      request: string | null;
+      nextAvailableAt: string;
+    }
+  /** Saved or closed; the next card comes at `nextAvailableAt` (local midnight or 12:00). */
+  | { state: "done"; nextAvailableAt: string; entry: EntryView | null };
+
+export interface EntryView {
+  id: string;
+  card: CardView;
+  request: string | null;
+  feelingBefore: Feeling;
+  feelingAfter: Feeling;
+  note: string | null;
+  isShadow: boolean;
+  isFavorite: boolean;
+  createdAt: string;
+  editedAt: string | null;
+}
+
+export interface EntriesPage {
+  entries: EntryView[];
+  /** Pass as `?before=` to load older entries; null when there are none. */
+  next: string | null;
+}
