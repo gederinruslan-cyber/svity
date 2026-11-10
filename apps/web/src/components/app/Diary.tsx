@@ -14,6 +14,7 @@ export function Diary() {
   const t = useTranslations("app.diary");
   const tt = useTranslations("app.today");
   const tf = useTranslations("feelings");
+  const ts = useTranslations("app.shadow");
   const locale = useLocale();
   const router = useRouter();
 
@@ -101,6 +102,7 @@ export function Diary() {
               <div>
                 <p className="entry__meta">
                   <time dateTime={e.createdAt}>{date.format(new Date(e.createdAt))}</time> · {tt("cardN", { n: e.card.id })}
+                  {e.isShadow && <> · {ts("label")}</>}
                   {e.editedAt && <> · {t("edited")}</>}
                 </p>
                 <p className="entry__q">{e.card.question}</p>

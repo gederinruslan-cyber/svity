@@ -12,7 +12,7 @@ export class ApiError extends Error {
 }
 
 /** Calls the Svity API with the session cookie. Throws ApiError on non-2xx. */
-export async function api<T>(path: string, init?: { method?: "GET" | "POST" | "PATCH" | "DELETE"; body?: unknown }): Promise<T> {
+export async function api<T>(path: string, init?: { method?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE"; body?: unknown }): Promise<T> {
   const res = await fetch(`${API_URL}${path}`, {
     method: init?.method ?? "GET",
     credentials: "include",

@@ -1,6 +1,7 @@
 import { Hono, type Context } from "hono";
 import {
   DrawError,
+  SUPPORT_CARD,
   canDraw,
   closeDraw,
   currentCard,
@@ -22,6 +23,7 @@ import {
 import { dailyDraws, desc, eq, entries, sql, type Db } from "@svity/db";
 import type { AuthEnv, User } from "./auth";
 import { cardView, type Deck, type ImageSigner } from "./deck";
+import { shadowState } from "./shadow";
 
 type DrawRow = typeof dailyDraws.$inferSelect;
 type EntryRow = typeof entries.$inferSelect;
@@ -66,9 +68,11 @@ export function todayRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
     const last = await latestDraw(tx, user.id);
     if (!last || canDraw(toCore(last), now).ok) return { state: "ready" };
     if (last.status === "open") {
+      const card = cardView(deck, signer, currentCard(toCore(last)), last.questionIndex, locale);
       return {
         state: "open",
-        card: cardView(deck, signer, currentCard(toCore(last)), last.questionIndex, locale),
+        card,
+        support: card.isShadow ? cardView(deck, signer, SUPPORT_CARD.cardId, SUPPORT_CARD.questionIndex, locale) : null,
         repicksLeft: last.repicksLeft,
         feelingBefore: last.feelingBefore as Feeling,
         request: last.requestText,
@@ -98,8 +102,11 @@ export function todayRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
     return last;
   }
 
-  const question = (deck: Deck, cardId: number, request: string | null) =>
-    pickQuestion(deck.byId.get(cardId)!.questions, { hasRequest: !!request, allowShadow: false });
+  const question = (deck: Deck, cardId: number, request: string | null, allowShadow: boolean) =>
+    pickQuestion(deck.byId.get(cardId)!.questions, { hasRequest: !!request, allowShadow });
+
+  /** "Sometimes in the card of the day" (spec §8.4): shadow cards and questions join the draw. */
+  const shadowsInDaily = async (user: User) => (await shadowState(db, user)).access.daily;
 
   app.get("/", async (c) => c.json(await view(db, c.get("user"), localeOf(c))));
 
@@ -109,11 +116,11 @@ export function todayRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
     const user = c.get("user");
     const now = new Date();
     const request = parsed.data.request || null;
+    const withShadow = await shadowsInDaily(user);
     await locked(user.id, async (tx) => {
       const deck = await getDeck();
       const last = await latestDraw(tx, user.id);
-      // Shadow cards join the daily draw only via shadow access (M2).
-      const draw = startDraw(last && toCore(last), eligibleCards(deck.playable, { includeShadow: false }), {
+      const draw = startDraw(last && toCore(last), eligibleCards(deck.playable, { includeShadow: withShadow }), {
         now,
         tz: user.timezone,
       });
@@ -121,7 +128,7 @@ export function todayRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
       await tx.insert(dailyDraws).values({
         userId: user.id,
         ...draw,
-        questionIndex: question(deck, card, request),
+        questionIndex: question(deck, card, request, withShadow),
         feelingBefore: parsed.data.feelingBefore,
         requestText: request,
       });
@@ -132,16 +139,17 @@ export function todayRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
   app.post("/repick", async (c) => {
     const user = c.get("user");
     const now = new Date();
+    const withShadow = await shadowsInDaily(user);
     await locked(user.id, async (tx) => {
       const deck = await getDeck();
       const row = await openDraw(tx, user.id, now);
-      const next = repick(toCore(row), eligibleCards(deck.playable, { includeShadow: false }));
+      const next = repick(toCore(row), eligibleCards(deck.playable, { includeShadow: withShadow }));
       await tx
         .update(dailyDraws)
         .set({
           cardsSeen: next.cardsSeen,
           repicksLeft: next.repicksLeft,
-          questionIndex: question(deck, currentCard(next), row.requestText),
+          questionIndex: question(deck, currentCard(next), row.requestText, withShadow),
         })
         .where(eq(dailyDraws.id, row.id));
     });
@@ -153,9 +161,11 @@ export function todayRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
     if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
     const user = c.get("user");
     const now = new Date();
+    const deck = await getDeck();
     await locked(user.id, async (tx) => {
       const row = await openDraw(tx, user.id, now);
       const saved = saveDraw(toCore(row));
+      const shown = cardView(deck, signer, currentCard(saved), row.questionIndex, user.locale as Locale);
       await tx.update(dailyDraws).set({ status: saved.status }).where(eq(dailyDraws.id, row.id));
       await tx.insert(entries).values({
         userId: user.id,
@@ -166,6 +176,7 @@ export function todayRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
         feelingBefore: row.feelingBefore,
         feelingAfter: parsed.data.feelingAfter,
         note: parsed.data.note || null,
+        isShadow: shown.isShadow,
       });
     });
     return c.json(await view(db, user, localeOf(c), now));
@@ -180,6 +191,12 @@ export function todayRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
       await tx.update(dailyDraws).set({ status: closeDraw(toCore(row)).status }).where(eq(dailyDraws.id, row.id));
     });
     return c.json(await view(db, user, localeOf(c), now));
+  });
+
+  // "Difficult day" (spec §11): a gentle support card, no questions about the problem. Not a draw.
+  app.get("/gentle", async (c) => {
+    const deck = await getDeck();
+    return c.json({ card: cardView(deck, signer, SUPPORT_CARD.cardId, SUPPORT_CARD.questionIndex, localeOf(c)) });
   });
 
   app.onError((err, c) => {

@@ -2939,3 +2939,167 @@ section,
   display: block;
   margin: 18px auto 0;
 }
+
+/* difficult day, grounding, shadow cards */
+.help-btn--label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.today__difficult {
+  display: block;
+  margin-top: 14px;
+}
+.today__gentle {
+  margin: 4px 0 10px;
+}
+.difficult__panel,
+.shadow-page__panel {
+  margin: 0 0 16px;
+  padding: 22px 20px;
+  border-radius: 22px;
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+.difficult__lead {
+  font-size: 18px;
+  margin: 0 0 18px;
+}
+.difficult__card,
+.shadow-support__card {
+  position: relative;
+  display: block;
+  width: 180px;
+  aspect-ratio: 9 / 16;
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 0 auto 14px;
+  box-shadow: 0 24px 50px -26px rgba(38, 54, 74, 0.6);
+}
+.shadow-support__card {
+  width: 140px;
+}
+.difficult__card img,
+.shadow-support__card img,
+.shadow-page__card img {
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.difficult__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+.difficult__help {
+  display: flex;
+  margin: 0 auto;
+}
+.ground {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+.ground__n {
+  margin: 0;
+  font-family: var(--font-serif), serif;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--link);
+}
+.shadow-page__art {
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+.shadow-page__points {
+  text-align: left;
+  margin: 8px 0 14px;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+}
+.shadow-modes {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 14px;
+}
+.shadow-mode {
+  display: grid;
+  gap: 2px;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+.shadow-mode.is-on {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+.shadow-mode__title {
+  font-weight: 700;
+}
+.shadow-mode__hint {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.shadow-page__check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  text-align: left;
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+.shadow-page__check input {
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  accent-color: var(--accent);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.shadow-page__open {
+  display: grid;
+  gap: 20px;
+}
+.shadow-page__card {
+  position: relative;
+  display: block;
+  width: min(260px, 64vw);
+  aspect-ratio: 9 / 16;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
+}
+.shadow-page__open .shadow-page__panel {
+  text-align: left;
+  justify-items: stretch;
+}
+.shadow-page__open .field {
+  width: 100%;
+}
+.shadow-page__settings {
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+  margin-top: 8px;
+}
+@media (min-width: 760px) {
+  .shadow-page__open {
+    grid-template-columns: 260px 1fr;
+    align-items: start;
+  }
+}

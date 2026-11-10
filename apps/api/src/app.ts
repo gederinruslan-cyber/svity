@@ -7,6 +7,7 @@ import { cardImageRoutes, deckLoader, imageSigner } from "./deck";
 import type { Mailer } from "./mailer";
 import { entryRoutes } from "./entries";
 import { meRoutes } from "./me";
+import { shadowRoutes } from "./shadow";
 import { todayRoutes } from "./today";
 import { rateLimit } from "./rate-limit";
 
@@ -62,6 +63,9 @@ export function createApp(db: Db, opts: AppOptions) {
   app.use("/v1/entries", requireUser(db));
   app.route("/v1/today", today.app);
   app.route("/v1/entries", entryRoutes(db, getDeck, signer, today.entryView));
+  app.use("/v1/shadow/*", requireUser(db));
+  app.use("/v1/shadow", requireUser(db));
+  app.route("/v1/shadow", shadowRoutes(db, getDeck, signer, today.entryView));
   app.route("/v1/cards", cardImageRoutes(getDeck, signer));
 
   app.onError((err, c) => {

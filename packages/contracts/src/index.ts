@@ -72,6 +72,10 @@ export interface ProfileStats {
     entries: number;
     entriesNeeded: number;
     eligible: boolean;
+    consented: boolean;
+    mode: ShadowMode | null;
+    /** Several days of strong distress: shadows aren't offered, support is (spec §8). */
+    softStop: boolean;
   };
 }
 
@@ -113,6 +117,8 @@ export interface CardView {
   imageUrl: string;
   questionIndex: number;
   question: string;
+  /** A shadow card or a shadow question: the UI switches to the evening theme (spec §8.5). */
+  isShadow: boolean;
 }
 
 export type TodayView =
@@ -126,6 +132,8 @@ export type TodayView =
       feelingBefore: Feeling;
       request: string | null;
       nextAvailableAt: string;
+      /** After a shadow card: breathing, then this support card (spec §8.6–8.7). */
+      support: CardView | null;
     }
   /** Saved or closed; the next card comes at `nextAvailableAt` (local midnight or 12:00). */
   | { state: "done"; nextAvailableAt: string; entry: EntryView | null };
@@ -169,3 +177,22 @@ export interface MonthView {
   prev: string | null;
   next: string | null;
 }
+
+export const shadowModes = ["on_request", "sometimes"] as const;
+export type ShadowMode = (typeof shadowModes)[number];
+
+export const ShadowSettings = z.object({
+  mode: z.enum(shadowModes).nullable(),
+  /** Required the first time: "I understand and want to try" (spec §8.3). */
+  understood: z.literal(true).optional(),
+});
+export type ShadowSettings = z.infer<typeof ShadowSettings>;
+
+export const ShadowDrawInput = z.object({ feelingBefore: Feeling });
+
+/** The separate shadow-card flow (spec §8), one card per local day. */
+export type ShadowView =
+  | { state: "locked"; softStop: boolean }
+  | { state: "ready" }
+  | { state: "open"; card: CardView; support: CardView; feelingBefore: Feeling }
+  | { state: "used"; entry: EntryView | null };

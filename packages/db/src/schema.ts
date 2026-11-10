@@ -8,6 +8,7 @@ import {
   smallint,
   text,
   timestamp,
+  uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
 
@@ -43,6 +44,10 @@ export const users = pgTable("users", {
   timezone: text("timezone").notNull(),
   /** Local time of the daily reminder ("09:00", "12:00", "20:00") or null for off. Delivery comes with the app. */
   reminderTime: text("reminder_time"),
+  /** Spec §8.3: "I understand and want to try". Kept when shadows are switched off. */
+  shadowConsentAt: timestamp("shadow_consent_at", { withTimezone: true }),
+  /** null = off. */
+  shadowMode: text("shadow_mode", { enum: ["on_request", "sometimes"] }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
@@ -138,4 +143,25 @@ export const entries = pgTable(
     editedAt: timestamp("edited_at", { withTimezone: true }),
   },
   (t) => [index("entries_user_created").on(t.userId, t.createdAt)],
+);
+
+/** A shadow card drawn with the separate button (spec §8). At most one per local day. */
+export const shadowDraws = pgTable(
+  "shadow_draws",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    /** Local date in the profile time zone, YYYY-MM-DD. */
+    day: text("day").notNull(),
+    cardId: integer("card_id")
+      .notNull()
+      .references(() => cards.id),
+    questionIndex: integer("question_index").notNull(),
+    feelingBefore: text("feeling_before").notNull(),
+    status: text("status", { enum: ["open", "saved", "closed"] }).notNull().default("open"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [uniqueIndex("shadow_draws_user_day").on(t.userId, t.day)],
 );

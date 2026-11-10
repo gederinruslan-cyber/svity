@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { addressForms, reminderTimes, type Me, type ProfilePatch, type ProfileStats } from "@svity/contracts";
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { api, API_URL, ApiError } from "@/lib/api";
 
 type ThemePref = "auto" | "day" | "evening";
@@ -15,6 +15,7 @@ export function Profile() {
   const tf = useTranslations("feelings");
   const tw = useTranslations("footer");
   const tt = useTranslations("app.today");
+  const ts = useTranslations("app.shadow");
   const locale = useLocale();
   const router = useRouter();
 
@@ -117,7 +118,18 @@ export function Profile() {
           <h2 className="h3">{t("shadow")}</h2>
           <Progress label={t("shadowDays")} value={stats.shadow.days} max={stats.shadow.daysNeeded} />
           <Progress label={t("shadowEntries")} value={stats.shadow.entries} max={stats.shadow.entriesNeeded} />
-          {!stats.shadow.eligible && <p className="app-muted">{t("shadowLocked")}</p>}
+          {stats.shadow.softStop ? (
+            <p className="app-muted">{ts("soft")}</p>
+          ) : !stats.shadow.eligible ? (
+            <p className="app-muted">{t("shadowLocked")}</p>
+          ) : (
+            <>
+              <p className="app-muted">{stats.shadow.mode ? ts(stats.shadow.mode) : stats.shadow.consented ? ts("off") : ts("sub")}</p>
+              <Link href="/shadow" className="btn btn--ghost">
+                {stats.shadow.mode ? ts("drawTitle") : stats.shadow.consented ? ts("manage") : ts("open")}
+              </Link>
+            </>
+          )}
         </div>
       )}
 

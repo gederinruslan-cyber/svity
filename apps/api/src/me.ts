@@ -1,10 +1,11 @@
 import { Hono } from "hono";
 import { deleteCookie } from "hono/cookie";
-import { assertTimeZone, feelingStats, shadowProgress } from "@svity/core";
+import { assertTimeZone, feelingStats } from "@svity/core";
 import { ProfilePatch, type Feeling, type ProfileStats } from "@svity/contracts";
 import { asc, entries, eq, users, type Db } from "@svity/db";
 import { SESSION_COOKIE, toMe, type AuthEnv } from "./auth";
 import type { Deck } from "./deck";
+import { shadowState } from "./shadow";
 import en from "@svity/i18n/messages/en.json" with { type: "json" };
 import uk from "@svity/i18n/messages/uk.json" with { type: "json" };
 
@@ -38,12 +39,12 @@ export function meRoutes(db: Db, getDeck: () => Promise<Deck>) {
       .from(entries)
       .where(eq(entries.userId, user.id));
     const stats = feelingStats(rows);
-    const shadow = shadowProgress({ registeredAt: user.createdAt, entries: rows.length, now: new Date(), tz: user.timezone });
+    const { progress, softStop } = await shadowState(db, user);
     return c.json<ProfileStats>({
       entries: stats.total,
       lighter: stats.lighter,
       topAfter: stats.topAfter as { feeling: Feeling; count: number }[],
-      shadow,
+      shadow: { ...progress, consented: user.shadowConsentAt !== null, mode: user.shadowMode, softStop },
     });
   });
 
@@ -57,7 +58,7 @@ export function meRoutes(db: Db, getDeck: () => Promise<Deck>) {
     const lines = rows.map((e) => {
       const q = deck.byId.get(e.cardId)?.questions.find((x) => x.index === e.questionIndex)?.text[locale] ?? "";
       return [
-        `${date.format(e.createdAt)} · #${e.cardId}${e.isShadow ? " · shadow" : ""}`,
+        `${date.format(e.createdAt)} · #${e.cardId}${e.isShadow ? (locale === "uk" ? " · тіньова карта" : " · shadow card") : ""}`,
         q && `? ${q}`,
         e.requestText && `» ${e.requestText}`,
         `${FEELINGS[locale]?.[e.feelingBefore] ?? e.feelingBefore} → ${FEELINGS[locale]?.[e.feelingAfter] ?? e.feelingAfter}`,

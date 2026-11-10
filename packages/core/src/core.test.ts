@@ -13,7 +13,7 @@ import {
   pickQuestion,
   repick,
   saveDraw,
-  shadowAllowed,
+  shadowAccess,
   shadowProgress,
   startDraw,
   toLocal,
@@ -159,9 +159,16 @@ describe("shadow cards (spec §8)", () => {
   it("caps progress at the thresholds and needs consent and the switch", () => {
     const progress = shadowProgress({ registeredAt, entries: 40, now: at("2027-01-01 12:00"), tz: KYIV });
     expect(progress).toMatchObject({ days: 30, entries: 10, eligible: true });
-    expect(shadowAllowed({ progress, consentAt: null, enabled: true })).toBe(false);
-    expect(shadowAllowed({ progress, consentAt: new Date(), enabled: false })).toBe(false);
-    expect(shadowAllowed({ progress, consentAt: new Date(), enabled: true })).toBe(true);
+    const consentAt = new Date();
+    expect(shadowAccess({ progress, consentAt: null, mode: "sometimes", softStop: false })).toEqual({ daily: false, onRequest: false });
+    expect(shadowAccess({ progress, consentAt, mode: null, softStop: false })).toEqual({ daily: false, onRequest: false });
+    expect(shadowAccess({ progress, consentAt, mode: "on_request", softStop: false })).toEqual({ daily: false, onRequest: true });
+    expect(shadowAccess({ progress, consentAt, mode: "sometimes", softStop: false })).toEqual({ daily: true, onRequest: true });
+  });
+
+  it("the soft stop closes them even with consent", () => {
+    const progress = shadowProgress({ registeredAt, entries: 40, now: at("2027-01-01 12:00"), tz: KYIV });
+    expect(shadowAccess({ progress, consentAt: new Date(), mode: "sometimes", softStop: true })).toEqual({ daily: false, onRequest: false });
   });
 });
 

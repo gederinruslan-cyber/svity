@@ -9,8 +9,9 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { api, ApiError, getMe, getMonth, getToday, preload } from "@/lib/api";
 import { RitualCard, type RitualStage } from "../ritual/RitualCard";
 import { Star4 } from "../icons";
+import { AfterShadow, useEvening } from "./ShadowSteps";
 
-type Phase = "loading" | "before" | "draw" | "card" | "after" | "done";
+type Phase = "loading" | "before" | "draw" | "card" | "after-shadow" | "after" | "done";
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 const reduced = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -34,6 +35,7 @@ function writeDraft(key: string, value: string) {
 export function Today() {
   const t = useTranslations("app.today");
   const tf = useTranslations("feelings");
+  const td = useTranslations("app.difficult");
   const locale = useLocale();
   const router = useRouter();
 
@@ -141,6 +143,8 @@ export function Today() {
     }
   }
 
+  useEvening(view?.state === "open" && view.card.isShadow && phase !== "done");
+
   if (phase === "loading") return <p className="app-loading">{t("loading")}</p>;
 
   if (phase === "done" && view?.state === "done") {
@@ -193,6 +197,9 @@ export function Today() {
                   {t("addRequest")}
                 </button>
               )}
+              <Link href="/difficult-day" className="link-btn today__difficult">
+                {td("link")}
+              </Link>
             </div>
           )}
 
@@ -230,7 +237,7 @@ export function Today() {
                 ) : (
                   <span className="demo__muted">{t("lastCard")}</span>
                 )}
-                <button type="button" className="btn" onClick={() => setPhase("after")}>
+                <button type="button" className="btn" onClick={() => setPhase(open.support ? "after-shadow" : "after")}>
                   {t("continue")}
                 </button>
               </div>
@@ -253,6 +260,8 @@ export function Today() {
               )}
             </div>
           )}
+
+          {phase === "after-shadow" && open?.support && <AfterShadow support={open.support} onDone={() => setPhase("after")} />}
 
           {phase === "after" && open && (
             <FeelingPicker
@@ -283,6 +292,7 @@ function Done({
 }) {
   const t = useTranslations("app.today");
   const tf = useTranslations("feelings");
+  const ts = useTranslations("app.shadow");
   const nextMs = Date.parse(view.nextAvailableAt);
   const [left, setLeft] = useState(() => nextMs - Date.now());
   const locale = useLocale();
@@ -321,6 +331,7 @@ function Done({
           <Star4 size={44} />
         </span>
         {justSaved && <p className="today__saved">{t("saved")}</p>}
+        {view.entry?.isShadow && <p className="question today__gentle">{ts("gentle")}</p>}
         <h1 className="h3">{t("drawn", { form: me?.addressForm ?? "n" })}</h1>
         <p className="today__next">
           {hour === 0 ? t("nextMidnight") : t("nextNoon")} · {t("countdown", { h: Math.floor(mins / 60), m: mins % 60 })}

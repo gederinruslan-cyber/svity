@@ -20,7 +20,7 @@ const COUNTRY_KEY = "svity-help-country";
  * Opens a sheet with 112, the support line for the chosen country, findahelpline.com and a
  * one-minute breath. Works without the network: everything here is bundled.
  */
-export function HelpButton({ timezone, className = "" }: { timezone?: string; className?: string }) {
+export function HelpButton({ timezone, className = "", withLabel = false }: { timezone?: string; className?: string; withLabel?: boolean }) {
   const t = useTranslations("app.help");
   const dialog = useRef<HTMLDialogElement>(null);
   const [breathing, setBreathing] = useState(false);
@@ -32,8 +32,15 @@ export function HelpButton({ timezone, className = "" }: { timezone?: string; cl
 
   return (
     <>
-      <button type="button" className={`help-btn ${className}`} onClick={open} aria-label={t("open")} title={t("open")}>
+      <button
+        type="button"
+        className={`${withLabel ? "btn btn--ghost help-btn--label" : "help-btn"} ${className}`}
+        onClick={open}
+        aria-label={withLabel ? undefined : t("open")}
+        title={t("open")}
+      >
         <Lifebuoy size={20} />
+        {withLabel && <span>{t("open")}</span>}
       </button>
       <dialog
         ref={dialog}

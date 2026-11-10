@@ -13,6 +13,7 @@ export function EntryDetail({ id }: { id: string }) {
   const t = useTranslations("app.diary");
   const tt = useTranslations("app.today");
   const tf = useTranslations("feelings");
+  const ts = useTranslations("app.shadow");
   const locale = useLocale();
   const router = useRouter();
 
@@ -95,6 +96,7 @@ export function EntryDetail({ id }: { id: string }) {
         <div className="entry-page__body">
           <p className="entry__meta">
             <time dateTime={entry.createdAt}>{date.format(new Date(entry.createdAt))}</time> · {tt("cardN", { n: entry.card.id })}
+            {entry.isShadow && <> · {ts("label")}</>}
             {entry.editedAt && <> · {t("edited")}</>}
           </p>
           <h1 className="question">{entry.card.question}</h1>

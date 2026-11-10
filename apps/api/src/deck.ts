@@ -62,12 +62,14 @@ export function cardView(
   questionIndex: number,
   locale: Locale,
 ): CardView {
-  const q = deck.byId.get(cardId)?.questions.find((x) => x.index === questionIndex);
+  const card = deck.byId.get(cardId);
+  const q = card?.questions.find((x) => x.index === questionIndex);
   return {
     id: cardId,
     imageUrl: signer.url(cardId),
     questionIndex,
     question: q?.text[locale] ?? q?.text.en ?? "",
+    isShadow: card?.tone === "shadow" || q?.tone === "shadow",
   };
 }
 
