@@ -1,0 +1,29 @@
+{
+  "name": "@svity/web",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@svity/contracts": "workspace:*",
+    "@svity/i18n": "workspace:*",
+    "@svity/tokens": "workspace:*",
+    "next": "16.4.5",
+    "next-intl": "^4.14.9",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.5",
+    "sharp": "^0.35.5",
+    "typescript": "^5"
+  }
+}
