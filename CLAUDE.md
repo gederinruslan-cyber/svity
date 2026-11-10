@@ -46,7 +46,7 @@ pnpm typecheck
 ```
 Landing: http://localhost:3000/uk or /en; `?theme=day|evening` forces a theme.
 Sign-in in dev: the e-mail link is printed in the API console (no mail service yet).
-Deck: all 351 questions come from the author's PDF «Світи – додаткові питання до карт» v3 (parsed into `packages/db/deck/deck.json`). Only 11 cards have images matched to their numbers so far (4, 6, 11, 12, 20, 21, 22, 23, 25, 26, 29); the rest need the card list. Cards without an image are not drawn. Card images are served by the API (`apps/api/card-images`), not from `public/`.
+Deck: all 351 questions come from the author's PDF «Світи – додаткові питання до карт» v3; card number ↔ image comes from the thumbnails in the same PDF, matched to the Figma export (`packages/db/deck/deck.json`). 98 cards have high-res art; 19 (1, 13, 17, 18, 19, 38, 40, 57, 59, 61, 65, 82, 92, 112, 113, 114, 115, 116, 117) only have the PDF's 240 px thumbnails until high-res files are exported. Card images are served by the API (`apps/api/card-images`), not from `public/`.
 Next.js is v16 (proxy.ts instead of middleware.ts); read `apps/web/node_modules/next/dist/docs/` before using unfamiliar APIs.
 
 ## Workflow

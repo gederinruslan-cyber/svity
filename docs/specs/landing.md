@@ -118,7 +118,7 @@ Shadow candidates (26, 29, 65, 68, 69, 76, 81, 96, 100) and the 14 flagged quest
   - App icon: Figma 311:2. Illustrations: 311:3 (diary), 311:4 (moon in cloud), 311:5 (door). 1024×1024 each.
   - Full Figma export (128 PNGs, mostly 1882×3344) lives outside the repo; optimized WebP copies go in `apps/web/public/cards` (720 px demo/back, 560 px gallery).
   - Card back: `image 53.png` in the export (941×1672).
-  - Card number ↔ file (matched against the prototype by image): 4 = image 121, 6 = image 126, 11 = image 136, 12 = image 138, 20 = image 61, 21 = image 65, 22 = image 66, 23 = image 70, 25 = image 72, 26 = image 74, 29 = image 82. Cards 14 and 18 have no high-res file. The full 117-card mapping still needs the card list.
+  - Card number ↔ file for all 117 cards: see `packages/db/deck/deck.json` (`exportFile`), derived from the thumbnails in the questions PDF v3. Card 14 is image 174 (cropped differently); 19 cards have no high-res file yet.
 - Mobile-first. Lighthouse targets: performance ≥ 90, accessibility ≥ 95 on mobile.
 
 ## Acceptance
