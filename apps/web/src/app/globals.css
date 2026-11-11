@@ -4171,3 +4171,111 @@ section,
     animation: none;
   }
 }
+
+/* ---------- pros: steps, features, roomier mock ---------- */
+.pros-steps {
+  list-style: none;
+  margin: 4px 0 24px;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.pros-steps li {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 14px;
+}
+.pros-steps__n {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--glass);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 16px;
+  font-variant-numeric: lining-nums;
+}
+.pros-steps__t {
+  margin: 4px 0 2px;
+  font-weight: 600;
+}
+.pros-steps__b {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.pros-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+.pros-cta__note {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.pros-features {
+  display: grid;
+  gap: 12px;
+  margin-top: 48px;
+}
+@media (min-width: 640px) {
+  .pros-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 960px) {
+  .pros-features {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 64px;
+  }
+}
+/* Cards are never under glass: the pro's screen is a solid surface. */
+.laptop {
+  background: var(--bg);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.slot__card {
+  display: grid;
+  place-items: center;
+}
+.slot__wait {
+  font-size: 10px;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+@media (min-width: 960px) {
+  .room-mock {
+    max-width: 580px;
+  }
+  .laptop {
+    padding: 20px;
+  }
+  .slot__label {
+    font-size: 12px;
+  }
+}
+/* Phones: the client's phone sits under the pro's screen instead of covering it. */
+@media (max-width: 599px) {
+  .laptop {
+    margin-right: 0;
+  }
+  .phone {
+    position: relative;
+    width: 46%;
+    margin: 14px 0 0 auto;
+  }
+  .room-mock__hint {
+    margin-right: 0;
+  }
+  .phone__btn,
+  .phone__link,
+  .phone__pos {
+    font-size: 12px;
+  }
+}

@@ -25,6 +25,7 @@ export function RoomMock() {
           {slots.map((s, i) => (
             <div key={s} className={`slot ${i < shared ? "slot--filled" : ""}`}>
               <span className="slot__card">
+                {i >= shared && <span className="slot__wait">{t("mockEmpty")}</span>}
                 {i < shared && (
                   <Image
                     src={`/cards/demo-${DRAWN[i]}.webp`}

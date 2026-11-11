@@ -181,3 +181,30 @@ export function Cards({ size = 22, className }: P) {
     </svg>
   );
 }
+
+export function Pen({ size = 22, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4Z" />
+      <path d="M13.5 6.5l4 4" />
+    </svg>
+  );
+}
+
+export function Calendar({ size = 22, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <rect x="3.5" y="5" width="17" height="15" rx="2.5" />
+      <path d="M3.5 10h17M8 3v4M16 3v4" />
+    </svg>
+  );
+}
+
+export function Eye({ size = 22, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  );
+}

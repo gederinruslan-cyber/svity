@@ -7,8 +7,10 @@ import { HeroCtas } from "./HeroCtas";
 import { HeroQuestions } from "./HeroQuestions";
 import { RoomMock } from "./RoomMock";
 import {
+  Calendar,
   Check,
   DoorClose,
+  Eye,
   Globe,
   Heart,
   Leaf,
@@ -17,6 +19,7 @@ import {
   Lock,
   Mirror,
   Ornament,
+  Pen,
   Star4,
 } from "./icons";
 
@@ -370,31 +373,53 @@ export async function Shadow() {
 
 export async function Pros() {
   const t = await getTranslations("pros");
-  const features = [t("f1"), t("f2"), t("f3"), t("f4"), t("f5"), t("f6")];
+  const steps = (["s1", "s2", "s3"] as const).map((k) => [t(`${k}t`), t(k)] as const);
+  const features = [
+    [Cards, t("f1t"), t("f1")],
+    [Eye, t("f2t"), t("f2")],
+    [Star4, t("f3t"), t("f3")],
+    [Pen, t("f4t"), t("f4")],
+    [Calendar, t("f5t"), t("f5")],
+    [Lock, t("f6t"), t("f6")],
+  ] as const;
   return (
     <section className="section" id="pros" aria-labelledby="pros-title">
-      <div className="container pros">
-        <div>
-          <Head
-            id="pros-title"
-            eyebrow={t("eyebrow")}
-            title={t("title")}
-            sub={t("sub")}
-          />
-          <ul className="ticks reveal">
-            {features.map((x) => (
-              <li key={x}>
-                <Check />
-                {x}
-              </li>
-            ))}
-          </ul>
-          <a href="#join-pro" className="btn reveal">
-            {t("cta")}
-          </a>
+      <div className="container">
+        <div className="pros">
+          <div>
+            <Head id="pros-title" eyebrow={t("eyebrow")} title={t("title")} sub={t("sub")} />
+            <ol className="pros-steps reveal">
+              {steps.map(([title, body], i) => (
+                <li key={i}>
+                  <span className="pros-steps__n">{i + 1}</span>
+                  <div>
+                    <p className="pros-steps__t">{title}</p>
+                    <p className="pros-steps__b">{body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <div className="pros-cta reveal">
+              <a href="#join-pro" className="btn">
+                {t("cta")}
+              </a>
+              <span className="pros-cta__note">{t("beta")}</span>
+            </div>
+          </div>
+          <RoomMock />
         </div>
 
-        <RoomMock />
+        <div className="pros-features">
+          {features.map(([Icon, title, body], i) => (
+            <article key={i} className="deck-feature reveal" style={{ "--d": i % 3 } as React.CSSProperties}>
+              <span className="about__icon">
+                <Icon size={22} />
+              </span>
+              <h3 className="h3">{title}</h3>
+              <p>{body}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
