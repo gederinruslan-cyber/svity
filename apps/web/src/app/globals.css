@@ -1905,28 +1905,6 @@ section {
   pointer-events: none;
   background: linear-gradient(180deg, var(--sky-top, var(--bg-top)) 0%, var(--sky-bottom, var(--bg)) 85%);
 }
-.sky__sun {
-  position: absolute;
-  right: 12%;
-  top: calc(8vh + var(--sunset, 0) * 55vh);
-  width: clamp(140px, 22vw, 260px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 236, 196, 0.95) 0 22%, rgba(250, 214, 160, 0.45) 40%, transparent 68%);
-  opacity: calc(0.9 - var(--sunset, 0) * 0.9);
-  filter: blur(2px);
-}
-.sky__moon {
-  position: absolute;
-  right: 16%;
-  top: 12vh;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  box-shadow: -16px 8px 0 0 #d9bc7e;
-  filter: drop-shadow(0 0 18px rgba(217, 188, 126, 0.45));
-  opacity: var(--night, 0);
-}
 .sky__stars {
   position: absolute;
   inset: 0;
@@ -1945,11 +1923,6 @@ section {
     radial-gradient(1px 1px at 6% 50%, #fff 50%, transparent 51%),
     radial-gradient(1.3px 1.3px at 68% 90%, #fff 50%, transparent 51%);
   animation: twinkle 7s ease-in-out infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .sky__sun {
-    top: 8vh;
-  }
 }
 
 /* ---------- hero: rotating questions, constellation ---------- */
@@ -3647,10 +3620,6 @@ section {
   }
   .hero__art {
     margin-top: 8px;
-  }
-  /* No free corner for the moon on phones: the headline fills the width. Stars stay. */
-  .sky__moon {
-    display: none;
   }
 }
 @media (min-width: 900px) {

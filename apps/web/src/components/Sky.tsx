@@ -37,7 +37,6 @@ export function Sky() {
   useEffect(() => {
     const sky = ref.current!;
     const root = document.documentElement;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
 
     const paint = () => {
@@ -63,15 +62,9 @@ export function Sky() {
       top = mix(top, SKY.night.top, night);
       bottom = mix(bottom, SKY.night.bottom, night);
 
-      // The sun sets over the first screen; at night a moon takes its place.
-      const sunset = evening ? 1 : Math.min(1, window.scrollY / (vh * 0.9));
       sky.style.setProperty("--sky-top", css(top));
       sky.style.setProperty("--sky-bottom", css(bottom));
       sky.style.setProperty("--night", String(night));
-      sky.style.setProperty(
-        "--sunset",
-        String(reduced.matches ? (evening ? 1 : 0) : sunset),
-      );
       sky.dataset.evening = evening ? "true" : "false";
 
       // Keep the header readable while the sky is dark.
@@ -101,8 +94,6 @@ export function Sky() {
 
   return (
     <div ref={ref} className="sky" aria-hidden="true">
-      <span className="sky__sun" />
-      <span className="sky__moon" />
       <span className="sky__stars" />
     </div>
   );
