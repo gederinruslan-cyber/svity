@@ -98,6 +98,8 @@ export interface Me {
   timezone: string;
   reminderTime: (typeof reminderTimes)[number] | null;
   displayName: string | null;
+  /** Svity team: sees /admin. */
+  isAdmin: boolean;
   createdAt: string;
 }
 
@@ -335,3 +337,26 @@ export interface PsychologistRoomView {
 }
 
 export type RoomView = ClientRoomView | PsychologistRoomView;
+
+// ---------- admin ----------
+
+export const applicationStatuses = ["pending", "approved", "rejected"] as const;
+export type ApplicationStatus = (typeof applicationStatuses)[number];
+
+export interface AdminApplication {
+  id: string;
+  name: string;
+  email: string;
+  specialization: (typeof specializations)[number];
+  country: string;
+  usesCards: boolean;
+  message: string | null;
+  locale: Locale;
+  status: ApplicationStatus;
+  createdAt: string;
+  decidedAt: string | null;
+  /** Whether an account with this e-mail exists, and its role now. */
+  account: { role: Me["role"] } | null;
+}
+
+export const ApplicationDecision = z.object({ status: z.enum(applicationStatuses) });

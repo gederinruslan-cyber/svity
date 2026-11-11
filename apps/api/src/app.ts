@@ -2,7 +2,8 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { BetaApplicationInput, WaitlistInput, type SubmitResult } from "@svity/contracts";
 import { betaApplications, waitlistEntries, type Db } from "@svity/db";
-import { authRoutes, requireUser, type AuthEnv } from "./auth";
+import { adminRoutes } from "./admin";
+import { authRoutes, requireAdmin, requireUser, type AuthEnv } from "./auth";
 import { cardImageRoutes, deckLoader, imageSigner } from "./deck";
 import type { Mailer } from "./mailer";
 import { entryRoutes } from "./entries";
@@ -72,6 +73,8 @@ export function createApp(db: Db, opts: AppOptions) {
   app.route("/v1/rooms", roomApi.pro);
   app.route("/v1/r", roomApi.client);
   app.route("/v1/sessions", roomApi.sessions);
+  app.use("/v1/admin/*", requireAdmin(db));
+  app.route("/v1/admin", adminRoutes(db, opts));
 
   app.onError((err, c) => {
     console.error(err);

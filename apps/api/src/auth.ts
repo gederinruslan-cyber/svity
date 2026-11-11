@@ -2,7 +2,7 @@ import { Hono, type Context, type MiddlewareHandler } from "hono";
 import { deleteCookie, getCookie, setCookie } from "hono/cookie";
 import { assertTimeZone } from "@svity/core";
 import { ChangePasswordInput, ForgotPasswordInput, ResetPasswordInput, SignInInput, SignUpInput, type Me } from "@svity/contracts";
-import { and, eq, gt, isNull, ne, passwordResets, sessions, users, type Db } from "@svity/db";
+import { and, betaApplications, eq, gt, isNull, ne, passwordResets, sessions, users, type Db } from "@svity/db";
 import { hashToken, newToken } from "./crypto";
 import { DUMMY_HASH, hashPassword, verifyPassword } from "./password";
 import { passwordResetEmail, type Mailer } from "./mailer";
@@ -24,6 +24,7 @@ export function toMe(u: User): Me {
     addressForm: u.addressForm,
     timezone: u.timezone,
     displayName: u.displayName,
+    isAdmin: u.isAdmin,
     reminderTime: u.reminderTime as Me["reminderTime"],
     createdAt: u.createdAt.toISOString(),
   };
@@ -109,7 +110,13 @@ export function authRoutes(db: Db, opts: { webOrigin: string; mailer: Mailer; se
       timezone = "Europe/Kyiv";
     }
     const passwordHash = await hashPassword(password);
-    const [user] = await db.insert(users).values({ email, passwordHash, locale, timezone }).onConflictDoNothing().returning();
+    // An approved beta application for this e-mail makes the new account a psychologist.
+    const [approved] = await db
+      .select({ id: betaApplications.id })
+      .from(betaApplications)
+      .where(and(eq(betaApplications.email, email), eq(betaApplications.status, "approved")));
+    const role = approved ? "professional" : "personal";
+    const [user] = await db.insert(users).values({ email, passwordHash, locale, timezone, role }).onConflictDoNothing().returning();
     if (!user) return c.json({ ok: false, error: "email_taken" }, 409);
     await startSession(c, user.id);
     return c.json({ ok: true, me: toMe(user) }, 201);
@@ -193,4 +200,14 @@ export function authRoutes(db: Db, opts: { webOrigin: string; mailer: Mailer; se
   });
 
   return app;
+}
+
+export function requireAdmin(db: Db): MiddlewareHandler<AuthEnv> {
+  return async (c, next) => {
+    const user = await findUser(db, c);
+    if (!user) return c.json({ ok: false, error: "unauthorized" }, 401);
+    if (!user.isAdmin) return c.json({ ok: false, error: "forbidden" }, 403);
+    c.set("user", user);
+    await next();
+  };
 }

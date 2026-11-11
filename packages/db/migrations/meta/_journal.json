@@ -57,6 +57,13 @@
       "when": 1794409372017,
       "tag": "0007_aberrant_magma",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1794414274602,
+      "tag": "0008_stormy_gressill",
+      "breakpoints": true
     }
   ]
 }

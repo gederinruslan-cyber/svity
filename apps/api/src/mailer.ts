@@ -18,22 +18,36 @@ export interface Mailer {
 const escape = (s: string) => s.replace(/[&<>"']/g, (ch) => `&#${ch.charCodeAt(0)};`);
 
 /** "Forgot password" e-mail in the account language. Text + simple HTML; no images, no tracking. */
-export function passwordResetEmail(to: string, link: string, locale: Locale): Email {
-  const m = (locale === "uk" ? uk : en).email.reset;
+/** One layout for every e-mail: title, text, a button, small print. Colours from the day theme. */
+function layout(o: { locale: Locale; subject: string; title: string; body: string; button: string; link: string; notes: string[]; footer: string }, to: string): Email {
   const c = themes.day;
-  const text = [m.title, "", m.body, link, "", m.expires, m.ignore, "", "—", m.footer].join("\n");
-  const html = `<!doctype html><html lang="${locale}"><body style="margin:0;padding:24px;background:${c.bg};font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:${c.text}">
+  const text = [o.title, "", o.body, o.link, "", ...o.notes, "", "—", o.footer].join("\n");
+  const notes = o.notes.map((n) => `<p style="margin:0 0 8px;font-size:14px;line-height:1.5;color:${c.textMuted}">${escape(n)}</p>`).join("\n");
+  const html = `<!doctype html><html lang="${o.locale}"><body style="margin:0;padding:24px;background:${c.bg};font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:${c.text}">
 <div style="max-width:480px;margin:0 auto;background:#ffffff;border-radius:20px;padding:32px 28px">
 <p style="margin:0 0 20px;font-family:Georgia,serif;letter-spacing:.2em;font-size:18px">SVITY</p>
-<h1 style="margin:0 0 12px;font-family:Georgia,serif;font-weight:500;font-size:24px">${escape(m.title)}</h1>
-<p style="margin:0 0 24px;line-height:1.5">${escape(m.body)}</p>
-<p style="margin:0 0 24px"><a href="${escape(link)}" style="display:inline-block;padding:12px 22px;border-radius:999px;background:${c.accent};color:${c.accentText};text-decoration:none;font-weight:600">${escape(m.button)}</a></p>
-<p style="margin:0 0 8px;font-size:14px;line-height:1.5;color:${c.textMuted}">${escape(m.expires)}</p>
-<p style="margin:0;font-size:14px;line-height:1.5;color:${c.textMuted}">${escape(m.ignore)}</p>
+<h1 style="margin:0 0 12px;font-family:Georgia,serif;font-weight:500;font-size:24px">${escape(o.title)}</h1>
+<p style="margin:0 0 24px;line-height:1.5">${escape(o.body)}</p>
+<p style="margin:0 0 24px"><a href="${escape(o.link)}" style="display:inline-block;padding:12px 22px;border-radius:999px;background:${c.accent};color:${c.accentText};text-decoration:none;font-weight:600">${escape(o.button)}</a></p>
+${notes}
 </div>
-<p style="text-align:center;font-size:12px;color:${c.textMuted};margin:16px 0 0">${escape(m.footer)}</p>
+<p style="text-align:center;font-size:12px;color:${c.textMuted};margin:16px 0 0">${escape(o.footer)}</p>
 </body></html>`;
-  return { to, subject: m.subject, text, html };
+  return { to, subject: o.subject, text, html };
+}
+
+export function passwordResetEmail(to: string, link: string, locale: Locale): Email {
+  const m = (locale === "uk" ? uk : en).email.reset;
+  return layout({ locale, subject: m.subject, title: m.title, body: m.body, button: m.button, link, notes: [m.expires, m.ignore], footer: m.footer }, to);
+}
+
+/** Sent when the Svity team approves a beta application. */
+export function betaApprovedEmail(to: string, link: string, locale: Locale, hasAccount: boolean): Email {
+  const m = (locale === "uk" ? uk : en).email.betaApproved;
+  return layout(
+    { locale, subject: m.subject, title: m.title, body: hasAccount ? m.bodyAccount : m.bodyNoAccount, button: hasAccount ? m.buttonAccount : m.buttonNoAccount, link, notes: [m.note], footer: m.footer },
+    to,
+  );
 }
 
 /** Prints e-mails to the API console. */

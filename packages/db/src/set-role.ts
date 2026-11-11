@@ -1,6 +1,6 @@
 /**
  * Makes an account a psychologist (or back): `pnpm user:role you@example.com professional`.
- * Until the psychologist plan and checks exist (spec §20), this is how beta psychologists get access.
+ * Normally approving a beta application on /admin does this; the script is for local testing.
  */
 import { eq } from "drizzle-orm";
 import { createDb, users } from "./index";

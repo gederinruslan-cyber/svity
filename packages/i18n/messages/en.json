@@ -306,7 +306,8 @@
       "room": "Session · Svity",
       "signup": "Create account · Svity",
       "forgot": "Reset password · Svity",
-      "start": "Svity"
+      "start": "Svity",
+      "admin": "Admin"
     },
     "nav": {
       "today": "Today",
@@ -314,7 +315,8 @@
       "signOut": "Sign out",
       "home": "Svity home",
       "profile": "Profile",
-      "cabinet": "Cabinet"
+      "cabinet": "Cabinet",
+      "admin": "Admin"
     },
     "signin": {
       "title": "Sign in to Svity",
@@ -690,6 +692,25 @@
       "sub": "One card a day, a private diary, and a room for sessions with your psychologist.",
       "create": "Create an account",
       "signin": "I already have an account"
+    },
+    "admin": {
+      "title": "Beta applications",
+      "status": {
+        "pending": "New",
+        "approved": "Approved",
+        "rejected": "Rejected"
+      },
+      "empty": "Nothing here.",
+      "usesCards": "Already works with cards",
+      "noCards": "Hasn't worked with cards",
+      "accountPro": "account: psychologist",
+      "accountPersonal": "account: personal",
+      "noAccount": "no account yet",
+      "decided": "Decided {date}",
+      "approve": "Approve",
+      "reject": "Reject",
+      "revoke": "Revoke access",
+      "revokeConfirm": "Revoke beta access? The account becomes personal again; its rooms stay but can't be opened."
     }
   },
   "email": {
@@ -700,6 +721,16 @@
       "button": "Set a new password",
       "expires": "The link works once, for 30 minutes.",
       "ignore": "If it wasn't you, ignore this e-mail: your password stays the same.",
+      "footer": "Svity · cards for daily reflection"
+    },
+    "betaApproved": {
+      "subject": "You're in the Svity beta",
+      "title": "Welcome to the beta",
+      "bodyAccount": "Your application was approved. Rooms for sessions with clients are now open in your cabinet.",
+      "bodyNoAccount": "Your application was approved. Create an account with this e-mail, and the cabinet with rooms for sessions will be there.",
+      "buttonAccount": "Open the cabinet",
+      "buttonNoAccount": "Create an account",
+      "note": "Questions or ideas from your practice: just reply to this e-mail.",
       "footer": "Svity · cards for daily reflection"
     }
   }
