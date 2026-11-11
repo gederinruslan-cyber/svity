@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { CountUp } from "./CountUp";
 import { DeckGallery } from "./DeckGallery";
 import { HeroFan } from "./HeroFan";
+import { HeroCtas } from "./HeroCtas";
 import { HeroQuestions } from "./HeroQuestions";
 import { RoomMock } from "./RoomMock";
 import {
@@ -100,14 +101,7 @@ export async function Hero() {
           <h1 className="h1 reveal">{t("title")}</h1>
           <p className="lead reveal">{t("sub")}</p>
           <HeroQuestions />
-          <div className="hero__ctas reveal">
-            <a href="#join" className="btn btn--large">
-              {t("cta1")}
-            </a>
-            <a href="#pros" className="btn btn--ghost btn--large">
-              {t("cta2")}
-            </a>
-          </div>
+          <HeroCtas />
           <p className="hero__trust reveal">{t("trust")}</p>
         </div>
         <div className="hero__art">

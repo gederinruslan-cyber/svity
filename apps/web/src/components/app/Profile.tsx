@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { PASSWORD_MIN, addressForms, reminderTimes, type Me, type ProfilePatch, type ProfileStats } from "@svity/contracts";
 import { Link, useRouter } from "@/i18n/navigation";
 import { api, API_URL, ApiError } from "@/lib/api";
+import { rememberSession } from "@/lib/session";
 
 type ThemePref = "auto" | "day" | "evening";
 const CONTACT = "hello@svity.app";
@@ -73,12 +74,14 @@ export function Profile() {
 
   async function signOut() {
     await api("/v1/auth/logout", { method: "POST" }).catch(() => {});
+    rememberSession(null);
     router.replace("/signin");
   }
 
   async function deleteAccount() {
     try {
       await api("/v1/me", { method: "DELETE", body: { confirm: "delete" } });
+      rememberSession(null);
       window.location.assign(`/${locale}`);
     } catch {
       setError(true);

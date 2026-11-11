@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, localeHref, usePathname } from "@/i18n/navigation";
+import { useSession } from "@/lib/session";
 import { Close, Menu, Moon, Star4, Sun } from "./icons";
 
 type ThemePref = "auto" | "day" | "evening";
@@ -20,6 +21,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [pref, setPref] = useState<ThemePref>("auto");
+  const session = useSession();
 
   useEffect(() => {
     setPref(
@@ -81,9 +83,19 @@ export function Header() {
               {label}
             </a>
           ))}
-        </nav>
-
-        <div className="site-header__tools">
+          {/* In the phone menu: the account links too. */}
+          {session.status === "out" && (
+            <Link href="/signup" className="site-nav__app">
+              {t("cta")}
+            </Link>
+          )}
+          {session.status === "in" && session.role === "professional" && (
+            <Link href="/cabinet" className="site-nav__app">
+              {t("cabinet")}
+            </Link>
+          )}
+          {/* Narrow phones: language and theme live in the menu. */}
+          <div className="site-nav__prefs">
           <div className="lang-switch" role="group" aria-label={t("language")}>
             {(["uk", "en"] as const).map((l) => (
               // A full page load: switching the language re-renders the root <html>.
@@ -113,9 +125,61 @@ export function Header() {
               <span className="theme-auto">A</span>
             )}
           </button>
-          <a href="#join" className="btn btn--small header-cta">
-            {t("cta")}
-          </a>
+          </div>
+        </nav>
+
+        <div className="site-header__tools">
+          <div className="site-header__prefs">
+          <div className="lang-switch" role="group" aria-label={t("language")}>
+            {(["uk", "en"] as const).map((l) => (
+              // A full page load: switching the language re-renders the root <html>.
+              <a
+                key={l}
+                href={localeHref(l, pathname)}
+                hrefLang={l}
+                className={l === locale ? "is-active" : ""}
+                aria-current={l === locale ? "true" : undefined}
+              >
+                {l === "uk" ? "UA" : "EN"}
+              </a>
+            ))}
+          </div>
+          <button
+            type="button"
+            className="icon-btn"
+            onClick={cycleTheme}
+            aria-label={`${t("theme")}: ${themeLabel}`}
+            title={`${t("theme")}: ${themeLabel}`}
+          >
+            {pref === "evening" ? (
+              <Moon />
+            ) : pref === "day" ? (
+              <Sun />
+            ) : (
+              <span className="theme-auto">A</span>
+            )}
+          </button>
+          </div>
+          {/* Hidden until we know (static HTML): no flash of the wrong buttons. */}
+          <div className={`header-auth ${session.status === "unknown" ? "is-pending" : ""}`}>
+            {session.status === "in" ? (
+              <Link href="/today" className="btn btn--small" aria-label={t("open")}>
+                <span className="header-auth__long">{t("open")}</span>
+                <span className="header-auth__short" aria-hidden="true">
+                  {t("openShort")}
+                </span>
+              </Link>
+            ) : (
+              <>
+                <Link href="/signin" className="header-auth__signin">
+                  {t("signin")}
+                </Link>
+                <Link href="/signup" className="btn btn--small header-cta">
+                  {t("cta")}
+                </Link>
+              </>
+            )}
+          </div>
           <button
             type="button"
             className="icon-btn menu-btn"

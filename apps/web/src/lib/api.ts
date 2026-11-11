@@ -1,5 +1,7 @@
 import type { EntriesPage, EntryPatch, EntryView, Me, MonthView, TodayView } from "@svity/contracts";
 
+import { rememberSession } from "./session";
+
 export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000";
 
 export class ApiError extends Error {
@@ -25,7 +27,15 @@ export async function api<T>(path: string, init?: { method?: "GET" | "POST" | "P
   return data as T;
 }
 
-export const getMe = () => api<{ ok: true; me: Me }>("/v1/me").then((r) => r.me);
+/** Also keeps the landing's "signed in" hint in sync (see lib/session.ts). */
+export const getMe = () =>
+  api<{ ok: true; me: Me }>("/v1/me").then(
+    (r) => (rememberSession(r.me), r.me),
+    (err) => {
+      if (err instanceof ApiError && err.status === 401) rememberSession(null);
+      throw err;
+    },
+  );
 export const getToday = (locale: string) => api<TodayView>(`/v1/today?locale=${locale}`);
 export const getEntries = (locale: string, opts: { before?: string; feeling?: string; favorite?: boolean } = {}) => {
   const q = new URLSearchParams({ locale });

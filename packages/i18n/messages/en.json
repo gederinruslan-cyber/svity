@@ -8,22 +8,30 @@
     "deck": "The deck",
     "pros": "For psychologists",
     "faq": "Questions",
-    "cta": "Join the waitlist",
+    "cta": "Start free",
     "menu": "Menu",
     "language": "Language",
     "theme": "Theme",
     "themeAuto": "Auto",
     "themeDay": "Day",
-    "themeEvening": "Evening"
+    "themeEvening": "Evening",
+    "signin": "Sign in",
+    "open": "Open Svity",
+    "cabinet": "Cabinet",
+    "openShort": "Open"
   },
   "hero": {
     "eyebrow": "Metaphorical cards for every day",
     "title": "One card a day to meet yourself",
     "sub": "…and a room for the work you do together with your psychologist.",
-    "cta1": "Join the waitlist",
+    "cta1": "Start free",
     "cta2": "For psychologists",
     "trust": "No ads · No trackers · No streaks",
-    "tryCard": "Go to today's card"
+    "tryCard": "Go to today's card",
+    "ctaToday": "Go to today's card",
+    "ctaDiary": "My diary",
+    "haveAccount": "Already have an account?",
+    "signin": "Sign in"
   },
   "demo": {
     "eyebrow": "Try it now",
@@ -221,8 +229,8 @@
     "a7": "Apply with the form below. We're inviting 10–15 specialists first."
   },
   "form": {
-    "eyebrow": "Be the first",
-    "title": "Svity is opening soon",
+    "eyebrow": "Start",
+    "title": "Your first card is waiting",
     "tabUser": "For me",
     "tabPro": "For my clients",
     "email": "E-mail",
@@ -243,13 +251,24 @@
     "successPro": "Thank you. We'll be in touch about the beta soon.",
     "errorInvalid": "Please check the fields and try again.",
     "errorRate": "Too many attempts. Please try again in a few minutes.",
-    "errorServer": "Something went wrong. Please try again."
+    "errorServer": "Something went wrong. Please try again.",
+    "userSub": "An e-mail and a password, and you're in. The card of the day, the diary and shadow cards are free.",
+    "create": "Create an account",
+    "haveAccount": "Already have an account?",
+    "signin": "Sign in",
+    "welcomeTitle": "Welcome back",
+    "welcomeSub": "Your card of the day and your diary are where you left them.",
+    "openToday": "Go to today's card",
+    "openDiary": "Open the diary",
+    "proSub": "Rooms for sessions are in a closed beta. Tell us about your practice and we'll open the cabinet for your account.",
+    "proIn": "You're in the beta: your rooms are in the cabinet.",
+    "openCabinet": "Open the cabinet"
   },
   "footer": {
     "tagline": "One card a day to meet yourself.",
     "about": "An author's deck of 117 painted cards and 351 questions, with a diary that remembers how you felt and a room for sessions with your psychologist.",
     "colApp": "Svity",
-    "linkTry": "Today's card",
+    "linkTry": "Try a card",
     "linkHow": "How it works",
     "linkDeck": "The deck",
     "linkDiary": "Your diary",
@@ -271,7 +290,9 @@
     "contact": "Write to the authors",
     "rights": "© {year} Svity",
     "top": "Back to top",
-    "made": "Made with care in Ukrainian and English"
+    "made": "Made with care in Ukrainian and English",
+    "linkSignup": "Create an account",
+    "linkSignin": "Sign in"
   },
   "app": {
     "meta": {

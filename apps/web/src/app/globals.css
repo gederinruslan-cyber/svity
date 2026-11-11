@@ -2573,15 +2573,8 @@ section,
   margin: 12px 0 0;
 }
 .icon-btn {
-  display: inline-grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
   background: var(--glass);
   color: var(--text);
-  cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
 }
 .icon-btn:disabled {
@@ -3609,4 +3602,118 @@ section,
 .form-error a {
   color: var(--link);
   font-weight: 600;
+}
+
+/* landing: account state (hidden while unknown, so the wrong buttons never flash) */
+.header-auth,
+.hero__ctas-wrap,
+.signup__account {
+  transition: opacity 0.2s ease;
+}
+.header-auth.is-pending,
+.hero__ctas-wrap.is-pending,
+.signup__account.is-pending {
+  opacity: 0;
+}
+.header-auth {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.header-auth__signin {
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.header-auth__signin:hover {
+  color: var(--link);
+}
+.site-nav__app {
+  font-weight: 700;
+}
+@media (min-width: 960px) {
+  .site-nav__app {
+    display: none;
+  }
+}
+.hero__signin {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.hero__signin a,
+.signup__switch a {
+  color: var(--link);
+  font-weight: 600;
+}
+.signup__account {
+  display: grid;
+  gap: 14px;
+  text-align: center;
+  justify-items: center;
+  padding: 8px 0 4px;
+}
+.signup__account .h3 {
+  margin: 0;
+}
+.signup__lead {
+  margin: 0 0 4px;
+  color: var(--text-muted);
+}
+.signup__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.signup__switch {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.header-auth .btn {
+  white-space: nowrap;
+}
+.header-auth__short {
+  display: inline;
+}
+.header-auth__long {
+  display: none;
+}
+@media (min-width: 560px) {
+  .header-auth__short {
+    display: none;
+  }
+  .header-auth__long {
+    display: inline;
+  }
+}
+.site-nav__prefs {
+  display: none;
+}
+@media (max-width: 559px) {
+  .site-header__prefs {
+    display: none;
+  }
+  .site-nav__prefs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 8px;
+  }
+}
+.site-header__prefs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (max-width: 559px) {
+  .site-header__prefs {
+    display: none;
+  }
 }

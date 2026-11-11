@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { PASSWORD_MIN } from "@svity/contracts";
+import { PASSWORD_MIN, type Me } from "@svity/contracts";
 import { Link, useRouter } from "@/i18n/navigation";
 import { api, ApiError } from "@/lib/api";
+import { rememberSession } from "@/lib/session";
 import { Star4 } from "../icons";
 
 const isDev = process.env.NODE_ENV !== "production";
@@ -93,7 +94,7 @@ export function SignIn() {
     setBusy(true);
     setError(null);
     try {
-      await api("/v1/auth/signin", { method: "POST", body: { email, password } });
+      rememberSession((await api<{ me: Me }>("/v1/auth/signin", { method: "POST", body: { email, password } })).me);
       router.replace("/today");
     } catch (err) {
       const k = errorKey(err);
@@ -143,7 +144,7 @@ export function SignUp() {
     setError(null);
     try {
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      await api("/v1/auth/signup", { method: "POST", body: { email, password, timezone, locale } });
+      rememberSession((await api<{ me: Me }>("/v1/auth/signup", { method: "POST", body: { email, password, timezone, locale } })).me);
       router.replace("/today");
     } catch (err) {
       const k = errorKey(err);
@@ -242,7 +243,7 @@ export function ResetPassword({ token }: { token: string }) {
     e.preventDefault();
     setBusy(true);
     try {
-      await api("/v1/auth/reset", { method: "POST", body: { token, password } });
+      rememberSession((await api<{ me: Me }>("/v1/auth/reset", { method: "POST", body: { token, password } })).me);
       router.replace("/today");
     } catch (err) {
       setError(errorKey(err) === "link_invalid" || errorKey(err) === "invalid" ? "invalid" : "error");

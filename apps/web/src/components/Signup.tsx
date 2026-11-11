@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { specializations, type SubmitResult } from "@svity/contracts";
+import { Link } from "@/i18n/navigation";
+import { useSession } from "@/lib/session";
 import { Ornament, Star4 } from "./icons";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000";
@@ -29,6 +31,7 @@ export function Signup() {
   const locale = useLocale();
   const [tab, setTab] = useState<Tab>("user");
   const [status, setStatus] = useState<Status>("idle");
+  const session = useSession();
 
   // `#join-pro` links (psychologist CTAs) open the second tab.
   useEffect(() => {
@@ -45,23 +48,16 @@ export function Signup() {
     const f = new FormData(e.currentTarget);
     const str = (k: string) => String(f.get(k) ?? "").trim();
     setStatus("sending");
-    const res =
-      tab === "user"
-        ? await submit("/v1/waitlist", {
-            email: str("email"),
-            locale,
-            website: str("website"),
-          })
-        : await submit("/v1/beta-applications", {
-            name: str("name"),
-            email: str("email"),
-            specialization: str("specialization"),
-            country: str("country"),
-            usesCards: f.get("usesCards") === "on",
-            message: str("message") || undefined,
-            locale,
-            website: str("website"),
-          });
+    const res = await submit("/v1/beta-applications", {
+      name: str("name"),
+      email: str("email"),
+      specialization: str("specialization"),
+      country: str("country"),
+      usesCards: f.get("usesCards") === "on",
+      message: str("message") || undefined,
+      locale,
+      website: str("website"),
+    });
     setStatus(res.ok ? "done" : res.error);
   }
 
@@ -105,14 +101,48 @@ export function Signup() {
             ))}
           </div>
 
-          {status === "done" ? (
+          {tab === "user" ? (
+            <div
+              className={`signup__account ${session.status === "unknown" ? "is-pending" : ""}`}
+            >
+              {session.status === "in" ? (
+                <>
+                  <p className="h3">{t("welcomeTitle")}</p>
+                  <p className="signup__lead">{t("welcomeSub")}</p>
+                  <div className="signup__actions">
+                    <Link href="/today" className="btn btn--large">
+                      {t("openToday")}
+                    </Link>
+                    <Link href="/diary" className="btn btn--ghost btn--large">
+                      {t("openDiary")}
+                    </Link>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <p className="signup__lead">{t("userSub")}</p>
+                  <Link href="/signup" className="btn btn--large btn--block">
+                    {t("create")}
+                  </Link>
+                  <p className="signup__switch">
+                    {t("haveAccount")} <Link href="/signin">{t("signin")}</Link>
+                  </p>
+                </>
+              )}
+            </div>
+          ) : session.status === "in" && session.role === "professional" ? (
+            <div className="signup__account">
+              <p className="signup__lead">{t("proIn")}</p>
+              <Link href="/cabinet" className="btn btn--large btn--block">
+                {t("openCabinet")}
+              </Link>
+            </div>
+          ) : status === "done" ? (
             <div className="signup__done" role="status">
               <span className="saved-star" aria-hidden="true">
                 <Star4 size={36} />
               </span>
-              <p className="h3">
-                {tab === "user" ? t("successUser") : t("successPro")}
-              </p>
+              <p className="h3">{t("successPro")}</p>
             </div>
           ) : (
             <form className="form" onSubmit={onSubmit} noValidate={false}>
@@ -126,7 +156,8 @@ export function Signup() {
                 aria-hidden="true"
               />
 
-              {tab === "pro" && (
+              <p className="signup__lead">{t("proSub")}</p>
+              {
                 <label className="form__row">
                   <span>{t("name")}</span>
                   <input
@@ -137,7 +168,7 @@ export function Signup() {
                     autoComplete="name"
                   />
                 </label>
-              )}
+              }
 
               <label className="form__row">
                 <span>{t("email")}</span>
@@ -152,7 +183,7 @@ export function Signup() {
                 />
               </label>
 
-              {tab === "pro" && (
+              {
                 <>
                   <div className="form__split">
                     <label className="form__row">
@@ -195,7 +226,7 @@ export function Signup() {
                     />
                   </label>
                 </>
-              )}
+              }
 
               {errorText && (
                 <p className="form__error" role="alert">
@@ -208,11 +239,7 @@ export function Signup() {
                 className="btn btn--large btn--block"
                 disabled={status === "sending"}
               >
-                {status === "sending"
-                  ? t("sending")
-                  : tab === "user"
-                    ? t("submitUser")
-                    : t("submitPro")}
+                {status === "sending" ? t("sending") : t("submitPro")}
               </button>
             </form>
           )}
