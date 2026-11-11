@@ -189,10 +189,20 @@
   "shadow": {
     "eyebrow": "When the time comes",
     "title": "Shadow cards",
-    "sub": "After a month of practice, you can open cards about anger, sadness and fear: only if you choose to, and never for money.",
-    "i1": "They open after 30 days and 10 entries, with your consent",
-    "i2": "After each one: a breath and a supporting card",
-    "i3": "You can turn them off at any time"
+    "sub": "Cards about anger, sadness and fear. They never enter the deck on their own: practice and your consent open them, never a payment.",
+    "s1t": "A month of practice",
+    "s1": "30 days and 10 diary entries. Until then, only light and neutral cards.",
+    "s2t": "Your consent",
+    "s2": "First we explain what these cards are and what may come up. Opening them is only your decision.",
+    "s3t": "A shadow card",
+    "s3": "The screen quietly turns to evening. A question and a note, as always.",
+    "s4t": "Back to the body",
+    "s4": "Breathing 4 · 4 · 6 and a support card from the light part of the deck.",
+    "modesLabel": "How they appear",
+    "mode1": "Only when I ask",
+    "mode2": "Sometimes as the daily card",
+    "mode3": "Turn off any time",
+    "care": "If several days in a row feel heavy, we don't offer shadow cards, only support. The help button is always at the top."
   },
   "pros": {
     "eyebrow": "For psychologists and coaches",

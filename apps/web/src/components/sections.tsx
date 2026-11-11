@@ -327,32 +327,41 @@ export async function Diary() {
 
 export async function Shadow() {
   const t = await getTranslations("shadow");
+  const steps = (["s1", "s2", "s3", "s4"] as const).map((k) => [t(`${k}t`), t(k)] as const);
   return (
-    <section
-      className="section shadow"
-      id="shadow"
-      data-theme="evening"
-      aria-labelledby="shadow-title"
-    >
-      <div className="container shadow__grid">
-        <div className="shadow__art reveal" aria-hidden="true">
-          <Image src="/brand/door.webp" alt="" width={320} height={320} />
+    <section className="section shadow" id="shadow" data-theme="evening" aria-labelledby="shadow-title">
+      <div className="container">
+        <div className="shadow__grid">
+          <div className="shadow__art reveal" aria-hidden="true">
+            <Image src="/brand/door.webp" alt="" width={320} height={320} />
+          </div>
+          <Head id="shadow-title" eyebrow={t("eyebrow")} title={t("title")} sub={t("sub")} />
         </div>
-        <div>
-          <Head
-            id="shadow-title"
-            eyebrow={t("eyebrow")}
-            title={t("title")}
-            sub={t("sub")}
-          />
-          <ul className="ticks reveal">
-            {[t("i1"), t("i2"), t("i3")].map((x) => (
-              <li key={x}>
-                <Check />
-                {x}
-              </li>
-            ))}
-          </ul>
+
+        {/* The way in: practice, consent, the card, back to the body. */}
+        <ol className="shadow-path">
+          {steps.map(([title, body], i) => (
+            <li key={i} className="reveal" style={{ "--d": i } as React.CSSProperties}>
+              <span className="shadow-path__n">{i + 1}</span>
+              <h3 className="shadow-path__t">{title}</h3>
+              <p>{body}</p>
+            </li>
+          ))}
+        </ol>
+
+        <div className="shadow-care glass reveal">
+          <div className="shadow-care__modes">
+            <p className="shadow-care__label">{t("modesLabel")}</p>
+            <div className="shadow-care__chips">
+              <span className="chip chip--sm">{t("mode1")}</span>
+              <span className="chip chip--sm">{t("mode2")}</span>
+              <span className="chip chip--sm">{t("mode3")}</span>
+            </div>
+          </div>
+          <p className="shadow-care__note">
+            <Lifebuoy size={20} />
+            <span>{t("care")}</span>
+          </p>
         </div>
       </div>
     </section>
