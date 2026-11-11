@@ -39,14 +39,12 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
 }
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: palette.pearlIvory },
-    { media: "(prefers-color-scheme: dark)", color: palette.night },
-  ],
+  // Evening is the default theme.
+  themeColor: palette.night,
 };
 
 // Runs before first paint so the saved or time-based theme never flashes.
-const themeScript = `(function(){var d=document.documentElement;try{var q=new URLSearchParams(location.search).get('theme');var s=localStorage.getItem('svity-theme');var p=(q==='day'||q==='evening')?q:(s==='evening'?'evening':'day');d.dataset.themePref=p;d.dataset.theme=p}catch(e){d.dataset.theme='day'}})()`;
+const themeScript = `(function(){var d=document.documentElement;try{var q=new URLSearchParams(location.search).get('theme');var s=localStorage.getItem('svity-theme');var p=(q==='day'||q==='evening')?q:(s==='day'?'day':'evening');d.dataset.themePref=p;d.dataset.theme=p}catch(e){d.dataset.theme='evening'}})()`;
 
 const themeVars = `:root,[data-theme=day]{${themeCss("day")}}[data-theme=evening]{${themeCss("evening")}}`;
 
@@ -56,7 +54,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={`${serif.variable} ${sans.variable}`} suppressHydrationWarning>
+    <html lang={locale} className={`${serif.variable} ${sans.variable}`} data-theme="evening" suppressHydrationWarning>
       <head>
         <Script id="svity-theme" strategy="beforeInteractive">
           {themeScript}

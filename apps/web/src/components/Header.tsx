@@ -16,12 +16,12 @@ export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [pref, setPref] = useState<ThemePref>("day");
+  const [pref, setPref] = useState<ThemePref>("evening");
   const [active, setActive] = useState<string | null>(null);
   const session = useSession();
 
   useEffect(() => {
-    setPref(document.documentElement.dataset.themePref === "evening" ? "evening" : "day");
+    setPref(document.documentElement.dataset.themePref === "day" ? "day" : "evening");
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

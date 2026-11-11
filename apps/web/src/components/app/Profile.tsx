@@ -22,7 +22,7 @@ export function Profile() {
 
   const [me, setMe] = useState<Me | null>(null);
   const [stats, setStats] = useState<ProfileStats | null>(null);
-  const [theme, setTheme] = useState<ThemePref>("day");
+  const [theme, setTheme] = useState<ThemePref>("evening");
   const [saved, setSaved] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [error, setError] = useState(false);
@@ -37,7 +37,7 @@ export function Profile() {
         if (err instanceof ApiError && err.status === 401) router.replace("/signin");
         else setError(true);
       });
-    setTheme(document.documentElement.dataset.themePref === "evening" ? "evening" : "day");
+    setTheme(document.documentElement.dataset.themePref === "day" ? "day" : "evening");
   }, [router]);
 
   const zones = useMemo(() => {
