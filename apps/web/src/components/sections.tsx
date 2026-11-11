@@ -517,7 +517,7 @@ export async function Languages() {
 
 export async function Faq() {
   const t = await getTranslations("faq");
-  const qs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const;
+  const qs = [1, 2, 3, 4, 5, 6] as const;
   return (
     <section className="section" id="faq" aria-labelledby="faq-title">
       <div className="container faq-wrap">
