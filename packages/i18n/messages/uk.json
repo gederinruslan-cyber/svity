@@ -31,7 +31,16 @@
     "ctaToday": "До карти дня",
     "ctaDiary": "Мій щоденник",
     "haveAccount": "Вже маєш акаунт?",
-    "signin": "Увійти"
+    "signin": "Увійти",
+    "askLabel": "Питання з колоди",
+    "facts": {
+      "cardsN": "117",
+      "cards": "карт",
+      "questionsN": "351",
+      "questions": "питання",
+      "minutesN": "3–5",
+      "minutes": "хвилин на день"
+    }
   },
   "demo": {
     "eyebrow": "Спробуй зараз",

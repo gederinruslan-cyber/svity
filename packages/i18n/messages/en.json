@@ -31,7 +31,16 @@
     "ctaToday": "Go to today's card",
     "ctaDiary": "My diary",
     "haveAccount": "Already have an account?",
-    "signin": "Sign in"
+    "signin": "Sign in",
+    "askLabel": "A question from the deck",
+    "facts": {
+      "cardsN": "117",
+      "cards": "cards",
+      "questionsN": "351",
+      "questions": "questions",
+      "minutesN": "3–5",
+      "minutes": "minutes a day"
+    }
   },
   "demo": {
     "eyebrow": "Try it now",
