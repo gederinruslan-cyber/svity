@@ -7,7 +7,7 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { api, API_URL, ApiError } from "@/lib/api";
 import { rememberSession } from "@/lib/session";
 
-type ThemePref = "auto" | "day" | "evening";
+type ThemePref = "day" | "evening";
 const CONTACT = "hello@svity.app";
 
 /** Profile (spec §7): settings, feelings, shadow-card progress, data, sign out. */
@@ -22,7 +22,7 @@ export function Profile() {
 
   const [me, setMe] = useState<Me | null>(null);
   const [stats, setStats] = useState<ProfileStats | null>(null);
-  const [theme, setTheme] = useState<ThemePref>("auto");
+  const [theme, setTheme] = useState<ThemePref>("day");
   const [saved, setSaved] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [error, setError] = useState(false);
@@ -37,7 +37,7 @@ export function Profile() {
         if (err instanceof ApiError && err.status === 401) router.replace("/signin");
         else setError(true);
       });
-    setTheme((document.documentElement.dataset.themePref as ThemePref) ?? "auto");
+    setTheme(document.documentElement.dataset.themePref === "evening" ? "evening" : "day");
   }, [router]);
 
   const zones = useMemo(() => {
@@ -65,8 +65,7 @@ export function Profile() {
     setTheme(next);
     const d = document.documentElement;
     d.dataset.themePref = next;
-    const h = new Date().getHours();
-    d.dataset.theme = next === "auto" ? (h >= 18 || h < 6 ? "evening" : "day") : next;
+    d.dataset.theme = next;
     try {
       localStorage.setItem("svity-theme", next);
     } catch {}
@@ -208,9 +207,9 @@ export function Profile() {
         <fieldset className="profile__field">
           <legend className="field-label">{t("theme")}</legend>
           <div className="segmented">
-            {(["auto", "day", "evening"] as const).map((p) => (
+            {(["day", "evening"] as const).map((p) => (
               <button key={p} type="button" aria-pressed={theme === p} className={theme === p ? "is-on" : ""} onClick={() => applyTheme(p)}>
-                {t(p === "auto" ? "themeAuto" : p === "day" ? "themeDay" : "themeEvening")}
+                {t(p === "day" ? "themeDay" : "themeEvening")}
               </button>
             ))}
           </div>

@@ -46,7 +46,7 @@ export const viewport: Viewport = {
 };
 
 // Runs before first paint so the saved or time-based theme never flashes.
-const themeScript = `(function(){var d=document.documentElement;try{var q=new URLSearchParams(location.search).get('theme');var p=(q==='day'||q==='evening')?q:(localStorage.getItem('svity-theme')||'auto');var h=new Date().getHours();d.dataset.themePref=p;d.dataset.theme=p==='auto'?(h>=18||h<6?'evening':'day'):p}catch(e){d.dataset.theme='day'}})()`;
+const themeScript = `(function(){var d=document.documentElement;try{var q=new URLSearchParams(location.search).get('theme');var s=localStorage.getItem('svity-theme');var p=(q==='day'||q==='evening')?q:(s==='evening'?'evening':'day');d.dataset.themePref=p;d.dataset.theme=p}catch(e){d.dataset.theme='day'}})()`;
 
 const themeVars = `:root,[data-theme=day]{${themeCss("day")}}[data-theme=evening]{${themeCss("evening")}}`;
 

@@ -6,13 +6,7 @@ import { Link, localeHref, usePathname } from "@/i18n/navigation";
 import { useSession } from "@/lib/session";
 import { ChevronRight, Close, Menu, Moon, Star4, Sun } from "./icons";
 
-type ThemePref = "auto" | "day" | "evening";
-
-function resolveTheme(pref: ThemePref) {
-  if (pref !== "auto") return pref;
-  const h = new Date().getHours();
-  return h >= 18 || h < 6 ? "evening" : "day";
-}
+type ThemePref = "day" | "evening";
 
 const SECTIONS = ["how", "deck", "pros", "faq"] as const;
 
@@ -22,12 +16,12 @@ export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [pref, setPref] = useState<ThemePref>("auto");
+  const [pref, setPref] = useState<ThemePref>("day");
   const [active, setActive] = useState<string | null>(null);
   const session = useSession();
 
   useEffect(() => {
-    setPref((document.documentElement.dataset.themePref as ThemePref) ?? "auto");
+    setPref(document.documentElement.dataset.themePref === "evening" ? "evening" : "day");
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -59,12 +53,12 @@ export function Header() {
   }, [open]);
 
   function cycleTheme() {
-    const next: ThemePref = pref === "auto" ? "day" : pref === "day" ? "evening" : "auto";
+    const next: ThemePref = pref === "day" ? "evening" : "day";
     setPref(next);
     const d = document.documentElement;
     const apply = () => {
       d.dataset.themePref = next;
-      d.dataset.theme = resolveTheme(next);
+      d.dataset.theme = next;
     };
     // Cross-fade the whole page between day and evening where supported.
     if (document.startViewTransition && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -75,7 +69,7 @@ export function Header() {
     } catch {}
   }
 
-  const themeLabel = { auto: t("themeAuto"), day: t("themeDay"), evening: t("themeEvening") }[pref];
+  const themeLabel = pref === "day" ? t("themeDay") : t("themeEvening");
   const signedIn = session.status === "in";
 
   const prefs = (
@@ -90,7 +84,7 @@ export function Header() {
       </div>
       <span className="header-prefs__sep" aria-hidden="true" />
       <button type="button" className="header-prefs__theme" onClick={cycleTheme} aria-label={`${t("theme")}: ${themeLabel}`} title={`${t("theme")}: ${themeLabel}`}>
-        {pref === "evening" ? <Moon size={16} /> : pref === "day" ? <Sun size={16} /> : <span className="theme-auto">A</span>}
+        {pref === "evening" ? <Moon size={16} /> : <Sun size={16} />}
       </button>
     </div>
   );

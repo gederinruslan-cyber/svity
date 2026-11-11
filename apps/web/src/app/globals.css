@@ -267,11 +267,6 @@ section {
   background: transparent;
   cursor: pointer;
 }
-.theme-auto {
-  font-size: 13px;
-  font-weight: 700;
-}
-
 .chips {
   display: flex;
   flex-wrap: wrap;

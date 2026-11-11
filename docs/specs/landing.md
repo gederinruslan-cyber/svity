@@ -20,7 +20,7 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 
 | # | Section | Behavior |
 |---|---|---|
-| 1 | Header | Logo SVITY, anchors (Як це працює / Колода / Для психологів / Питання), language switch, theme switch (auto/day/evening), one action button ("Get started" → /start, or "Open" → /today when signed in). Fixed full-width bar; after scrolling only a glass background fades in (no size or position change). |
+| 1 | Header | Logo SVITY, anchors (Як це працює / Колода / Для психологів / Питання), language switch, theme switch (day/evening; day by default), one action button ("Get started" → /start, or "Open" → /today when signed in). Fixed full-width bar; after scrolling only a glass background fades in (no size or position change). |
 | 2 | Hero | Slogan, subline, two CTAs (Start free → /signup / for psychologists), "Already have an account? Sign in"; signed in: Go to today's card / My diary. Card back floats (6 s loop), the star glows softly, clouds drift with light parallax. |
 | 3 | What Svity is (anchor `#how`, the nav's "How it works") | Lead line, "how the mirror works" (a real card + image → question → your answer), four principles (not fortune-telling · no right answers · you decide what to share · safe at every step), a note on what MAC are. |
 | 4 | Try today's card (demo) | The ritual, fully client-side, with a step tracker; see "Demo" below. |
