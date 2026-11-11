@@ -32,7 +32,7 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 | 10 | Languages | "Українська, English — and soon Deutsch, Polski, Čeština, Italiano, Español, Français." |
 | 11 | FAQ | Accordion, 7 questions (copy below). |
 | 12 | Start | Two tabs: "For me" (create an account / sign in; "Welcome back" when signed in) / "For my clients" (create a psychologist account; "Turn on the cabinet" for a signed-in personal account; "Open the cabinet" for psychologists). |
-| 14 | Footer | Logo, language switch, contact e-mail, "Write to the authors" (mailto for now), © Svity. |
+| 13 | Footer | Logo, language switch, contact e-mail, "Write to the authors" (mailto for now), © Svity. |
 
 A floating help button (lifebuoy icon) is not needed on the landing; it belongs to the app.
 
