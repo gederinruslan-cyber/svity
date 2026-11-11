@@ -8,29 +8,20 @@
     "deck": "The deck",
     "pros": "For psychologists",
     "faq": "Questions",
-    "cta": "Start free",
     "menu": "Menu",
     "language": "Language",
     "theme": "Theme",
     "themeDay": "Day",
     "themeEvening": "Evening",
-    "open": "Open Svity",
-    "cabinet": "Cabinet",
-    "start": "Svity: create an account or sign in",
-    "startShort": "Get started",
-    "openShort": "Open"
+    "tryShort": "Try it",
+    "tryLabel": "Try today's card"
   },
   "hero": {
     "eyebrow": "Metaphorical cards for every day",
     "title": "One card a day to meet yourself",
     "sub": "…and a room for the work you do together with your psychologist.",
-    "cta1": "Start free",
+    "cta1": "Try a card",
     "cta2": "For psychologists",
-    "tryCard": "Go to today's card",
-    "ctaToday": "Go to today's card",
-    "ctaDiary": "My diary",
-    "haveAccount": "Already have an account?",
-    "signin": "Sign in",
     "askLabel": "A question from the deck",
     "facts": {
       "cardsN": "117",
@@ -39,7 +30,9 @@
       "questions": "questions",
       "minutesN": "3–5",
       "minutes": "minutes a day"
-    }
+    },
+    "soon": "The Svity app is coming soon. You can draw today's card right here, now.",
+    "tryCard": "Go to today's card"
   },
   "demo": {
     "eyebrow": "Try it now",
@@ -54,7 +47,7 @@
     "continue": "I'm done",
     "after": "How are you now?",
     "done": "This is how a card a day feels.",
-    "doneSub": "Create an account to get yours every day.",
+    "doneSub": "Come back tomorrow: a new card will be waiting.",
     "again": "Start over",
     "privacy": "Nothing you write here leaves your browser.",
     "cardAlt": "Card {n} of the deck “Svity”",
@@ -213,7 +206,7 @@
     "f4": "Saved as you type. The client never sees them.",
     "f5": "After the session, the summary and the question land in the client's diary.",
     "f6": "A room lives 24 or 72 hours. The client doesn't need an account.",
-    "cta": "Create a psychologist account",
+    "cta": "I'd like to try it with clients",
     "mockClient": "Client",
     "mockPro": "You",
     "mockPosition": "Card 1 of 3 · What is",
@@ -235,14 +228,15 @@
     "s2": "On their own phone. A card they'd rather not share can go back into the deck.",
     "s3t": "You talk",
     "s3": "You see only the cards the client shared, with their questions.",
-    "beta": "Free during the beta",
+    "beta": "Rooms open soon. Write to us and we'll let you know first.",
     "f1t": "1 or 3 cards",
     "f2t": "Face down or face up",
     "f3t": "Prompts just for you",
     "f4t": "Private notes",
     "f5t": "A question for the week",
     "f6t": "Link and PIN",
-    "mockEmpty": "Waiting"
+    "mockEmpty": "Waiting",
+    "ctaSubject": "Svity: session room"
   },
   "safety": {
     "eyebrow": "Gentle by design",
@@ -288,12 +282,12 @@
     "a6": "No. The daily card works on its own. If you have a psychologist, you can also work with the cards together in a session room.",
     "q7": "Is it free?",
     "a7": "The daily card, diary, feeling check-ins and help are free. Extra practices will come later with Svity Plus.",
-    "q8": "Do I need to install an app?",
-    "a8": "No, Svity works in the browser, on your phone and computer. A phone app will come later.",
+    "q8": "When will the app be ready?",
+    "a8": "Soon. It will work in the browser, on your phone and computer. You can try today's card right now, here on this page.",
     "q9": "I have the printed deck.",
     "a9": "Later, the code in the box will unlock Svity Plus for 12 months.",
     "q10": "I'm a psychologist. How do I start working with clients?",
-    "a10": "Create an account and choose “As a psychologist”, or turn on “Sessions with clients” in your profile. The cabinet with rooms opens right away, free during the beta.",
+    "a10": "Session rooms open soon. Write to us and we'll let you know first and invite you to the beta.",
     "askTitle": "Didn't find an answer?",
     "askBody": "Write to us. Real people reply, no bots.",
     "askCta": "Send an e-mail"
@@ -310,7 +304,6 @@
     "linkSafety": "Care and safety",
     "colPros": "For psychologists",
     "linkRoom": "The session room",
-    "linkBeta": "Psychologist account",
     "linkFaq": "Questions",
     "colWrite": "Write to the authors",
     "topicIdea": "An idea",
@@ -324,9 +317,7 @@
     "contact": "Write to the authors",
     "rights": "© {year} Svity",
     "top": "Back to top",
-    "made": "Made with care in Ukrainian and English",
-    "linkSignup": "Create an account",
-    "linkSignin": "Sign in"
+    "made": "Made with care in Ukrainian and English"
   },
   "app": {
     "meta": {

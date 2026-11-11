@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { CountUp } from "./CountUp";
 import { DeckGallery } from "./DeckGallery";
 import { HeroFan } from "./HeroFan";
@@ -25,6 +24,8 @@ import {
   Pen,
   Star4,
 } from "./icons";
+
+const CONTACT = "hello@svity.app";
 
 // [left %, top %, size px] for the gold stars in the hero sky.
 const TWINKLES: [number, number, number][] = [
@@ -403,9 +404,9 @@ export async function Pros() {
               ))}
             </ol>
             <div className="pros-cta reveal">
-              <Link href="/signup?role=professional" className="btn">
+              <a href={`mailto:${CONTACT}?subject=${encodeURIComponent(t("ctaSubject"))}`} className="btn">
                 {t("cta")}
-              </Link>
+              </a>
               <span className="pros-cta__note">{t("beta")}</span>
             </div>
           </div>
@@ -514,8 +515,6 @@ export async function Languages() {
   );
 }
 
-const FAQ_CONTACT = "hello@svity.app";
-
 export async function Faq() {
   const t = await getTranslations("faq");
   const qs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const;
@@ -538,7 +537,7 @@ export async function Faq() {
         <div className="faq-contact glass reveal">
           <p className="faq-contact__t">{t("askTitle")}</p>
           <p className="faq-contact__b">{t("askBody")}</p>
-          <a className="btn btn--ghost btn--small" href={`mailto:${FAQ_CONTACT}`}>
+          <a className="btn btn--ghost btn--small" href={`mailto:${CONTACT}`}>
             {t("askCta")}
           </a>
         </div>

@@ -13,8 +13,6 @@ export async function Footer() {
     [
       t("colApp"),
       [
-        [`/${locale}/signup`, t("linkSignup")],
-        [`/${locale}/signin`, t("linkSignin")],
         ["#try", t("linkTry")],
         ["#how", t("linkHow")],
         ["#deck", t("linkDeck")],
@@ -27,7 +25,6 @@ export async function Footer() {
       t("colPros"),
       [
         ["#pros", t("linkRoom")],
-        [`/${locale}/signup?role=professional`, t("linkBeta")],
         ["#faq", t("linkFaq")],
       ],
     ],

@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "@svity/tokens";
 import { RitualCard, type RitualStage } from "./ritual/RitualCard";
-import { Link } from "@/i18n/navigation";
 import { Ornament, Star4 } from "./icons";
 
 const FEELINGS = [
@@ -70,7 +69,6 @@ export function Demo() {
   const t = useTranslations("demo");
   const tf = useTranslations("feelings");
   const tc = useTranslations("cards");
-  const tn = useTranslations("nav");
 
   const [phase, setPhase] = useState<Phase>("before");
   const [stage, setStage] = useState<RitualStage>("deck");
@@ -289,9 +287,6 @@ export function Demo() {
                   <p className="h3">{t("done")}</p>
                   <p className="demo__muted">{t("doneSub")}</p>
                   <div className="demo__actions demo__actions--center">
-                    <Link href="/start" className="btn">
-                      {tn("cta")}
-                    </Link>
                     <button
                       type="button"
                       className="link-btn"
