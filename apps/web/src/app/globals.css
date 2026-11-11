@@ -1898,12 +1898,15 @@ section {
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  background: linear-gradient(180deg, var(--sky-top, var(--bg-top)) 0%, var(--sky-bottom, var(--bg)) 85%);
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg) 85%);
+}
+[data-theme="evening"] .sky__stars {
+  opacity: 0.9;
 }
 .sky__stars {
   position: absolute;
   inset: 0;
-  opacity: calc(var(--night, 0) * 0.9);
+  opacity: 0;
   background-image:
     radial-gradient(1.2px 1.2px at 12% 18%, #fff 50%, transparent 51%),
     radial-gradient(1px 1px at 28% 42%, #fff 50%, transparent 51%),

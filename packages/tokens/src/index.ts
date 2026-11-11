@@ -7,6 +7,9 @@ export const palette = {
   oceanBreeze: "#5D7896",
   arcticMist: "#E9F1F7",
   pearlIvory: "#F6F3EC",
+  /** Softer day background: less glare than Pearl Ivory / Sky Whisper. */
+  linen: "#ECE7DD",
+  mistGrey: "#DCE2E7",
   silverSage: "#B9C6BE",
   deepInk: "#26364A",
   slate: "#4F5F74",
@@ -22,8 +25,8 @@ export const palette = {
 
 export const themes = {
   day: {
-    bg: palette.pearlIvory,
-    bgTop: palette.skyWhisper,
+    bg: palette.linen,
+    bgTop: palette.mistGrey,
     bgMid: palette.arcticMist,
     text: palette.deepInk,
     textMuted: palette.slate,
@@ -31,9 +34,9 @@ export const themes = {
     accent: palette.oceanBreeze,
     accentText: "#FFFFFF",
     gold: palette.goldDay,
-    glass: "rgba(255,255,255,0.55)",
-    glassBorder: "rgba(255,255,255,0.7)",
-    line: "rgba(38,54,74,0.12)",
+    glass: "rgba(255,255,255,0.4)",
+    glassBorder: "rgba(255,255,255,0.55)",
+    line: "rgba(38,54,74,0.13)",
     sage: palette.silverSage,
   },
   evening: {

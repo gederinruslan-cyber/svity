@@ -335,7 +335,7 @@ export async function Shadow() {
   const t = await getTranslations("shadow");
   const steps = (["s1", "s2", "s3", "s4"] as const).map((k) => [t(`${k}t`), t(k)] as const);
   return (
-    <section className="section shadow" id="shadow" data-theme="evening" aria-labelledby="shadow-title">
+    <section className="section shadow" id="shadow" aria-labelledby="shadow-title">
       <div className="container">
         <div className="shadow__grid">
           <div className="shadow__art reveal" aria-hidden="true">
