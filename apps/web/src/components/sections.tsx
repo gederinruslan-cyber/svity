@@ -102,7 +102,6 @@ export async function Hero() {
           <p className="lead reveal">{t("sub")}</p>
           <HeroQuestions />
           <HeroCtas />
-          <p className="hero__trust reveal">{t("trust")}</p>
         </div>
         <div className="hero__art">
           <HeroFan label={t("tryCard")} />
