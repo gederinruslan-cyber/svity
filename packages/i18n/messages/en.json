@@ -262,8 +262,14 @@
   "langs": {
     "eyebrow": "In your language",
     "title": "Ukrainian and English at launch",
-    "sub": "Six more languages are on the way, for Ukrainians across Europe and their psychologists.",
-    "soon": "soon"
+    "sub": "Six more languages are on the way, for Ukrainians across Europe and their psychologists. Native speakers will translate the questions together with a psychologist, by meaning rather than word for word.",
+    "soon": "soon",
+    "p1t": "All 351 questions in both languages",
+    "p1": "Change the app and question language in your profile any time.",
+    "p2t": "Addressed the way you like",
+    "p2": "Feminine, masculine or neutral forms, so the texts speak to you.",
+    "p3t": "Sessions in either language",
+    "p3": "In a room, the psychologist picks the question language to suit the client."
   },
   "faq": {
     "eyebrow": "Questions",
