@@ -5,7 +5,7 @@ import { ChangePasswordInput, ForgotPasswordInput, ResetPasswordInput, SignInInp
 import { and, eq, gt, isNull, ne, passwordResets, sessions, users, type Db } from "@svity/db";
 import { hashToken, newToken } from "./crypto";
 import { DUMMY_HASH, hashPassword, verifyPassword } from "./password";
-import type { Mailer } from "./mailer";
+import { passwordResetEmail, type Mailer } from "./mailer";
 import { rateLimit } from "./rate-limit";
 
 const RESET_TTL_MS = 30 * 60_000;
@@ -142,7 +142,9 @@ export function authRoutes(db: Db, opts: { webOrigin: string; mailer: Mailer; se
       const token = newToken();
       await db.insert(passwordResets).values({ userId: user.id, tokenHash: hashToken(token), expiresAt: new Date(Date.now() + RESET_TTL_MS) });
       // The page asks for the new password and POSTs the token: prefetching the link does nothing.
-      await opts.mailer.sendPasswordReset(email, `${opts.webOrigin}/${parsed.data.locale}/reset-password?token=${token}`, parsed.data.locale);
+      const link = `${opts.webOrigin}/${parsed.data.locale}/reset-password?token=${token}`;
+      // A mail outage must not reveal whether the account exists, so failures are logged, not returned.
+      await opts.mailer.send(passwordResetEmail(email, link, parsed.data.locale)).catch((err) => console.error("reset e-mail failed", err));
     }
     return c.json({ ok: true });
   });

@@ -13,7 +13,7 @@
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
-    "db:up": "docker compose up -d postgres",
+    "db:up": "docker compose up -d postgres mailpit",
     "db:migrate": "pnpm --filter @svity/db migrate",
     "db:generate": "pnpm --filter @svity/db generate",
     "deck:import": "pnpm --filter @svity/db deck:import",
