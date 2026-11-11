@@ -144,22 +144,6 @@
     "p4": "A help button on every screen, and any card can be closed without saving.",
     "mak": "MAC stands for metaphorical associative cards. Psychologists use them to talk, through images, about what's hard to put into words. Not fortune-telling, not diagnosis."
   },
-  "how": {
-    "eyebrow": "The daily ritual",
-    "title": "3–5 minutes.",
-    "sub": "Come back when it helps. Missing a day is not a failure.",
-    "s1t": "How you feel",
-    "s1": "One tap: calm, hope, tiredness, anxiety…",
-    "s2t": "A card",
-    "s2": "Tap the deck and watch the star wake up.",
-    "s3t": "A question",
-    "s3": "One of three questions written for this card.",
-    "s4t": "A note, if you want",
-    "s4": "A word, a page, or simply a moment.",
-    "s5t": "How you feel now",
-    "s5": "One more tap, and the card stays in your diary.",
-    "saved": "Saved to your diary"
-  },
   "deck": {
     "eyebrow": "The deck",
     "title": "“Svity”",

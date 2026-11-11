@@ -133,7 +133,8 @@ export async function Principles() {
     [Lifebuoy, t("p4t"), t("p4")],
   ] as const;
   return (
-    <section className="section about" aria-labelledby="principles-title">
+    // id="how": the header's and footer's "How it works" links land here.
+    <section className="section about" id="how" aria-labelledby="principles-title">
       <div className="container">
         <Head id="principles-title" eyebrow={t("eyebrow")} title={t("title")} sub={t("lead")} />
 

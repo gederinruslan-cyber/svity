@@ -22,9 +22,8 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 |---|---|---|
 | 1 | Header | Logo SVITY, anchors (Як це працює / Колода / Для психологів / Питання), language switch, theme switch (auto/day/evening), one action button ("Get started" → /start, or "Open" → /today when signed in). Fixed full-width bar; after scrolling only a glass background fades in (no size or position change). |
 | 2 | Hero | Slogan, subline, two CTAs (Start free → /signup / for psychologists), "Already have an account? Sign in"; signed in: Go to today's card / My diary. Card back floats (6 s loop), the star glows softly, clouds drift with light parallax. |
-| 3 | What Svity is | Lead line, "how the mirror works" (a real card + image → question → your answer), four principles (not fortune-telling · no right answers · you decide what to share · safe at every step), a note on what MAC are. |
+| 3 | What Svity is (anchor `#how`, the nav's "How it works") | Lead line, "how the mirror works" (a real card + image → question → your answer), four principles (not fortune-telling · no right answers · you decide what to share · safe at every step), a note on what MAC are. |
 | 4 | Try today's card (demo) | The ritual, fully client-side, with a step tracker; see "Demo" below. |
-| 5 | How it works | 5 steps: feeling → card → question → note → feeling. "3–5 minutes." Steps highlight as you scroll. |
 | 6 | The deck | 117 cards · 351 questions · UA/EN. Slowly drifting gallery of ~12 cards (low-res), gentle hover tilt. |
 | 7 | Diary & month | Sample diary entry (card, question, "before → after") + sample month mosaic of card thumbnails. |
 | 8 | Shadow cards | Page fades into the evening theme while this section is in view. Copy: opens after a month of practice, by your choice, never for money; grounding + support card after. Door illustration (311:5). |
@@ -78,7 +77,6 @@ Shadow candidates (26, 29, 65, 68, 69, 76, 81, 96, 100) and the 14 flagged quest
 | principles.1 | It's not fortune-telling. Cards predict nothing; they are a mirror. | Це не ворожіння. Карти нічого не передбачають – це дзеркало. |
 | principles.2 | There are no right answers. Write a word, a page, or nothing. | Правильних відповідей немає. Можна написати слово, сторінку або нічого. |
 | principles.3 | You decide what to share. Your diary is private, even from your psychologist. | Ти вирішуєш, чим ділитися. Щоденник приватний, навіть від психолога. |
-| how.title | 3–5 minutes. | 3–5 хвилин. |
 | how.steps | How you feel · A card · A question · A note, if you want · How you feel now | Як ти почуваєшся · Карта · Питання · Нотатка, якщо хочеться · Як ти тепер |
 | deck.title | The deck "Svity" | Колода «Світи» |
 | deck.sub | 117 painted cards and 351 questions in Ukrainian and English. Arches, vases, chequered floors and the sea. | 117 мальованих карт і 351 питання українською та англійською. Арки, вази, шахова підлога й море. |
