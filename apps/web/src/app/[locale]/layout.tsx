@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
     description: t("description"),
     alternates: {
       canonical: `/${locale}`,
-      languages: { ...Object.fromEntries(siteLocales.map((l) => [l, `/${l}`])), "x-default": "/en" },
+      languages: { ...Object.fromEntries(siteLocales.map((l) => [l, `/${l}`])), "x-default": "/uk" },
     },
     openGraph: { title: t("title"), description: t("description"), images: ["/brand/icon-512.png"] },
   };

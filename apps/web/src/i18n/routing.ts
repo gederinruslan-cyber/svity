@@ -3,6 +3,8 @@ import { siteLocales } from "@svity/contracts";
 
 export const routing = defineRouting({
   locales: siteLocales,
-  defaultLocale: "en",
+  defaultLocale: "uk",
   localePrefix: "always",
+  // Everyone starts in Ukrainian; other languages are one tap away in the menu.
+  localeDetection: false,
 });
