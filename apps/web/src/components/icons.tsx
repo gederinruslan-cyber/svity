@@ -154,3 +154,21 @@ export function ChevronRight({ size = 20, className }: P) {
     </svg>
   );
 }
+
+export function Lock({ size = 22, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <rect x="5" y="11" width="14" height="10" rx="2.5" />
+      <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+    </svg>
+  );
+}
+
+export function Mirror({ size = 22, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <ellipse cx="12" cy="10" rx="6" ry="7.5" />
+      <path d="M12 17.5V22M9 22h6M9.5 6.5c-1 1-1.5 2.2-1.5 3.5" />
+    </svg>
+  );
+}

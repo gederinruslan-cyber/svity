@@ -4069,3 +4069,160 @@ section,
     display: none;
   }
 }
+
+/* ---------- What Svity is ---------- */
+.about__mirror {
+  display: grid;
+  gap: 24px;
+  align-items: center;
+  max-width: 880px;
+  margin: 0 auto 40px;
+}
+.about__card {
+  position: relative;
+  justify-self: center;
+  width: min(220px, 56vw);
+  aspect-ratio: 9 / 16;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -28px rgba(38, 54, 74, 0.55);
+  transform: rotate(-2deg);
+}
+.about__card img {
+  object-fit: cover;
+}
+.about__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+.about__steps li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 14px;
+  padding: 0 0 22px;
+}
+/* A thin thread joins the three steps. */
+.about__steps li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 17.5px;
+  top: 38px;
+  bottom: 4px;
+  width: 1px;
+  background: var(--line);
+}
+.about__n {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--glass);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 17px;
+  font-variant-numeric: lining-nums;
+  color: var(--text);
+}
+.about__t {
+  margin: 6px 0 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.about__steps p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.5;
+}
+.about__q {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-size: clamp(20px, 2.2vw, 24px);
+  line-height: 1.35 !important;
+}
+.about__grid {
+  display: grid;
+  gap: 12px;
+}
+.about__item {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+.about__item .h3 {
+  margin: 0;
+}
+.about__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 4px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--accent);
+}
+.about__note {
+  max-width: 64ch;
+  margin: 28px auto 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.about__note-star {
+  color: var(--gold);
+  vertical-align: 1px;
+}
+@media (min-width: 640px) {
+  .about__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 800px) {
+  .about__mirror {
+    grid-template-columns: auto 1fr;
+    gap: 56px;
+  }
+  .about__card {
+    width: 230px;
+  }
+}
+@media (min-width: 1040px) {
+  .about__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+}
+/* Phones: icon on the left, title and text beside it (overrides the compact .panel grid). */
+@media (max-width: 639px) {
+  .about__item {
+    grid-template-columns: 44px 1fr;
+    column-gap: 14px;
+    row-gap: 4px;
+  }
+  .about__icon {
+    grid-row: span 2;
+    margin: 0;
+  }
+  .about__item .h3 {
+    font-size: 20px;
+  }
+}
+@media (min-width: 640px) {
+  .about__item {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 800px) {
+  .about__steps p {
+    font-size: 17px;
+  }
+}
