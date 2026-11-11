@@ -24,14 +24,14 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 | 2 | Hero | Slogan, subline, two CTAs (Start free → /signup / for psychologists), "Already have an account? Sign in"; signed in: Go to today's card / My diary. Card back floats (6 s loop), the star glows softly, clouds drift with light parallax. |
 | 3 | What Svity is (anchor `#how`, the nav's "How it works") | Lead line, "how the mirror works" (a real card + image → question → your answer), four principles (not fortune-telling · no right answers · you decide what to share · safe at every step), a note on what MAC are. |
 | 4 | Try today's card (demo) | The ritual, fully client-side, with a step tracker; see "Demo" below. |
-| 6 | The deck | 117 cards · 351 questions · UA/EN. Slowly drifting gallery of ~12 cards (low-res), gentle hover tilt. |
-| 7 | Diary & month | Sample diary entry (card, question, "before → after") + sample month mosaic of card thumbnails. |
-| 8 | Shadow cards | Page fades into the evening theme while this section is in view. Copy: opens after a month of practice, by your choice, never for money; grounding + support card after. Door illustration (311:5). |
-| 9 | For psychologists | Animated two-screen mock: client phone draws and confirms a card → it appears in the psychologist's laptop slot. Feature list + CTA to the psychologist tab of the Start block. |
-| 10 | Safety | Help button always visible, "Difficult day" mode, close any card without saving. Calm, short. |
-| 11 | Languages | "Українська, English — and soon Deutsch, Polski, Čeština, Italiano, Español, Français." |
-| 12 | FAQ | Accordion, 7 questions (copy below). |
-| 13 | Start | Two tabs: "For me" (create an account / sign in; "Welcome back" when signed in) / "For my clients" (create a psychologist account; "Turn on the cabinet" for a signed-in personal account; "Open the cabinet" for psychologists). |
+| 5 | The deck | 117 cards · 3 questions for each · 2 languages. Endless drifting strip (swipe/drag); the centre card is outlined and its three questions show in a panel below; tapping a card brings it to the centre. |
+| 6 | Diary & month | Sample diary entry (card, question, "before → after") + sample month mosaic of card thumbnails. |
+| 7 | Shadow cards | Page fades into the evening theme while this section is in view. Copy: opens after a month of practice, by your choice, never for money; grounding + support card after. Door illustration (311:5). |
+| 8 | For psychologists | Animated two-screen mock: client phone draws and confirms a card → it appears in the psychologist's laptop slot. Feature list + CTA to the psychologist tab of the Start block. |
+| 9 | Safety | Help button always visible, "Difficult day" mode, close any card without saving. Calm, short. |
+| 10 | Languages | "Українська, English — and soon Deutsch, Polski, Čeština, Italiano, Español, Français." |
+| 11 | FAQ | Accordion, 7 questions (copy below). |
+| 12 | Start | Two tabs: "For me" (create an account / sign in; "Welcome back" when signed in) / "For my clients" (create a psychologist account; "Turn on the cabinet" for a signed-in personal account; "Open the cabinet" for psychologists). |
 | 14 | Footer | Logo, language switch, contact e-mail, "Write to the authors" (mailto for now), © Svity. |
 
 A floating help button (lifebuoy icon) is not needed on the landing; it belongs to the app.

@@ -14,22 +14,19 @@ const RESUME_AFTER = 2500; // ms after the last touch, drag or wheel
 /**
  * An endless strip of cards that drifts on its own, like a marquee, but you can
  * also swipe (touch), drag with momentum (mouse) or scroll it. It pauses while you
- * interact or while a card is flipped. Cards lift as they pass the centre; a tap
- * flips one to show its question.
+ * interact. Cards lift as they pass the centre, and the panel below shows the
+ * centre card's three questions; a tap brings a card to the centre.
  */
 export function DeckGallery() {
   const t = useTranslations("deck");
   const tc = useTranslations("cards");
   const track = useRef<HTMLDivElement>(null);
-  const [flipped, setFlipped] = useState<number | null>(null);
-  const flippedRef = useRef<number | null>(null);
+  // Index (in the tripled strip) of the card nearest the centre.
+  const [center, setCenter] = useState<number>(CARDS.length);
+  const centerRef = useRef<number>(CARDS.length);
   const dragged = useRef(false);
   const lastTouch = useRef(0);
   const hovering = useRef(false);
-
-  useEffect(() => {
-    flippedRef.current = flipped;
-  }, [flipped]);
 
   // Lift near the centre, endless wrap, and the auto drift.
   useEffect(() => {
@@ -50,10 +47,21 @@ export function DeckGallery() {
       if (el.scrollLeft < w * 0.5) el.scrollLeft += w;
       else if (el.scrollLeft > w * 1.5) el.scrollLeft -= w;
       const mid = el.getBoundingClientRect().left + el.clientWidth / 2;
-      for (const card of items) {
-        const r = card.getBoundingClientRect();
-        const d = Math.min(1, Math.abs(r.left + r.width / 2 - mid) / (el.clientWidth / 2));
-        card.style.setProperty("--lift", (1 - d * d).toFixed(3));
+      let nearest = 0;
+      let best = Infinity;
+      for (let i = 0; i < items.length; i++) {
+        const r = items[i]!.getBoundingClientRect();
+        const off = Math.abs(r.left + r.width / 2 - mid);
+        if (off < best) {
+          best = off;
+          nearest = i;
+        }
+        const d = Math.min(1, off / (el.clientWidth / 2));
+        items[i]!.style.setProperty("--lift", (1 - d * d).toFixed(3));
+      }
+      if (nearest !== centerRef.current) {
+        centerRef.current = nearest;
+        setCenter(nearest);
       }
     };
     const request = () => {
@@ -65,7 +73,6 @@ export function DeckGallery() {
       last = now;
       const paused =
         hovering.current ||
-        flippedRef.current !== null ||
         el.classList.contains("is-dragging") ||
         performance.now() - lastTouch.current < RESUME_AFTER;
       if (paused) pos = el.scrollLeft;
@@ -192,14 +199,24 @@ export function DeckGallery() {
     };
   }, []);
 
+  /** Smoothly bring a card to the centre and hold the drift a little longer. */
+  function bringToCenter(i: number) {
+    const el = track.current!;
+    const card = el.children[i] as HTMLElement;
+    const delta = card.getBoundingClientRect().left + card.offsetWidth / 2 - (el.getBoundingClientRect().left + el.clientWidth / 2);
+    lastTouch.current = performance.now() + 4000;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollBy({ left: delta, behavior: reduced ? "auto" : "smooth" });
+  }
+
   const all = Array.from({ length: COPIES }, () => CARDS).flat();
+  const current = CARDS[center % CARDS.length]!;
+  const questions = tc.raw(current) as string[];
 
   return (
     <div className="gallery reveal">
       <div ref={track} className="gallery__track" role="list" aria-label={t("galleryLabel")}>
         {all.map((n, i) => {
-          const q = (tc.raw(n) as string[])[0]!;
-          const isFlipped = flipped === i;
           // Screen readers and keyboard see each card once (the middle copy).
           const copy = Math.floor(i / CARDS.length) !== 1;
           return (
@@ -207,29 +224,38 @@ export function DeckGallery() {
               <button
                 type="button"
                 tabIndex={copy ? -1 : undefined}
-                className={`gcard ${isFlipped ? "is-flipped" : ""}`}
-                aria-label={isFlipped ? t("flipBack", { n, q }) : t("flipLabel", { n })}
+                className={`gcard ${i === center ? "is-center" : ""}`}
+                aria-label={t("cardLabel", { n })}
                 onClick={() => {
-                  if (dragged.current) return;
-                  lastTouch.current = performance.now();
-                  setFlipped(isFlipped ? null : i);
+                  if (!dragged.current) bringToCenter(i);
                 }}
               >
-                <span className="gcard__inner">
-                  <span className="gcard__face gcard__face--front">
-                    <Image src={`/cards/demo-${n}.webp`} alt="" fill sizes="200px" draggable={false} />
-                  </span>
-                  <span className="gcard__face gcard__face--back">
-                    <span className="gcard__n">{n}</span>
-                    <span className="gcard__q">{q}</span>
-                  </span>
+                <span className="gcard__face">
+                  <Image src={`/cards/demo-${n}.webp`} alt="" fill sizes="200px" draggable={false} />
                 </span>
               </button>
             </div>
           );
         })}
       </div>
-      <p className="gallery__hint">{t("hint")}</p>
+
+      {/* The centre card's three questions. */}
+      <div className="container">
+        <div className="deck-qs glass" aria-live="polite">
+          <p className="deck-qs__head">
+            <span className="deck-qs__n">{t("cardN", { n: current })}</span>
+            <span className="deck-qs__label">{t("questionsLabel")}</span>
+          </p>
+          <ol key={current} className="deck-qs__list">
+            {questions.map((q, i) => (
+              <li key={i} style={{ "--i": i } as React.CSSProperties}>
+                {q}
+              </li>
+            ))}
+          </ol>
+        </div>
+        <p className="gallery__hint">{t("hint")}</p>
+      </div>
     </div>
   );
 }

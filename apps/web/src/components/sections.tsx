@@ -208,7 +208,7 @@ export async function Deck() {
           </div>
           <div>
             <dt>
-              <CountUp to={351} />
+              <CountUp to={3} />
             </dt>
             <dd>{t("stat2")}</dd>
           </div>

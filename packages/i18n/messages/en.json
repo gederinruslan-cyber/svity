@@ -149,12 +149,13 @@
     "title": "“Svity”",
     "sub": "117 painted cards and 351 questions in Ukrainian and English. Arches, vases, chequered floors and the sea.",
     "stat1": "cards",
-    "stat2": "questions",
+    "stat2": "questions for each",
     "stat3": "languages at launch",
     "galleryLabel": "Cards from the deck",
-    "hint": "Swipe the deck · tap a card to see its question",
-    "flipLabel": "Card {n}. Tap to see its question",
-    "flipBack": "Card {n}: {q}"
+    "hint": "Swipe the deck · tap a card to see its questions",
+    "cardLabel": "Card {n}. Show its questions",
+    "cardN": "Card {n}",
+    "questionsLabel": "Its three questions"
   },
   "diary": {
     "eyebrow": "Your diary",
