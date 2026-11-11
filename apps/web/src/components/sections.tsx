@@ -1,5 +1,7 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import { siteLocales } from "@svity/contracts";
+import { LANGUAGES } from "@/i18n/languages";
 import { CountUp } from "./CountUp";
 import { DeckGallery } from "./DeckGallery";
 import { HeroFan } from "./HeroFan";
@@ -462,19 +464,10 @@ export async function Safety() {
   );
 }
 
-const LANGS: [string, boolean][] = [
-  ["Українська", true],
-  ["English", true],
-  ["Deutsch", false],
-  ["Polski", false],
-  ["Čeština", false],
-  ["Italiano", false],
-  ["Español", false],
-  ["Français", false],
-];
 
 export async function Languages() {
   const t = await getTranslations("langs");
+  const locale = await getLocale();
   const points = [
     [Globe, t("p1t"), t("p1")],
     [Heart, t("p2t"), t("p2")],
@@ -502,10 +495,11 @@ export async function Languages() {
         <div className="langs-panel glass reveal">
           <LangWord />
           <ul className="langs">
-            {LANGS.map(([name, live]) => (
-              <li key={name} className={`lang ${live ? "is-live" : ""}`}>
-                {name}
-                {!live && <span className="lang__soon">{t("soon")}</span>}
+            {siteLocales.map((l) => (
+              <li key={l} lang={l}>
+                <a href={`/${l}`} hrefLang={l} className={`lang ${l === locale ? "is-live" : ""}`} aria-current={l === locale ? "true" : undefined}>
+                  {LANGUAGES[l].name}
+                </a>
               </li>
             ))}
           </ul>

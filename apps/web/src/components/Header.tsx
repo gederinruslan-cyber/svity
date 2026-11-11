@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
-import { localeHref, usePathname } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import { LangMenu } from "./LangMenu";
 import { ChevronRight, Close, Menu, Moon, Star4, Sun } from "./icons";
 
 type ThemePref = "day" | "evening";
@@ -11,8 +11,6 @@ const SECTIONS = ["how", "deck", "pros", "faq"] as const;
 
 export function Header() {
   const t = useTranslations("nav");
-  const locale = useLocale();
-  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [pref, setPref] = useState<ThemePref>("evening");
@@ -71,14 +69,7 @@ export function Header() {
 
   const prefs = (
     <div className="header-prefs">
-      <div className="lang-switch" role="group" aria-label={t("language")}>
-        {(["uk", "en"] as const).map((l) => (
-          // A full page load: switching the language re-renders the root <html>.
-          <a key={l} href={localeHref(l, pathname)} hrefLang={l} className={l === locale ? "is-active" : ""} aria-current={l === locale ? "true" : undefined}>
-            {l === "uk" ? "UA" : "EN"}
-          </a>
-        ))}
-      </div>
+      <LangMenu />
       <span className="header-prefs__sep" aria-hidden="true" />
       <button type="button" className="header-prefs__theme" onClick={cycleTheme} aria-label={`${t("theme")}: ${themeLabel}`} title={`${t("theme")}: ${themeLabel}`}>
         {pref === "evening" ? <Moon size={16} /> : <Sun size={16} />}
@@ -125,10 +116,14 @@ export function Header() {
           ))}
         </nav>
         <div className="site-menu__prefs">
-          <span className="field-label">
-            {t("language")} · {t("theme")}
-          </span>
-          {prefs}
+          <span className="field-label">{t("theme")}</span>
+          <button type="button" className="header-prefs__theme" onClick={cycleTheme} aria-label={`${t("theme")}: ${themeLabel}`}>
+            {pref === "evening" ? <Moon size={16} /> : <Sun size={16} />}
+          </button>
+        </div>
+        <div className="site-menu__langs">
+          <span className="field-label">{t("language")}</span>
+          <LangMenu inline />
         </div>
       </div>
     </header>

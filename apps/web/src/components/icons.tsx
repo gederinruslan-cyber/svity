@@ -208,3 +208,11 @@ export function Eye({ size = 22, className }: P) {
     </svg>
   );
 }
+
+export function ChevronDown({ size = 20, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <path d="m5.5 9.5 6.5 6.5 6.5-6.5" />
+    </svg>
+  );
+}

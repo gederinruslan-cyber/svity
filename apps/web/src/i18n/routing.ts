@@ -1,8 +1,8 @@
 import { defineRouting } from "next-intl/routing";
-import { locales } from "@svity/contracts";
+import { siteLocales } from "@svity/contracts";
 
 export const routing = defineRouting({
-  locales,
+  locales: siteLocales,
   defaultLocale: "en",
   localePrefix: "always",
 });

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import type { Me, RoomCreateInput, RoomCreated, RoomListItem } from "@svity/contracts";
+import { accountLocale, type Me, type RoomCreateInput, type RoomCreated, type RoomListItem } from "@svity/contracts";
 import { Link, useRouter } from "@/i18n/navigation";
 import { api, ApiError, getMe } from "@/lib/api";
 
@@ -98,7 +98,7 @@ function DisplayName({ onSaved }: { onSaved: () => void }) {
 function NewRoom({ onCreated }: { onCreated: (r: RoomCreated) => void }) {
   const t = useTranslations("app.cabinet");
   const tt = useTranslations("app.today");
-  const locale = useLocale() as "uk" | "en";
+  const locale = accountLocale(useLocale());
   const [f, setF] = useState<RoomCreateInput>({
     clientLabel: "",
     spread: 3,

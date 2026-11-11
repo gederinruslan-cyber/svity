@@ -5,6 +5,7 @@ import Script from "next/script";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { palette, themeCss } from "@svity/tokens";
+import { siteLocales } from "@svity/contracts";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
@@ -32,7 +33,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
     description: t("description"),
     alternates: {
       canonical: `/${locale}`,
-      languages: { uk: "/uk", en: "/en", "x-default": "/en" },
+      languages: { ...Object.fromEntries(siteLocales.map((l) => [l, `/${l}`])), "x-default": "/en" },
     },
     openGraph: { title: t("title"), description: t("description"), images: ["/brand/icon-512.png"] },
   };

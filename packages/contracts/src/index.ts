@@ -1,6 +1,14 @@
 import { z } from "zod";
 
+/** Account and question languages (the app and the API). */
 export const locales = ["uk", "en"] as const;
+/** Languages of the public site; the app falls back to English text outside `locales`. */
+export const siteLocales = ["uk", "en", "de", "pl", "cs", "it", "es", "fr"] as const;
+export type SiteLocale = (typeof siteLocales)[number];
+/** The account language for a site language. */
+export const accountLocale = (l: string): Locale => (l === "uk" ? "uk" : "en");
+/** A page language sent by the site, stored as the account language. */
+const PageLocale = z.enum(siteLocales).transform(accountLocale);
 export const Locale = z.enum(locales);
 export type Locale = z.infer<typeof Locale>;
 
@@ -15,8 +23,8 @@ export const SignUpInput = z.object({
   password: NewPassword,
   /** The browser's IANA zone, for the daily-card timer. */
   timezone: z.string().min(1).max(64),
-  /** Page language; becomes the account language. */
-  locale: Locale,
+  /** Page language; becomes the account language (uk, otherwise en). */
+  locale: PageLocale,
   /** "professional" opens the cabinet with rooms for sessions; can be changed later in the profile. */
   role: z.enum(["personal", "professional"]).default("personal"),
 });
@@ -28,7 +36,7 @@ export const SignInInput = z.object({
 });
 export type SignInInput = z.infer<typeof SignInInput>;
 
-export const ForgotPasswordInput = z.object({ email: z.email().max(254), locale: Locale });
+export const ForgotPasswordInput = z.object({ email: z.email().max(254), locale: PageLocale });
 export const ResetPasswordInput = z.object({ token: z.string().min(20).max(200), password: NewPassword });
 export const ChangePasswordInput = z.object({ current: z.string().min(1).max(200), password: NewPassword });
 
