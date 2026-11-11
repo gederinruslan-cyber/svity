@@ -1965,16 +1965,12 @@ section,
   overflow-x: auto;
   scrollbar-width: none;
   padding: 26px 0 34px;
-  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-  cursor: grab;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
   user-select: none;
 }
 .gallery__track::-webkit-scrollbar {
   display: none;
-}
-.gallery__track.is-dragging {
-  cursor: grabbing;
 }
 .gallery__item {
   flex: none;
@@ -1985,11 +1981,7 @@ section,
   display: block;
   width: clamp(130px, 15vw, 180px);
   aspect-ratio: 9 / 16;
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  perspective: 900px;
+  pointer-events: none;
   transform: translateY(calc(var(--lift) * -14px)) scale(calc(0.9 + var(--lift) * 0.1));
   transition: transform 0.2s ease-out;
 }
@@ -2001,25 +1993,9 @@ section,
   box-shadow: 0 24px 40px -26px rgba(38, 54, 74, calc(0.4 + var(--lift) * 0.3));
   transition: box-shadow 0.3s ease;
 }
-.gcard.is-center .gcard__face {
-  box-shadow:
-    0 0 0 2px color-mix(in srgb, var(--gold) 70%, transparent),
-    0 30px 50px -24px rgba(38, 54, 74, 0.6);
-}
 .gcard__face img {
   object-fit: cover;
   pointer-events: none;
-}
-.gcard:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
-  border-radius: 14px;
-}
-.gallery__hint {
-  margin: 0;
-  text-align: center;
-  font-size: 13px;
-  color: var(--text-muted);
 }
 
 /* ---------- diary: the month fills day by day ---------- */
@@ -3928,6 +3904,7 @@ section,
     gap: 16px;
   }
 }
-.gallery__hint {
-  margin-bottom: 28px;
+.gallery {
+  max-width: 1100px;
+  margin: 0 auto 20px;
 }
