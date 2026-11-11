@@ -15,10 +15,9 @@
     "themeAuto": "Auto",
     "themeDay": "Day",
     "themeEvening": "Evening",
-    "signin": "Sign in",
     "open": "Open Svity",
     "cabinet": "Cabinet",
-    "openShort": "Open"
+    "start": "Svity: create an account or sign in"
   },
   "hero": {
     "eyebrow": "Metaphorical cards for every day",
@@ -306,7 +305,8 @@
       "cabinet": "Cabinet · Svity",
       "room": "Session · Svity",
       "signup": "Create account · Svity",
-      "forgot": "Reset password · Svity"
+      "forgot": "Reset password · Svity",
+      "start": "Svity"
     },
     "nav": {
       "today": "Today",
@@ -684,6 +684,12 @@
       "done": "Password changed. Other devices were signed out.",
       "wrong": "The current password is wrong.",
       "none": "Your account has no password yet. Sign out and use “Forgot password?” to set one."
+    },
+    "start": {
+      "title": "Welcome to Svity",
+      "sub": "One card a day, a private diary, and a room for sessions with your psychologist.",
+      "create": "Create an account",
+      "signin": "I already have an account"
     }
   },
   "email": {

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { PASSWORD_MIN, type Me } from "@svity/contracts";
 import { Link, useRouter } from "@/i18n/navigation";
-import { api, ApiError } from "@/lib/api";
+import { api, ApiError, getMe } from "@/lib/api";
 import { rememberSession } from "@/lib/session";
 import { Star4 } from "../icons";
 
@@ -277,6 +277,32 @@ export function ResetPassword({ token }: { token: string }) {
           </p>
         )}
       </form>
+    </Card>
+  );
+}
+
+/** The header's single "Svity" button leads here: create an account or sign in. */
+export function Start() {
+  const t = useTranslations("app.start");
+  const router = useRouter();
+  // Already signed in: straight into the app.
+  useEffect(() => {
+    getMe()
+      .then(() => router.replace("/today"))
+      .catch(() => {});
+  }, [router]);
+  return (
+    <Card>
+      <h1 className="h3">{t("title")}</h1>
+      <p className="app-muted">{t("sub")}</p>
+      <div className="app-auth__choice">
+        <Link href="/signup" className="btn btn--block">
+          {t("create")}
+        </Link>
+        <Link href="/signin" className="btn btn--ghost btn--block">
+          {t("signin")}
+        </Link>
+      </div>
     </Card>
   );
 }

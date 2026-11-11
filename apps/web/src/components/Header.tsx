@@ -162,23 +162,11 @@ export function Header() {
           </div>
           {/* Hidden until we know (static HTML): no flash of the wrong buttons. */}
           <div className={`header-auth ${session.status === "unknown" ? "is-pending" : ""}`}>
-            {session.status === "in" ? (
-              <Link href="/today" className="btn btn--small" aria-label={t("open")}>
-                <span className="header-auth__long">{t("open")}</span>
-                <span className="header-auth__short" aria-hidden="true">
-                  {t("openShort")}
-                </span>
-              </Link>
-            ) : (
-              <>
-                <Link href="/signin" className="header-auth__signin">
-                  {t("signin")}
-                </Link>
-                <Link href="/signup" className="btn btn--small header-cta">
-                  {t("cta")}
-                </Link>
-              </>
-            )}
+            {/* One button: into the app when signed in, to the "create or sign in" choice otherwise. */}
+            <Link href={session.status === "in" ? "/today" : "/start"} className="btn btn--small header-auth__btn" aria-label={session.status === "in" ? t("open") : t("start")}>
+              SVITY
+              <Star4 size={9} className="logo__star" />
+            </Link>
           </div>
           <button
             type="button"
