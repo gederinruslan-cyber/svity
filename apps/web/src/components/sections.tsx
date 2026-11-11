@@ -513,20 +513,33 @@ export async function Languages() {
   );
 }
 
+const FAQ_CONTACT = "hello@svity.app";
+
 export async function Faq() {
   const t = await getTranslations("faq");
-  const qs = [1, 2, 3, 4, 5, 6, 7] as const;
+  const qs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const;
   return (
     <section className="section" id="faq" aria-labelledby="faq-title">
-      <div className="container container--narrow">
-        <Head id="faq-title" eyebrow={t("eyebrow")} title={t("title")} />
+      <div className="container faq-wrap">
+        <Head id="faq-title" eyebrow={t("eyebrow")} title={t("title")} sub={t("sub")} />
         <div className="faq reveal">
           {qs.map((n) => (
-            <details key={n} className="faq__item">
-              <summary>{t(`q${n}`)}</summary>
+            <details key={n} className="faq__item" name="faq" open={n === 1}>
+              <summary>
+                <span className="faq__n">{String(n).padStart(2, "0")}</span>
+                <span className="faq__q">{t(`q${n}`)}</span>
+                <span className="faq__toggle" aria-hidden="true" />
+              </summary>
               <p>{t(`a${n}`)}</p>
             </details>
           ))}
+        </div>
+        <div className="faq-contact glass reveal">
+          <p className="faq-contact__t">{t("askTitle")}</p>
+          <p className="faq-contact__b">{t("askBody")}</p>
+          <a className="btn btn--ghost btn--small" href={`mailto:${FAQ_CONTACT}`}>
+            {t("askCta")}
+          </a>
         </div>
       </div>
     </section>
