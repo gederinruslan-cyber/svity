@@ -64,6 +64,13 @@
       "when": 1794414274602,
       "tag": "0008_stormy_gressill",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1794416071242,
+      "tag": "0009_fine_the_stranger",
+      "breakpoints": true
     }
   ]
 }

@@ -45,7 +45,7 @@
     "continue": "I'm done",
     "after": "How are you now?",
     "done": "This is how a card a day feels.",
-    "doneSub": "Join the waitlist to get yours every day.",
+    "doneSub": "Create an account to get yours every day.",
     "again": "Start over",
     "privacy": "Nothing you write here leaves your browser.",
     "cardAlt": "Card {n} of the deck “Svity”",
@@ -223,7 +223,7 @@
     "q5": "Which languages?",
     "a5": "Ukrainian and English at launch; German, Polish, Czech, Italian, Spanish and French soon.",
     "q6": "When can I start?",
-    "a6": "Join the waitlist and we'll write as soon as Svity opens.",
+    "a6": "Right now: create an account, it's free.",
     "q7": "I'm a psychologist. How do I start working with clients?",
     "a7": "Create an account and choose “As a psychologist”, or turn on “Sessions with clients” in your profile. The cabinet with rooms opens right away, free during the beta."
   },
@@ -232,25 +232,6 @@
     "title": "Your first card is waiting",
     "tabUser": "For me",
     "tabPro": "For my clients",
-    "email": "E-mail",
-    "emailPlaceholder": "you@example.com",
-    "name": "Name",
-    "specialization": "Specialization",
-    "spec_psychologist": "Psychologist",
-    "spec_psychotherapist": "Psychotherapist",
-    "spec_coach": "Coach",
-    "spec_other": "Other",
-    "country": "Country",
-    "usesCards": "I already work with metaphorical cards",
-    "message": "Anything you'd like to tell us (optional)",
-    "submitUser": "Join the waitlist",
-    "submitPro": "Apply for the beta",
-    "sending": "Sending…",
-    "successUser": "Thank you. We'll write when Svity is ready for you.",
-    "successPro": "Thank you. We'll be in touch about the beta soon.",
-    "errorInvalid": "Please check the fields and try again.",
-    "errorRate": "Too many attempts. Please try again in a few minutes.",
-    "errorServer": "Something went wrong. Please try again.",
     "userSub": "An e-mail and a password, and you're in. The card of the day, the diary and shadow cards are free.",
     "create": "Create an account",
     "haveAccount": "Already have an account?",
@@ -309,8 +290,7 @@
       "room": "Session · Svity",
       "signup": "Create account · Svity",
       "forgot": "Reset password · Svity",
-      "start": "Svity",
-      "admin": "Admin"
+      "start": "Svity"
     },
     "nav": {
       "today": "Today",
@@ -318,8 +298,7 @@
       "signOut": "Sign out",
       "home": "Svity home",
       "profile": "Profile",
-      "cabinet": "Cabinet",
-      "admin": "Admin"
+      "cabinet": "Cabinet"
     },
     "signin": {
       "title": "Sign in to Svity",
@@ -704,25 +683,6 @@
       "sub": "One card a day, a private diary, and a room for sessions with your psychologist.",
       "create": "Create an account",
       "signin": "I already have an account"
-    },
-    "admin": {
-      "title": "Beta applications",
-      "status": {
-        "pending": "New",
-        "approved": "Approved",
-        "rejected": "Rejected"
-      },
-      "empty": "Nothing here.",
-      "usesCards": "Already works with cards",
-      "noCards": "Hasn't worked with cards",
-      "accountPro": "account: psychologist",
-      "accountPersonal": "account: personal",
-      "noAccount": "no account yet",
-      "decided": "Decided {date}",
-      "approve": "Approve",
-      "reject": "Reject",
-      "revoke": "Revoke access",
-      "revokeConfirm": "Revoke beta access? The account becomes personal again; its rooms stay but can't be opened."
     }
   },
   "email": {
@@ -733,16 +693,6 @@
       "button": "Set a new password",
       "expires": "The link works once, for 30 minutes.",
       "ignore": "If it wasn't you, ignore this e-mail: your password stays the same.",
-      "footer": "Svity · cards for daily reflection"
-    },
-    "betaApproved": {
-      "subject": "You're in the Svity beta",
-      "title": "Welcome to the beta",
-      "bodyAccount": "Your application was approved. Rooms for sessions with clients are now open in your cabinet.",
-      "bodyNoAccount": "Your application was approved. Create an account with this e-mail, and the cabinet with rooms for sessions will be there.",
-      "buttonAccount": "Open the cabinet",
-      "buttonNoAccount": "Create an account",
-      "note": "Questions or ideas from your practice: just reply to this e-mail.",
       "footer": "Svity · cards for daily reflection"
     }
   }

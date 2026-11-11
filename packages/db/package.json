@@ -10,8 +10,7 @@
     "generate": "drizzle-kit generate",
     "migrate": "drizzle-kit migrate",
     "deck:import": "tsx --env-file-if-exists=../../.env src/import-deck.ts",
-    "user:role": "tsx --env-file-if-exists=../../.env src/set-role.ts",
-    "user:admin": "tsx --env-file-if-exists=../../.env src/set-admin.ts"
+    "user:role": "tsx --env-file-if-exists=../../.env src/set-role.ts"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.4",

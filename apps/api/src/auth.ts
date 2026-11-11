@@ -24,7 +24,6 @@ export function toMe(u: User): Me {
     addressForm: u.addressForm,
     timezone: u.timezone,
     displayName: u.displayName,
-    isAdmin: u.isAdmin,
     reminderTime: u.reminderTime as Me["reminderTime"],
     createdAt: u.createdAt.toISOString(),
   };
@@ -196,12 +195,3 @@ export function authRoutes(db: Db, opts: { webOrigin: string; mailer: Mailer; se
   return app;
 }
 
-export function requireAdmin(db: Db): MiddlewareHandler<AuthEnv> {
-  return async (c, next) => {
-    const user = await findUser(db, c);
-    if (!user) return c.json({ ok: false, error: "unauthorized" }, 401);
-    if (!user.isAdmin) return c.json({ ok: false, error: "forbidden" }, 403);
-    c.set("user", user);
-    await next();
-  };
-}

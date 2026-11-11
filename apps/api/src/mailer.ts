@@ -41,15 +41,6 @@ export function passwordResetEmail(to: string, link: string, locale: Locale): Em
   return layout({ locale, subject: m.subject, title: m.title, body: m.body, button: m.button, link, notes: [m.expires, m.ignore], footer: m.footer }, to);
 }
 
-/** Sent when the Svity team approves a beta application. */
-export function betaApprovedEmail(to: string, link: string, locale: Locale, hasAccount: boolean): Email {
-  const m = (locale === "uk" ? uk : en).email.betaApproved;
-  return layout(
-    { locale, subject: m.subject, title: m.title, body: hasAccount ? m.bodyAccount : m.bodyNoAccount, button: hasAccount ? m.buttonAccount : m.buttonNoAccount, link, notes: [m.note], footer: m.footer },
-    to,
-  );
-}
-
 /** Prints e-mails to the API console. */
 export const consoleMailer: Mailer = {
   async send(e) {

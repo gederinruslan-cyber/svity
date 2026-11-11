@@ -12,29 +12,6 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 
-export const waitlistEntries = pgTable("waitlist_entries", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  email: text("email").notNull().unique(),
-  locale: text("locale").notNull(),
-  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-});
-
-export const betaApplications = pgTable("beta_applications", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  name: text("name").notNull(),
-  email: text("email").notNull().unique(),
-  specialization: text("specialization").notNull(),
-  country: text("country").notNull(),
-  usesCards: boolean("uses_cards").notNull(),
-  message: text("message"),
-  locale: text("locale").notNull(),
-  /** Approving makes the account with this e-mail a psychologist (now, or when it signs up). */
-  status: text("status", { enum: ["pending", "approved", "rejected"] }).notNull().default("pending"),
-  decidedAt: timestamp("decided_at", { withTimezone: true }),
-  decidedBy: uuid("decided_by"),
-  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-});
-
 // ---------- accounts ----------
 
 export const users = pgTable("users", {
@@ -43,8 +20,6 @@ export const users = pgTable("users", {
   /** argon2id (PHC string). Null for accounts made before passwords: they set one via "Forgot password". */
   passwordHash: text("password_hash"),
   role: text("role", { enum: ["personal", "professional"] }).notNull().default("personal"),
-  /** Svity team: approves psychologists. Separate from the role. Set with `pnpm user:admin`. */
-  isAdmin: boolean("is_admin").notNull().default(false),
   /** Shown to clients in rooms: "Olena invites you to a session". */
   displayName: text("display_name"),
   locale: text("locale").notNull(),

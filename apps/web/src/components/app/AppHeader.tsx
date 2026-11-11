@@ -13,14 +13,10 @@ export function AppHeader() {
   const locale = useLocale();
   const pathname = usePathname();
   const [pro, setPro] = useState(false);
-  const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
     getMe()
-      .then((m) => {
-        setPro(m.role === "professional");
-        setAdmin(m.isAdmin);
-      })
+      .then((m) => setPro(m.role === "professional"))
       .catch(() => {});
   }, []);
 
@@ -29,7 +25,6 @@ export function AppHeader() {
     ["/diary", t("diary")],
     ...(pro ? ([["/cabinet", t("cabinet")]] as [string, string][]) : []),
     ["/profile", t("profile")],
-    ...(admin ? ([["/admin", t("admin")]] as [string, string][]) : []),
   ];
 
   return (

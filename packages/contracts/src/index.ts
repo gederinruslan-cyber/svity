@@ -4,32 +4,6 @@ export const locales = ["uk", "en"] as const;
 export const Locale = z.enum(locales);
 export type Locale = z.infer<typeof Locale>;
 
-// `website` is a honeypot: real users never see or fill it.
-const honeypot = { website: z.string().max(0).optional() };
-
-export const WaitlistInput = z.object({
-  email: z.email().max(254),
-  locale: Locale,
-  ...honeypot,
-});
-export type WaitlistInput = z.infer<typeof WaitlistInput>;
-
-export const specializations = ["psychologist", "psychotherapist", "coach", "other"] as const;
-
-export const BetaApplicationInput = z.object({
-  name: z.string().trim().min(1).max(120),
-  email: z.email().max(254),
-  specialization: z.enum(specializations),
-  country: z.string().trim().min(1).max(80),
-  usesCards: z.boolean(),
-  message: z.string().trim().max(2000).optional(),
-  locale: Locale,
-  ...honeypot,
-});
-export type BetaApplicationInput = z.infer<typeof BetaApplicationInput>;
-
-export type SubmitResult = { ok: true } | { ok: false; error: "invalid" | "rate_limited" | "server" };
-
 // ---------- auth ----------
 
 /** Length is the only rule (NIST 800-63B): no forced symbols or digits. */
@@ -101,8 +75,6 @@ export interface Me {
   timezone: string;
   reminderTime: (typeof reminderTimes)[number] | null;
   displayName: string | null;
-  /** Svity team: sees /admin. */
-  isAdmin: boolean;
   createdAt: string;
 }
 
@@ -341,25 +313,3 @@ export interface PsychologistRoomView {
 
 export type RoomView = ClientRoomView | PsychologistRoomView;
 
-// ---------- admin ----------
-
-export const applicationStatuses = ["pending", "approved", "rejected"] as const;
-export type ApplicationStatus = (typeof applicationStatuses)[number];
-
-export interface AdminApplication {
-  id: string;
-  name: string;
-  email: string;
-  specialization: (typeof specializations)[number];
-  country: string;
-  usesCards: boolean;
-  message: string | null;
-  locale: Locale;
-  status: ApplicationStatus;
-  createdAt: string;
-  decidedAt: string | null;
-  /** Whether an account with this e-mail exists, and its role now. */
-  account: { role: Me["role"] } | null;
-}
-
-export const ApplicationDecision = z.object({ status: z.enum(applicationStatuses) });

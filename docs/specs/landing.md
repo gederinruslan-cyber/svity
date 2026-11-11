@@ -7,7 +7,7 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 ## Goals
 1. Show what Svity is in 10 seconds: one card a day, a question, a quiet space; and a room for psychologists.
 2. Let visitors feel the ritual (interactive demo, no account).
-3. Collect a waitlist (users) and beta applications (psychologists; the spec needs 10–15 for the beta).
+3. Turn visitors into accounts: sign-up for yourself or as a psychologist (self-service, no applications).
 
 ## Routes and i18n
 - `/uk/` and `/en/`, static (SSG), `hreflang` alternates + `x-default` → `/en/`.
@@ -20,19 +20,19 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 
 | # | Section | Behavior |
 |---|---|---|
-| 1 | Header | Logo SVITY, anchors (Як це працює / Колода / Для психологів / Питання), language switch, theme switch (auto/day/evening), CTA "Join the waitlist". Glass panel on scroll. |
-| 2 | Hero | Slogan, subline, two CTAs (waitlist / for psychologists). Card back floats (6 s loop), the star glows softly, clouds drift with light parallax. |
+| 1 | Header | Logo SVITY, anchors (Як це працює / Колода / Для психологів / Питання), language switch, theme switch (auto/day/evening), one "SVITY" button (signed in → /today, signed out → /start: create an account or sign in). Glass panel on scroll. |
+| 2 | Hero | Slogan, subline, two CTAs (Start free → /signup / for psychologists), "Already have an account? Sign in"; signed in: Go to today's card / My diary. Card back floats (6 s loop), the star glows softly, clouds drift with light parallax. |
 | 3 | Try today's card (demo) | The ritual, fully client-side; see "Demo" below. |
 | 4 | Not fortune-telling | Three principles (mirror · no right answers · you decide what to share). Reveal on scroll. |
 | 5 | How it works | 5 steps: feeling → card → question → note → feeling. "3–5 minutes. No streaks." Steps highlight as you scroll. |
 | 6 | The deck | 117 cards · 351 questions · UA/EN. Slowly drifting gallery of ~12 cards (low-res), gentle hover tilt. |
 | 7 | Diary & month | Sample diary entry (card, question, "before → after") + sample month mosaic of card thumbnails. |
 | 8 | Shadow cards | Page fades into the evening theme while this section is in view. Copy: opens after a month of practice, by your choice, never for money; grounding + support card after. Door illustration (311:5). |
-| 9 | For psychologists | Animated two-screen mock: client phone draws and confirms a card → it appears in the psychologist's laptop slot. Feature list + CTA to beta form. |
+| 9 | For psychologists | Animated two-screen mock: client phone draws and confirms a card → it appears in the psychologist's laptop slot. Feature list + CTA to the psychologist tab of the Start block. |
 | 10 | Safety | Help button always visible, "Difficult day" mode, close any card without saving. Calm, short. |
 | 11 | Languages | "Українська, English — and soon Deutsch, Polski, Čeština, Italiano, Español, Français." |
 | 12 | FAQ | Accordion, 7 questions (copy below). |
-| 13 | Forms | Two tabs: "For me" (waitlist) / "For my clients" (psychologist beta). |
+| 13 | Start | Two tabs: "For me" (create an account / sign in; "Welcome back" when signed in) / "For my clients" (create a psychologist account; "Turn on the cabinet" for a signed-in personal account; "Open the cabinet" for psychologists). |
 | 14 | Footer | Logo, language switch, contact e-mail, "Write to the authors" (mailto for now), © Svity. |
 
 A floating help button (lifebuoy icon) is not needed on the landing; it belongs to the app.
@@ -44,7 +44,7 @@ Reuses the ritual component that M1 will use in the product (build it as a real 
 2. Deck with the card back. Hover lifts 4 px, lower cards fan out. Tap → ritual moment: deck lifts, gold glow from the star, 6 gold sparks (1.1 s) → flip (rotateY 180°, 0.9 s, `cubic-bezier(.2,.75,.2,1)`) → `navigator.vibrate(12)` where supported.
 3. Card + one random question of its three, in the page language. Optional note field (not stored).
 4. "Not my card · take another (N more)" — up to 2 repicks in the demo, no repeats.
-5. "How are you now?" — same chips → golden star unfolds (0.9 s) + "This is how a card a day feels. Join the waitlist to get yours." + CTA.
+5. "How are you now?" — same chips → golden star unfolds (0.9 s) + "This is how a card a day feels. Create an account to get yours every day." + CTA.
 - Nothing is sent to the server. Reload starts over.
 - `prefers-reduced-motion`: no glow, sparks or flip; a cross-fade instead.
 
@@ -66,7 +66,7 @@ Shadow candidates (26, 29, 65, 68, 69, 76, 81, 96, 100) and the 14 flagged quest
 |---|---|---|
 | hero.title | One card a day to meet yourself | Одна карта на день, щоб зустрітися із собою |
 | hero.sub | …and a room for the work you do together with your psychologist. | …і кімната для роботи, яку ви робите разом із психологом. |
-| hero.cta1 | Join the waitlist | Долучитися до списку очікування |
+| hero.cta1 | Start free | Почати безкоштовно |
 | hero.cta2 | For psychologists | Для психологів |
 | demo.title | Try today's card | Спробуй карту дня |
 | demo.ask | How are you right now? | Як ти зараз? |
@@ -74,7 +74,7 @@ Shadow candidates (26, 29, 65, 68, 69, 76, 81, 96, 100) and the 14 flagged quest
 | demo.repick | Not my card · take another ({n} more) | Не моя карта · взяти іншу (ще {n}) |
 | demo.note | A word, a page, or nothing at all | Слово, сторінка або нічого |
 | demo.after | How are you now? | Як ти тепер? |
-| demo.done | This is how a card a day feels. Join the waitlist to get yours. | Так відчувається карта дня. Долучайся до списку очікування, щоб отримувати свою. |
+| demo.done | This is how a card a day feels. Create an account to get yours every day. | Так відчувається карта дня. Створи акаунт, щоб отримувати свою щодня. |
 | principles.1 | It's not fortune-telling. Cards predict nothing; they are a mirror. | Це не ворожіння. Карти нічого не передбачають – це дзеркало. |
 | principles.2 | There are no right answers. Write a word, a page, or nothing. | Правильних відповідей немає. Можна написати слово, сторінку або нічого. |
 | principles.3 | You decide what to share. Your diary is private, even from your psychologist. | Ти вирішуєш, чим ділитися. Щоденник приватний, навіть від психолога. |
@@ -89,7 +89,7 @@ Shadow candidates (26, 29, 65, 68, 69, 76, 81, 96, 100) and the 14 flagged quest
 | pro.title | A room for your sessions | Кімната для твоїх сесій |
 | pro.sub | Send a link. Your client draws cards on their phone; you see only the cards they choose to share. | Надішли посилання. Клієнт тягне карти на своєму телефоні, а ти бачиш лише ті, якими клієнт ділиться. |
 | pro.features | 1 or 3 cards: What is · What's in the way · What will help · Face-down or face-up choice · Prompts and deepening questions for you · Private session notes · A question for the week sent to the client's diary | 1 або 3 карти: Що є · Що заважає · Що допоможе · Вибір наосліп або відкрито · Підказки й поглиблювальні питання для тебе · Приватні нотатки сесії · Питання на тиждень – у щоденник клієнта |
-| pro.cta | Apply for the beta | Подати заявку на бету |
+| pro.cta | Create a psychologist account | Створити акаунт психолога |
 | safety.title | Gentle by design | Бережно з першого дотику |
 | safety.sub | Help is one tap away on every screen. Any card can be closed without saving. On a hard day, Svity offers a soft card and a breath instead of a question. | Допомога – в один дотик на кожному екрані. Будь-яку карту можна закрити без збереження. У важкий день Svity запропонує м'яку карту й дихання замість питання. |
 | langs.title | In your language | Твоєю мовою |
@@ -103,14 +103,11 @@ Shadow candidates (26, 29, 65, 68, 69, 76, 81, 96, 100) and the 14 flagged quest
 3. Is it free? / Це безкоштовно? — The daily card, diary, check-ins and help are free. Extra practices will be part of Svity Plus.
 4. I have the printed deck. / У мене є друкована колода. — The code in the box will unlock Svity Plus for 12 months.
 5. Which languages? / Якими мовами? — Ukrainian and English at launch; six more soon.
-6. When can I start? / Коли можна почати? — Join the waitlist and we'll write as soon as it's open.
-7. I'm a psychologist. How do I join the beta? / Я психолог. Як потрапити в бету? — Apply with the form below; we're inviting 10–15 specialists first.
+6. When can I start? / Коли можна почати? — Right now: create an account, it's free.
+7. I'm a psychologist. How do I start working with clients? / Я психолог. Як почати працювати з клієнтами? — Create an account as a psychologist, or turn on "Sessions with clients" in the profile; the cabinet opens right away.
 
 ## Forms
-- Waitlist: e-mail (required), language (prefilled from page). Submit → `POST /v1/waitlist`.
-- Psychologist beta: name, e-mail, specialization (psychologist / psychotherapist / coach / other), country, works with metaphorical cards (yes/no), message (optional). Submit → `POST /v1/beta-applications`.
-- Validation with shared Zod schemas (`packages/contracts`). Duplicate e-mail returns success (no enumeration). Rate limit per IP. Honeypot field against bots.
-- Storage: tables `waitlist_entries`, `beta_applications` (with `locale`, `created_at`).
+- No forms on the landing: accounts are created on /signup (`?role=professional` preselects the psychologist choice). Signed-in state comes from `/v1/me` with a localStorage hint (`apps/web/src/lib/session.ts`).
 
 ## Design and assets
 - Tokens from spec §13: Pearl Ivory background, Deep Ink text, Ocean Breeze buttons, gold decoration only, Night palette for evening. Fonts: Cormorant Garamond 500 (headings, questions, logo with 0.08em letter-spacing) and Manrope 400–700.
