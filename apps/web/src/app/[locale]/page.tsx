@@ -32,8 +32,8 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       <ViewTransition>
         <main>
           <Hero />
-          <Demo />
           <Principles />
+          <Demo />
           <HowStory />
           <Deck />
           <Diary />

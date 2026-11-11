@@ -20,10 +20,10 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 
 | # | Section | Behavior |
 |---|---|---|
-| 1 | Header | Logo SVITY, anchors (Як це працює / Колода / Для психологів / Питання), language switch, theme switch (auto/day/evening), one "SVITY" button (signed in → /today, signed out → /start: create an account or sign in). Glass panel on scroll. |
+| 1 | Header | Logo SVITY, anchors (Як це працює / Колода / Для психологів / Питання), language switch, theme switch (auto/day/evening), one action button ("Get started" → /start, or "Open" → /today when signed in). Becomes a floating glass bar on scroll. |
 | 2 | Hero | Slogan, subline, two CTAs (Start free → /signup / for psychologists), "Already have an account? Sign in"; signed in: Go to today's card / My diary. Card back floats (6 s loop), the star glows softly, clouds drift with light parallax. |
-| 3 | Try today's card (demo) | The ritual, fully client-side; see "Demo" below. |
-| 4 | Not fortune-telling | Three principles (mirror · no right answers · you decide what to share). Reveal on scroll. |
+| 3 | What Svity is | Lead line, "how the mirror works" (a real card + image → question → your answer), four principles (not fortune-telling · no right answers · you decide what to share · safe at every step), a note on what MAC are. |
+| 4 | Try today's card (demo) | The ritual, fully client-side, with a step tracker; see "Demo" below. |
 | 5 | How it works | 5 steps: feeling → card → question → note → feeling. "3–5 minutes." Steps highlight as you scroll. |
 | 6 | The deck | 117 cards · 351 questions · UA/EN. Slowly drifting gallery of ~12 cards (low-res), gentle hover tilt. |
 | 7 | Diary & month | Sample diary entry (card, question, "before → after") + sample month mosaic of card thumbnails. |
