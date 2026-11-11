@@ -194,6 +194,18 @@ export function Profile() {
         </fieldset>
 
         <fieldset className="profile__field">
+          <legend className="field-label">{t("work")}</legend>
+          <div className="segmented">
+            {(["personal", "professional"] as const).map((r) => (
+              <button key={r} type="button" aria-pressed={me.role === r} className={me.role === r ? "is-on" : ""} onClick={() => update({ role: r })}>
+                {t(r === "personal" ? "workPersonal" : "workProfessional")}
+              </button>
+            ))}
+          </div>
+          <p className="app-hint">{t("workHint")}</p>
+        </fieldset>
+
+        <fieldset className="profile__field">
           <legend className="field-label">{t("theme")}</legend>
           <div className="segmented">
             {(["auto", "day", "evening"] as const).map((p) => (

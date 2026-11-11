@@ -128,13 +128,14 @@ export function SignIn() {
   );
 }
 
-export function SignUp() {
+export function SignUp({ initialRole = "personal" }: { initialRole?: Me["role"] }) {
   const t = useTranslations("app.signup");
   const ts = useTranslations("app.signin");
   const locale = useLocale();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState<Me["role"]>(initialRole);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -144,8 +145,8 @@ export function SignUp() {
     setError(null);
     try {
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      rememberSession((await api<{ me: Me }>("/v1/auth/signup", { method: "POST", body: { email, password, timezone, locale } })).me);
-      router.replace("/today");
+      rememberSession((await api<{ me: Me }>("/v1/auth/signup", { method: "POST", body: { email, password, timezone, locale, role } })).me);
+      router.replace(role === "professional" ? "/cabinet" : "/today");
     } catch (err) {
       const k = errorKey(err);
       setError(k === "email_taken" ? "taken" : k === "rateLimited" ? k : "error");
@@ -158,6 +159,17 @@ export function SignUp() {
       <form onSubmit={submit}>
         <h1 className="h3">{t("title")}</h1>
         <p className="app-muted">{t("sub")}</p>
+        <fieldset className="app-auth__role">
+          <legend className="field-label">{t("roleLabel")}</legend>
+          <div className="segmented">
+            {(["personal", "professional"] as const).map((r) => (
+              <button key={r} type="button" aria-pressed={role === r} className={role === r ? "is-on" : ""} onClick={() => setRole(r)}>
+                {t(r === "personal" ? "rolePersonal" : "roleProfessional")}
+              </button>
+            ))}
+          </div>
+          <p className="app-hint">{t(role === "personal" ? "rolePersonalHint" : "roleProfessionalHint")}</p>
+        </fieldset>
         <EmailField value={email} onChange={setEmail} />
         <PasswordField label={t("password")} value={password} onChange={setPassword} isNew hint={t("passwordHint", { n: PASSWORD_MIN })} />
         <button type="submit" className="btn btn--block" disabled={busy || password.length < PASSWORD_MIN}>

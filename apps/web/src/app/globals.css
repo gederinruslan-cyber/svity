@@ -3770,3 +3770,16 @@ section,
   gap: 10px;
   margin-top: 8px;
 }
+.app-auth__role {
+  border: 0;
+  margin: 4px 0 14px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.app-auth__role .segmented {
+  justify-self: start;
+}
+.app-auth__role .app-hint {
+  margin: 0;
+}

@@ -2,7 +2,7 @@ import { Hono, type Context, type MiddlewareHandler } from "hono";
 import { deleteCookie, getCookie, setCookie } from "hono/cookie";
 import { assertTimeZone } from "@svity/core";
 import { ChangePasswordInput, ForgotPasswordInput, ResetPasswordInput, SignInInput, SignUpInput, type Me } from "@svity/contracts";
-import { and, betaApplications, eq, gt, isNull, ne, passwordResets, sessions, users, type Db } from "@svity/db";
+import { and, eq, gt, isNull, ne, passwordResets, sessions, users, type Db } from "@svity/db";
 import { hashToken, newToken } from "./crypto";
 import { DUMMY_HASH, hashPassword, verifyPassword } from "./password";
 import { passwordResetEmail, type Mailer } from "./mailer";
@@ -101,7 +101,7 @@ export function authRoutes(db: Db, opts: { webOrigin: string; mailer: Mailer; se
   app.post("/signup", signUpLimit, async (c) => {
     const parsed = SignUpInput.safeParse(await c.req.json().catch(() => null));
     if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
-    const { password, locale } = parsed.data;
+    const { password, locale, role } = parsed.data;
     const email = parsed.data.email.toLowerCase();
     let timezone = parsed.data.timezone;
     try {
@@ -110,12 +110,6 @@ export function authRoutes(db: Db, opts: { webOrigin: string; mailer: Mailer; se
       timezone = "Europe/Kyiv";
     }
     const passwordHash = await hashPassword(password);
-    // An approved beta application for this e-mail makes the new account a psychologist.
-    const [approved] = await db
-      .select({ id: betaApplications.id })
-      .from(betaApplications)
-      .where(and(eq(betaApplications.email, email), eq(betaApplications.status, "approved")));
-    const role = approved ? "professional" : "personal";
     const [user] = await db.insert(users).values({ email, passwordHash, locale, timezone, role }).onConflictDoNothing().returning();
     if (!user) return c.json({ ok: false, error: "email_taken" }, 409);
     await startSession(c, user.id);

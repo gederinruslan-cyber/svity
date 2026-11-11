@@ -10,8 +10,10 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/signup">
   return { title: t("signup"), robots: { index: false } };
 }
 
-export default async function SignUpPage({ params }: PageProps<"/[locale]/signup">) {
+export default async function SignUpPage({ params, searchParams }: PageProps<"/[locale]/signup">) {
   const { locale } = await params;
   if (hasLocale(routing.locales, locale)) setRequestLocale(locale);
-  return <SignUp />;
+  // ?role=professional: from the landing's "for psychologists" links.
+  const { role } = await searchParams;
+  return <SignUp initialRole={role === "professional" ? "professional" : "personal"} />;
 }

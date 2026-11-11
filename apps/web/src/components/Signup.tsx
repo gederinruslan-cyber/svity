@@ -1,36 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
-import { specializations, type SubmitResult } from "@svity/contracts";
-import { Link } from "@/i18n/navigation";
-import { useSession } from "@/lib/session";
-import { Ornament, Star4 } from "./icons";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000";
+import { useTranslations } from "next-intl";
+import { Link, useRouter } from "@/i18n/navigation";
+import { api } from "@/lib/api";
+import { rememberSession, useSession } from "@/lib/session";
+import type { Me } from "@svity/contracts";
+import { Ornament } from "./icons";
 
 type Tab = "user" | "pro";
-type Status =
-  "idle" | "sending" | "done" | "invalid" | "rate_limited" | "server";
 
-async function submit(path: string, body: unknown): Promise<SubmitResult> {
-  try {
-    const res = await fetch(`${API_URL}${path}`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    return (await res.json()) as SubmitResult;
-  } catch {
-    return { ok: false, error: "server" };
-  }
-}
-
+/** The landing's "Start" block: an account for yourself, or a psychologist account. */
 export function Signup() {
   const t = useTranslations("form");
-  const locale = useLocale();
+  const router = useRouter();
   const [tab, setTab] = useState<Tab>("user");
-  const [status, setStatus] = useState<Status>("idle");
+  const [busy, setBusy] = useState(false);
   const session = useSession();
 
   // `#join-pro` links (psychologist CTAs) open the second tab.
@@ -43,32 +28,17 @@ export function Signup() {
     return () => window.removeEventListener("hashchange", sync);
   }, []);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const f = new FormData(e.currentTarget);
-    const str = (k: string) => String(f.get(k) ?? "").trim();
-    setStatus("sending");
-    const res = await submit("/v1/beta-applications", {
-      name: str("name"),
-      email: str("email"),
-      specialization: str("specialization"),
-      country: str("country"),
-      usesCards: f.get("usesCards") === "on",
-      message: str("message") || undefined,
-      locale,
-      website: str("website"),
-    });
-    setStatus(res.ok ? "done" : res.error);
+  async function turnOnCabinet() {
+    setBusy(true);
+    try {
+      rememberSession((await api<{ me: Me }>("/v1/me", { method: "PATCH", body: { role: "professional" } })).me);
+      router.push("/cabinet");
+    } catch {
+      setBusy(false);
+    }
   }
 
-  const errorText =
-    status === "invalid"
-      ? t("errorInvalid")
-      : status === "rate_limited"
-        ? t("errorRate")
-        : status === "server"
-          ? t("errorServer")
-          : null;
+  const pending = session.status === "unknown" ? "is-pending" : "";
 
   return (
     <section className="section signup" id="join" aria-labelledby="join-title">
@@ -85,27 +55,15 @@ export function Signup() {
         <div className="signup__card glass reveal">
           <div className="tabs" role="tablist">
             {(["user", "pro"] as const).map((k) => (
-              <button
-                key={k}
-                type="button"
-                role="tab"
-                aria-selected={tab === k}
-                className={`tab ${tab === k ? "is-active" : ""}`}
-                onClick={() => {
-                  setTab(k);
-                  setStatus("idle");
-                }}
-              >
+              <button key={k} type="button" role="tab" aria-selected={tab === k} className={`tab ${tab === k ? "is-active" : ""}`} onClick={() => setTab(k)}>
                 {k === "user" ? t("tabUser") : t("tabPro")}
               </button>
             ))}
           </div>
 
-          {tab === "user" ? (
-            <div
-              className={`signup__account ${session.status === "unknown" ? "is-pending" : ""}`}
-            >
-              {session.status === "in" ? (
+          <div className={`signup__account ${pending}`}>
+            {tab === "user" ? (
+              session.status === "in" ? (
                 <>
                   <p className="h3">{t("welcomeTitle")}</p>
                   <p className="signup__lead">{t("welcomeSub")}</p>
@@ -128,121 +86,33 @@ export function Signup() {
                     {t("haveAccount")} <Link href="/signin">{t("signin")}</Link>
                   </p>
                 </>
-              )}
-            </div>
-          ) : session.status === "in" && session.role === "professional" ? (
-            <div className="signup__account">
-              <p className="signup__lead">{t("proIn")}</p>
-              <Link href="/cabinet" className="btn btn--large btn--block">
-                {t("openCabinet")}
-              </Link>
-            </div>
-          ) : status === "done" ? (
-            <div className="signup__done" role="status">
-              <span className="saved-star" aria-hidden="true">
-                <Star4 size={36} />
-              </span>
-              <p className="h3">{t("successPro")}</p>
-            </div>
-          ) : (
-            <form className="form" onSubmit={onSubmit} noValidate={false}>
-              {/* Honeypot: hidden from people, tempting for bots. */}
-              <input
-                type="text"
-                name="website"
-                className="hp"
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden="true"
-              />
-
-              <p className="signup__lead">{t("proSub")}</p>
-              {
-                <label className="form__row">
-                  <span>{t("name")}</span>
-                  <input
-                    className="field"
-                    name="name"
-                    required
-                    maxLength={120}
-                    autoComplete="name"
-                  />
-                </label>
-              }
-
-              <label className="form__row">
-                <span>{t("email")}</span>
-                <input
-                  className="field"
-                  type="email"
-                  name="email"
-                  required
-                  maxLength={254}
-                  autoComplete="email"
-                  placeholder={t("emailPlaceholder")}
-                />
-              </label>
-
-              {
-                <>
-                  <div className="form__split">
-                    <label className="form__row">
-                      <span>{t("specialization")}</span>
-                      <select
-                        className="field"
-                        name="specialization"
-                        required
-                        defaultValue="psychologist"
-                      >
-                        {specializations.map((s) => (
-                          <option key={s} value={s}>
-                            {t(`spec_${s}`)}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <label className="form__row">
-                      <span>{t("country")}</span>
-                      <input
-                        className="field"
-                        name="country"
-                        required
-                        maxLength={80}
-                        autoComplete="country-name"
-                      />
-                    </label>
-                  </div>
-                  <label className="check">
-                    <input type="checkbox" name="usesCards" />
-                    <span>{t("usesCards")}</span>
-                  </label>
-                  <label className="form__row">
-                    <span>{t("message")}</span>
-                    <textarea
-                      className="field field--area"
-                      name="message"
-                      rows={3}
-                      maxLength={2000}
-                    />
-                  </label>
-                </>
-              }
-
-              {errorText && (
-                <p className="form__error" role="alert">
-                  {errorText}
+              )
+            ) : session.status === "in" && session.role === "professional" ? (
+              <>
+                <p className="signup__lead">{t("proIn")}</p>
+                <Link href="/cabinet" className="btn btn--large btn--block">
+                  {t("openCabinet")}
+                </Link>
+              </>
+            ) : session.status === "in" ? (
+              <>
+                <p className="signup__lead">{t("proTurnOnSub")}</p>
+                <button type="button" className="btn btn--large btn--block" disabled={busy} onClick={turnOnCabinet}>
+                  {t("proTurnOn")}
+                </button>
+              </>
+            ) : (
+              <>
+                <p className="signup__lead">{t("proSub")}</p>
+                <Link href="/signup?role=professional" className="btn btn--large btn--block">
+                  {t("proCreate")}
+                </Link>
+                <p className="signup__switch">
+                  {t("haveAccount")} <Link href="/signin">{t("signin")}</Link>
                 </p>
-              )}
-
-              <button
-                type="submit"
-                className="btn btn--large btn--block"
-                disabled={status === "sending"}
-              >
-                {status === "sending" ? t("sending") : t("submitPro")}
-              </button>
-            </form>
-          )}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </section>

@@ -43,6 +43,8 @@ export const SignUpInput = z.object({
   timezone: z.string().min(1).max(64),
   /** Page language; becomes the account language. */
   locale: Locale,
+  /** "professional" opens the cabinet with rooms for sessions; can be changed later in the profile. */
+  role: z.enum(["personal", "professional"]).default("personal"),
 });
 export type SignUpInput = z.infer<typeof SignUpInput>;
 
@@ -66,6 +68,7 @@ export const ProfilePatch = z
     timezone: z.string().min(1).max(64),
     reminderTime: z.enum(reminderTimes).nullable(),
     displayName: z.string().trim().min(1).max(60),
+    role: z.enum(["personal", "professional"]),
   })
   .partial()
   .refine((p) => Object.keys(p).length > 0, "nothing to update");

@@ -176,7 +176,7 @@
     "f4": "Private session notes",
     "f5": "A question for the week, sent to your client's diary",
     "f6": "Questions in your client's language, whatever yours is",
-    "cta": "Apply for the beta",
+    "cta": "Create a psychologist account",
     "mockClient": "Client",
     "mockPro": "You",
     "mockPosition": "Card 1 of 3 · What is",
@@ -224,8 +224,8 @@
     "a5": "Ukrainian and English at launch; German, Polish, Czech, Italian, Spanish and French soon.",
     "q6": "When can I start?",
     "a6": "Join the waitlist and we'll write as soon as Svity opens.",
-    "q7": "I'm a psychologist. How do I join the beta?",
-    "a7": "Apply with the form below. We're inviting 10–15 specialists first."
+    "q7": "I'm a psychologist. How do I start working with clients?",
+    "a7": "Create an account and choose “As a psychologist”, or turn on “Sessions with clients” in your profile. The cabinet with rooms opens right away, free during the beta."
   },
   "form": {
     "eyebrow": "Start",
@@ -259,9 +259,12 @@
     "welcomeSub": "Your card of the day and your diary are where you left them.",
     "openToday": "Go to today's card",
     "openDiary": "Open the diary",
-    "proSub": "Rooms for sessions are in a closed beta. Tell us about your practice and we'll open the cabinet for your account.",
-    "proIn": "You're in the beta: your rooms are in the cabinet.",
-    "openCabinet": "Open the cabinet"
+    "proSub": "Rooms for sessions with clients are free during the beta. Create a psychologist account, and the cabinet opens right away.",
+    "proIn": "Your cabinet with rooms for sessions is open.",
+    "openCabinet": "Open the cabinet",
+    "proCreate": "Create a psychologist account",
+    "proTurnOn": "Turn on the cabinet",
+    "proTurnOnSub": "Your account is personal for now. Turn on sessions with clients, and the cabinet appears next to your diary."
   },
   "footer": {
     "tagline": "One card a day to meet yourself.",
@@ -275,7 +278,7 @@
     "linkSafety": "Care and safety",
     "colPros": "For psychologists",
     "linkRoom": "The session room",
-    "linkBeta": "Apply for the beta",
+    "linkBeta": "Psychologist account",
     "linkFaq": "Questions",
     "colWrite": "Write to the authors",
     "topicIdea": "An idea",
@@ -461,7 +464,11 @@
       "deleteNo": "Keep my account",
       "write": "Write to the authors",
       "signOut": "Sign out",
-      "email": "Signed in as {email}"
+      "email": "Signed in as {email}",
+      "work": "Sessions with clients",
+      "workPersonal": "Off",
+      "workProfessional": "On",
+      "workHint": "Turns on the cabinet: rooms where you and a client work with the cards. Turning it off keeps your past sessions."
     },
     "shadow": {
       "title": "Shadow cards",
@@ -660,7 +667,12 @@
       "haveAccount": "Already have an account?",
       "toSignin": "Sign in",
       "taken": "There's already an account with this e-mail.",
-      "forgot": "Reset the password"
+      "forgot": "Reset the password",
+      "roleLabel": "I'm here",
+      "rolePersonal": "For myself",
+      "roleProfessional": "As a psychologist",
+      "rolePersonalHint": "The card of the day, the diary and shadow cards.",
+      "roleProfessionalHint": "Everything for yourself, plus a cabinet with rooms for sessions with clients."
     },
     "forgot": {
       "title": "Reset your password",

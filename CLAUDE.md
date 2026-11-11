@@ -42,12 +42,12 @@ pnpm db:up                    # Postgres on :5433 + Mailpit (SMTP :1025, inbox h
 pnpm db:migrate               # apply migrations (pnpm db:generate after schema changes)
 pnpm deck:import              # load packages/db/deck/deck.json (cards + questions); safe to re-run
 pnpm user:admin <email>       # give an account the /admin page (beta applications); `off` to remove
-pnpm user:role <email>        # make an account a psychologist directly (testing; normally approved on /admin)
+pnpm user:role <email>        # switch an account to psychologist (or `personal`); users can also do it at sign-up / in the profile
 pnpm dev                      # api on :4000 + web on :3000 (or dev:api / dev:web)
 pnpm typecheck
 ```
 Landing: http://localhost:3000/uk or /en; `?theme=day|evening` forces a theme.
-App: http://localhost:3000/uk/signup or /uk/signin (e-mail + password) → /today (daily card), /diary, /profile, /shadow, /difficult-day; psychologists: /cabinet → room links /r/XXX-XXX (client, phone-first); admins: /admin approves beta applications (approval makes the account with that e-mail a psychologist, now or at sign-up, and e-mails them). Auth: e-mail + password (argon2id via node:crypto), 60-day httpOnly session cookie; "Forgot password" e-mails a one-time reset link. E-mail transport via MAIL_TRANSPORT: `smtp` (Mailpit locally), `mailgun` (production, EU API), `console`.
+App: http://localhost:3000/uk/signup or /uk/signin (e-mail + password) → /today (daily card), /diary, /profile, /shadow, /difficult-day; psychologists: /cabinet → room links /r/XXX-XXX (client, phone-first). Psychologist is self-service: chosen at sign-up ("As a psychologist", or /signup?role=professional) or toggled in the profile ("Sessions with clients"). /admin (admins) lists old beta applications; nothing new feeds it. Auth: e-mail + password (argon2id via node:crypto), 60-day httpOnly session cookie; "Forgot password" e-mails a one-time reset link. E-mail transport via MAIL_TRANSPORT: `smtp` (Mailpit locally), `mailgun` (production, EU API), `console`.
 Deck: all 351 questions come from the author's PDF «Світи – додаткові питання до карт» v3; card number ↔ image comes from the thumbnails in the same PDF, matched to the Figma export (`packages/db/deck/deck.json`). 98 cards have high-res art; 19 (1, 13, 17, 18, 19, 38, 40, 57, 59, 61, 65, 82, 92, 112, 113, 114, 115, 116, 117) only have the PDF's 240 px thumbnails until high-res files are exported. Card images are served by the API (`apps/api/card-images`), not from `public/`.
 Next.js is v16 (proxy.ts instead of middleware.ts); read `apps/web/node_modules/next/dist/docs/` before using unfamiliar APIs.
 
