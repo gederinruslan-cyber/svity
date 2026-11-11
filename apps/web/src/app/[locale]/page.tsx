@@ -7,7 +7,6 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { RevealObserver } from "@/components/RevealObserver";
 import { Sky } from "@/components/Sky";
-import { Signup } from "@/components/Signup";
 import {
   Deck,
   Diary,
@@ -40,7 +39,6 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
           <Safety />
           <Languages />
           <Faq />
-          <Signup />
         </main>
       </ViewTransition>
       <Footer />

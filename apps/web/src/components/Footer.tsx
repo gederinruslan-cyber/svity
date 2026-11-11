@@ -27,7 +27,7 @@ export async function Footer() {
       t("colPros"),
       [
         ["#pros", t("linkRoom")],
-        ["#join-pro", t("linkBeta")],
+        [`/${locale}/signup?role=professional`, t("linkBeta")],
         ["#faq", t("linkFaq")],
       ],
     ],

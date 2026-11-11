@@ -31,8 +31,7 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 | 9 | Safety | Heading + lead (reflection tool, not therapy or an emergency service); four items: help in one tap · difficult day · leave without saving · shadows only with consent; a decorative help sheet as in the app ("I need help" pill, call 112, country, find a helpline, live breathing circle 4·4·6 that stays still with reduced motion, "not an emergency service"). No unverified helpline numbers. |
 | 10 | Languages | Heading + lead (six more languages on the way, translated by native speakers with a psychologist); three points: all 351 questions in uk and en · feminine/masculine/neutral address · the room's question language; a panel with one word ("Calm") rotating through all 8 languages (still with reduced motion) and the language chips (uk, en live; six "soon"). |
 | 11 | FAQ | Heading + lead left, a "Didn't find an answer?" card with a mailto (below the list on phones); ten numbered questions, one open at a time (`<details name>`), the first open: fortune-telling? · how long · card doesn't speak to me (5 repicks / leave without saving) · who sees my entries · replacement for therapy? · do I need a psychologist · free? · install an app? · printed deck (code later) · psychologist start. |
-| 12 | Start | Two tabs: "For me" (create an account / sign in; "Welcome back" when signed in) / "For my clients" (create a psychologist account; "Turn on the cabinet" for a signed-in personal account; "Open the cabinet" for psychologists). |
-| 13 | Footer | Logo, language switch, contact e-mail, "Write to the authors" (mailto for now), © Svity. |
+| 12 | Footer | Logo, language switch, contact e-mail, "Write to the authors" (mailto for now), © Svity. |
 
 A floating help button (lifebuoy icon) is not needed on the landing; it belongs to the app.
 

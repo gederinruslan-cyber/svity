@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { CountUp } from "./CountUp";
 import { DeckGallery } from "./DeckGallery";
 import { HeroFan } from "./HeroFan";
@@ -402,9 +403,9 @@ export async function Pros() {
               ))}
             </ol>
             <div className="pros-cta reveal">
-              <a href="#join-pro" className="btn">
+              <Link href="/signup?role=professional" className="btn">
                 {t("cta")}
-              </a>
+              </Link>
               <span className="pros-cta__note">{t("beta")}</span>
             </div>
           </div>

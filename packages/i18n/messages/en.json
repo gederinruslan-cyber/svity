@@ -299,26 +299,6 @@
     "askBody": "Write to us. Real people reply, no bots.",
     "askCta": "Send an e-mail"
   },
-  "form": {
-    "eyebrow": "Start",
-    "title": "Your first card is waiting",
-    "tabUser": "For me",
-    "tabPro": "For my clients",
-    "userSub": "An e-mail and a password, and you're in. The card of the day, the diary and shadow cards are free.",
-    "create": "Create an account",
-    "haveAccount": "Already have an account?",
-    "signin": "Sign in",
-    "welcomeTitle": "Welcome back",
-    "welcomeSub": "Your card of the day and your diary are where you left them.",
-    "openToday": "Go to today's card",
-    "openDiary": "Open the diary",
-    "proSub": "Rooms for sessions with clients are free during the beta. Create a psychologist account, and the cabinet opens right away.",
-    "proIn": "Your cabinet with rooms for sessions is open.",
-    "openCabinet": "Open the cabinet",
-    "proCreate": "Create a psychologist account",
-    "proTurnOn": "Turn on the cabinet",
-    "proTurnOnSub": "Your account is personal for now. Turn on sessions with clients, and the cabinet appears next to your diary."
-  },
   "footer": {
     "tagline": "One card a day to meet yourself.",
     "about": "An author's deck of 117 painted cards and 351 questions, with a diary that remembers how you felt and a room for sessions with your psychologist.",

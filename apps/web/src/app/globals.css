@@ -47,8 +47,7 @@ textarea {
   border-radius: 6px;
 }
 
-section,
-.anchor-alias {
+section {
   scroll-margin-top: 72px;
 }
 
@@ -1578,24 +1577,6 @@ section,
   }
 }
 
-/* ---------- signup ---------- */
-
-.signup__card {
-  padding: 20px;
-}
-@media (min-width: 600px) {
-  .signup__card {
-    padding: 28px;
-  }
-}
-.tabs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 4px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  margin-bottom: 18px;
-}
 .tab {
   min-height: 44px;
   border: 0;
@@ -1647,20 +1628,13 @@ section,
 [data-theme="evening"] .form__error {
   color: #f0a59b;
 }
-.signup__done {
-  text-align: center;
-  padding: 24px 0 8px;
-}
+
 .hp {
   position: absolute;
   left: -9999px;
   width: 1px;
   height: 1px;
   opacity: 0;
-}
-.anchor-alias {
-  position: absolute;
-  top: 0;
 }
 
 /* ---------- footer ---------- */
@@ -3483,12 +3457,10 @@ section,
 }
 
 /* landing: account state (hidden while unknown, so the wrong buttons never flash) */
-.hero__ctas-wrap,
-.signup__account {
+.hero__ctas-wrap {
   transition: opacity 0.2s ease;
 }
-.hero__ctas-wrap.is-pending,
-.signup__account.is-pending {
+.hero__ctas-wrap.is-pending {
   opacity: 0;
 }
 .hero__signin {
@@ -3496,35 +3468,9 @@ section,
   font-size: 14px;
   color: var(--text-muted);
 }
-.hero__signin a,
-.signup__switch a {
+.hero__signin a {
   color: var(--link);
   font-weight: 600;
-}
-.signup__account {
-  display: grid;
-  gap: 14px;
-  text-align: center;
-  justify-items: center;
-  padding: 8px 0 4px;
-}
-.signup__account .h3 {
-  margin: 0;
-}
-.signup__lead {
-  margin: 0 0 4px;
-  color: var(--text-muted);
-}
-.signup__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-.signup__switch {
-  margin: 0;
-  font-size: 14px;
-  color: var(--text-muted);
 }
 
 .app-auth__choice {
