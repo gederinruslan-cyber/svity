@@ -365,46 +365,31 @@ section,
   color: var(--accent-text);
 }
 
-/* At the top the header is open and airy; after scrolling it becomes a floating glass bar. */
+/* A full-width bar that never moves or resizes; after scrolling only a glass background fades in. */
 .site-header {
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
-  padding: 0 12px;
-  pointer-events: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
 }
-.site-header__inner,
-.site-menu {
-  pointer-events: auto;
+.site-header.is-scrolled {
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  backdrop-filter: blur(20px) saturate(1.2);
+  border-bottom-color: var(--glass-border);
 }
 .site-header__inner {
   max-width: 1200px;
   margin: 0 auto;
-  height: 72px;
-  padding: 0 8px;
+  height: 68px;
+  padding: 0 16px;
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 16px;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  transition:
-    height 0.3s ease,
-    margin 0.3s ease,
-    padding 0.3s ease,
-    background 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
-}
-.site-header.is-scrolled .site-header__inner {
-  height: 60px;
-  margin-top: 10px;
-  padding: 0 8px 0 22px;
-  background: var(--glass);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  backdrop-filter: blur(20px) saturate(1.2);
-  border-color: var(--glass-border);
-  box-shadow: 0 10px 30px -12px rgba(20, 30, 50, 0.25);
 }
 .site-header .logo {
   justify-self: start;
@@ -512,6 +497,7 @@ section,
 
 /* Phone menu: a card under the bar. */
 .site-menu {
+  width: calc(100% - 24px);
   max-width: 560px;
   margin: 8px auto 0;
   padding: 8px 18px 18px;
@@ -569,7 +555,7 @@ section,
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .site-header__inner,
+  .site-header,
   .header-cta svg {
     transition: none;
   }
