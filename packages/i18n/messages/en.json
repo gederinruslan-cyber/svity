@@ -63,7 +63,16 @@
     "sharedCard": "Today's card for everyone: {n}",
     "cardN": "Card {n}",
     "nextIn": "tomorrow's card in {time}",
-    "hm": "{h} h {m} min"
+    "hm": "{h} h {m} min",
+    "sub": "A minute to try it: pick a feeling, draw a card, sit with a question.",
+    "askHint": "Pick what's closest. There are no right answers.",
+    "stepsLabel": "Steps",
+    "steps": {
+      "feeling": "Feeling",
+      "card": "Card",
+      "question": "Question",
+      "after": "After"
+    }
   },
   "feelings": {
     "calm": "Calm",

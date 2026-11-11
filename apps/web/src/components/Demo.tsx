@@ -23,6 +23,15 @@ const DEMO_REPICKS = 2;
 
 type Phase = "before" | "draw" | "card" | "after" | "done";
 
+const STEPS = ["feeling", "card", "question", "after"] as const;
+const STEP_OF: Record<Phase, number> = {
+  before: 0,
+  draw: 1,
+  card: 2,
+  after: 3,
+  done: 4,
+};
+
 function shuffle<T>(xs: readonly T[]): T[] {
   const a = [...xs];
   for (let i = a.length - 1; i > 0; i--) {
@@ -151,6 +160,7 @@ export function Demo() {
             {t("title")}
           </h2>
           <Ornament />
+          <p className="lead">{t("sub")}</p>
         </header>
 
         <div className={`demo__stage demo__stage--${phase}`}>
@@ -180,90 +190,120 @@ export function Demo() {
           </div>
 
           <div ref={panel} className="demo__panel glass" aria-live="polite">
-            {phase === "before" && (
-              <FeelingPicker
-                title={t("ask")}
-                label={(f) => tf(f)}
-                selected={before}
-                onPick={(f) => {
-                  setBefore(f);
-                  setPhase("draw");
-                }}
-              />
-            )}
-
-            {phase === "draw" && (
-              <div className="demo__step">
-                <p className="demo__label">{t("ask")}</p>
-                <p className="chip chip--selected">{before && tf(before)}</p>
-                <p className="demo__big">{t("tap")}</p>
-              </div>
-            )}
-
-            {phase === "card" && (
-              <div className="demo__step">
-                <p className="demo__label">{t("questionLabel")}</p>
-                <p className="question">{questions[qIndex]}</p>
-                <textarea
-                  className="field field--area"
-                  rows={3}
-                  value={note}
-                  onChange={(e) => setNote(e.target.value)}
-                  placeholder={t("note")}
-                  aria-label={t("note")}
-                />
-                <div className="demo__actions">
-                  {repicks > 0 ? (
-                    <button type="button" className="link-btn" onClick={repick}>
-                      {t("repick", { n: repicks })}
-                    </button>
-                  ) : (
-                    <span className="demo__muted">{t("lastCard")}</span>
-                  )}
-                  <button
-                    type="button"
-                    className="btn"
-                    onClick={() => setPhase("after")}
+            <ol className="demo__steps" aria-label={t("stepsLabel")}>
+              {STEPS.map((k, i) => {
+                const at = STEP_OF[phase];
+                return (
+                  <li
+                    key={k}
+                    className={
+                      i < at ? "is-done" : i === at ? "is-current" : ""
+                    }
+                    aria-current={i === at ? "step" : undefined}
                   >
-                    {t("continue")}
-                  </button>
-                </div>
-                <p className="demo__privacy">{t("privacy")}</p>
-              </div>
-            )}
+                    <span className="demo__step-n">{i + 1}</span>
+                    <span className="demo__step-t">{t(`steps.${k}`)}</span>
+                  </li>
+                );
+              })}
+            </ol>
+            <div className="demo__body">
+              {phase === "before" && (
+                <FeelingPicker
+                  title={t("ask")}
+                  hint={t("askHint")}
+                  label={(f) => tf(f)}
+                  selected={before}
+                  onPick={(f) => {
+                    setBefore(f);
+                    setPhase("draw");
+                  }}
+                />
+              )}
 
-            {phase === "after" && (
-              <FeelingPicker
-                title={t("after")}
-                label={(f) => tf(f)}
-                selected={after}
-                onPick={(f) => {
-                  setAfter(f);
-                  setPhase("done");
-                }}
-              />
-            )}
-
-            {phase === "done" && (
-              <div className="demo__step demo__done">
-                <span className="saved-star" aria-hidden="true">
-                  <Star4 size={44} />
-                </span>
-                <p className="demo__feelings">
-                  {before && tf(before)} <span aria-hidden="true">→</span>{" "}
-                  {after && tf(after)}
-                </p>
-                <p className="h3">{t("done")}</p>
-                <p className="demo__muted">{t("doneSub")}</p>
-                <div className="demo__actions demo__actions--center">
-                  <a href="#join" className="btn">
-                    {tn("cta")}
-                  </a>
-                  <button type="button" className="link-btn" onClick={restart}>
-                    {t("again")}
-                  </button>
+              {phase === "draw" && (
+                <div className="demo__step">
+                  <p className="demo__label">{t("ask")}</p>
+                  <p className="chip chip--selected">{before && tf(before)}</p>
+                  <p className="demo__big">{t("tap")}</p>
                 </div>
-              </div>
+              )}
+
+              {phase === "card" && (
+                <div className="demo__step">
+                  <p className="demo__label">{t("questionLabel")}</p>
+                  <p className="question">{questions[qIndex]}</p>
+                  <textarea
+                    className="field field--area"
+                    rows={3}
+                    value={note}
+                    onChange={(e) => setNote(e.target.value)}
+                    placeholder={t("note")}
+                    aria-label={t("note")}
+                  />
+                  <div className="demo__actions">
+                    {repicks > 0 ? (
+                      <button
+                        type="button"
+                        className="link-btn"
+                        onClick={repick}
+                      >
+                        {t("repick", { n: repicks })}
+                      </button>
+                    ) : (
+                      <span className="demo__muted">{t("lastCard")}</span>
+                    )}
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={() => setPhase("after")}
+                    >
+                      {t("continue")}
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {phase === "after" && (
+                <FeelingPicker
+                  title={t("after")}
+                  label={(f) => tf(f)}
+                  selected={after}
+                  onPick={(f) => {
+                    setAfter(f);
+                    setPhase("done");
+                  }}
+                />
+              )}
+
+              {phase === "done" && (
+                <div className="demo__step demo__done">
+                  <span className="saved-star" aria-hidden="true">
+                    <Star4 size={44} />
+                  </span>
+                  <p className="demo__feelings">
+                    {before && tf(before)} <span aria-hidden="true">→</span>{" "}
+                    {after && tf(after)}
+                  </p>
+                  <p className="h3">{t("done")}</p>
+                  <p className="demo__muted">{t("doneSub")}</p>
+                  <div className="demo__actions demo__actions--center">
+                    <a href="#join" className="btn">
+                      {tn("cta")}
+                    </a>
+                    <button
+                      type="button"
+                      className="link-btn"
+                      onClick={restart}
+                    >
+                      {t("again")}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+            {phase !== "done" && (
+              <p className="demo__privacy">{t("privacy")}</p>
             )}
           </div>
         </div>
@@ -274,11 +314,13 @@ export function Demo() {
 
 function FeelingPicker({
   title,
+  hint,
   label,
   selected,
   onPick,
 }: {
   title: string;
+  hint?: string;
   label: (f: Feeling) => string;
   selected: Feeling | null;
   onPick: (f: Feeling) => void;
@@ -286,6 +328,7 @@ function FeelingPicker({
   return (
     <div className="demo__step">
       <p className="h3">{title}</p>
+      {hint && <p className="demo__muted demo__hint-text">{hint}</p>}
       <div className="chips" role="group" aria-label={title}>
         {FEELINGS.map((f) => (
           <button

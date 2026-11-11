@@ -939,8 +939,13 @@ section,
   animation: twinkle 2.4s ease-in-out infinite;
 }
 .demo__panel {
-  padding: 22px;
-  min-height: 220px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.demo__body {
+  flex: 1;
   display: flex;
   align-items: center;
 }
@@ -3974,5 +3979,93 @@ section,
   .hero__facts {
     justify-content: flex-start;
     max-width: 460px;
+  }
+}
+
+/* ---------- try it: tighter stage, steps ---------- */
+.demo .section-head .lead {
+  margin-top: 14px;
+}
+.demo__stage {
+  max-width: 940px;
+  margin: 0 auto;
+}
+.demo .ritual {
+  width: min(200px, 50vw);
+}
+.demo__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.demo__steps li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.demo__step-n {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  font-size: 11px;
+  font-weight: 700;
+}
+.demo__steps li.is-current {
+  color: var(--text);
+  font-weight: 600;
+}
+.demo__steps li.is-current .demo__step-n {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+.demo__steps li.is-done .demo__step-n {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.demo__hint-text {
+  margin: 6px 0 0;
+  font-size: 14px;
+}
+.demo__panel .demo__privacy {
+  margin: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+@media (min-width: 860px) {
+  .demo__stage {
+    grid-template-columns: auto 1fr;
+    gap: 56px;
+    align-items: stretch;
+  }
+  .demo__card-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .demo .ritual {
+    width: 250px;
+  }
+  .demo__panel {
+    padding: 28px 30px;
+    min-height: 100%;
+  }
+}
+@media (max-width: 479px) {
+  .demo__steps {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+  .demo__steps li:not(.is-current) .demo__step-t {
+    display: none;
   }
 }
