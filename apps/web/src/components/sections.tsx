@@ -12,6 +12,7 @@ import {
   Globe,
   Leaf,
   Lifebuoy,
+  Cards,
   Lock,
   Mirror,
   Ornament,
@@ -199,28 +200,27 @@ export async function Deck() {
           title={t("title")}
           sub={t("sub")}
         />
-        <dl className="stats reveal">
-          <div>
-            <dt>
-              <CountUp to={117} />
-            </dt>
-            <dd>{t("stat1")}</dd>
-          </div>
-          <div>
-            <dt>
-              <CountUp to={3} />
-            </dt>
-            <dd>{t("stat2")}</dd>
-          </div>
-          <div>
-            <dt>
-              <CountUp to={2} />
-            </dt>
-            <dd>{t("stat3")}</dd>
-          </div>
-        </dl>
       </div>
       <DeckGallery />
+      <div className="container">
+        <div className="deck-features">
+          {(
+            [
+              [Cards, <><CountUp to={117} /> {t("f1t")}</>, t("f1")],
+              [Lock, t("f2t"), t("f2")],
+              [Globe, t("f3t"), t("f3")],
+            ] as const
+          ).map(([Icon, title, body], i) => (
+            <article key={i} className="deck-feature reveal" style={{ "--d": i } as React.CSSProperties}>
+              <span className="about__icon">
+                <Icon size={22} />
+              </span>
+              <h3 className="h3">{title}</h3>
+              <p>{body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

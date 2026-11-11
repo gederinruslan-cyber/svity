@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
-// Only cards whose number (and so whose questions) we know; shadow candidates excluded.
+// Cards with demo art; shadow candidates excluded.
 const CARDS = ["21", "11", "25", "6", "20", "12", "23", "22"] as const;
 // Three copies so the strip can loop endlessly in both directions; the middle one is "real".
 const COPIES = 3;
@@ -14,12 +14,11 @@ const RESUME_AFTER = 2500; // ms after the last touch, drag or wheel
 /**
  * An endless strip of cards that drifts on its own, like a marquee, but you can
  * also swipe (touch), drag with momentum (mouse) or scroll it. It pauses while you
- * interact. Cards lift as they pass the centre, and the panel below shows the
- * centre card's three questions; a tap brings a card to the centre.
+ * interact. Cards lift as they pass the centre; a tap brings a card to the centre.
+ * Questions stay private to the person who draws the card, so none are shown here.
  */
 export function DeckGallery() {
   const t = useTranslations("deck");
-  const tc = useTranslations("cards");
   const track = useRef<HTMLDivElement>(null);
   // Index (in the tripled strip) of the card nearest the centre.
   const [center, setCenter] = useState<number>(CARDS.length);
@@ -210,8 +209,6 @@ export function DeckGallery() {
   }
 
   const all = Array.from({ length: COPIES }, () => CARDS).flat();
-  const current = CARDS[center % CARDS.length]!;
-  const questions = tc.raw(current) as string[];
 
   return (
     <div className="gallery reveal">
@@ -239,23 +236,7 @@ export function DeckGallery() {
         })}
       </div>
 
-      {/* The centre card's three questions. */}
-      <div className="container">
-        <div className="deck-qs glass" aria-live="polite">
-          <p className="deck-qs__head">
-            <span className="deck-qs__n">{t("cardN", { n: current })}</span>
-            <span className="deck-qs__label">{t("questionsLabel")}</span>
-          </p>
-          <ol key={current} className="deck-qs__list">
-            {questions.map((q, i) => (
-              <li key={i} style={{ "--i": i } as React.CSSProperties}>
-                {q}
-              </li>
-            ))}
-          </ol>
-        </div>
-        <p className="gallery__hint">{t("hint")}</p>
-      </div>
+      <p className="gallery__hint">{t("hint")}</p>
     </div>
   );
 }

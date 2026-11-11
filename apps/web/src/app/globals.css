@@ -1008,30 +1008,6 @@ section,
   }
 }
 
-/* ---------- deck ---------- */
-
-.stats {
-  display: flex;
-  justify-content: center;
-  gap: clamp(24px, 6vw, 64px);
-  margin: 0 0 16px;
-}
-.stats div {
-  text-align: center;
-}
-.stats dt {
-  font-family: var(--font-serif), serif;
-  font-variant-numeric: lining-nums;
-  font-feature-settings: "lnum" 1;
-  font-size: clamp(34px, 5vw, 48px);
-  line-height: 1;
-}
-.stats dd {
-  margin: 6px 0 0;
-  color: var(--text-muted);
-  font-size: 14px;
-}
-
 /* ---------- diary ---------- */
 
 .diary {
@@ -3909,66 +3885,49 @@ section,
   }
 }
 
-/* ---------- deck: the centre card's questions ---------- */
-.deck-qs {
-  max-width: 640px;
-  margin: 0 auto 14px;
-  padding: 20px 24px 22px;
-  border-radius: 22px;
-}
-.deck-qs__head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+/* ---------- deck: features under the strip ---------- */
+.deck-features {
+  display: grid;
   gap: 12px;
-  margin: 0 0 12px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--line);
+  max-width: 1000px;
+  margin: 8px auto 0;
 }
-.deck-qs__n {
-  font-family: var(--font-serif), Georgia, serif;
-  font-size: 20px;
-  font-variant-numeric: lining-nums;
-  color: var(--text);
-}
-.deck-qs__label {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-.deck-qs__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: q;
+.deck-feature {
   display: grid;
-  gap: 10px;
-  min-height: 7.5em;
-}
-.deck-qs__list li {
-  counter-increment: q;
-  display: grid;
-  grid-template-columns: 22px 1fr;
+  align-content: start;
   gap: 8px;
-  font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(17px, 1.6vw, 19px);
-  line-height: 1.4;
-  color: var(--text);
-  animation: enter 0.5s ease both;
-  animation-delay: calc(var(--i) * 80ms);
+  padding: 22px;
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  background: var(--glass);
 }
-.deck-qs__list li::before {
-  content: counter(q);
-  font-family: var(--font-sans, inherit);
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.9;
+.deck-feature .h3 {
+  margin: 0;
+  font-variant-numeric: lining-nums;
+}
+.deck-feature p {
+  margin: 0;
   color: var(--text-muted);
+  line-height: 1.55;
 }
-@media (prefers-reduced-motion: reduce) {
-  .deck-qs__list li {
-    animation: none;
+@media (max-width: 639px) {
+  .deck-feature {
+    grid-template-columns: 44px 1fr;
+    column-gap: 14px;
+    row-gap: 4px;
+    padding: 18px;
   }
+  .deck-feature .about__icon {
+    grid-row: span 2;
+    margin: 0;
+  }
+}
+@media (min-width: 800px) {
+  .deck-features {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+.gallery__hint {
+  margin-bottom: 28px;
 }

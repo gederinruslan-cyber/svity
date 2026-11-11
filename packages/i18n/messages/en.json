@@ -147,15 +147,16 @@
   "deck": {
     "eyebrow": "The deck",
     "title": "“Svity”",
-    "sub": "117 painted cards and 351 questions in Ukrainian and English. Arches, vases, chequered floors and the sea.",
-    "stat1": "cards",
-    "stat2": "questions for each",
-    "stat3": "languages at launch",
+    "sub": "A deck where every card is a world of its own, in warm Mediterranean light.",
     "galleryLabel": "Cards from the deck",
-    "hint": "Swipe the deck · tap a card to see its questions",
-    "cardLabel": "Card {n}. Show its questions",
-    "cardN": "Card {n}",
-    "questionsLabel": "Its three questions"
+    "hint": "Swipe the deck · tap a card to take a closer look",
+    "cardLabel": "Card {n}",
+    "f1t": "worlds",
+    "f1": "Every card is a scene you want to step into: arches, vases, chequered floors, the sea.",
+    "f2t": "Questions just for you",
+    "f2": "Each card has three questions written for it. They open when the card becomes yours.",
+    "f3t": "Two languages",
+    "f3": "Ukrainian and English. Switch any time in your profile."
   },
   "diary": {
     "eyebrow": "Your diary",

@@ -172,3 +172,12 @@ export function Mirror({ size = 22, className }: P) {
     </svg>
   );
 }
+
+export function Cards({ size = 22, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <rect x="8" y="3" width="11" height="16" rx="2" transform="rotate(8 13.5 11)" />
+      <rect x="4.5" y="5" width="11" height="16" rx="2" />
+    </svg>
+  );
+}

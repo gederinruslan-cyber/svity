@@ -24,7 +24,7 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 | 2 | Hero | Slogan, subline, two CTAs (Start free → /signup / for psychologists), "Already have an account? Sign in"; signed in: Go to today's card / My diary. Card back floats (6 s loop), the star glows softly, clouds drift with light parallax. |
 | 3 | What Svity is (anchor `#how`, the nav's "How it works") | Lead line, "how the mirror works" (a real card + image → question → your answer), four principles (not fortune-telling · no right answers · you decide what to share · safe at every step), a note on what MAC are. |
 | 4 | Try today's card (demo) | The ritual, fully client-side, with a step tracker; see "Demo" below. |
-| 5 | The deck | 117 cards · 3 questions for each · 2 languages. Endless drifting strip (swipe/drag); the centre card is outlined and its three questions show in a panel below; tapping a card brings it to the centre. |
+| 5 | The deck | Endless drifting strip of card art (swipe/drag, tap to bring a card to the centre, centre card outlined) and three features: 117 worlds · questions just for you (they open when the card is yours; never shown here) · two languages. |
 | 6 | Diary & month | Sample diary entry (card, question, "before → after") + sample month mosaic of card thumbnails. |
 | 7 | Shadow cards | Page fades into the evening theme while this section is in view. Copy: opens after a month of practice, by your choice, never for money; grounding + support card after. Door illustration (311:5). |
 | 8 | For psychologists | Animated two-screen mock: client phone draws and confirms a card → it appears in the psychologist's laptop slot. Feature list + CTA to the psychologist tab of the Start block. |
