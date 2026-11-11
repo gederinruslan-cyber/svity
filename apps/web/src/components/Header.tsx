@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, localeHref, usePathname } from "@/i18n/navigation";
 import { useSession } from "@/lib/session";
-import { Close, Menu, Moon, Star4, Sun } from "./icons";
+import { ChevronRight, Close, Menu, Moon, Star4, Sun } from "./icons";
 
 type ThemePref = "auto" | "day" | "evening";
 
@@ -14,6 +14,8 @@ function resolveTheme(pref: ThemePref) {
   return h >= 18 || h < 6 ? "evening" : "day";
 }
 
+const SECTIONS = ["how", "deck", "pros", "faq"] as const;
+
 export function Header() {
   const t = useTranslations("nav");
   const locale = useLocale();
@@ -21,21 +23,43 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [pref, setPref] = useState<ThemePref>("auto");
+  const [active, setActive] = useState<string | null>(null);
   const session = useSession();
 
   useEffect(() => {
-    setPref(
-      (document.documentElement.dataset.themePref as ThemePref) ?? "auto",
-    );
+    setPref((document.documentElement.dataset.themePref as ThemePref) ?? "auto");
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Highlight the section in the middle of the screen.
+  useEffect(() => {
+    const seen = new Map<string, boolean>();
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) seen.set(e.target.id, e.isIntersecting);
+        setActive(SECTIONS.find((id) => seen.get(id)) ?? null);
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    for (const id of SECTIONS) {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    }
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   function cycleTheme() {
-    const next: ThemePref =
-      pref === "auto" ? "day" : pref === "day" ? "evening" : "auto";
+    const next: ThemePref = pref === "auto" ? "day" : pref === "day" ? "evening" : "auto";
     setPref(next);
     const d = document.documentElement;
     const apply = () => {
@@ -43,10 +67,7 @@ export function Header() {
       d.dataset.theme = resolveTheme(next);
     };
     // Cross-fade the whole page between day and evening where supported.
-    if (
-      document.startViewTransition &&
-      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
+    if (document.startViewTransition && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       document.startViewTransition(apply);
     } else apply();
     try {
@@ -54,129 +75,79 @@ export function Header() {
     } catch {}
   }
 
-  const themeLabel = {
-    auto: t("themeAuto"),
-    day: t("themeDay"),
-    evening: t("themeEvening"),
-  }[pref];
-  const links = [
-    ["#how", t("how")],
-    ["#deck", t("deck")],
-    ["#pros", t("pros")],
-    ["#faq", t("faq")],
-  ] as const;
+  const themeLabel = { auto: t("themeAuto"), day: t("themeDay"), evening: t("themeEvening") }[pref];
+  const signedIn = session.status === "in";
+
+  const prefs = (
+    <div className="header-prefs">
+      <div className="lang-switch" role="group" aria-label={t("language")}>
+        {(["uk", "en"] as const).map((l) => (
+          // A full page load: switching the language re-renders the root <html>.
+          <a key={l} href={localeHref(l, pathname)} hrefLang={l} className={l === locale ? "is-active" : ""} aria-current={l === locale ? "true" : undefined}>
+            {l === "uk" ? "UA" : "EN"}
+          </a>
+        ))}
+      </div>
+      <span className="header-prefs__sep" aria-hidden="true" />
+      <button type="button" className="header-prefs__theme" onClick={cycleTheme} aria-label={`${t("theme")}: ${themeLabel}`} title={`${t("theme")}: ${themeLabel}`}>
+        {pref === "evening" ? <Moon size={16} /> : pref === "day" ? <Sun size={16} /> : <span className="theme-auto">A</span>}
+      </button>
+    </div>
+  );
 
   return (
-    <header className={`site-header ${scrolled || open ? "is-scrolled" : ""}`}>
+    <header className={`site-header ${scrolled || open ? "is-scrolled" : ""} ${open ? "is-open" : ""}`}>
       <div className="site-header__inner">
-        <a href="#top" className="logo" aria-label="Svity">
+        <a href="#top" className="logo" aria-label="Svity" onClick={() => setOpen(false)}>
           SVITY
           <Star4 size={10} className="logo__star" />
         </a>
 
-        <nav
-          className={`site-nav ${open ? "is-open" : ""}`}
-          aria-label={t("menu")}
-        >
-          {links.map(([href, label]) => (
-            <a key={href} href={href} onClick={() => setOpen(false)}>
-              {label}
+        <nav className="site-nav" aria-label={t("menu")}>
+          {SECTIONS.map((id) => (
+            <a key={id} href={`#${id}`} className={active === id ? "is-active" : ""} aria-current={active === id ? "location" : undefined}>
+              {t(id)}
             </a>
           ))}
-          {/* In the phone menu: the account links too. */}
-          {session.status === "out" && (
-            <Link href="/signup" className="site-nav__app">
-              {t("cta")}
-            </Link>
-          )}
-          {session.status === "in" && session.role === "professional" && (
-            <Link href="/cabinet" className="site-nav__app">
-              {t("cabinet")}
-            </Link>
-          )}
-          {/* Narrow phones: language and theme live in the menu. */}
-          <div className="site-nav__prefs">
-          <div className="lang-switch" role="group" aria-label={t("language")}>
-            {(["uk", "en"] as const).map((l) => (
-              // A full page load: switching the language re-renders the root <html>.
-              <a
-                key={l}
-                href={localeHref(l, pathname)}
-                hrefLang={l}
-                className={l === locale ? "is-active" : ""}
-                aria-current={l === locale ? "true" : undefined}
-              >
-                {l === "uk" ? "UA" : "EN"}
-              </a>
-            ))}
-          </div>
-          <button
-            type="button"
-            className="icon-btn"
-            onClick={cycleTheme}
-            aria-label={`${t("theme")}: ${themeLabel}`}
-            title={`${t("theme")}: ${themeLabel}`}
-          >
-            {pref === "evening" ? (
-              <Moon />
-            ) : pref === "day" ? (
-              <Sun />
-            ) : (
-              <span className="theme-auto">A</span>
-            )}
-          </button>
-          </div>
         </nav>
 
         <div className="site-header__tools">
-          <div className="site-header__prefs">
-          <div className="lang-switch" role="group" aria-label={t("language")}>
-            {(["uk", "en"] as const).map((l) => (
-              // A full page load: switching the language re-renders the root <html>.
-              <a
-                key={l}
-                href={localeHref(l, pathname)}
-                hrefLang={l}
-                className={l === locale ? "is-active" : ""}
-                aria-current={l === locale ? "true" : undefined}
-              >
-                {l === "uk" ? "UA" : "EN"}
-              </a>
-            ))}
-          </div>
-          <button
-            type="button"
-            className="icon-btn"
-            onClick={cycleTheme}
-            aria-label={`${t("theme")}: ${themeLabel}`}
-            title={`${t("theme")}: ${themeLabel}`}
+          <div className="site-header__prefs">{prefs}</div>
+          {/* Hidden until we know (static HTML): no flash of the wrong button. */}
+          <Link
+            href={signedIn ? "/today" : "/start"}
+            className={`btn btn--small header-cta ${session.status === "unknown" ? "is-pending" : ""}`}
+            aria-label={signedIn ? t("open") : t("start")}
           >
-            {pref === "evening" ? (
-              <Moon />
-            ) : pref === "day" ? (
-              <Sun />
-            ) : (
-              <span className="theme-auto">A</span>
-            )}
+            {signedIn ? t("openShort") : t("startShort")}
+            <ChevronRight size={16} />
+          </Link>
+          <button type="button" className="icon-btn menu-btn" onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-controls="site-menu" aria-label={t("menu")}>
+            {open ? <Close size={20} /> : <Menu size={20} />}
           </button>
-          </div>
-          {/* Hidden until we know (static HTML): no flash of the wrong buttons. */}
-          <div className={`header-auth ${session.status === "unknown" ? "is-pending" : ""}`}>
-            {/* One button: into the app when signed in, to the "create or sign in" choice otherwise. */}
-            <Link href={session.status === "in" ? "/today" : "/start"} className="btn btn--small header-auth__btn" aria-label={session.status === "in" ? t("open") : t("start")}>
-              SVITY
-              <Star4 size={9} className="logo__star" />
-            </Link>
-          </div>
-          <button
-            type="button"
-            className="icon-btn menu-btn"
-            onClick={() => setOpen((o) => !o)}
-            aria-expanded={open}
-            aria-label={t("menu")}
-          >
-            {open ? <Close /> : <Menu />}
-          </button>
+        </div>
+      </div>
+
+      {/* Phone menu: sections, the app (when signed in), language and theme. */}
+      <div id="site-menu" className="site-menu" hidden={!open}>
+        <nav className="site-menu__links" aria-label={t("menu")}>
+          {SECTIONS.map((id) => (
+            <a key={id} href={`#${id}`} onClick={() => setOpen(false)}>
+              {t(id)}
+              <ChevronRight size={18} />
+            </a>
+          ))}
+        </nav>
+        {signedIn && (
+          <Link href={session.role === "professional" ? "/cabinet" : "/today"} className="btn btn--block">
+            {session.role === "professional" ? t("cabinet") : t("open")}
+          </Link>
+        )}
+        <div className="site-menu__prefs">
+          <span className="field-label">
+            {t("language")} · {t("theme")}
+          </span>
+          {prefs}
         </div>
       </div>
     </header>

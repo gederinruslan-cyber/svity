@@ -17,7 +17,9 @@
     "themeEvening": "Evening",
     "open": "Open Svity",
     "cabinet": "Cabinet",
-    "start": "Svity: create an account or sign in"
+    "start": "Svity: create an account or sign in",
+    "startShort": "Get started",
+    "openShort": "Open"
   },
   "hero": {
     "eyebrow": "Metaphorical cards for every day",

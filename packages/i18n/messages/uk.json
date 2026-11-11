@@ -17,7 +17,9 @@
     "themeEvening": "Вечір",
     "open": "Відкрити Svity",
     "cabinet": "Кабінет",
-    "start": "Svity: створити акаунт або увійти"
+    "start": "Svity: створити акаунт або увійти",
+    "startShort": "Почати",
+    "openShort": "Відкрити"
   },
   "hero": {
     "eyebrow": "Метафоричні карти на кожен день",
