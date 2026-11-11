@@ -10,6 +10,7 @@ import {
   Check,
   DoorClose,
   Globe,
+  Heart,
   Leaf,
   Lifebuoy,
   Cards,
@@ -227,49 +228,72 @@ export async function Deck() {
 
 export async function Diary() {
   const t = await getTranslations("diary");
-  // November 2026 starts on a Sunday; Monday-first grid → 6 leading blanks.
-  const withCards: Record<number, number> = {
-    2: 1,
-    3: 2,
-    5: 4,
-    6: 6,
-    7: 7,
-    9: 8,
-    10: 9,
-  };
-  const today = 10;
+  // A sample November 2026 (starts on a Sunday; Monday-first grid → 6 leading blanks).
+  // Day → gallery image.
+  const withCards: Record<number, number> = { 2: 1, 3: 2, 5: 4, 6: 6, 7: 7, 9: 8, 10: 9, 12: 3, 14: 10, 16: 5, 18: 11, 19: 12 };
+  const today = 20;
+  const lighter = 9;
+  const total = Object.keys(withCards).length;
+  const weekdays = (t.raw("weekdays") as string[]).slice(0, 7);
+  const features = [
+    [Cards, t("f1t"), t("f1")],
+    [Heart, t("f2t"), t("f2")],
+    [Lock, t("f3t"), t("f3")],
+  ] as const;
   return (
     <section className="section" id="diary" aria-labelledby="diary-title">
       <div className="container diary">
         <div className="diary__copy">
-          <Head
-            id="diary-title"
-            eyebrow={t("eyebrow")}
-            title={t("title")}
-            sub={t("sub")}
-          />
-          <article className="entry glass reveal">
-            <span className="entry__thumb">
-              <Image src="/cards/demo-25.webp" alt="" fill sizes="72px" />
+          <Head id="diary-title" eyebrow={t("eyebrow")} title={t("title")} sub={t("sub")} />
+
+          {/* A page from the diary. The card's question stays private, even in the sample. */}
+          <article className="diary-sample glass reveal">
+            <span className="diary-sample__card">
+              <Image src="/cards/demo-25.webp" alt="" fill sizes="96px" />
             </span>
-            <div>
-              <p className="entry__meta">
-                {t("entryDate")} · {t("entryCard")}
+            <div className="diary-sample__body">
+              <p className="diary-sample__meta">
+                <span>
+                  {t("entryDate")} · {t("entryCard")}
+                </span>
+                <Heart size={18} filled className="diary-sample__fav" />
               </p>
-              <p className="entry__q">{t("entryQuestion")}</p>
-              <p className="entry__note">{t("entryNote")}</p>
+              <p className="diary-sample__private">
+                <Lock size={14} /> {t("entryPrivate")}
+              </p>
+              <p className="diary-sample__note">{t("entryNote")}</p>
               <p className="entry__feel">
                 <span className="chip chip--sm">{t("entryBefore")}</span>
                 <span aria-hidden="true">→</span>
-                <span className="chip chip--sm chip--sage">
-                  {t("entryAfter")}
-                </span>
+                <span className="chip chip--sm chip--sage">{t("entryAfter")}</span>
               </p>
             </div>
           </article>
+
+          <ul className="diary-features">
+            {features.map(([Icon, title, body], i) => (
+              <li key={i} className="reveal" style={{ "--d": i } as React.CSSProperties}>
+                <span className="about__icon">
+                  <Icon size={20} />
+                </span>
+                <div>
+                  <p className="diary-features__t">{title}</p>
+                  <p className="diary-features__b">{body}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
+
         <div className="mosaic glass reveal">
           <p className="mosaic__month">{t("month")}</p>
+          <div className="mosaic__grid mosaic__grid--week" aria-hidden="true">
+            {weekdays.map((d) => (
+              <span key={d} className="mosaic__weekday">
+                {d}
+              </span>
+            ))}
+          </div>
           <div className="mosaic__grid" aria-hidden="true">
             {Array.from({ length: 6 }, (_, i) => (
               <span key={`b${i}`} />
@@ -283,22 +307,18 @@ export async function Diary() {
                   style={{ "--i": day } as React.CSSProperties}
                   className={`mosaic__day ${card ? "has-card" : ""} ${day === today ? "is-today" : ""} ${day > today ? "is-future" : ""}`}
                 >
-                  {card ? (
-                    <Image
-                      src={`/cards/gallery-${card}.webp`}
-                      alt=""
-                      fill
-                      sizes="48px"
-                    />
-                  ) : (
-                    day
-                  )}
+                  {card ? <Image src={`/cards/gallery-${card}.webp`} alt="" fill sizes="48px" /> : day}
                 </span>
               );
             })}
           </div>
-          <p className="mosaic__count">{t("monthCount")}</p>
-          <p className="mosaic__insight">{t("insight")}</p>
+          <p className="mosaic__count">{t("monthCount", { n: total })}</p>
+          <div className="mosaic__lighter">
+            <span className="mosaic__bar" aria-hidden="true">
+              <span style={{ width: `${(lighter / total) * 100}%` }} />
+            </span>
+            <span className="mosaic__insight">{t("insight", { n: lighter, total })}</span>
+          </div>
         </div>
       </div>
     </section>

@@ -3908,3 +3908,113 @@ section,
   max-width: 1100px;
   margin: 0 auto 20px;
 }
+
+/* ---------- diary section (landing) ---------- */
+.diary-sample {
+  display: flex;
+  gap: 18px;
+  padding: 18px;
+  border-radius: 22px;
+}
+.diary-sample__card {
+  position: relative;
+  flex: 0 0 auto;
+  width: 86px;
+  aspect-ratio: 9 / 16;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 16px 30px -18px rgba(38, 54, 74, 0.55);
+}
+.diary-sample__card img {
+  object-fit: cover;
+}
+.diary-sample__body {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+.diary-sample__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.diary-sample__fav {
+  color: #b5576a;
+}
+.diary-sample__private {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-self: start;
+  margin: 0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px dashed var(--line);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.diary-sample__note {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(19px, 1.8vw, 21px);
+  line-height: 1.4;
+  color: var(--text);
+}
+.diary-features {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.diary-features li {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+.diary-features .about__icon {
+  margin: 0;
+}
+.diary-features__t {
+  margin: 2px 0 2px;
+  font-weight: 600;
+  color: var(--text);
+}
+.diary-features__b {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+.mosaic__lighter {
+  display: grid;
+  gap: 6px;
+  margin-top: 4px;
+}
+.mosaic__bar {
+  display: block;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+}
+.mosaic__bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--accent) 80%, transparent);
+}
+.mosaic .mosaic__grid--week {
+  margin-bottom: 4px;
+}
+@media (min-width: 900px) {
+  .mosaic {
+    max-width: 440px;
+    padding: 22px;
+  }
+}

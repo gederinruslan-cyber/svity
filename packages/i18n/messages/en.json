@@ -160,16 +160,31 @@
   "diary": {
     "eyebrow": "Your diary",
     "title": "Your month in cards",
-    "sub": "Every card stays in your diary with its question, your note and how you felt before and after.",
+    "sub": "Every card stays in your diary, with your note and how you felt before and after. The month adds up to a mosaic.",
     "entryDate": "November 7",
     "entryCard": "Card 25",
-    "entryQuestion": "What in your life needs “fresh air”?",
     "entryNote": "My evenings. Maybe a walk after work, without the phone…",
     "entryBefore": "Tiredness",
     "entryAfter": "Calm",
     "month": "November",
-    "monthCount": "7 cards this month.",
-    "insight": "After a card, it felt lighter in 5 of 7 entries."
+    "monthCount": "{n, plural, one {# card} other {# cards}} this month",
+    "insight": "Lighter after the card in {n} of {total} entries",
+    "entryPrivate": "The question is yours alone",
+    "weekdays": [
+      "Mo",
+      "Tu",
+      "We",
+      "Th",
+      "Fr",
+      "Sa",
+      "Su"
+    ],
+    "f1t": "Card, note and feelings",
+    "f1": "How you felt before and after, at a glance.",
+    "f2t": "Favourites",
+    "f2": "Mark the entries you want to come back to.",
+    "f3t": "Yours and only yours",
+    "f3": "Only you see your diary. Download or delete it any time."
   },
   "shadow": {
     "eyebrow": "When the time comes",
