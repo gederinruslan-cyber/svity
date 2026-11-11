@@ -11,4 +11,4 @@ export function createDb(url: string) {
 export type Db = ReturnType<typeof createDb>;
 
 // Query helpers, re-exported so apps use the same drizzle-orm instance.
-export { and, asc, count, desc, eq, gt, gte, inArray, isNull, lt, lte, or, sql } from "drizzle-orm";
+export { and, asc, count, desc, eq, gt, gte, inArray, isNull, lt, lte, ne, or, sql } from "drizzle-orm";

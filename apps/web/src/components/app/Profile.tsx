@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { addressForms, reminderTimes, type Me, type ProfilePatch, type ProfileStats } from "@svity/contracts";
+import { PASSWORD_MIN, addressForms, reminderTimes, type Me, type ProfilePatch, type ProfileStats } from "@svity/contracts";
 import { Link, useRouter } from "@/i18n/navigation";
 import { api, API_URL, ApiError } from "@/lib/api";
 
@@ -213,6 +213,8 @@ export function Profile() {
         </ul>
       </div>
 
+      <ChangePassword />
+
       <div className="profile__block glass">
         <h2 className="h3">{t("data")}</h2>
         <a className="btn btn--ghost" href={`${API_URL}/v1/me/export`} download>
@@ -258,5 +260,47 @@ function Progress({ label, value, max }: { label: string; value: number; max: nu
         <span style={{ width: `${(100 * value) / max}%` }} />
       </span>
     </div>
+  );
+}
+
+function ChangePassword() {
+  const t = useTranslations("app.password");
+  const ts = useTranslations("app.signup");
+  const [current, setCurrent] = useState("");
+  const [next, setNext] = useState("");
+  const [state, setState] = useState<"idle" | "busy" | "done" | "wrong" | "error">("idle");
+  return (
+    <form
+      className="profile__block glass"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        setState("busy");
+        try {
+          await api("/v1/auth/password", { method: "POST", body: { current, password: next } });
+          setCurrent("");
+          setNext("");
+          setState("done");
+        } catch (err) {
+          setState(err instanceof ApiError && err.code === "invalid_credentials" ? "wrong" : "error");
+        }
+      }}
+    >
+      <h2 className="h3">{t("title")}</h2>
+      <label className="profile__field">
+        <span className="field-label">{t("current")}</span>
+        <input className="field" type="password" autoComplete="current-password" required value={current} onChange={(e) => setCurrent(e.target.value)} />
+      </label>
+      <label className="profile__field">
+        <span className="field-label">{t("new")}</span>
+        <input className="field" type="password" autoComplete="new-password" required minLength={PASSWORD_MIN} maxLength={200} value={next} onChange={(e) => setNext(e.target.value)} />
+        <span className="app-hint">{ts("passwordHint", { n: PASSWORD_MIN })}</span>
+      </label>
+      <button type="submit" className="btn btn--ghost" disabled={state === "busy" || next.length < PASSWORD_MIN}>
+        {t("submit")}
+      </button>
+      {state === "done" && <p className="app-hint" role="status">{t("done")}</p>}
+      {state === "wrong" && <p className="form-error" role="alert">{t("wrong")}</p>}
+      {state === "error" && <p className="form-error" role="alert">{t("none")}</p>}
+    </form>
   );
 }

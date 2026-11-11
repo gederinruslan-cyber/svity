@@ -3559,3 +3559,54 @@ section,
   font-family: var(--font-serif), serif;
   font-size: 17px;
 }
+
+/* password auth */
+.password-field {
+  position: relative;
+}
+.password-field .field {
+  width: 100%;
+  padding-right: 84px;
+}
+.password-field__toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--link);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.app-auth .field-label {
+  margin-top: 14px;
+}
+.app-auth .app-hint {
+  margin: 6px 0 0;
+}
+.app-auth__forgot {
+  display: inline-block;
+  margin: 10px 0 16px;
+  font-size: 14px;
+}
+.app-auth form .btn--block {
+  margin-top: 18px;
+}
+.app-auth__forgot + .btn--block {
+  margin-top: 0;
+}
+.app-auth__switch {
+  margin: 18px 0 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.app-auth__switch a,
+.form-error a {
+  color: var(--link);
+  font-weight: 600;
+}

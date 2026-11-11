@@ -1,13 +1,14 @@
 import { Hono, type Context, type MiddlewareHandler } from "hono";
 import { deleteCookie, getCookie, setCookie } from "hono/cookie";
 import { assertTimeZone } from "@svity/core";
-import { SignInInput, VerifyInput, type Me } from "@svity/contracts";
-import { and, eq, gt, isNull, loginTokens, sessions, users, type Db } from "@svity/db";
+import { ChangePasswordInput, ForgotPasswordInput, ResetPasswordInput, SignInInput, SignUpInput, type Me } from "@svity/contracts";
+import { and, eq, gt, isNull, ne, passwordResets, sessions, users, type Db } from "@svity/db";
 import { hashToken, newToken } from "./crypto";
+import { DUMMY_HASH, hashPassword, verifyPassword } from "./password";
 import type { Mailer } from "./mailer";
 import { rateLimit } from "./rate-limit";
 
-const LINK_TTL_MS = 15 * 60_000;
+const RESET_TTL_MS = 30 * 60_000;
 const SESSION_TTL_MS = 60 * 24 * 60 * 60_000; // 60 days
 export const SESSION_COOKIE = "svity_session";
 
@@ -62,67 +63,124 @@ export function requirePro(db: Db): MiddlewareHandler<AuthEnv> {
   };
 }
 
+/** Failed sign-ins per e-mail: guessing one account from many IPs still hits a wall. In memory, like rate-limit.ts. */
+function failureCounter({ limit, windowMs }: { limit: number; windowMs: number }) {
+  const fails = new Map<string, { count: number; resetAt: number }>();
+  return {
+    locked(key: string) {
+      const f = fails.get(key);
+      return !!f && f.resetAt > Date.now() && f.count >= limit;
+    },
+    fail(key: string) {
+      const f = fails.get(key);
+      if (!f || f.resetAt <= Date.now()) fails.set(key, { count: 1, resetAt: Date.now() + windowMs });
+      else f.count++;
+    },
+    clear(key: string) {
+      fails.delete(key);
+    },
+  };
+}
+
 export function authRoutes(db: Db, opts: { webOrigin: string; mailer: Mailer; secureCookies: boolean }) {
   const app = new Hono<AuthEnv>();
-  // Each request sends an e-mail, so this one is strict; confirming a link is cheap.
-  const emailLimit = rateLimit({ limit: 5, windowMs: 10 * 60_000 });
-  const verifyLimit = rateLimit({ limit: 30, windowMs: 10 * 60_000 });
+  const signUpLimit = rateLimit({ limit: 10, windowMs: 10 * 60_000 });
+  const signInLimit = rateLimit({ limit: 30, windowMs: 10 * 60_000 });
+  const forgotLimit = rateLimit({ limit: 5, windowMs: 10 * 60_000 });
+  const resetLimit = rateLimit({ limit: 30, windowMs: 10 * 60_000 });
+  const perAccount = failureCounter({ limit: 10, windowMs: 15 * 60_000 });
 
-  // Always answers ok, so the response never reveals whether an account exists.
-  app.post("/email", emailLimit, async (c) => {
-    const parsed = SignInInput.safeParse(await c.req.json().catch(() => null));
-    if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
-    const email = parsed.data.email.toLowerCase();
+  async function startSession(c: Context, userId: string) {
     const token = newToken();
-    await db.insert(loginTokens).values({ email, tokenHash: hashToken(token), expiresAt: new Date(Date.now() + LINK_TTL_MS) });
-    // The link opens a web page that confirms with a POST, so mail scanners that prefetch links can't use it up.
-    const link = `${opts.webOrigin}/${parsed.data.locale}/signin/verify?token=${token}`;
-    await opts.mailer.sendSignInLink(email, link, parsed.data.locale);
-    return c.json({ ok: true });
-  });
+    const expiresAt = new Date(Date.now() + SESSION_TTL_MS);
+    await db.insert(sessions).values({ userId, tokenHash: hashToken(token), expiresAt });
+    setCookie(c, SESSION_COOKIE, token, { httpOnly: true, secure: opts.secureCookies, sameSite: "Lax", path: "/", expires: expiresAt });
+  }
 
-  app.post("/verify", verifyLimit, async (c) => {
-    const parsed = VerifyInput.safeParse(await c.req.json().catch(() => null));
+  app.post("/signup", signUpLimit, async (c) => {
+    const parsed = SignUpInput.safeParse(await c.req.json().catch(() => null));
     if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
+    const { password, locale } = parsed.data;
+    const email = parsed.data.email.toLowerCase();
     let timezone = parsed.data.timezone;
     try {
       assertTimeZone(timezone);
     } catch {
       timezone = "Europe/Kyiv";
     }
-    const { locale } = parsed.data;
+    const passwordHash = await hashPassword(password);
+    const [user] = await db.insert(users).values({ email, passwordHash, locale, timezone }).onConflictDoNothing().returning();
+    if (!user) return c.json({ ok: false, error: "email_taken" }, 409);
+    await startSession(c, user.id);
+    return c.json({ ok: true, me: toMe(user) }, 201);
+  });
 
+  // One answer for "no such account" and "wrong password", and the same work for both.
+  app.post("/signin", signInLimit, async (c) => {
+    const parsed = SignInInput.safeParse(await c.req.json().catch(() => null));
+    if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
+    const email = parsed.data.email.toLowerCase();
+    if (perAccount.locked(email)) return c.json({ ok: false, error: "rate_limited" }, 429);
+    const [user] = await db.select().from(users).where(eq(users.email, email)).limit(1);
+    const ok = await verifyPassword(parsed.data.password, user?.passwordHash ?? DUMMY_HASH);
+    if (!user?.passwordHash || !ok) {
+      perAccount.fail(email);
+      return c.json({ ok: false, error: "invalid_credentials" }, 401);
+    }
+    perAccount.clear(email);
+    await startSession(c, user.id);
+    return c.json({ ok: true, me: toMe(user) });
+  });
+
+  // Always answers ok, so it never reveals whether an account exists.
+  app.post("/forgot", forgotLimit, async (c) => {
+    const parsed = ForgotPasswordInput.safeParse(await c.req.json().catch(() => null));
+    if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
+    const email = parsed.data.email.toLowerCase();
+    const [user] = await db.select({ id: users.id }).from(users).where(eq(users.email, email)).limit(1);
+    if (user) {
+      const token = newToken();
+      await db.insert(passwordResets).values({ userId: user.id, tokenHash: hashToken(token), expiresAt: new Date(Date.now() + RESET_TTL_MS) });
+      // The page asks for the new password and POSTs the token: prefetching the link does nothing.
+      await opts.mailer.sendPasswordReset(email, `${opts.webOrigin}/${parsed.data.locale}/reset-password?token=${token}`, parsed.data.locale);
+    }
+    return c.json({ ok: true });
+  });
+
+  // A new password signs out every other device.
+  app.post("/reset", resetLimit, async (c) => {
+    const parsed = ResetPasswordInput.safeParse(await c.req.json().catch(() => null));
+    if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
+    const passwordHash = await hashPassword(parsed.data.password);
     const user = await db.transaction(async (tx) => {
-      const [link] = await tx
-        .update(loginTokens)
+      const [reset] = await tx
+        .update(passwordResets)
         .set({ usedAt: new Date() })
-        .where(
-          and(
-            eq(loginTokens.tokenHash, hashToken(parsed.data.token)),
-            isNull(loginTokens.usedAt),
-            gt(loginTokens.expiresAt, new Date()),
-          ),
-        )
+        .where(and(eq(passwordResets.tokenHash, hashToken(parsed.data.token)), isNull(passwordResets.usedAt), gt(passwordResets.expiresAt, new Date())))
         .returning();
-      if (!link) return null;
-      const [existing] = await tx.select().from(users).where(eq(users.email, link.email)).limit(1);
-      if (existing) return existing;
-      const [created] = await tx.insert(users).values({ email: link.email, locale, timezone }).returning();
-      return created!;
+      if (!reset) return null;
+      const [u] = await tx.update(users).set({ passwordHash }).where(eq(users.id, reset.userId)).returning();
+      await tx.delete(sessions).where(eq(sessions.userId, reset.userId));
+      return u ?? null;
     });
     if (!user) return c.json({ ok: false, error: "link_invalid" }, 400);
-
-    const session = newToken();
-    const expiresAt = new Date(Date.now() + SESSION_TTL_MS);
-    await db.insert(sessions).values({ userId: user.id, tokenHash: hashToken(session), expiresAt });
-    setCookie(c, SESSION_COOKIE, session, {
-      httpOnly: true,
-      secure: opts.secureCookies,
-      sameSite: "Lax",
-      path: "/",
-      expires: expiresAt,
-    });
+    perAccount.clear(user.email);
+    await startSession(c, user.id);
     return c.json({ ok: true, me: toMe(user) });
+  });
+
+  // Signed in: needs the current password; other devices are signed out, this one stays.
+  app.post("/password", requireUser(db), signInLimit, async (c) => {
+    const parsed = ChangePasswordInput.safeParse(await c.req.json().catch(() => null));
+    if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
+    const user = c.get("user");
+    if (!user.passwordHash || !(await verifyPassword(parsed.data.current, user.passwordHash))) {
+      return c.json({ ok: false, error: "invalid_credentials" }, 401);
+    }
+    await db.update(users).set({ passwordHash: await hashPassword(parsed.data.password) }).where(eq(users.id, user.id));
+    const current = hashToken(getCookie(c, SESSION_COOKIE) ?? "");
+    await db.delete(sessions).where(and(eq(sessions.userId, user.id), ne(sessions.tokenHash, current)));
+    return c.json({ ok: true });
   });
 
   app.post("/logout", async (c) => {

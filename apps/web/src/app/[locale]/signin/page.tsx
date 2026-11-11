@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import { SignIn } from "@/components/app/SignIn";
+import { SignIn } from "@/components/app/Auth";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/signin">): Promise<Metadata> {
   const { locale } = await params;

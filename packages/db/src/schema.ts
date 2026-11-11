@@ -36,6 +36,8 @@ export const betaApplications = pgTable("beta_applications", {
 export const users = pgTable("users", {
   id: uuid("id").primaryKey().defaultRandom(),
   email: text("email").notNull().unique(),
+  /** argon2id (PHC string). Null for accounts made before passwords: they set one via "Forgot password". */
+  passwordHash: text("password_hash"),
   role: text("role", { enum: ["personal", "professional"] }).notNull().default("personal"),
   /** Shown to clients in rooms: "Olena invites you to a session". */
   displayName: text("display_name"),
@@ -53,10 +55,12 @@ export const users = pgTable("users", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
-/** One-time e-mail sign-in links. Only the SHA-256 of the token is stored. */
-export const loginTokens = pgTable("login_tokens", {
+/** "Forgot password" links. Only the SHA-256 of the token is stored; one use, 30 minutes. */
+export const passwordResets = pgTable("password_resets", {
   id: uuid("id").primaryKey().defaultRandom(),
-  email: text("email").notNull(),
+  userId: uuid("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
   tokenHash: text("token_hash").notNull().unique(),
   expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
   usedAt: timestamp("used_at", { withTimezone: true }),

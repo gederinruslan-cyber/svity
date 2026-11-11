@@ -46,7 +46,7 @@ pnpm dev                      # api on :4000 + web on :3000 (or dev:api / dev:we
 pnpm typecheck
 ```
 Landing: http://localhost:3000/uk or /en; `?theme=day|evening` forces a theme.
-App: http://localhost:3000/uk/signin → /today (daily card), /diary, /profile, /shadow, /difficult-day; psychologists: /cabinet → room links /r/XXX-XXX (client, phone-first). Sign-in in dev: the e-mail link is printed in the API console (no mail service yet).
+App: http://localhost:3000/uk/signup or /uk/signin (e-mail + password) → /today (daily card), /diary, /profile, /shadow, /difficult-day; psychologists: /cabinet → room links /r/XXX-XXX (client, phone-first). Auth: e-mail + password (argon2id via node:crypto), 60-day httpOnly session cookie; "Forgot password" e-mails a one-time reset link, which in dev is printed in the API console (no mail service yet).
 Deck: all 351 questions come from the author's PDF «Світи – додаткові питання до карт» v3; card number ↔ image comes from the thumbnails in the same PDF, matched to the Figma export (`packages/db/deck/deck.json`). 98 cards have high-res art; 19 (1, 13, 17, 18, 19, 38, 40, 57, 59, 61, 65, 82, 92, 112, 113, 114, 115, 116, 117) only have the PDF's 240 px thumbnails until high-res files are exported. Card images are served by the API (`apps/api/card-images`), not from `public/`.
 Next.js is v16 (proxy.ts instead of middleware.ts); read `apps/web/node_modules/next/dist/docs/` before using unfamiliar APIs.
 

@@ -32,20 +32,29 @@ export type SubmitResult = { ok: true } | { ok: false; error: "invalid" | "rate_
 
 // ---------- auth ----------
 
+/** Length is the only rule (NIST 800-63B): no forced symbols or digits. */
+export const PASSWORD_MIN = 10;
+const NewPassword = z.string().min(PASSWORD_MIN).max(200);
+
+export const SignUpInput = z.object({
+  email: z.email().max(254),
+  password: NewPassword,
+  /** The browser's IANA zone, for the daily-card timer. */
+  timezone: z.string().min(1).max(64),
+  /** Page language; becomes the account language. */
+  locale: Locale,
+});
+export type SignUpInput = z.infer<typeof SignUpInput>;
+
 export const SignInInput = z.object({
   email: z.email().max(254),
-  locale: Locale,
+  password: z.string().min(1).max(200),
 });
 export type SignInInput = z.infer<typeof SignInInput>;
 
-export const VerifyInput = z.object({
-  token: z.string().min(20).max(200),
-  /** The browser's IANA zone; stored on first sign-in for the daily-card timer. */
-  timezone: z.string().min(1).max(64),
-  /** Language of the page the link opened; becomes the account language on first sign-in. */
-  locale: Locale,
-});
-export type VerifyInput = z.infer<typeof VerifyInput>;
+export const ForgotPasswordInput = z.object({ email: z.email().max(254), locale: Locale });
+export const ResetPasswordInput = z.object({ token: z.string().min(20).max(200), password: NewPassword });
+export const ChangePasswordInput = z.object({ current: z.string().min(1).max(200), password: NewPassword });
 
 export const addressForms = ["f", "m", "n"] as const;
 export const reminderTimes = ["09:00", "12:00", "20:00"] as const;

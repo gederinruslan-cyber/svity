@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import { Verify } from "@/components/app/Verify";
+import { ResetPassword } from "@/components/app/Auth";
 
-// Sign-in links must never leak through the Referer header or search indexes.
+// Reset links must never leak through the Referer header or search indexes.
 export const metadata: Metadata = { robots: { index: false }, referrer: "no-referrer" };
 
-export default async function VerifyPage({ params, searchParams }: PageProps<"/[locale]/signin/verify">) {
+export default async function ResetPasswordPage({ params, searchParams }: PageProps<"/[locale]/reset-password">) {
   const { locale } = await params;
   if (hasLocale(routing.locales, locale)) setRequestLocale(locale);
   const token = (await searchParams).token;
-  return <Verify token={typeof token === "string" ? token : ""} />;
+  return <ResetPassword token={typeof token === "string" ? token : ""} />;
 }

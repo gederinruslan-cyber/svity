@@ -283,7 +283,9 @@
       "shadow": "Shadow cards · Svity",
       "difficult": "Difficult day · Svity",
       "cabinet": "Cabinet · Svity",
-      "room": "Session · Svity"
+      "room": "Session · Svity",
+      "signup": "Create account · Svity",
+      "forgot": "Reset password · Svity"
     },
     "nav": {
       "today": "Today",
@@ -295,19 +297,18 @@
     },
     "signin": {
       "title": "Sign in to Svity",
-      "sub": "We'll e-mail you a link. No password needed.",
       "email": "E-mail",
-      "submit": "Send me a link",
-      "sending": "Sending…",
-      "sentTitle": "Check your inbox",
-      "sent": "We sent a sign-in link to {email}. It works once, for 15 minutes.",
-      "devHint": "Local development: the link is printed in the API terminal.",
-      "again": "Use another e-mail",
+      "password": "Password",
+      "submit": "Sign in",
+      "sending": "Signing in…",
+      "forgot": "Forgot password?",
+      "noAccount": "New to Svity?",
+      "toSignup": "Create an account",
+      "invalid": "Wrong e-mail or password.",
       "error": "Something went wrong. Try again in a minute.",
       "rateLimited": "Too many attempts. Try again in a few minutes.",
-      "verifying": "Signing you in…",
-      "linkInvalid": "This link has expired or was already used.",
-      "newLink": "Get a new link"
+      "show": "Show",
+      "hide": "Hide"
     },
     "today": {
       "ask": "How are you right now?",
@@ -625,6 +626,43 @@
       "title": "Sessions",
       "open": "Open the summary",
       "none": ""
+    },
+    "signup": {
+      "title": "Create your account",
+      "sub": "A private place for your daily card and diary.",
+      "password": "Password",
+      "passwordHint": "At least {n} characters. A few words in a row work well.",
+      "submit": "Create account",
+      "sending": "Creating…",
+      "haveAccount": "Already have an account?",
+      "toSignin": "Sign in",
+      "taken": "There's already an account with this e-mail.",
+      "forgot": "Reset the password"
+    },
+    "forgot": {
+      "title": "Reset your password",
+      "sub": "Enter your e-mail and we'll send a link to set a new password.",
+      "submit": "Send the link",
+      "sentTitle": "Check your inbox",
+      "sent": "If there's an account for {email}, we've sent a link. It works once, for 30 minutes.",
+      "devHint": "Local development: the link is printed in the API terminal.",
+      "back": "Back to sign in"
+    },
+    "reset": {
+      "title": "Set a new password",
+      "submit": "Save and sign in",
+      "invalid": "This link has expired or was already used.",
+      "newLink": "Get a new link",
+      "note": "You'll be signed out on your other devices."
+    },
+    "password": {
+      "title": "Password",
+      "current": "Current password",
+      "new": "New password",
+      "submit": "Change password",
+      "done": "Password changed. Other devices were signed out.",
+      "wrong": "The current password is wrong.",
+      "none": "Your account has no password yet. Sign out and use “Forgot password?” to set one."
     }
   }
 }
