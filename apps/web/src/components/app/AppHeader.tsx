@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { roomsOpen } from "@svity/contracts";
-import { Link, localeHref, usePathname } from "@/i18n/navigation";
-import { getMe } from "@/lib/api";
+import { Link, usePathname } from "@/i18n/navigation";
+import { api, getMe } from "@/lib/api";
+import { LangMenu } from "../LangMenu";
 import { Calendar, Cards, Leaf, Mirror, Moon, Star4, Sun, User } from "../icons";
 import { HelpButton } from "./HelpSheet";
 
@@ -26,9 +27,13 @@ export function AppHeader() {
   useEffect(() => {
     setTheme(document.documentElement.dataset.themePref === "day" ? "day" : "evening");
     getMe()
-      .then((m) => setPro(m.role === "professional"))
+      .then((m) => {
+        setPro(m.role === "professional");
+        // The account follows the language in use: e-mails and the diary export come in it too.
+        if (m.locale !== locale) api("/v1/me", { method: "PATCH", body: { locale } }).catch(() => {});
+      })
       .catch(() => {});
-  }, []);
+  }, [locale]);
 
   function toggleTheme() {
     const next: Theme = theme === "day" ? "evening" : "day";
@@ -76,13 +81,7 @@ export function AppHeader() {
             <button type="button" className="app-theme" onClick={toggleTheme} aria-label={themeLabel} title={themeLabel}>
               {theme === "evening" ? <Moon size={17} /> : <Sun size={17} />}
             </button>
-            <div className="lang-switch">
-              {(["uk", "en"] as const).map((l) => (
-                <a key={l} href={localeHref(l, pathname)} hrefLang={l} className={l === locale ? "is-active" : ""} aria-current={l === locale ? "true" : undefined}>
-                  {l === "uk" ? "UA" : "EN"}
-                </a>
-              ))}
-            </div>
+            <LangMenu />
             <HelpButton withLabel className="app-help" />
           </div>
         </div>

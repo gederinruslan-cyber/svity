@@ -1,15 +1,12 @@
 import { Hono } from "hono";
 import { deleteCookie } from "hono/cookie";
 import { assertTimeZone, feelingStats } from "@svity/core";
-import { ProfilePatch, roomsOpen, type Feeling, type ProfileStats } from "@svity/contracts";
+import { ProfilePatch, accountLocale, roomsOpen, type Feeling, type ProfileStats } from "@svity/contracts";
 import { asc, entries, eq, users, type Db } from "@svity/db";
 import { SESSION_COOKIE, toMe, type AuthEnv } from "./auth";
 import type { Deck } from "./deck";
 import { shadowState } from "./shadow";
-import en from "@svity/i18n/messages/en.json" with { type: "json" };
-import uk from "@svity/i18n/messages/uk.json" with { type: "json" };
-
-const FEELINGS: Record<string, Record<string, string>> = { en: en.feelings, uk: uk.feelings };
+import { messages } from "@svity/i18n";
 
 /** Profile, stats, diary export and account deletion. */
 export function meRoutes(db: Db, getDeck: () => Promise<Deck>) {
@@ -53,16 +50,16 @@ export function meRoutes(db: Db, getDeck: () => Promise<Deck>) {
   app.get("/export", async (c) => {
     const user = c.get("user");
     const deck = await getDeck();
-    const locale = user.locale;
+    const locale = accountLocale(user.locale);
     const rows = await db.select().from(entries).where(eq(entries.userId, user.id)).orderBy(asc(entries.createdAt));
     const date = new Intl.DateTimeFormat(locale, { dateStyle: "long", timeStyle: "short", timeZone: user.timezone });
     const lines = rows.map((e) => {
       const q = deck.byId.get(e.cardId)?.questions.find((x) => x.index === e.questionIndex)?.text[locale] ?? "";
       return [
-        `${date.format(e.createdAt)} · #${e.cardId}${e.isShadow ? (locale === "uk" ? " · тіньова карта" : " · shadow card") : ""}`,
+        `${date.format(e.createdAt)} · #${e.cardId}${e.isShadow ? ` · ${messages[locale].app.profile.exportShadow}` : ""}`,
         q && `? ${q}`,
         e.requestText && `» ${e.requestText}`,
-        `${FEELINGS[locale]?.[e.feelingBefore] ?? e.feelingBefore} → ${FEELINGS[locale]?.[e.feelingAfter] ?? e.feelingAfter}`,
+        `${messages[locale].feelings[e.feelingBefore as Feeling]} → ${messages[locale].feelings[e.feelingAfter as Feeling]}`,
         e.note ?? "",
       ]
         .filter(Boolean)

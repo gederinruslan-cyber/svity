@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { PASSWORD_MIN, addressForms, roomsOpen, reminderTimes, type Me, type ProfilePatch, type ProfileStats } from "@svity/contracts";
+import { PASSWORD_MIN, addressForms, locales, roomsOpen, reminderTimes, type Me, type ProfilePatch, type ProfileStats } from "@svity/contracts";
+import { LANGUAGES } from "@/i18n/languages";
 import { Link, useRouter } from "@/i18n/navigation";
 import { api, API_URL, ApiError } from "@/lib/api";
 import { rememberSession } from "@/lib/session";
@@ -181,16 +182,18 @@ export function Profile() {
 
           <div className="profile__block glass">
             <h2 className="h3">{t("groupTime")}</h2>
-            <fieldset className="profile__field">
-              <legend className="field-label">{t("language")}</legend>
-              <div className="segmented">
-                {(["uk", "en"] as const).map((l) => (
-                  <button key={l} type="button" aria-pressed={me.locale === l} className={me.locale === l ? "is-on" : ""} onClick={() => update({ locale: l })} lang={l}>
-                    {l === "uk" ? "Українська" : "English"}
-                  </button>
+            <div className="profile__field">
+              <label className="field-label" htmlFor="profile-lang">
+                {t("language")}
+              </label>
+              <select id="profile-lang" className="field" value={me.locale} onChange={(e) => update({ locale: e.target.value as Me["locale"] })}>
+                {locales.map((l) => (
+                  <option key={l} value={l} lang={l}>
+                    {LANGUAGES[l].name}
+                  </option>
                 ))}
-              </div>
-            </fieldset>
+              </select>
+            </div>
 
             <div className="profile__field">
               <label className="field-label" htmlFor="profile-tz">

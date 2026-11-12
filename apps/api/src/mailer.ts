@@ -1,8 +1,7 @@
 import nodemailer from "nodemailer";
 import type { Locale } from "@svity/contracts";
 import { themes } from "@svity/tokens";
-import en from "@svity/i18n/messages/en.json" with { type: "json" };
-import uk from "@svity/i18n/messages/uk.json" with { type: "json" };
+import { messages } from "@svity/i18n";
 
 export interface Email {
   to: string;
@@ -37,7 +36,7 @@ ${notes}
 }
 
 export function passwordResetEmail(to: string, link: string, locale: Locale): Email {
-  const m = (locale === "uk" ? uk : en).email.reset;
+  const m = messages[locale].email.reset;
   return layout({ locale, subject: m.subject, title: m.title, body: m.body, button: m.button, link, notes: [m.expires, m.ignore], footer: m.footer }, to);
 }
 

@@ -5465,6 +5465,13 @@ label.profile__field {
   color: var(--accent-text);
   font-weight: 600;
 }
+/* in the app header: a bordered pill, the same height as the other tools */
+.app-header .lang-menu summary {
+  height: 38px;
+  padding: 0 10px 0 13px;
+  border: 1px solid var(--line);
+  font-size: 13px;
+}
 .site-menu__langs {
   display: grid;
   gap: 8px;

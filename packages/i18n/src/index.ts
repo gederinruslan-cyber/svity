@@ -22,7 +22,7 @@ function merge(base: Tree, over: Tree): Tree {
   }
   return out;
 }
-// The six newer languages cover the public site; app-only text falls back to English.
+// Any key missing in a language falls back to English.
 const withEnglish = (m: Tree) => merge(en as Tree, m) as Messages;
 
 export const messages = {

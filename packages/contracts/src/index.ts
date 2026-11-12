@@ -1,14 +1,13 @@
 import { z } from "zod";
 
-/** Account and question languages (the app and the API). */
-export const locales = ["uk", "en"] as const;
-/** Languages of the public site; the app falls back to English text outside `locales`. */
+/** Languages of the site, the app, accounts and card questions. */
 export const siteLocales = ["uk", "en", "de", "pl", "cs", "it", "es", "fr"] as const;
 export type SiteLocale = (typeof siteLocales)[number];
-/** The account language for a site language. */
-export const accountLocale = (l: string): Locale => (l === "uk" ? "uk" : "en");
+export const locales = siteLocales;
+/** The account language for a page language (unknown ones become English). */
+export const accountLocale = (l: string): Locale => ((siteLocales as readonly string[]).includes(l) ? (l as Locale) : "en");
 /** A page language sent by the site, stored as the account language. */
-const PageLocale = z.enum(siteLocales).transform(accountLocale);
+const PageLocale = z.enum(siteLocales);
 export const Locale = z.enum(locales);
 
 /** Session rooms for psychologists. Closed until their beta: sign-up and the profile offer only the personal app. */

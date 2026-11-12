@@ -525,7 +525,8 @@
       "namePlaceholder": "A name, or whatever feels right",
       "nameHint": "For the greeting on Today. Only you see it.",
       "writeSub": "An idea, a question about a card, something broken: write, real people reply.",
-      "dataSub": "Your diary is yours: download it, or delete it with your account."
+      "dataSub": "Your diary is yours: download it, or delete it with your account.",
+      "exportShadow": "shadow card"
     },
     "shadow": {
       "title": "Shadow cards",

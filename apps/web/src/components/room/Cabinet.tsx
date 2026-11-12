@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { accountLocale, type Me, type RoomCreateInput, type RoomCreated, type RoomListItem } from "@svity/contracts";
+import { accountLocale, locales, type Locale, type Me, type RoomCreateInput, type RoomCreated, type RoomListItem } from "@svity/contracts";
+import { LANGUAGES } from "@/i18n/languages";
 import { Link, useRouter } from "@/i18n/navigation";
 import { api, ApiError, getMe } from "@/lib/api";
 
@@ -153,10 +154,18 @@ function NewRoom({ onCreated }: { onCreated: (r: RoomCreated) => void }) {
         <legend className="field-label">{t("shadow")}</legend>
         {seg(f.includeShadow, [[false, t("off")], [true, t("on")]], (v) => set("includeShadow", v))}
       </fieldset>
-      <fieldset className="profile__field">
-        <legend className="field-label">{t("language")}</legend>
-        {seg(f.questionLanguage, [["uk", "Українська"], ["en", "English"]], (v) => set("questionLanguage", v))}
-      </fieldset>
+      <div className="profile__field">
+        <label className="field-label" htmlFor="room-lang">
+          {t("language")}
+        </label>
+        <select id="room-lang" className="field" value={f.questionLanguage} onChange={(e) => set("questionLanguage", e.target.value as Locale)}>
+          {locales.map((l) => (
+            <option key={l} value={l} lang={l}>
+              {LANGUAGES[l].name}
+            </option>
+          ))}
+        </select>
+      </div>
       <fieldset className="profile__field">
         <legend className="field-label">{t("expiry")}</legend>
         {seg<24 | 72>(f.expiryHours, [[24, t("h24")], [72, t("h72")]], (v) => set("expiryHours", v))}

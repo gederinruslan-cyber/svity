@@ -9,7 +9,7 @@ import {
   softStop,
   type ShadowAccess,
 } from "@svity/core";
-import { ShadowDrawInput, ShadowSettings, SaveInput, type EntryView, type Feeling, type ShadowView } from "@svity/contracts";
+import { ShadowDrawInput, ShadowSettings, SaveInput, type EntryView, type Feeling, type Locale, type ShadowView } from "@svity/contracts";
 import { and, count, desc, entries, eq, gt, shadowDraws, sql, users, type Db } from "@svity/db";
 import type { AuthEnv, User } from "./auth";
 import { cardView, type Deck, type ImageSigner } from "./deck";
@@ -30,13 +30,13 @@ export async function shadowState(db: Db, user: User, now = new Date()) {
   return { progress, softStop: stop, access };
 }
 
-export function shadowRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageSigner, entryView: (deck: Deck, e: EntryRow, locale: "uk" | "en") => EntryView) {
+export function shadowRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageSigner, entryView: (deck: Deck, e: EntryRow, locale: Locale) => EntryView) {
   const app = new Hono<AuthEnv>();
 
   const today = async (userId: string, day: string) =>
     (await db.select().from(shadowDraws).where(and(eq(shadowDraws.userId, userId), eq(shadowDraws.day, day))).limit(1))[0] ?? null;
 
-  async function view(user: User, locale: "uk" | "en", now = new Date()): Promise<ShadowView> {
+  async function view(user: User, locale: Locale, now = new Date()): Promise<ShadowView> {
     const deck = await getDeck();
     const { access, softStop } = await shadowState(db, user, now);
     const draw = await today(user.id, localDateKey(now, user.timezone));
