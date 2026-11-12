@@ -2144,6 +2144,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 7px;
+  white-space: nowrap;
 }
 .app-nav svg {
   opacity: 0.8;
@@ -2166,27 +2167,36 @@ section {
   min-height: 38px;
   padding: 6px 14px;
   font-size: 14px;
+  white-space: nowrap;
 }
-
-/* phones: sections in a tab bar at the bottom */
-.app-tabs {
-  display: none;
-}
-@media (max-width: 760px) {
-  .app-nav {
-    display: none;
-  }
-  .app-header__end {
-    margin-left: auto;
-    gap: 8px;
-  }
+@media (max-width: 1279px) {
+  /* the help button keeps its icon and its accessible name; the label returns on wide screens */
   .app-help.btn {
     width: 38px;
     padding: 0;
     justify-content: center;
   }
   .app-help span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* phones and tablets: sections in a tab bar at the bottom */
+.app-tabs {
+  display: none;
+}
+@media (max-width: 1023px) {
+  .app-nav {
     display: none;
+  }
+  .app-header__end {
+    margin-left: auto;
+    gap: 8px;
   }
   .app-tabs {
     position: fixed;
@@ -2202,7 +2212,7 @@ section {
     backdrop-filter: blur(16px);
   }
   .app-tabs a {
-    flex: 1;
+    flex: 1 1 auto;
     display: grid;
     justify-items: center;
     gap: 3px;
@@ -2212,6 +2222,13 @@ section {
     text-decoration: none;
     font-size: 12px;
     font-weight: 600;
+    white-space: nowrap;
+    min-width: 0;
+  }
+  .app-tabs span {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .app-tabs a.is-active {
     color: var(--text);
@@ -2272,7 +2289,13 @@ section {
   margin: 12px 0 0;
   font-size: 13px;
 }
-@media (max-width: 760px) {
+@media (max-width: 380px) {
+  .app-tabs a {
+    font-size: 11px;
+    padding-inline: 2px;
+  }
+}
+@media (max-width: 1023px) {
   /* room for the tab bar */
   .app-footer {
     padding-bottom: calc(96px + env(safe-area-inset-bottom));

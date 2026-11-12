@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { roomsOpen } from "@svity/contracts";
 import { Link, localeHref, usePathname } from "@/i18n/navigation";
 import { getMe } from "@/lib/api";
-import { Calendar, Cards, Mirror, Moon, Star4, Sun, User } from "../icons";
+import { Calendar, Cards, Leaf, Mirror, Moon, Star4, Sun, User } from "../icons";
 import { HelpButton } from "./HelpSheet";
 
 type Theme = "day" | "evening";
@@ -17,6 +17,7 @@ type Theme = "day" | "evening";
 export function AppHeader() {
   const t = useTranslations("app.nav");
   const tp = useTranslations("app.profile");
+  const td = useTranslations("app.difficult");
   const locale = useLocale();
   const pathname = usePathname();
   const [pro, setPro] = useState(false);
@@ -45,6 +46,7 @@ export function AppHeader() {
     { href: "/today", label: t("today"), icon: <Cards size={20} /> },
     { href: "/diary", label: t("diary"), icon: <Calendar size={20} /> },
     ...(pro && roomsOpen ? [{ href: "/cabinet", label: t("cabinet"), icon: <Mirror size={20} /> }] : []),
+    { href: "/difficult-day", label: td("title"), icon: <Leaf size={20} /> },
     { href: "/profile", label: t("profile"), icon: <User size={20} /> },
   ];
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
