@@ -2038,23 +2038,23 @@ section {
 
 /* ---------- diary: the month fills day by day ---------- */
 
-.js-reveal .mosaic .mosaic__day {
+.js-reveal .mosaic:not(.mosaic--app) .mosaic__day {
   opacity: 0;
   transform: scale(0.7);
   transition: opacity 0.35s ease, transform 0.35s ease;
   transition-delay: calc(var(--i, 0) * 45ms + 200ms);
 }
-.js-reveal .mosaic.is-in .mosaic__day {
+.js-reveal .mosaic:not(.mosaic--app).is-in .mosaic__day {
   opacity: 1;
   transform: none;
 }
-.js-reveal .mosaic.is-in .mosaic__day.is-future {
+.js-reveal .mosaic:not(.mosaic--app).is-in .mosaic__day.is-future {
   opacity: 0.45;
 }
-.js-reveal .mosaic .mosaic__day.is-today {
+.js-reveal .mosaic:not(.mosaic--app) .mosaic__day.is-today {
   box-shadow: none;
 }
-.js-reveal .mosaic.is-in .mosaic__day.is-today {
+.js-reveal .mosaic:not(.mosaic--app).is-in .mosaic__day.is-today {
   animation: today 0.8s 0.85s ease both;
 }
 @keyframes today {

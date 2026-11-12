@@ -19,7 +19,12 @@ export function RevealObserver() {
       { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
     );
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    // The class is page-wide: take it off when we leave the landing, or app pages
+    // (e.g. the diary's mosaic, which shares classes with the landing's) stay hidden.
+    return () => {
+      io.disconnect();
+      root.classList.remove("js-reveal");
+    };
   }, []);
   return null;
 }
