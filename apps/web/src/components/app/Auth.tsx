@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { PASSWORD_MIN, roomsOpen, type Me } from "@svity/contracts";
+import { PASSWORD_MIN, addressForms, roomsOpen, type Me } from "@svity/contracts";
 import Image from "next/image";
 import { Link, useRouter } from "@/i18n/navigation";
 import { api, ApiError, getMe } from "@/lib/api";
@@ -214,7 +214,9 @@ export function SignUp({ initialRole = "personal" }: { initialRole?: Me["role"] 
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const tp = useTranslations("app.profile");
   const [role, setRole] = useState<Me["role"]>(roomsOpen ? initialRole : "personal");
+  const [addressForm, setAddressForm] = useState<Me["addressForm"]>("n");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -224,8 +226,8 @@ export function SignUp({ initialRole = "personal" }: { initialRole?: Me["role"] 
     setError(null);
     try {
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      rememberSession((await api<{ me: Me }>("/v1/auth/signup", { method: "POST", body: { email, password, timezone, locale, role } })).me);
-      router.replace(role === "professional" ? "/cabinet" : "/today");
+      rememberSession((await api<{ me: Me }>("/v1/auth/signup", { method: "POST", body: { email, password, timezone, locale, role, addressForm } })).me);
+      router.replace(role === "professional" ? "/cabinet" : "/welcome");
     } catch (err) {
       const k = errorKey(err);
       setError(k === "email_taken" ? "taken" : k === "rateLimited" ? k : "error");
@@ -251,6 +253,17 @@ export function SignUp({ initialRole = "personal" }: { initialRole?: Me["role"] 
           <p className="app-hint">{t(role === "personal" ? "rolePersonalHint" : "roleProfessionalHint")}</p>
         </fieldset>
         )}
+        <fieldset className="app-auth__role">
+          <legend className="field-label">{tp("address")}</legend>
+          <div className="segmented segmented--fill">
+            {addressForms.map((f) => (
+              <button key={f} type="button" aria-pressed={addressForm === f} className={addressForm === f ? "is-on" : ""} onClick={() => setAddressForm(f)}>
+                {tp(f)}
+              </button>
+            ))}
+          </div>
+          <p className="app-hint">{tp("addressHint")}</p>
+        </fieldset>
         <EmailField value={email} onChange={setEmail} />
         <PasswordField label={t("password")} value={password} onChange={setPassword} isNew describedBy="auth-password-hint" />
         <PasswordMeter length={password.length} />

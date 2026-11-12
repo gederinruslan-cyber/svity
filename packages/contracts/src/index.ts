@@ -16,6 +16,8 @@ export type Locale = z.infer<typeof Locale>;
 
 // ---------- auth ----------
 
+export const addressForms = ["f", "m", "n"] as const;
+
 /** Length is the only rule (NIST 800-63B): no forced symbols or digits. */
 export const PASSWORD_MIN = 10;
 const NewPassword = z.string().min(PASSWORD_MIN).max(200);
@@ -29,6 +31,8 @@ export const SignUpInput = z.object({
   locale: PageLocale,
   /** "professional" opens the cabinet with rooms for sessions; can be changed later in the profile. */
   role: z.enum(["personal", "professional"]).default("personal"),
+  /** Grammatical form to address the user with (spec §5 step 2); changeable in the profile. */
+  addressForm: z.enum(addressForms).default("n"),
 });
 export type SignUpInput = z.infer<typeof SignUpInput>;
 
@@ -42,7 +46,6 @@ export const ForgotPasswordInput = z.object({ email: z.email().max(254), locale:
 export const ResetPasswordInput = z.object({ token: z.string().min(20).max(200), password: NewPassword });
 export const ChangePasswordInput = z.object({ current: z.string().min(1).max(200), password: NewPassword });
 
-export const addressForms = ["f", "m", "n"] as const;
 export const reminderTimes = ["09:00", "12:00", "20:00"] as const;
 
 export const ProfilePatch = z

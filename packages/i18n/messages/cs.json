@@ -798,6 +798,20 @@
       "pwMore": "{n, plural, one {Ještě # znak} few {Ještě # znaky} many {Ještě # znaku} other {Ještě # znaků}}",
       "pwOk": "Dobrá délka",
       "pwGreat": "Skvělé: dlouhé a snadno zapamatovatelné"
+    },
+    "welcome": {
+      "meta": "Vítej",
+      "skip": "Přeskočit",
+      "next": "Dál",
+      "done": "Ke kartě dne",
+      "back": "Zpět",
+      "step": "Krok {n} z {total}",
+      "s1t": "Tohle není věštění",
+      "s1": "Karty nic nepředpovídají. Jsou zrcadlem: obraz pomáhá všimnout si toho, co už v tobě je.",
+      "s2t": "Neexistují správné odpovědi",
+      "s2": "Můžeš napsat slovo, stránku nebo nic. Každá odpověď je tvoje.",
+      "s3t": "Ty rozhoduješ, o co se podělíš",
+      "s3": "Deník je soukromý, i před psychologem. Své záznamy vidíš jen ty, dokud je nechceš sdílet."
     }
   },
   "email": {

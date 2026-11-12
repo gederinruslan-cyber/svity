@@ -798,6 +798,20 @@
       "pwMore": "{n, plural, one {Noch # Zeichen} other {Noch # Zeichen}}",
       "pwOk": "Gute Länge",
       "pwGreat": "Sehr gut: lang und leicht zu merken"
+    },
+    "welcome": {
+      "meta": "Willkommen",
+      "skip": "Überspringen",
+      "next": "Weiter",
+      "done": "Zur Tageskarte",
+      "back": "Zurück",
+      "step": "Schritt {n} von {total}",
+      "s1t": "Das ist kein Wahrsagen",
+      "s1": "Die Karten sagen nichts voraus. Sie sind ein Spiegel: Ein Bild hilft dir zu bemerken, was schon in dir ist.",
+      "s2t": "Es gibt keine richtigen Antworten",
+      "s2": "Schreib ein Wort, eine Seite oder gar nichts. Jede Antwort gehört dir.",
+      "s3t": "Du entscheidest, was du teilst",
+      "s3": "Dein Tagebuch ist privat, auch vor Psycholog:innen. Nur du siehst deine Einträge, außer du teilst sie selbst."
     }
   },
   "email": {

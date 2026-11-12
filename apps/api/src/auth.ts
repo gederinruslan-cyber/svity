@@ -100,7 +100,7 @@ export function authRoutes(db: Db, opts: { webOrigin: string; mailer: Mailer; se
   app.post("/signup", signUpLimit, async (c) => {
     const parsed = SignUpInput.safeParse(await c.req.json().catch(() => null));
     if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
-    const { password, locale } = parsed.data;
+    const { password, locale, addressForm } = parsed.data;
     const role = roomsOpen ? parsed.data.role : "personal";
     const email = parsed.data.email.toLowerCase();
     let timezone = parsed.data.timezone;
@@ -110,7 +110,7 @@ export function authRoutes(db: Db, opts: { webOrigin: string; mailer: Mailer; se
       timezone = "Europe/Kyiv";
     }
     const passwordHash = await hashPassword(password);
-    const [user] = await db.insert(users).values({ email, passwordHash, locale, timezone, role }).onConflictDoNothing().returning();
+    const [user] = await db.insert(users).values({ email, passwordHash, locale, timezone, role, addressForm }).onConflictDoNothing().returning();
     if (!user) return c.json({ ok: false, error: "email_taken" }, 409);
     await startSession(c, user.id);
     return c.json({ ok: true, me: toMe(user) }, 201);

@@ -798,6 +798,20 @@
       "pwMore": "{n, plural, one {Falta # carácter} other {Faltan # caracteres}}",
       "pwOk": "Buena longitud",
       "pwGreat": "Genial: larga y fácil de recordar"
+    },
+    "welcome": {
+      "meta": "Te damos la bienvenida",
+      "skip": "Saltar",
+      "next": "Siguiente",
+      "done": "A la carta del día",
+      "back": "Atrás",
+      "step": "Paso {n} de {total}",
+      "s1t": "Esto no es adivinación",
+      "s1": "Las cartas no predicen nada. Son un espejo: una imagen te ayuda a notar lo que ya está en ti.",
+      "s2t": "No hay respuestas correctas",
+      "s2": "Puedes escribir una palabra, una página o nada. Cualquier respuesta es tuya.",
+      "s3t": "Tú decides qué compartir",
+      "s3": "Tu diario es privado, incluso para tu psicólogo. Solo tú ves tus entradas, a menos que decidas compartirlas."
     }
   },
   "email": {

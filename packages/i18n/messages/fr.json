@@ -798,6 +798,20 @@
       "pwMore": "{n, plural, one {Encore # caractère} other {Encore # caractères}}",
       "pwOk": "Bonne longueur",
       "pwGreat": "Parfait : long et facile à retenir"
+    },
+    "welcome": {
+      "meta": "Bienvenue",
+      "skip": "Passer",
+      "next": "Suivant",
+      "done": "Vers la carte du jour",
+      "back": "Retour",
+      "step": "Étape {n} sur {total}",
+      "s1t": "Ce n’est pas de la voyance",
+      "s1": "Les cartes ne prédisent rien. Elles sont un miroir : une image t’aide à remarquer ce qui est déjà en toi.",
+      "s2t": "Il n’y a pas de bonnes réponses",
+      "s2": "Tu peux écrire un mot, une page ou rien du tout. Chaque réponse t’appartient.",
+      "s3t": "C’est toi qui décides ce que tu partages",
+      "s3": "Ton journal est privé, même pour ton psy. Tes notes ne sont visibles que par toi, sauf si tu choisis de les partager."
     }
   },
   "email": {

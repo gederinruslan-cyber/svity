@@ -798,6 +798,20 @@
       "pwMore": "{n, plural, one {Jeszcze # znak} few {Jeszcze # znaki} many {Jeszcze # znaków} other {Jeszcze # znaku}}",
       "pwOk": "Dobra długość",
       "pwGreat": "Świetnie: długie i łatwe do zapamiętania"
+    },
+    "welcome": {
+      "meta": "Witaj",
+      "skip": "Pomiń",
+      "next": "Dalej",
+      "done": "Do karty dnia",
+      "back": "Wstecz",
+      "step": "Krok {n} z {total}",
+      "s1t": "To nie wróżenie",
+      "s1": "Karty niczego nie przepowiadają. Są lustrem: obraz pomaga zauważyć to, co już w tobie jest.",
+      "s2t": "Nie ma dobrych odpowiedzi",
+      "s2": "Możesz napisać słowo, stronę albo nic. Każda odpowiedź jest twoja.",
+      "s3t": "To ty decydujesz, czym się dzielić",
+      "s3": "Dziennik jest prywatny, nawet przed psychologiem. Twoje wpisy widzisz tylko ty, dopóki nie zechcesz się nimi podzielić."
     }
   },
   "email": {

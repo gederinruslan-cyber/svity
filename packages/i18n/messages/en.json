@@ -798,6 +798,20 @@
       "pwMore": "{n, plural, one {# more character} other {# more characters}}",
       "pwOk": "Good length",
       "pwGreat": "Great: long and easy to remember"
+    },
+    "welcome": {
+      "meta": "Welcome",
+      "skip": "Skip",
+      "next": "Next",
+      "done": "To the card of the day",
+      "back": "Back",
+      "step": "Step {n} of {total}",
+      "s1t": "This isn't fortune-telling",
+      "s1": "The cards don't predict anything. They're a mirror: an image helps you notice what's already in you.",
+      "s2t": "There are no right answers",
+      "s2": "Write a word, a page, or nothing at all. Whatever you answer is yours.",
+      "s3t": "You decide what to share",
+      "s3": "Your diary is private, even from a psychologist. Only you see your entries, unless you choose to share."
     }
   },
   "email": {

@@ -798,6 +798,20 @@
       "pwMore": "{n, plural, one {Ancora # carattere} other {Ancora # caratteri}}",
       "pwOk": "Lunghezza giusta",
       "pwGreat": "Ottimo: lunga e facile da ricordare"
+    },
+    "welcome": {
+      "meta": "Benvenuto in Svity",
+      "skip": "Salta",
+      "next": "Avanti",
+      "done": "Alla carta del giorno",
+      "back": "Indietro",
+      "step": "Passo {n} di {total}",
+      "s1t": "Non è divinazione",
+      "s1": "Le carte non predicono nulla. Sono uno specchio: un’immagine ti aiuta a notare ciò che è già in te.",
+      "s2t": "Non ci sono risposte giuste",
+      "s2": "Puoi scrivere una parola, una pagina o niente. Ogni risposta è tua.",
+      "s3t": "Decidi tu cosa condividere",
+      "s3": "Il diario è privato, anche per lo psicologo. Le tue note le vedi solo tu, finché non scegli di condividerle."
     }
   },
   "email": {
