@@ -14,14 +14,31 @@ export class ApiError extends Error {
   }
 }
 
+// Reads are retried after a network error or a 5xx (a phone between networks, an API restart); writes never are.
+const GET_RETRIES_MS = [600, 1500];
+const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
 /** Calls the Svity API with the session cookie. Throws ApiError on non-2xx. */
 export async function api<T>(path: string, init?: { method?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE"; body?: unknown }): Promise<T> {
-  const res = await fetch(`${API_URL}${path}`, {
-    method: init?.method ?? "GET",
-    credentials: "include",
-    headers: init?.body === undefined ? undefined : { "content-type": "application/json" },
-    body: init?.body === undefined ? undefined : JSON.stringify(init.body),
-  });
+  const method = init?.method ?? "GET";
+  const send = () =>
+    fetch(`${API_URL}${path}`, {
+      method,
+      credentials: "include",
+      headers: init?.body === undefined ? undefined : { "content-type": "application/json" },
+      body: init?.body === undefined ? undefined : JSON.stringify(init.body),
+    });
+  let res: Response | undefined;
+  for (let attempt = 0; ; attempt++) {
+    const delay = method === "GET" ? GET_RETRIES_MS[attempt] : undefined;
+    try {
+      res = await send();
+      if (res.status < 500 || delay === undefined) break;
+    } catch (err) {
+      if (delay === undefined) throw err;
+    }
+    await wait(delay);
+  }
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new ApiError(res.status, (data as { error?: string }).error ?? "server", data as Record<string, unknown>);
   return data as T;

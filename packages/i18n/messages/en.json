@@ -406,7 +406,8 @@
       "tip2": "Not your card? Put it back and take another, up to 5 times.",
       "tip3": "Only you see your entries. Download or delete them any time.",
       "tipDifficult": "A difficult day? Breathing and support",
-      "toEntry": "Open the entry"
+      "toEntry": "Open the entry",
+      "retry": "Try again"
     },
     "diary": {
       "title": "Your diary",

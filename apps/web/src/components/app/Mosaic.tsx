@@ -11,15 +11,38 @@ import { ChevronLeft, ChevronRight } from "../icons";
 /** The month in cards (spec §7): one cell per day, the day's card where there is one. */
 export function Mosaic() {
   const t = useTranslations("app.diary");
+  const tt = useTranslations("app.today");
   const locale = useLocale();
   const [month, setMonth] = useState<string | undefined>(undefined);
   const [view, setView] = useState<MonthView | null>(null);
+  const [failed, setFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
-    getMonth(locale, month).then(setView).catch(() => setView(null));
-  }, [locale, month]);
+    // Ignore a late answer for a month we already left (fast prev/next clicks).
+    let current = true;
+    setFailed(false);
+    getMonth(locale, month)
+      .then((v) => current && setView(v))
+      .catch(() => current && setFailed(true));
+    return () => {
+      current = false;
+    };
+  }, [locale, month, attempt]);
 
-  if (!view) return <div className="mosaic mosaic--app glass" aria-busy="true" />;
+  if (!view)
+    return (
+      <div className="mosaic mosaic--app mosaic--status glass" aria-busy={!failed}>
+        {failed && (
+          <>
+            <p className="app-muted">{tt("error")}</p>
+            <button type="button" className="btn btn--ghost btn--small" onClick={() => setAttempt((n) => n + 1)}>
+              {tt("retry")}
+            </button>
+          </>
+        )}
+      </div>
+    );
 
   const [y, m] = view.month.split("-").map(Number) as [number, number];
   const first = new Date(y, m - 1, 1);
@@ -74,6 +97,14 @@ export function Mosaic() {
         })}
       </div>
       <p className="mosaic__count">{t("monthCount", { month: title, count: view.count })}</p>
+      {failed && (
+        <p className="form-error mosaic__error">
+          {tt("error")}{" "}
+          <button type="button" className="link-btn" onClick={() => setAttempt((n) => n + 1)}>
+            {tt("retry")}
+          </button>
+        </p>
+      )}
     </section>
   );
 }

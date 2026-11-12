@@ -2763,6 +2763,17 @@ section {
 .mosaic--app a.mosaic__day:focus-visible {
   transform: scale(1.06);
 }
+.mosaic--status {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  min-height: 300px;
+  text-align: center;
+}
+.mosaic__error {
+  margin: 8px 0 0;
+}
 .mosaic--app .mosaic__count {
   margin: 12px 0 0;
 }
