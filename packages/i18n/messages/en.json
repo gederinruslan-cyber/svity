@@ -575,7 +575,19 @@
       "endSub": "If it's still hard, you don't have to handle it alone.",
       "toToday": "Back to today",
       "again": "Start over",
-      "skip": "Skip"
+      "skip": "Skip",
+      "eyebrow": "For the hard moments",
+      "s1t": "A card with no questions",
+      "s1": "Just look at a gentle card. Nothing to answer.",
+      "s2t": "Grounding",
+      "s2": "5-4-3-2-1: notice what's around you, one sense at a time.",
+      "s3t": "Breathing",
+      "s3": "In for 4, hold for 4, out for 6. About a minute.",
+      "time": "3–4 minutes · nothing is saved · today's card stays as it is",
+      "careTitle": "If it's very hard right now",
+      "careText": "You don't have to carry this alone. Here are the emergency numbers and how to find a helpline in your country.",
+      "stepsLabel": "Steps",
+      "endNote": "You can come back here any time: \"A difficult day?\" is on the Today page."
     },
     "ground": {
       "title": "5-4-3-2-1",

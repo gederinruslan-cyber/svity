@@ -3349,6 +3349,186 @@ label.profile__field {
   display: flex;
   margin: 0 auto;
 }
+
+/* difficult day: page */
+.difficult {
+  width: min(1040px, 100% - 32px);
+  margin: 0 auto;
+  padding-top: 4px;
+}
+.difficult__head {
+  max-width: 640px;
+  margin-bottom: 24px;
+}
+.difficult__head .h2 {
+  margin: 0;
+}
+.difficult__head .difficult__lead {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+}
+.difficult__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.difficult__plan,
+.difficult__care {
+  padding: 24px 22px;
+  border-radius: 22px;
+}
+.difficult__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+}
+.difficult__steps li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.difficult__step-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+  color: var(--link);
+}
+.difficult__breath-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 25%, transparent);
+}
+.difficult__step-t {
+  margin: 2px 0 2px;
+  font-family: var(--font-serif), serif;
+  font-size: 21px;
+}
+.difficult__step-n {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-right: 4px;
+}
+.difficult__step-b {
+  margin: 0;
+  color: var(--text-muted);
+}
+.difficult__time {
+  margin: 22px 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.difficult__care .h3 {
+  margin: 12px 0 6px;
+}
+.difficult__care .app-muted {
+  margin: 0 0 16px;
+}
+.difficult__care-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--link);
+}
+.difficult__care .difficult__help {
+  margin: 0;
+}
+
+/* difficult day: the steps */
+/* the steps: one centred column, heading included */
+.difficult--flow {
+  width: min(720px, 100% - 32px);
+}
+.difficult .difficult__tracker {
+  margin: 0 0 20px;
+}
+.difficult .difficult__panel {
+  min-height: 420px;
+  margin: 0 0 18px;
+  padding: 32px 24px;
+  align-content: center;
+}
+.difficult__card-step {
+  display: grid;
+  gap: 20px;
+  justify-items: center;
+}
+.difficult .difficult__card {
+  width: min(260px, 62vw);
+  margin: 0;
+}
+.difficult__card-text .question {
+  margin-bottom: 6px;
+}
+.difficult__card-text .app-muted {
+  margin: 0 0 18px;
+}
+.difficult .breath__circle {
+  width: 210px;
+  height: 210px;
+  box-shadow: 0 0 0 1px var(--line), 0 0 60px -10px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.difficult .ground__n {
+  font-size: 84px;
+}
+.ground__dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin: 6px 0 0;
+}
+.ground__dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--line);
+}
+.ground__dots .is-on {
+  background: var(--accent);
+}
+.difficult__end {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  max-width: 460px;
+}
+.difficult__end .saved-star {
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.difficult__end .app-hint {
+  margin-top: 18px;
+}
+@media (min-width: 860px) {
+  .difficult__intro {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 24px;
+  }
+  .difficult__card-step {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 36px;
+    align-items: center;
+    justify-items: start;
+    text-align: left;
+  }
+  .difficult .difficult__card {
+    width: 260px;
+  }
+}
 .ground {
   display: grid;
   justify-items: center;

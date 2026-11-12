@@ -19,6 +19,11 @@ export function Grounding({ onDone }: { onDone: () => void }) {
       <p className="question" aria-live="polite">
         {t(SENSES[i]!)}
       </p>
+      <p className="ground__dots" aria-hidden="true">
+        {SENSES.map((x, k) => (
+          <span key={x} className={k <= i ? "is-on" : ""} />
+        ))}
+      </p>
       <p className="app-hint">{t("step", { n: i + 1 })}</p>
       <button type="button" className="btn" onClick={() => (last ? onDone() : setI(i + 1))}>
         {last ? t("done") : t("next")}
