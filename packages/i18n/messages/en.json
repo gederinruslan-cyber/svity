@@ -440,7 +440,12 @@
       "shareText": "A question from Svity: “{q}”",
       "notFound": "This entry doesn't exist any more.",
       "request": "Your question to yourself",
-      "feelings": "Before → after"
+      "feelings": "Before → after",
+      "sub": "Your cards, questions and notes. Only you can see them.",
+      "entriesN": "{count, plural, one {# entry} other {# entries}}",
+      "statEntries": "Entries",
+      "statLighter": "Lighter after the card",
+      "statTop": "Most often after"
     },
     "help": {
       "open": "I need help now",

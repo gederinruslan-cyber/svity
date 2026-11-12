@@ -3,11 +3,12 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { feelings, type EntryView, type Feeling } from "@svity/contracts";
+import { feelings, type EntryView, type Feeling, type ProfileStats } from "@svity/contracts";
 import { Link, useRouter } from "@/i18n/navigation";
 import { ApiError, getEntries } from "@/lib/api";
 import { Heart } from "../icons";
 import { Mosaic } from "./Mosaic";
+import { Sky } from "../Sky";
 import type { SessionSummaryView } from "@svity/contracts";
 import { api } from "@/lib/api";
 
@@ -45,94 +46,163 @@ export function Diary() {
     load();
   }, [load]);
 
-  const date = new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", weekday: "short" });
+  const date = new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", weekday: "long" });
+  const thisYear = new Date().getFullYear();
+  const monthLabel = (d: Date) =>
+    new Intl.DateTimeFormat(locale, { month: "long", year: d.getFullYear() === thisYear ? undefined : "numeric" }).format(d);
+  // Newest first, grouped by calendar month.
+  const groups: { key: string; label: string; items: EntryView[] }[] = [];
+  for (const e of items ?? []) {
+    const d = new Date(e.createdAt);
+    const key = `${d.getFullYear()}-${d.getMonth()}`;
+    if (groups.at(-1)?.key !== key) {
+      const label = monthLabel(d);
+      groups.push({ key, label: label.charAt(0).toUpperCase() + label.slice(1), items: [] });
+    }
+    groups.at(-1)!.items.push(e);
+  }
+  const filtered = feeling !== null || favorite;
 
   return (
-    <section className="diary-page container container--narrow">
-      <h1 className="h2">{t("title")}</h1>
-      <Mosaic />
-      <Sessions />
+    <section className="diary-page">
+      <Sky />
+      <header className="diary-page__head">
+        <h1 className="h2">{t("title")}</h1>
+        <p className="diary-page__sub">{t("sub")}</p>
+      </header>
 
-      <div className="chips diary-page__filter" role="group" aria-label={t("filter")}>
-        <button
-          type="button"
-          className={`chip ${feeling === null && !favorite ? "chip--selected" : ""}`}
-          aria-pressed={feeling === null && !favorite}
-          onClick={() => {
-            setFeeling(null);
-            setFavorite(false);
-          }}
-        >
-          {t("all")}
-        </button>
-        <button type="button" className={`chip chip--icon ${favorite ? "chip--selected" : ""}`} aria-pressed={favorite} onClick={() => setFavorite((x) => !x)}>
-          <Heart size={14} filled={favorite} /> {t("favorites")}
-        </button>
-        {feelings.map((f) => (
-          <button
-            key={f}
-            type="button"
-            className={`chip chip--${f} ${feeling === f ? "chip--selected" : ""}`}
-            aria-pressed={feeling === f}
-            onClick={() => setFeeling(f)}
-          >
-            {tf(f)}
-          </button>
-        ))}
-      </div>
+      <div className="diary-page__layout">
+        <aside className="diary-page__side">
+          <Mosaic />
+          <Stats />
+          <div className="diary-page__filters">
+            <p className="field-label">{t("filter")}</p>
+            <div className="chips diary-page__filter" role="group" aria-label={t("filter")}>
+              <button
+                type="button"
+                className={`chip ${!filtered ? "chip--selected" : ""}`}
+                aria-pressed={!filtered}
+                onClick={() => {
+                  setFeeling(null);
+                  setFavorite(false);
+                }}
+              >
+                {t("all")}
+              </button>
+              <button type="button" className={`chip chip--icon ${favorite ? "chip--selected" : ""}`} aria-pressed={favorite} onClick={() => setFavorite((x) => !x)}>
+                <Heart size={14} filled={favorite} /> {t("favorites")}
+              </button>
+              {feelings.map((f) => (
+                <button
+                  key={f}
+                  type="button"
+                  className={`chip chip--${f} ${feeling === f ? "chip--selected" : ""}`}
+                  aria-pressed={feeling === f}
+                  onClick={() => setFeeling(feeling === f ? null : f)}
+                >
+                  {tf(f)}
+                </button>
+              ))}
+            </div>
+          </div>
+        </aside>
 
-      {error && <p className="form-error">{tt("error")}</p>}
+        <div className="diary-page__main">
+          <Sessions />
+          {error && <p className="form-error">{tt("error")}</p>}
 
-      {items?.length === 0 && (
-        <div className="diary-page__empty glass">
-          <Image src="/brand/diary.webp" alt="" width={140} height={140} />
-          <p>{feeling || favorite ? t("empty") : t("emptyAll")}</p>
-          {!feeling && !favorite && (
-            <Link href="/today" className="btn">
-              {t("drawToday")}
-            </Link>
+          {items?.length === 0 && (
+            <div className="diary-page__empty glass">
+              <Image src="/brand/diary.webp" alt="" width={140} height={140} />
+              <p>{filtered ? t("empty") : t("emptyAll")}</p>
+              {!filtered && (
+                <Link href="/today" className="btn">
+                  {t("drawToday")}
+                </Link>
+              )}
+            </div>
+          )}
+
+          {groups.map((g) => (
+            <section key={g.key} className="diary-month" aria-label={g.label}>
+              <h2 className="diary-month__title">
+                {g.label}
+                <span>{t("entriesN", { count: g.items.length })}</span>
+              </h2>
+              <ol className="diary-page__list">
+                {g.items.map((e) => (
+                  <li key={e.id}>
+                    <Link href={`/diary/${e.id}`} className="entry entry--link diary-entry glass" aria-label={`${t("open")}: ${e.card.question}`}>
+                      <span className="entry__thumb diary-entry__thumb">
+                        <Image src={e.card.imageUrl} alt={tt("cardAlt", { n: e.card.id })} fill sizes="96px" unoptimized />
+                      </span>
+                      <div className="diary-entry__body">
+                        <p className="entry__meta">
+                          <time dateTime={e.createdAt}>{date.format(new Date(e.createdAt))}</time> · {tt("cardN", { n: e.card.id })}
+                          {e.isShadow && <> · {ts("label")}</>}
+                          {e.editedAt && <> · {t("edited")}</>}
+                        </p>
+                        <p className="entry__q">{e.card.question}</p>
+                        {e.request && <p className="today__req-text">“{e.request}”</p>}
+                        <p className={`entry__note diary-entry__note ${e.note ? "" : "is-empty"}`}>{e.note ?? t("noNote")}</p>
+                        <p className="entry__feel">
+                          <span className="chip chip--sm">{tf(e.feelingBefore)}</span>
+                          <span aria-hidden="true">→</span>
+                          <span className="chip chip--sm chip--sage">{tf(e.feelingAfter)}</span>
+                        </p>
+                      </div>
+                      {e.isFavorite && (
+                        <span className="entry__fav" aria-hidden="true">
+                          <Heart size={16} filled />
+                        </span>
+                      )}
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          ))}
+
+          {next && (
+            <button type="button" className="btn btn--ghost diary-page__more" onClick={() => load(next)}>
+              {t("more")}
+            </button>
           )}
         </div>
-      )}
-
-      <ol className="diary-page__list">
-        {items?.map((e) => (
-          <li key={e.id}>
-            <Link href={`/diary/${e.id}`} className="entry entry--link glass" aria-label={`${t("open")}: ${e.card.question}`}>
-              <span className="entry__thumb">
-                <Image src={e.card.imageUrl} alt={tt("cardAlt", { n: e.card.id })} fill sizes="72px" unoptimized />
-              </span>
-              <div>
-                <p className="entry__meta">
-                  <time dateTime={e.createdAt}>{date.format(new Date(e.createdAt))}</time> · {tt("cardN", { n: e.card.id })}
-                  {e.isShadow && <> · {ts("label")}</>}
-                  {e.editedAt && <> · {t("edited")}</>}
-                </p>
-                <p className="entry__q">{e.card.question}</p>
-                {e.request && <p className="today__req-text">“{e.request}”</p>}
-                <p className="entry__note">{e.note ?? t("noNote")}</p>
-                <p className="entry__feel">
-                  <span className="chip chip--sm">{tf(e.feelingBefore)}</span>
-                  <span aria-hidden="true">→</span>
-                  <span className="chip chip--sm chip--sage">{tf(e.feelingAfter)}</span>
-                </p>
-              </div>
-              {e.isFavorite && (
-                <span className="entry__fav" aria-hidden="true">
-                  <Heart size={16} filled />
-                </span>
-              )}
-            </Link>
-          </li>
-        ))}
-      </ol>
-
-      {next && (
-        <button type="button" className="btn btn--ghost diary-page__more" onClick={() => load(next)}>
-          {t("more")}
-        </button>
-      )}
+      </div>
     </section>
+  );
+}
+
+/** A few numbers about the practice: entries, "lighter after the card", the most frequent feeling after. */
+function Stats() {
+  const t = useTranslations("app.diary");
+  const tf = useTranslations("feelings");
+  const [stats, setStats] = useState<ProfileStats | null>(null);
+  useEffect(() => {
+    api<ProfileStats>("/v1/me/stats")
+      .then(setStats)
+      .catch(() => {});
+  }, []);
+  if (!stats || stats.entries === 0) return null;
+  const top = stats.topAfter[0];
+  return (
+    <dl className="diary-stats glass">
+      <div>
+        <dt>{t("statEntries")}</dt>
+        <dd>{stats.entries}</dd>
+      </div>
+      <div>
+        <dt>{t("statLighter")}</dt>
+        <dd>{Math.round((100 * stats.lighter) / stats.entries)}%</dd>
+      </div>
+      {top && (
+        <div>
+          <dt>{t("statTop")}</dt>
+          <dd className="diary-stats__feeling">{tf(top.feeling)}</dd>
+        </div>
+      )}
+    </dl>
   );
 }
 
