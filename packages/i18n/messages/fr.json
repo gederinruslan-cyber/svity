@@ -16,7 +16,8 @@
     "start": "Svity : créer un compte ou se connecter",
     "startShort": "Commencer",
     "open": "Ouvrir Svity",
-    "openShort": "Ouvrir"
+    "openShort": "Ouvrir",
+    "signOut": "Se déconnecter"
   },
   "hero": {
     "eyebrow": "Des cartes métaphoriques pour chaque jour",

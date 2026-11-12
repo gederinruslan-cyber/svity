@@ -225,3 +225,12 @@ export function User({ size = 22, className }: P) {
     </svg>
   );
 }
+
+export function SignOut({ size = 22, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <path d="M14 4.5H7.5a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2H14" />
+      <path d="M11 12h9.5M17 8.5l3.5 3.5-3.5 3.5" />
+    </svg>
+  );
+}

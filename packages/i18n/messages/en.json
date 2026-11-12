@@ -16,7 +16,8 @@
     "start": "Svity: create an account or sign in",
     "startShort": "Get started",
     "open": "Open Svity",
-    "openShort": "Open"
+    "openShort": "Open",
+    "signOut": "Sign out"
   },
   "hero": {
     "eyebrow": "Metaphorical cards for every day",

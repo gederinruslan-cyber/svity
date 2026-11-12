@@ -16,7 +16,8 @@
     "start": "Svity: створити акаунт або увійти",
     "startShort": "Почати",
     "open": "Відкрити Svity",
-    "openShort": "Відкрити"
+    "openShort": "Відкрити",
+    "signOut": "Вийти"
   },
   "hero": {
     "eyebrow": "Метафоричні карти на кожен день",

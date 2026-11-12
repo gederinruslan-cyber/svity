@@ -16,7 +16,8 @@
     "start": "Svity: crea un account o accedi",
     "startShort": "Inizia",
     "open": "Apri Svity",
-    "openShort": "Apri"
+    "openShort": "Apri",
+    "signOut": "Esci"
   },
   "hero": {
     "eyebrow": "Carte metaforiche per ogni giorno",

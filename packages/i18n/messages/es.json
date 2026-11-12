@@ -16,7 +16,8 @@
     "start": "Svity: crea una cuenta o inicia sesión",
     "startShort": "Empezar",
     "open": "Abrir Svity",
-    "openShort": "Abrir"
+    "openShort": "Abrir",
+    "signOut": "Cerrar sesión"
   },
   "hero": {
     "eyebrow": "Cartas metafóricas para cada día",

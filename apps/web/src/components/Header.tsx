@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { useSession } from "@/lib/session";
+import { api } from "@/lib/api";
+import { rememberSession, useSession } from "@/lib/session";
 import { LangMenu } from "./LangMenu";
-import { ChevronRight, Close, Menu, Moon, Star4, Sun } from "./icons";
+import { ChevronRight, Close, Menu, Moon, SignOut, Star4, Sun } from "./icons";
 
 type ThemePref = "day" | "evening";
 
@@ -69,6 +70,13 @@ export function Header() {
     } catch {}
   }
 
+  async function signOut() {
+    await api("/v1/auth/logout", { method: "POST" }).catch(() => {});
+    rememberSession(null);
+    // The landing reads the session once; reload so every button shows the signed-out state.
+    window.location.reload();
+  }
+
   const themeLabel = pref === "day" ? t("themeDay") : t("themeEvening");
 
   const prefs = (
@@ -108,6 +116,11 @@ export function Header() {
             {signedIn ? t("openShort") : t("startShort")}
             <ChevronRight size={16} />
           </Link>
+          {signedIn && (
+            <button type="button" className="icon-btn header-signout" onClick={signOut} aria-label={t("signOut")} title={t("signOut")}>
+              <SignOut size={18} />
+            </button>
+          )}
           <button type="button" className="icon-btn menu-btn" onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-controls="site-menu" aria-label={t("menu")}>
             {open ? <Close size={20} /> : <Menu size={20} />}
           </button>
@@ -125,9 +138,14 @@ export function Header() {
           ))}
         </nav>
         {signedIn && (
-          <Link href="/today" className="btn btn--block">
-            {t("open")}
-          </Link>
+          <div className="site-menu__account">
+            <Link href="/today" className="btn btn--block">
+              {t("open")}
+            </Link>
+            <button type="button" className="btn btn--ghost btn--block" onClick={signOut}>
+              <SignOut size={18} /> {t("signOut")}
+            </button>
+          </div>
         )}
         <div className="site-menu__prefs">
           <span className="field-label">{t("theme")}</span>

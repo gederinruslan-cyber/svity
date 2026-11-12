@@ -16,7 +16,8 @@
     "start": "Svity: załóż konto lub zaloguj się",
     "startShort": "Zacznij",
     "open": "Otwórz Svity",
-    "openShort": "Otwórz"
+    "openShort": "Otwórz",
+    "signOut": "Wyloguj się"
   },
   "hero": {
     "eyebrow": "Karty metaforyczne na każdy dzień",

@@ -16,7 +16,8 @@
     "start": "Svity: vytvořit účet nebo se přihlásit",
     "startShort": "Začít",
     "open": "Otevřít Svity",
-    "openShort": "Otevřít"
+    "openShort": "Otevřít",
+    "signOut": "Odhlásit se"
   },
   "hero": {
     "eyebrow": "Metaforické karty na každý den",

@@ -488,6 +488,22 @@ section {
   width: 40px;
   height: 40px;
 }
+.header-signout {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  color: var(--text-muted);
+}
+.header-signout:hover {
+  color: var(--text);
+}
+.site-menu__account {
+  display: grid;
+  gap: 10px;
+}
+.site-menu__account .btn {
+  gap: 8px;
+}
 
 /* Phone menu: a card under the bar. */
 .site-menu {
@@ -532,7 +548,8 @@ section {
 }
 
 @media (max-width: 479px) {
-  .site-header__prefs {
+  .site-header__prefs,
+  .header-signout {
     display: none;
   }
 }

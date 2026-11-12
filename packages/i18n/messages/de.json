@@ -16,7 +16,8 @@
     "start": "Svity: Konto erstellen oder anmelden",
     "startShort": "Loslegen",
     "open": "Svity öffnen",
-    "openShort": "Öffnen"
+    "openShort": "Öffnen",
+    "signOut": "Abmelden"
   },
   "hero": {
     "eyebrow": "Metaphorische Karten für jeden Tag",
