@@ -2251,8 +2251,257 @@ section {
 
 /* today */
 .today {
-  width: min(960px, 100% - 32px);
+  width: min(1040px, 100% - 32px);
   margin: 0 auto;
+}
+.today__head {
+  margin: 4px 0 18px;
+}
+.today__head .eyebrow::first-letter {
+  text-transform: uppercase;
+}
+.today__head .h2 {
+  margin: 0;
+}
+.today .today__steps {
+  margin-bottom: 24px;
+}
+.today .ritual {
+  width: min(300px, 64vw);
+}
+.today__question {
+  font-size: clamp(23px, 2.7vw, 30px);
+}
+.today__look {
+  margin: -4px 0 14px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.today__below {
+  display: grid;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+/* the week: seven days of cards */
+.week,
+.tips {
+  padding: 22px;
+  border-radius: 22px;
+}
+.week__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 14px;
+  margin-bottom: 14px;
+}
+.week__head .h3,
+.tips .h3 {
+  margin: 0;
+}
+.week__count {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.week__days {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+.week__day {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.week__wd,
+.week__n {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.week__wd::first-letter {
+  text-transform: uppercase;
+}
+.week__day.is-today .week__wd,
+.week__day.is-today .week__n {
+  color: var(--text);
+  font-weight: 700;
+}
+.week__card,
+.week__empty {
+  position: relative;
+  width: 100%;
+  max-width: 64px;
+  aspect-ratio: 9 / 16;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.week__card {
+  display: block;
+  box-shadow: 0 10px 18px -12px rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s ease;
+}
+.week__card:hover {
+  transform: translateY(-3px);
+}
+.week__card img {
+  object-fit: cover;
+}
+.week__empty {
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--line);
+  color: var(--gold);
+  opacity: 0.6;
+}
+.week__day.is-today .week__card,
+.week__day.is-today .week__empty {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.week__foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 14px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.week__foot a {
+  color: var(--link);
+  font-weight: 600;
+}
+
+/* tips */
+.tips ul {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.tips li {
+  display: flex;
+  gap: 10px;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.tips__star {
+  flex: none;
+  margin-top: 5px;
+  color: var(--gold);
+}
+.tips__difficult {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--link);
+}
+
+/* done: the card big, the entry beside it */
+.today__done-grid {
+  display: grid;
+  gap: 24px;
+  align-items: start;
+}
+.today__done-card {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+}
+.today__done-img {
+  position: relative;
+  width: min(300px, 72vw);
+  aspect-ratio: 9 / 16;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 30px 50px -28px rgba(0, 0, 0, 0.7);
+}
+.today__done-img img {
+  object-fit: cover;
+}
+.today__done {
+  padding: 28px 24px;
+  border-radius: 24px;
+}
+.today__done .h3 {
+  margin: 4px 0 0;
+}
+.today__entry {
+  margin: 18px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.today__entry-note {
+  margin: 0 0 12px;
+  white-space: pre-wrap;
+}
+.today__next-box {
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+}
+.today__next-box .app-hint {
+  margin: 4px 0 0;
+}
+.today__done-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+@media (min-width: 860px) {
+  .today .ritual {
+    width: 340px;
+  }
+  .today__stage {
+    max-width: none;
+  }
+  .today .today__stage {
+    align-items: center;
+  }
+  .today .today__stage .demo__panel {
+    min-height: 0;
+  }
+  .today__below {
+    grid-template-columns: 1.5fr 1fr;
+    align-items: start;
+  }
+  .today__done-grid {
+    grid-template-columns: auto 1fr;
+    gap: 48px;
+  }
+  .today__done-img {
+    width: 320px;
+  }
+  .today__done {
+    padding: 32px;
+  }
+}
+@media (max-width: 520px) {
+  .week,
+  .tips {
+    padding: 18px 16px;
+  }
+  .week__days {
+    gap: 5px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .week__card {
+    transition: none;
+  }
 }
 .today__request {
   display: block;
@@ -2276,23 +2525,6 @@ section {
   margin-top: 14px;
   padding-top: 12px;
   border-top: 1px solid var(--line);
-}
-.today--done {
-  display: grid;
-  place-items: center;
-  padding-top: 12px;
-}
-.today__done {
-  width: min(560px, 100%);
-  padding: 32px 24px;
-  border-radius: 24px;
-  text-align: center;
-}
-.today__done .entry {
-  text-align: left;
-  margin: 18px 0 22px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
 }
 .today__saved {
   margin: 0 0 4px;

@@ -3,12 +3,13 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { feelings, type Feeling, type Me, type TodayView } from "@svity/contracts";
+import { feelings, type Feeling, type Me, type MonthView, type TodayView } from "@svity/contracts";
 import { motion } from "@svity/tokens";
 import { Link, useRouter } from "@/i18n/navigation";
 import { api, ApiError, getMe, getMonth, getToday, preload } from "@/lib/api";
 import { RitualCard, type RitualStage } from "../ritual/RitualCard";
 import { Star4 } from "../icons";
+import { Sky } from "../Sky";
 import { AfterShadow, useEvening } from "./ShadowSteps";
 
 type Phase = "loading" | "before" | "draw" | "card" | "after-shadow" | "after" | "done";
@@ -153,9 +154,22 @@ export function Today() {
 
   const open = view?.state === "open" ? view : null;
 
+  const step = phase === "before" ? 0 : phase === "draw" ? 1 : phase === "card" ? 2 : 3;
+  const steps = [t("stepFeel"), t("stepCard"), t("stepQuestion"), t("stepAfter")];
+
   return (
     <section className="today">
-      <div className={`demo__stage demo__stage--${phase}`}>
+      <Sky />
+      <DayHead me={me} />
+      <ol className="demo__steps today__steps" aria-label={t("stepsLabel")}>
+        {steps.map((label, i) => (
+          <li key={label} className={i === step ? "is-current" : i < step ? "is-done" : ""} aria-current={i === step ? "step" : undefined}>
+            <span className="demo__step-n">{i + 1}</span>
+            <span className="demo__step-t">{label}</span>
+          </li>
+        ))}
+      </ol>
+      <div className={`demo__stage today__stage demo__stage--${phase}`}>
         <div className="demo__card-col">
           <RitualCard
             stage={stage}
@@ -216,7 +230,8 @@ export function Today() {
             <div className="demo__step">
               {open.request && <p className="today__req-text">“{open.request}”</p>}
               <p className="demo__label">{t("questionLabel")}</p>
-              <p className="question">{open.card.question}</p>
+              <p className="question today__question">{open.card.question}</p>
+              <p className="today__look">{t("lookHint")}</p>
               <textarea
                 className="field field--area"
                 rows={4}
@@ -275,7 +290,124 @@ export function Today() {
           {error && <p className="form-error">{t("error")}</p>}
         </div>
       </div>
+      <div className="today__below">
+        <Week me={me} refresh={view} />
+        <Tips />
+      </div>
     </section>
+  );
+}
+
+/** Date and a greeting for the time of day, in the profile time zone. */
+function DayHead({ me }: { me: Me | null }) {
+  const t = useTranslations("app.today");
+  const locale = useLocale();
+  const tz = me?.timezone;
+  const now = new Date();
+  const hour = Number(new Intl.DateTimeFormat("en-GB", { hour: "numeric", hourCycle: "h23", timeZone: tz }).format(now));
+  const part = hour < 5 ? "Night" : hour < 12 ? "Morning" : hour < 18 ? "Day" : hour < 23 ? "Evening" : "Night";
+  const greeting = t(`greet${part}`);
+  const date = new Intl.DateTimeFormat(locale, { weekday: "long", day: "numeric", month: "long", timeZone: tz }).format(now);
+  return (
+    <header className="today__head">
+      <p className="eyebrow">{date}</p>
+      <h1 className="h2">{me?.displayName ? t("greetName", { greeting, name: me.displayName }) : greeting}</h1>
+    </header>
+  );
+}
+
+const DAY_MS = 86_400_000;
+
+/** The last seven days in the profile time zone, oldest first (calendar days, UTC arithmetic). */
+function lastWeek(tz: string | undefined) {
+  const [y, m, d] = new Intl.DateTimeFormat("en-CA", { year: "numeric", month: "2-digit", day: "2-digit", timeZone: tz })
+    .format(new Date())
+    .split("-")
+    .map(Number) as [number, number, number];
+  const today = Date.UTC(y, m - 1, d);
+  return Array.from({ length: 7 }, (_, i) => {
+    const date = new Date(today - (6 - i) * DAY_MS);
+    const month = `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}`;
+    return { date, month, day: date.getUTCDate() };
+  });
+}
+
+/** Seven days of cards: a thumbnail for each day with an entry, today outlined. */
+function Week({ me, refresh }: { me: Me | null; refresh: unknown }) {
+  const t = useTranslations("app.today");
+  const locale = useLocale();
+  const [cells, setCells] = useState<{ date: Date; entry: MonthView["days"][number] | null }[] | null>(null);
+  const [monthCount, setMonthCount] = useState<{ name: string; count: number } | null>(null);
+
+  useEffect(() => {
+    if (!me) return;
+    const days = lastWeek(me.timezone);
+    const months = [...new Set(days.map((d) => d.month))];
+    Promise.all(months.map((m) => getMonth(locale, m)))
+      .then((views) => {
+        const byMonth = new Map(views.map((v) => [v.month, v]));
+        setCells(days.map((d) => ({ date: d.date, entry: byMonth.get(d.month)?.days.find((x) => x.day === d.day) ?? null })));
+        const current = byMonth.get(days[6]!.month)!;
+        const name = new Intl.DateTimeFormat(locale, { month: "long", timeZone: "UTC" }).format(days[6]!.date);
+        setMonthCount({ name: name.charAt(0).toUpperCase() + name.slice(1), count: current.count });
+      })
+      .catch(() => {});
+  }, [me, locale, refresh]);
+
+  const weekday = new Intl.DateTimeFormat(locale, { weekday: "short", timeZone: "UTC" });
+  const drawn = cells?.filter((c) => c.entry).length ?? 0;
+
+  return (
+    <div className="week glass">
+      <div className="week__head">
+        <p className="h3">{t("weekTitle")}</p>
+        <p className="week__count">{t("weekCount", { count: drawn })}</p>
+      </div>
+      <ol className="week__days">
+        {(cells ?? lastWeek(me?.timezone).map((d) => ({ date: d.date, entry: null }))).map(({ date, entry }, i) => (
+          <li key={date.toISOString()} className={`week__day ${i === 6 ? "is-today" : ""}`}>
+            <span className="week__wd">{weekday.format(date)}</span>
+            {entry ? (
+              <Link href={`/diary/${entry.entryId}`} className="week__card" aria-label={t("cardN", { n: entry.card.id })}>
+                <Image src={entry.card.imageUrl} alt="" fill sizes="64px" unoptimized />
+              </Link>
+            ) : (
+              <span className="week__empty" aria-hidden="true">
+                <Star4 size={10} />
+              </span>
+            )}
+            <span className="week__n">{date.getUTCDate()}</span>
+          </li>
+        ))}
+      </ol>
+      <div className="week__foot">
+        {monthCount && monthCount.count > 0 ? <span>{t("monthCount", { month: monthCount.name, count: monthCount.count })}</span> : <span>{t("weekEmpty")}</span>}
+        <Link href="/diary">{t("toDiary")}</Link>
+      </div>
+    </div>
+  );
+}
+
+/** Three quiet reminders of how the daily card works. */
+function Tips() {
+  const t = useTranslations("app.today");
+  return (
+    <aside className="tips glass" aria-labelledby="today-tips">
+      <p id="today-tips" className="h3">
+        {t("tipsTitle")}
+      </p>
+      <ul>
+        {(["tip1", "tip2", "tip3"] as const).map((k) => (
+          <li key={k}>
+            <Star4 size={10} className="tips__star" />
+            <span>{t(k)}</span>
+          </li>
+        ))}
+      </ul>
+      <Link href="/difficult-day" className="tips__difficult">
+        {t("tipDifficult")}
+      </Link>
+    </aside>
   );
 }
 
@@ -295,19 +427,6 @@ function Done({
   const ts = useTranslations("app.shadow");
   const nextMs = Date.parse(view.nextAvailableAt);
   const [left, setLeft] = useState(() => nextMs - Date.now());
-  const locale = useLocale();
-  const [month, setMonth] = useState<{ name: string; count: number } | null>(null);
-
-  useEffect(() => {
-    getMonth(locale)
-      .then((m) => {
-        const [y, mo] = m.month.split("-").map(Number) as [number, number];
-        const name = new Intl.DateTimeFormat(locale, { month: "long" }).format(new Date(y, mo - 1, 1));
-        setMonth({ name: name.charAt(0).toUpperCase() + name.slice(1), count: m.count });
-      })
-      .catch(() => {});
-  }, [locale, view]);
-
   useEffect(() => {
     const id = setInterval(() => {
       const ms = nextMs - Date.now();
@@ -326,42 +445,56 @@ function Done({
 
   return (
     <section className="today today--done">
-      <div className="today__done glass">
-        <span className={`saved-star ${justSaved ? "is-new" : ""}`} aria-hidden="true">
-          <Star4 size={44} />
-        </span>
-        {justSaved && <p className="today__saved">{t("saved")}</p>}
-        {view.entry?.isShadow && <p className="question today__gentle">{ts("gentle")}</p>}
-        <h1 className="h3">{t("drawn", { form: me?.addressForm ?? "n" })}</h1>
-        <p className="today__next">
-          {hour === 0 ? t("nextMidnight") : t("nextNoon")} · {t("countdown", { h: Math.floor(mins / 60), m: mins % 60 })}
-        </p>
-        <p className="app-hint">{t("rule")}</p>
-
-        {e ? (
-          <article className="entry entry--today">
-            <span className="entry__thumb">
-              <Image src={e.card.imageUrl} alt={t("cardAlt", { n: e.card.id })} fill sizes="72px" unoptimized />
+      <Sky />
+      <DayHead me={me} />
+      <div className="today__done-grid">
+        {e && (
+          <figure className="today__done-card">
+            <span className="today__done-img">
+              <Image src={e.card.imageUrl} alt={t("cardAlt", { n: e.card.id })} fill sizes="(min-width: 860px) 320px, 72vw" unoptimized />
             </span>
-            <div>
-              <p className="entry__meta">{t("cardN", { n: e.card.id })}</p>
-              <p className="entry__q">{e.card.question}</p>
-              <p className="entry__note">{e.note ?? t("noNote")}</p>
+            <figcaption className="demo__shared">{t("cardN", { n: e.card.id })}</figcaption>
+          </figure>
+        )}
+        <div className="today__done glass">
+          <span className={`saved-star ${justSaved ? "is-new" : ""}`} aria-hidden="true">
+            <Star4 size={36} />
+          </span>
+          {justSaved && <p className="today__saved">{t("saved")}</p>}
+          {view.entry?.isShadow && <p className="question today__gentle">{ts("gentle")}</p>}
+          <p className="h3">{t("drawn", { form: me?.addressForm ?? "n" })}</p>
+
+          {e ? (
+            <div className="today__entry">
+              <p className="demo__label">{t("questionLabel")}</p>
+              <p className="question today__question">{e.card.question}</p>
+              <p className="today__entry-note">{e.note ?? t("noNote")}</p>
               <p className="entry__feel">
                 <span className="chip chip--sm">{tf(e.feelingBefore)}</span>
                 <span aria-hidden="true">→</span>
                 <span className="chip chip--sm chip--sage">{tf(e.feelingAfter)}</span>
               </p>
             </div>
-          </article>
-        ) : (
-          <p className="demo__muted">{t("closed")}</p>
-        )}
+          ) : (
+            <p className="demo__muted">{t("closed")}</p>
+          )}
 
-        {month && month.count > 0 && <p className="today__month">{t("monthCount", { month: month.name, count: month.count })}</p>}
-        <Link href="/diary" className="btn">
-          {t("toDiary")}
-        </Link>
+          <div className="today__next-box">
+            <p className="today__next">
+              {hour === 0 ? t("nextMidnight") : t("nextNoon")} · {t("countdown", { h: Math.floor(mins / 60), m: mins % 60 })}
+            </p>
+            <p className="app-hint">{t("rule")}</p>
+          </div>
+          <div className="today__done-actions">
+            <Link href={e ? `/diary/${e.id}` : "/diary"} className="btn">
+              {e ? t("toEntry") : t("toDiary")}
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="today__below">
+        <Week me={me} refresh={view} />
+        <Tips />
       </div>
     </section>
   );
