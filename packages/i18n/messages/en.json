@@ -512,7 +512,19 @@
       "work": "Sessions with clients",
       "workPersonal": "Off",
       "workProfessional": "On",
-      "workHint": "Turns on the cabinet: rooms where you and a client work with the cards. Turning it off keeps your past sessions."
+      "workHint": "Turns on the cabinet: rooms where you and a client work with the cards. Turning it off keeps your past sessions.",
+      "noName": "No name yet",
+      "since": "With Svity since {date}",
+      "statEntries": "Entries",
+      "statLighter": "Lighter after the card",
+      "groupYou": "About you",
+      "groupTime": "Language and time",
+      "groupLook": "Appearance",
+      "name": "What should we call you",
+      "namePlaceholder": "A name, or whatever feels right",
+      "nameHint": "For the greeting on Today. Only you see it.",
+      "writeSub": "An idea, a question about a card, something broken: write, real people reply.",
+      "dataSub": "Your diary is yours: download it, or delete it with your account."
     },
     "shadow": {
       "title": "Shadow cards",
