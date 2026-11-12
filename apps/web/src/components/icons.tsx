@@ -216,3 +216,12 @@ export function ChevronDown({ size = 20, className }: P) {
     </svg>
   );
 }
+
+export function User({ size = 22, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <circle cx="12" cy="8.5" r="3.75" />
+      <path d="M4.5 20c1.2-3.6 4-5.5 7.5-5.5s6.3 1.9 7.5 5.5" />
+    </svg>
+  );
+}

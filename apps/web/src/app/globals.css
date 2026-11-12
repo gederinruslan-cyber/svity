@@ -2139,24 +2139,143 @@ section {
   align-items: center;
   gap: 12px;
 }
-@media (max-width: 520px) {
-  /* Phones: logo and tools on the first row, Today / Diary tabs on the second. */
-  .app-header__inner {
-    flex-wrap: wrap;
-    gap: 0 8px;
-    justify-content: space-between;
-  }
+/* header: icons in the section links, theme switch, labelled help */
+.app-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.app-nav svg {
+  opacity: 0.8;
+}
+.app-theme {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: none;
+  color: var(--text);
+  cursor: pointer;
+}
+.app-theme:hover {
+  background: var(--glass);
+}
+.app-help.btn {
+  min-height: 38px;
+  padding: 6px 14px;
+  font-size: 14px;
+}
+
+/* phones: sections in a tab bar at the bottom */
+.app-tabs {
+  display: none;
+}
+@media (max-width: 760px) {
   .app-nav {
-    order: 3;
-    flex-basis: 100%;
-    margin: 0 0 8px;
-  }
-  .app-nav a {
-    flex: 1;
-    text-align: center;
-  }
-  .app-signout__text {
     display: none;
+  }
+  .app-header__end {
+    margin-left: auto;
+    gap: 8px;
+  }
+  .app-help.btn {
+    width: 38px;
+    padding: 0;
+    justify-content: center;
+  }
+  .app-help span {
+    display: none;
+  }
+  .app-tabs {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 25;
+    display: flex;
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+  .app-tabs a {
+    flex: 1;
+    display: grid;
+    justify-items: center;
+    gap: 3px;
+    padding: 6px 4px;
+    border-radius: 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .app-tabs a.is-active {
+    color: var(--text);
+    background: var(--glass);
+  }
+  .app-tabs a.is-active svg {
+    color: var(--link);
+  }
+  .profile__saved-pill {
+    bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+}
+
+/* footer */
+.app-footer {
+  margin-top: 24px;
+  padding: 28px 0 32px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.app-footer__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px 32px;
+}
+.app-footer__brand .logo {
+  color: var(--text);
+  text-decoration: none;
+}
+.app-footer__brand p {
+  margin: 6px 0 0;
+}
+.app-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+}
+.app-footer__links a {
+  color: var(--link);
+  font-weight: 600;
+}
+.app-footer__care {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  max-width: 720px;
+  margin: 22px 0 0;
+  line-height: 1.5;
+}
+.app-footer__care svg {
+  flex: none;
+  margin-top: 3px;
+}
+.app-footer__rights {
+  margin: 12px 0 0;
+  font-size: 13px;
+}
+@media (max-width: 760px) {
+  /* room for the tab bar */
+  .app-footer {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
   }
 }
 .app-signout {
@@ -2178,6 +2297,7 @@ section {
 }
 .app-main {
   padding: 28px 0 64px;
+  /* the footer starts below the first screen */
   min-height: calc(100dvh - 61px);
 }
 @media (max-width: 520px) {

@@ -3,6 +3,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { AppHeader } from "@/components/app/AppHeader";
+import { AppFooter } from "@/components/app/AppFooter";
 import { Cabinet } from "@/components/room/Cabinet";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/cabinet">): Promise<Metadata> {
@@ -20,6 +21,7 @@ export default async function CabinetPage({ params }: PageProps<"/[locale]/cabin
       <main className="app-main">
         <Cabinet />
       </main>
+      <AppFooter />
     </>
   );
 }

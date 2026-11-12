@@ -11,10 +11,12 @@ export function useEvening(active: boolean) {
   useEffect(() => {
     if (!active) return;
     const d = document.documentElement;
-    const prev = d.dataset.theme;
+    d.dataset.forcedEvening = "1";
     d.dataset.theme = "evening";
+    // Back to the chosen theme, which the header switch may have changed meanwhile.
     return () => {
-      if (prev) d.dataset.theme = prev;
+      delete d.dataset.forcedEvening;
+      d.dataset.theme = d.dataset.themePref === "day" ? "day" : "evening";
     };
   }, [active]);
 }

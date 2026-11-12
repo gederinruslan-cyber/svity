@@ -3,6 +3,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { AppHeader } from "@/components/app/AppHeader";
+import { AppFooter } from "@/components/app/AppFooter";
 import { PsychologistSession } from "@/components/room/PsychologistSession";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/cabinet/[id]">): Promise<Metadata> {
@@ -20,6 +21,7 @@ export default async function PsychologistSessionPage({ params }: PageProps<"/[l
       <main className="app-main">
         <PsychologistSession id={id} />
       </main>
+      <AppFooter />
     </>
   );
 }

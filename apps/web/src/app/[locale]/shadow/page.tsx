@@ -3,6 +3,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { AppHeader } from "@/components/app/AppHeader";
+import { AppFooter } from "@/components/app/AppFooter";
 import { ShadowFlow } from "@/components/app/ShadowFlow";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/shadow">): Promise<Metadata> {
@@ -20,6 +21,7 @@ export default async function ShadowFlowPage({ params }: PageProps<"/[locale]/sh
       <main className="app-main">
         <ShadowFlow />
       </main>
+      <AppFooter />
     </>
   );
 }

@@ -3,6 +3,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { AppHeader } from "@/components/app/AppHeader";
+import { AppFooter } from "@/components/app/AppFooter";
 import { DifficultDay } from "@/components/app/DifficultDay";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/difficult-day">): Promise<Metadata> {
@@ -20,6 +21,7 @@ export default async function DifficultDayPage({ params }: PageProps<"/[locale]/
       <main className="app-main">
         <DifficultDay />
       </main>
+      <AppFooter />
     </>
   );
 }

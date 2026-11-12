@@ -3,6 +3,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { AppHeader } from "@/components/app/AppHeader";
+import { AppFooter } from "@/components/app/AppFooter";
 import { Profile } from "@/components/app/Profile";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/profile">): Promise<Metadata> {
@@ -20,6 +21,7 @@ export default async function ProfilePage({ params }: PageProps<"/[locale]/profi
       <main className="app-main">
         <Profile />
       </main>
+      <AppFooter />
     </>
   );
 }
