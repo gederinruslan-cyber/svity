@@ -780,6 +780,24 @@
       "about": "Su Svity",
       "difficult": "Una giornata difficile",
       "care": "Svity è uno strumento di riflessione, non un servizio di emergenza. Se sei in pericolo, chiama il numero di emergenza locale o usa il pulsante di aiuto in cima alla pagina."
+    },
+    "auth": {
+      "home": "Home di Svity",
+      "tabs": "Accedi o crea un account",
+      "tabSignin": "Accedi",
+      "tabSignup": "Registrati",
+      "p1": "Una carta e una domanda ogni giorno",
+      "p2": "Un diario delle emozioni che vedi solo tu",
+      "p3": "Una modalità gentile per i giorni difficili",
+      "private": "Il tuo diario lo vedi solo tu. Puoi scaricarlo o eliminarlo in qualsiasi momento dal profilo.",
+      "welcome": "Ciao di nuovo",
+      "welcomeSub": "La tua carta di oggi ti aspetta.",
+      "remember": "Su questo dispositivo l’accesso resta attivo per 60 giorni.",
+      "emailOnly": "Ci serve solo la tua e-mail, nient’altro.",
+      "pwHint": "Almeno {n} caratteri. Qualche parola di fila funziona bene.",
+      "pwMore": "{n, plural, one {Ancora # carattere} other {Ancora # caratteri}}",
+      "pwOk": "Lunghezza giusta",
+      "pwGreat": "Ottimo: lunga e facile da ricordare"
     }
   },
   "email": {

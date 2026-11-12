@@ -780,6 +780,24 @@
       "about": "O Svity",
       "difficult": "Trudny dzień",
       "care": "Svity to narzędzie do refleksji, nie służba ratunkowa. Jeśli grozi ci niebezpieczeństwo, zadzwoń pod lokalny numer alarmowy lub użyj przycisku pomocy u góry strony."
+    },
+    "auth": {
+      "home": "Strona główna Svity",
+      "tabs": "Zaloguj się lub załóż konto",
+      "tabSignin": "Logowanie",
+      "tabSignup": "Rejestracja",
+      "p1": "Karta i pytanie każdego dnia",
+      "p2": "Dziennik uczuć, który widzisz tylko ty",
+      "p3": "Łagodny tryb na trudne dni",
+      "private": "Twój dziennik widzisz tylko ty. W profilu możesz go w każdej chwili pobrać lub usunąć.",
+      "welcome": "Witaj ponownie",
+      "welcomeSub": "Twoja karta na dziś już czeka.",
+      "remember": "Na tym urządzeniu sesja potrwa 60 dni.",
+      "emailOnly": "Potrzebujemy tylko twojego e-maila, niczego więcej.",
+      "pwHint": "Co najmniej {n} znaków. Kilka słów z rzędu sprawdza się dobrze.",
+      "pwMore": "{n, plural, one {Jeszcze # znak} few {Jeszcze # znaki} many {Jeszcze # znaków} other {Jeszcze # znaku}}",
+      "pwOk": "Dobra długość",
+      "pwGreat": "Świetnie: długie i łatwe do zapamiętania"
     }
   },
   "email": {

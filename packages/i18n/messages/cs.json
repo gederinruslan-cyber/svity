@@ -780,6 +780,24 @@
       "about": "O Svity",
       "difficult": "Těžký den",
       "care": "Svity je nástroj k sebereflexi, ne krizová služba. Pokud jsi v ohrožení, volej místní tísňové číslo nebo použij tlačítko pomoci nahoře na stránce."
+    },
+    "auth": {
+      "home": "Domů na Svity",
+      "tabs": "Přihlásit se nebo vytvořit účet",
+      "tabSignin": "Přihlášení",
+      "tabSignup": "Registrace",
+      "p1": "Každý den karta a otázka",
+      "p2": "Deník pocitů, který vidíš jen ty",
+      "p3": "Jemný režim pro těžké dny",
+      "private": "Tvůj deník vidíš jen ty. V profilu si ho můžeš kdykoli stáhnout nebo smazat.",
+      "welcome": "Vítej zpátky",
+      "welcomeSub": "Tvoje karta na dnešek už čeká.",
+      "remember": "Na tomto zařízení zůstane přihlášení 60 dní.",
+      "emailOnly": "Potřebujeme jen tvůj e-mail, nic víc.",
+      "pwHint": "Alespoň {n} znaků. Dobře funguje pár slov za sebou.",
+      "pwMore": "{n, plural, one {Ještě # znak} few {Ještě # znaky} many {Ještě # znaku} other {Ještě # znaků}}",
+      "pwOk": "Dobrá délka",
+      "pwGreat": "Skvělé: dlouhé a snadno zapamatovatelné"
     }
   },
   "email": {

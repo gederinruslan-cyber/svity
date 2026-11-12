@@ -3,23 +3,101 @@
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { PASSWORD_MIN, roomsOpen, type Me } from "@svity/contracts";
+import Image from "next/image";
 import { Link, useRouter } from "@/i18n/navigation";
 import { api, ApiError, getMe } from "@/lib/api";
 import { rememberSession } from "@/lib/session";
-import { Star4 } from "../icons";
+import { LangMenu } from "../LangMenu";
+import { Sky } from "../Sky";
+import { Calendar, Cards, Leaf, Lock, Star4 } from "../icons";
 
 const isDev = process.env.NODE_ENV !== "production";
 
-function Card({ children }: { children: React.ReactNode }) {
+/**
+ * Every auth page: a slim bar (logo, language), the deck and what Svity is on the left, the form
+ * on the right. On phones the fan shrinks above the form and the points are hidden.
+ */
+function Card({ children, tab }: { children: React.ReactNode; tab?: "signin" | "signup" }) {
+  const t = useTranslations("app.auth");
+  const th = useTranslations("hero");
   return (
-    <main className="app-auth">
-      <div className="app-auth__card glass">
-        <span className="app-auth__star" aria-hidden="true">
-          <Star4 size={28} />
-        </span>
-        {children}
-      </div>
-    </main>
+    <div className="auth">
+      <Sky />
+      <header className="auth__bar">
+        <Link href="/" className="logo" aria-label={t("home")}>
+          SVITY
+          <Star4 size={10} className="logo__star" />
+        </Link>
+        <LangMenu />
+      </header>
+      <main className="auth__main">
+        <aside className="auth__show">
+          <div className="auth__fan" aria-hidden="true">
+            <span className="auth__fan-card auth__fan-card--l">
+              <Image src="/cards/gallery-3.webp" alt="" fill sizes="(min-width: 900px) 180px, 90px" />
+            </span>
+            <span className="auth__fan-card auth__fan-card--r">
+              <Image src="/cards/gallery-5.webp" alt="" fill sizes="(min-width: 900px) 180px, 90px" />
+            </span>
+            <span className="auth__fan-card auth__fan-card--c">
+              <Image src="/cards/back.webp" alt="" fill sizes="(min-width: 900px) 200px, 100px" priority />
+            </span>
+          </div>
+          <p className="eyebrow">{th("eyebrow")}</p>
+          <p className="auth__title">{th("title")}</p>
+          <ul className="auth__points">
+            <li>
+              <Cards size={20} />
+              <span>{t("p1")}</span>
+            </li>
+            <li>
+              <Calendar size={20} />
+              <span>{t("p2")}</span>
+            </li>
+            <li>
+              <Leaf size={20} />
+              <span>{t("p3")}</span>
+            </li>
+          </ul>
+        </aside>
+        <section className="auth__panel glass">
+          {tab && (
+            <nav className="auth__tabs" aria-label={t("tabs")}>
+              <Link href="/signin" className={tab === "signin" ? "is-on" : ""} aria-current={tab === "signin" ? "page" : undefined}>
+                {t("tabSignin")}
+              </Link>
+              <Link href="/signup" className={tab === "signup" ? "is-on" : ""} aria-current={tab === "signup" ? "page" : undefined}>
+                {t("tabSignup")}
+              </Link>
+            </nav>
+          )}
+          {children}
+          <p className="auth__private">
+            <Lock size={16} />
+            <span>{t("private")}</span>
+          </p>
+        </section>
+      </main>
+    </div>
+  );
+}
+
+/** Length is the only rule (contracts): show how far to the minimum, then how good it is. */
+function PasswordMeter({ length }: { length: number }) {
+  const t = useTranslations("app.auth");
+  const level = length === 0 ? 0 : length < PASSWORD_MIN ? 1 : length < 16 ? 2 : 3;
+  const msg = length === 0 ? t("pwHint", { n: PASSWORD_MIN }) : level === 1 ? t("pwMore", { n: PASSWORD_MIN - length }) : level === 2 ? t("pwOk") : t("pwGreat");
+  return (
+    <div className="pw-meter" data-level={level}>
+      <span className="pw-meter__bar" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+      </span>
+      <p className="app-hint" id="auth-password-hint" aria-live="polite">
+        {msg}
+      </p>
+    </div>
   );
 }
 
@@ -45,7 +123,7 @@ function EmailField({ value, onChange }: { value: string; onChange: (v: string) 
 }
 
 /** Password with show/hide; `isNew` tells password managers to suggest one. */
-function PasswordField({ label, value, onChange, isNew, id = "auth-password", hint }: { label: string; value: string; onChange: (v: string) => void; isNew?: boolean; id?: string; hint?: string }) {
+function PasswordField({ label, value, onChange, isNew, id = "auth-password", hint, describedBy }: { label: string; value: string; onChange: (v: string) => void; isNew?: boolean; id?: string; hint?: string; describedBy?: string }) {
   const t = useTranslations("app.signin");
   const [shown, setShown] = useState(false);
   return (
@@ -64,7 +142,7 @@ function PasswordField({ label, value, onChange, isNew, id = "auth-password", hi
           autoComplete={isNew ? "new-password" : "current-password"}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          aria-describedby={hint ? `${id}-hint` : undefined}
+          aria-describedby={describedBy ?? (hint ? `${id}-hint` : undefined)}
         />
         <button type="button" className="password-field__toggle" onClick={() => setShown((x) => !x)} aria-pressed={shown}>
           {shown ? t("hide") : t("show")}
@@ -83,6 +161,7 @@ const errorKey = (err: unknown) => (err instanceof ApiError ? (err.status === 42
 
 export function SignIn() {
   const t = useTranslations("app.signin");
+  const ta = useTranslations("app.auth");
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -104,9 +183,10 @@ export function SignIn() {
   }
 
   return (
-    <Card>
+    <Card tab="signin">
       <form onSubmit={submit}>
-        <h1 className="h3">{t("title")}</h1>
+        <h1 className="h3">{ta("welcome")}</h1>
+        <p className="app-muted">{ta("welcomeSub")}</p>
         <EmailField value={email} onChange={setEmail} />
         <PasswordField label={t("password")} value={password} onChange={setPassword} />
         <Link href="/forgot-password" className="link-btn app-auth__forgot">
@@ -121,9 +201,7 @@ export function SignIn() {
           </p>
         )}
       </form>
-      <p className="app-auth__switch">
-        {t("noAccount")} <Link href="/signup">{t("toSignup")}</Link>
-      </p>
+      <p className="app-hint auth__remember">{ta("remember")}</p>
     </Card>
   );
 }
@@ -131,6 +209,7 @@ export function SignIn() {
 export function SignUp({ initialRole = "personal" }: { initialRole?: Me["role"] }) {
   const t = useTranslations("app.signup");
   const ts = useTranslations("app.signin");
+  const ta = useTranslations("app.auth");
   const locale = useLocale();
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -155,7 +234,7 @@ export function SignUp({ initialRole = "personal" }: { initialRole?: Me["role"] 
   }
 
   return (
-    <Card>
+    <Card tab="signup">
       <form onSubmit={submit}>
         <h1 className="h3">{t("title")}</h1>
         <p className="app-muted">{t("sub")}</p>
@@ -173,7 +252,8 @@ export function SignUp({ initialRole = "personal" }: { initialRole?: Me["role"] 
         </fieldset>
         )}
         <EmailField value={email} onChange={setEmail} />
-        <PasswordField label={t("password")} value={password} onChange={setPassword} isNew hint={t("passwordHint", { n: PASSWORD_MIN })} />
+        <PasswordField label={t("password")} value={password} onChange={setPassword} isNew describedBy="auth-password-hint" />
+        <PasswordMeter length={password.length} />
         <button type="submit" className="btn btn--block" disabled={busy || password.length < PASSWORD_MIN}>
           {busy ? t("sending") : t("submit")}
         </button>
@@ -189,9 +269,7 @@ export function SignUp({ initialRole = "personal" }: { initialRole?: Me["role"] 
           )
         )}
       </form>
-      <p className="app-auth__switch">
-        {t("haveAccount")} <Link href="/signin">{t("toSignin")}</Link>
-      </p>
+      <p className="app-hint auth__remember">{ta("emailOnly")}</p>
     </Card>
   );
 }
@@ -280,7 +358,8 @@ export function ResetPassword({ token }: { token: string }) {
     <Card>
       <form onSubmit={submit}>
         <h1 className="h3">{t("title")}</h1>
-        <PasswordField label={tu("password")} value={password} onChange={setPassword} isNew hint={tu("passwordHint", { n: PASSWORD_MIN })} />
+        <PasswordField label={tu("password")} value={password} onChange={setPassword} isNew describedBy="auth-password-hint" />
+        <PasswordMeter length={password.length} />
         <p className="app-hint">{t("note")}</p>
         <button type="submit" className="btn btn--block" disabled={busy || password.length < PASSWORD_MIN}>
           {t("submit")}

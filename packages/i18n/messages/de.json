@@ -780,6 +780,24 @@
       "about": "Über Svity",
       "difficult": "Ein schwerer Tag",
       "care": "Svity ist ein Werkzeug zur Selbstreflexion, kein Notdienst. Wenn du in Gefahr bist, ruf die örtliche Notrufnummer an oder nutze den Hilfe-Button oben auf der Seite."
+    },
+    "auth": {
+      "home": "Svity Startseite",
+      "tabs": "Anmelden oder Konto erstellen",
+      "tabSignin": "Anmelden",
+      "tabSignup": "Registrieren",
+      "p1": "Jeden Tag eine Karte und eine Frage",
+      "p2": "Ein Gefühlstagebuch, das nur du siehst",
+      "p3": "Ein sanfter Modus für schwere Tage",
+      "private": "Dein Tagebuch siehst nur du. Du kannst es jederzeit im Profil herunterladen oder löschen.",
+      "welcome": "Willkommen zurück",
+      "welcomeSub": "Deine Karte für heute wartet schon.",
+      "remember": "Auf diesem Gerät bleibst du 60 Tage angemeldet.",
+      "emailOnly": "Wir brauchen nur deine E-Mail-Adresse, sonst nichts.",
+      "pwHint": "Mindestens {n} Zeichen. Ein paar Wörter hintereinander funktionieren gut.",
+      "pwMore": "{n, plural, one {Noch # Zeichen} other {Noch # Zeichen}}",
+      "pwOk": "Gute Länge",
+      "pwGreat": "Sehr gut: lang und leicht zu merken"
     }
   },
   "email": {
