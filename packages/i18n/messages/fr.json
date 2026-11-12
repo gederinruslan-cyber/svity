@@ -13,14 +13,16 @@
     "theme": "Thème",
     "themeDay": "Jour",
     "themeEvening": "Soir",
-    "tryShort": "Essayer",
-    "tryLabel": "Essayer la carte du jour"
+    "start": "Svity : créer un compte ou se connecter",
+    "startShort": "Commencer",
+    "open": "Ouvrir Svity",
+    "openShort": "Ouvrir"
   },
   "hero": {
     "eyebrow": "Des cartes métaphoriques pour chaque jour",
     "title": "Une carte par jour pour te retrouver",
     "sub": "…et une salle pour le travail que tu fais avec ton ou ta psy.",
-    "cta1": "Tirer une carte",
+    "cta1": "Commencer gratuitement",
     "cta2": "Pour les psys",
     "askLabel": "Une question du jeu",
     "facts": {
@@ -31,8 +33,11 @@
       "minutesN": "3–5",
       "minutes": "minutes par jour"
     },
-    "soon": "L’application Svity arrive bientôt. Tu peux déjà tirer la carte du jour ici, maintenant.",
-    "tryCard": "Aller à la carte du jour"
+    "tryCard": "Aller à la carte du jour",
+    "ctaToday": "Aller à la carte du jour",
+    "ctaDiary": "Mon journal",
+    "haveAccount": "Déjà un compte ?",
+    "signin": "Se connecter"
   },
   "demo": {
     "eyebrow": "Essaie maintenant",
@@ -47,7 +52,7 @@
     "continue": "C’est fait",
     "after": "Et maintenant, comment te sens-tu ?",
     "done": "Voilà ce que fait une carte par jour.",
-    "doneSub": "Reviens demain : une nouvelle carte t’attendra.",
+    "doneSub": "Crée un compte pour recevoir ta carte chaque jour.",
     "again": "Recommencer",
     "privacy": "Rien de ce que tu écris ici ne quitte ton navigateur.",
     "cardAlt": "Carte {n} du jeu « Світи »",
@@ -64,7 +69,8 @@
       "card": "Carte",
       "question": "Question",
       "after": "Après"
-    }
+    },
+    "cta": "Commencer gratuitement"
   },
   "feelings": {
     "calm": "Calme",
@@ -280,8 +286,8 @@
     "a4": "Non. Svity est un outil de réflexion, pas une thérapie ni un service d’urgence. Si c’est difficile, le bouton d’aide est toujours en haut de l’écran.",
     "q5": "Est-ce gratuit ?",
     "a5": "La carte du jour, le journal, le suivi des ressentis et l’aide sont gratuits. D’autres pratiques arriveront plus tard avec Svity Plus.",
-    "q6": "Quand l’application sera-t-elle prête ?",
-    "a6": "Bientôt. Elle fonctionnera dans le navigateur, sur ton téléphone et ton ordinateur. Tu peux déjà essayer la carte du jour, ici, sur cette page."
+    "q6": "Faut-il installer une application ?",
+    "a6": "Non, Svity fonctionne dans le navigateur, sur ton téléphone et ton ordinateur. Une application mobile arrivera plus tard."
   },
   "footer": {
     "tagline": "Une carte par jour pour te retrouver.",
@@ -307,6 +313,8 @@
     "contact": "Écrire aux auteurs",
     "rights": "© {year} Svity",
     "top": "Haut de page",
-    "made": "Fait avec soin en ukrainien et en anglais"
+    "made": "Fait avec soin en ukrainien et en anglais",
+    "linkSignup": "Créer un compte",
+    "linkSignin": "Se connecter"
   }
 }

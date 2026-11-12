@@ -15,6 +15,8 @@ export async function Footer() {
     [
       t("colApp"),
       [
+        [`/${locale}/signup`, t("linkSignup")],
+        [`/${locale}/signin`, t("linkSignin")],
         ["#try", t("linkTry")],
         ["#how", t("linkHow")],
         ["#deck", t("linkDeck")],

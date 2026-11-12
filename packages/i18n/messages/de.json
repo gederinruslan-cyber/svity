@@ -13,14 +13,16 @@
     "theme": "Darstellung",
     "themeDay": "Tag",
     "themeEvening": "Abend",
-    "tryShort": "Ausprobieren",
-    "tryLabel": "Die Karte des Tages ausprobieren"
+    "start": "Svity: Konto erstellen oder anmelden",
+    "startShort": "Loslegen",
+    "open": "Svity öffnen",
+    "openShort": "Öffnen"
   },
   "hero": {
     "eyebrow": "Metaphorische Karten für jeden Tag",
     "title": "Eine Karte am Tag, um dir selbst zu begegnen",
     "sub": "…und ein Raum für die gemeinsame Arbeit in deiner psychologischen Begleitung.",
-    "cta1": "Eine Karte ziehen",
+    "cta1": "Kostenlos starten",
     "cta2": "Für Psycholog:innen",
     "askLabel": "Eine Frage aus dem Deck",
     "facts": {
@@ -31,8 +33,11 @@
       "minutesN": "3–5",
       "minutes": "Minuten am Tag"
     },
-    "soon": "Die Svity-App kommt bald. Die Karte des Tages kannst du schon jetzt hier ziehen.",
-    "tryCard": "Zur Karte des Tages"
+    "tryCard": "Zur Karte des Tages",
+    "ctaToday": "Zur Karte des Tages",
+    "ctaDiary": "Mein Tagebuch",
+    "haveAccount": "Schon ein Konto?",
+    "signin": "Anmelden"
   },
   "demo": {
     "eyebrow": "Probier es jetzt aus",
@@ -47,7 +52,7 @@
     "continue": "Fertig",
     "after": "Wie geht es dir jetzt?",
     "done": "So fühlt sich eine Karte am Tag an.",
-    "doneSub": "Komm morgen wieder: Dann wartet eine neue Karte auf dich.",
+    "doneSub": "Erstelle ein Konto, um jeden Tag deine Karte zu bekommen.",
     "again": "Noch einmal von vorn",
     "privacy": "Nichts, was du hier schreibst, verlässt deinen Browser.",
     "cardAlt": "Karte {n} des Decks „Світи“",
@@ -64,7 +69,8 @@
       "card": "Karte",
       "question": "Frage",
       "after": "Danach"
-    }
+    },
+    "cta": "Kostenlos starten"
   },
   "feelings": {
     "calm": "Ruhe",
@@ -280,8 +286,8 @@
     "a4": "Nein. Svity ist ein Werkzeug zur Selbstreflexion, keine Therapie und kein Notdienst. Wenn es schwer wird, ist der Hilfe-Button immer oben auf dem Bildschirm.",
     "q5": "Ist es kostenlos?",
     "a5": "Die Karte des Tages, das Tagebuch, die Gefühls-Check-ins und die Hilfe sind kostenlos. Weitere Übungen kommen später mit Svity Plus.",
-    "q6": "Wann ist die App fertig?",
-    "a6": "Bald. Sie wird im Browser funktionieren, auf dem Handy und am Computer. Die Karte des Tages kannst du schon jetzt hier auf dieser Seite ausprobieren."
+    "q6": "Muss ich eine App installieren?",
+    "a6": "Nein, Svity läuft im Browser, auf dem Handy und am Computer. Eine App fürs Handy kommt später."
   },
   "footer": {
     "tagline": "Eine Karte am Tag, um dir selbst zu begegnen.",
@@ -307,6 +313,8 @@
     "contact": "Schreib dem Team",
     "rights": "© {year} Svity",
     "top": "Nach oben",
-    "made": "Mit Sorgfalt gemacht, auf Ukrainisch und Englisch"
+    "made": "Mit Sorgfalt gemacht, auf Ukrainisch und Englisch",
+    "linkSignup": "Konto erstellen",
+    "linkSignin": "Anmelden"
   }
 }

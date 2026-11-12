@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { PASSWORD_MIN, type Me } from "@svity/contracts";
+import { PASSWORD_MIN, roomsOpen, type Me } from "@svity/contracts";
 import { Link, useRouter } from "@/i18n/navigation";
 import { api, ApiError, getMe } from "@/lib/api";
 import { rememberSession } from "@/lib/session";
@@ -135,7 +135,7 @@ export function SignUp({ initialRole = "personal" }: { initialRole?: Me["role"] 
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState<Me["role"]>(initialRole);
+  const [role, setRole] = useState<Me["role"]>(roomsOpen ? initialRole : "personal");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -159,6 +159,7 @@ export function SignUp({ initialRole = "personal" }: { initialRole?: Me["role"] 
       <form onSubmit={submit}>
         <h1 className="h3">{t("title")}</h1>
         <p className="app-muted">{t("sub")}</p>
+        {roomsOpen && (
         <fieldset className="app-auth__role">
           <legend className="field-label">{t("roleLabel")}</legend>
           <div className="segmented">
@@ -170,6 +171,7 @@ export function SignUp({ initialRole = "personal" }: { initialRole?: Me["role"] 
           </div>
           <p className="app-hint">{t(role === "personal" ? "rolePersonalHint" : "roleProfessionalHint")}</p>
         </fieldset>
+        )}
         <EmailField value={email} onChange={setEmail} />
         <PasswordField label={t("password")} value={password} onChange={setPassword} isNew hint={t("passwordHint", { n: PASSWORD_MIN })} />
         <button type="submit" className="btn btn--block" disabled={busy || password.length < PASSWORD_MIN}>

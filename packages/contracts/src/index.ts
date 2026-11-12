@@ -10,6 +10,9 @@ export const accountLocale = (l: string): Locale => (l === "uk" ? "uk" : "en");
 /** A page language sent by the site, stored as the account language. */
 const PageLocale = z.enum(siteLocales).transform(accountLocale);
 export const Locale = z.enum(locales);
+
+/** Session rooms for psychologists. Closed until their beta: sign-up and the profile offer only the personal app. */
+export const roomsOpen = false;
 export type Locale = z.infer<typeof Locale>;
 
 // ---------- auth ----------

@@ -13,14 +13,16 @@
     "theme": "Theme",
     "themeDay": "Day",
     "themeEvening": "Evening",
-    "tryShort": "Try it",
-    "tryLabel": "Try today's card"
+    "start": "Svity: create an account or sign in",
+    "startShort": "Get started",
+    "open": "Open Svity",
+    "openShort": "Open"
   },
   "hero": {
     "eyebrow": "Metaphorical cards for every day",
     "title": "One card a day to meet yourself",
     "sub": "…and a room for the work you do together with your psychologist.",
-    "cta1": "Try a card",
+    "cta1": "Start free",
     "cta2": "For psychologists",
     "askLabel": "A question from the deck",
     "facts": {
@@ -31,8 +33,11 @@
       "minutesN": "3–5",
       "minutes": "minutes a day"
     },
-    "soon": "The Svity app is coming soon. You can draw today's card right here, now.",
-    "tryCard": "Go to today's card"
+    "tryCard": "Go to today's card",
+    "ctaToday": "Go to today's card",
+    "ctaDiary": "My diary",
+    "haveAccount": "Already have an account?",
+    "signin": "Sign in"
   },
   "demo": {
     "eyebrow": "Try it now",
@@ -47,7 +52,7 @@
     "continue": "I'm done",
     "after": "How are you now?",
     "done": "This is how a card a day feels.",
-    "doneSub": "Come back tomorrow: a new card will be waiting.",
+    "doneSub": "Create an account to get yours every day.",
     "again": "Start over",
     "privacy": "Nothing you write here leaves your browser.",
     "cardAlt": "Card {n} of the deck “Svity”",
@@ -64,7 +69,8 @@
       "card": "Card",
       "question": "Question",
       "after": "After"
-    }
+    },
+    "cta": "Start free"
   },
   "feelings": {
     "calm": "Calm",
@@ -280,8 +286,8 @@
     "a4": "No. Svity is a tool for reflection, not therapy and not an emergency service. If things are hard, the help button is always at the top of the screen.",
     "q5": "Is it free?",
     "a5": "The daily card, diary, feeling check-ins and help are free. Extra practices will come later with Svity Plus.",
-    "q6": "When will the app be ready?",
-    "a6": "Soon. It will work in the browser, on your phone and computer. You can try today's card right now, here on this page."
+    "q6": "Do I need to install an app?",
+    "a6": "No, Svity works in the browser, on your phone and computer. A phone app will come later."
   },
   "footer": {
     "tagline": "One card a day to meet yourself.",
@@ -307,7 +313,9 @@
     "contact": "Write to the authors",
     "rights": "© {year} Svity",
     "top": "Back to top",
-    "made": "Made with care in Ukrainian and English"
+    "made": "Made with care in Ukrainian and English",
+    "linkSignup": "Create an account",
+    "linkSignin": "Sign in"
   },
   "app": {
     "meta": {
@@ -711,7 +719,7 @@
     },
     "start": {
       "title": "Welcome to Svity",
-      "sub": "One card a day, a private diary, and a room for sessions with your psychologist.",
+      "sub": "One card a day and a private diary.",
       "create": "Create an account",
       "signin": "I already have an account"
     }

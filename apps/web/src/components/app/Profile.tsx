@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { PASSWORD_MIN, addressForms, reminderTimes, type Me, type ProfilePatch, type ProfileStats } from "@svity/contracts";
+import { PASSWORD_MIN, addressForms, roomsOpen, reminderTimes, type Me, type ProfilePatch, type ProfileStats } from "@svity/contracts";
 import { Link, useRouter } from "@/i18n/navigation";
 import { api, API_URL, ApiError } from "@/lib/api";
 import { rememberSession } from "@/lib/session";
@@ -192,6 +192,7 @@ export function Profile() {
           <p className="app-hint">{t("reminderHint")}</p>
         </fieldset>
 
+        {roomsOpen && (
         <fieldset className="profile__field">
           <legend className="field-label">{t("work")}</legend>
           <div className="segmented">
@@ -203,6 +204,7 @@ export function Profile() {
           </div>
           <p className="app-hint">{t("workHint")}</p>
         </fieldset>
+        )}
 
         <fieldset className="profile__field">
           <legend className="field-label">{t("theme")}</legend>

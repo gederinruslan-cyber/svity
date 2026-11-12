@@ -3368,6 +3368,7 @@ section {
 .password-field .field {
   width: 100%;
   padding-right: 84px;
+  margin-bottom: 0;
 }
 .password-field__toggle {
   position: absolute;

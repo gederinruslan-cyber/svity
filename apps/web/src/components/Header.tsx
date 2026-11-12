@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { useSession } from "@/lib/session";
 import { LangMenu } from "./LangMenu";
 import { ChevronRight, Close, Menu, Moon, Star4, Sun } from "./icons";
 
@@ -15,6 +17,8 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [pref, setPref] = useState<ThemePref>("evening");
   const [active, setActive] = useState<string | null>(null);
+  const session = useSession();
+  const signedIn = session.status === "in";
 
   useEffect(() => {
     setPref(document.documentElement.dataset.themePref === "day" ? "day" : "evening");
@@ -95,17 +99,22 @@ export function Header() {
 
         <div className="site-header__tools">
           <div className="site-header__prefs">{prefs}</div>
-          <a href="#try" className="btn btn--small header-cta" aria-label={t("tryLabel")}>
-            {t("tryShort")}
+          {/* Hidden until we know (static HTML): no flash of the wrong button. */}
+          <Link
+            href={signedIn ? "/today" : "/start"}
+            className={`btn btn--small header-cta ${session.status === "unknown" ? "is-pending" : ""}`}
+            aria-label={signedIn ? t("open") : t("start")}
+          >
+            {signedIn ? t("openShort") : t("startShort")}
             <ChevronRight size={16} />
-          </a>
+          </Link>
           <button type="button" className="icon-btn menu-btn" onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-controls="site-menu" aria-label={t("menu")}>
             {open ? <Close size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Phone menu: sections, language and theme. */}
+      {/* Phone menu: sections, the app (when signed in), language and theme. */}
       <div id="site-menu" className="site-menu" hidden={!open}>
         <nav className="site-menu__links" aria-label={t("menu")}>
           {SECTIONS.map((id) => (
@@ -115,6 +124,11 @@ export function Header() {
             </a>
           ))}
         </nav>
+        {signedIn && (
+          <Link href="/today" className="btn btn--block">
+            {t("open")}
+          </Link>
+        )}
         <div className="site-menu__prefs">
           <span className="field-label">{t("theme")}</span>
           <button type="button" className="header-prefs__theme" onClick={cycleTheme} aria-label={`${t("theme")}: ${themeLabel}`}>

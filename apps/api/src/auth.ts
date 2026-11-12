@@ -1,7 +1,7 @@
 import { Hono, type Context, type MiddlewareHandler } from "hono";
 import { deleteCookie, getCookie, setCookie } from "hono/cookie";
 import { assertTimeZone } from "@svity/core";
-import { ChangePasswordInput, ForgotPasswordInput, ResetPasswordInput, SignInInput, SignUpInput, type Me } from "@svity/contracts";
+import { ChangePasswordInput, ForgotPasswordInput, ResetPasswordInput, SignInInput, SignUpInput, roomsOpen, type Me } from "@svity/contracts";
 import { and, eq, gt, isNull, ne, passwordResets, sessions, users, type Db } from "@svity/db";
 import { hashToken, newToken } from "./crypto";
 import { DUMMY_HASH, hashPassword, verifyPassword } from "./password";
@@ -57,7 +57,7 @@ export function requirePro(db: Db): MiddlewareHandler<AuthEnv> {
   return async (c, next) => {
     const user = await findUser(db, c);
     if (!user) return c.json({ ok: false, error: "unauthorized" }, 401);
-    if (user.role !== "professional") return c.json({ ok: false, error: "forbidden" }, 403);
+    if (!roomsOpen || user.role !== "professional") return c.json({ ok: false, error: "forbidden" }, 403);
     c.set("user", user);
     await next();
   };
@@ -100,7 +100,8 @@ export function authRoutes(db: Db, opts: { webOrigin: string; mailer: Mailer; se
   app.post("/signup", signUpLimit, async (c) => {
     const parsed = SignUpInput.safeParse(await c.req.json().catch(() => null));
     if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
-    const { password, locale, role } = parsed.data;
+    const { password, locale } = parsed.data;
+    const role = roomsOpen ? parsed.data.role : "personal";
     const email = parsed.data.email.toLowerCase();
     let timezone = parsed.data.timezone;
     try {

@@ -7,7 +7,7 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 ## Goals
 1. Show what Svity is in 10 seconds: one card a day, a question, a quiet space; and a room for psychologists.
 2. Let visitors feel the ritual (interactive demo, no account).
-3. Turn visitors into accounts: sign-up for yourself or as a psychologist (self-service, no applications).
+3. Turn visitors into accounts: sign-up for yourself (self-service). Psychologist accounts wait for the rooms beta (`roomsOpen` in contracts).
 
 ## Routes and i18n
 - `/uk/` and `/en/`, static (SSG), `hreflang` alternates + `x-default` → `/en/`.
@@ -20,8 +20,8 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 
 | # | Section | Behavior |
 |---|---|---|
-| 1 | Header | Logo SVITY, anchors (Як це працює / Колода / Для психологів / Питання), language menu (8 languages; a grid in the phone menu), theme switch (day/evening; evening by default), one action button ("Try it" → #try; pre-launch: no accounts, no /v1/me call). Fixed full-width bar; after scrolling only a glass background fades in (no size or position change). |
-| 2 | Hero | Slogan, subline, two CTAs (Try a card → #try / for psychologists → #pros) and "The app is coming soon; draw today's card right here". Card back floats (6 s loop), the star glows softly, clouds drift with light parallax. |
+| 1 | Header | Logo SVITY, anchors (Як це працює / Колода / Для психологів / Питання), language menu (8 languages; a grid in the phone menu), theme switch (day/evening; evening by default), one action button ("Get started" → /start, or "Open" → /today when signed in; hidden until `/v1/me` answers). Fixed full-width bar; after scrolling only a glass background fades in (no size or position change). |
+| 2 | Hero | Slogan, subline, two CTAs (Start free → /signup / for psychologists → #pros), "Already have an account? Sign in"; signed in: Go to today's card / My diary. Card back floats (6 s loop), the star glows softly, clouds drift with light parallax. |
 | 3 | What Svity is (anchor `#how`, the nav's "How it works") | Lead line, "how the mirror works" (a real card + image → question → your answer), four principles (not fortune-telling · no right answers · you decide what to share · safe at every step), a note on what MAC are. |
 | 4 | Try today's card (demo) | The ritual, fully client-side, with a step tracker; see "Demo" below. |
 | 5 | The deck | A strip of card art inside the page width (max 1100 px, soft faded edges) that drifts on its own, pauses on hover, swipes on touch; cards are not interactive. Three features: 117 worlds · questions just for you (they open when the card is yours; never shown here) · two languages. |
@@ -30,7 +30,7 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 | 8 | For psychologists | Heading + three steps (create a room → the client draws on their phone → you see only shared cards), CTA "I'd like to try it with clients" (mailto) + "Rooms open soon"; playable room mock (pro screen on a solid surface, client phone beside it on desktop, below it on phones; "Waiting" in empty slots); six feature tiles: 1 or 3 cards · face down or up · prompts just for you · private notes · question for the week · link and PIN (24/72 h, no account for the client). |
 | 9 | Safety | Heading + lead (reflection tool, not therapy or an emergency service); four items: help in one tap · difficult day · leave without saving · shadows only with consent; a decorative help sheet as in the app ("I need help" pill, call 112, country, find a helpline, live breathing circle 4·4·6 that stays still with reduced motion, "not an emergency service"). No unverified helpline numbers. |
 | 10 | Languages | "Eight languages": lead (uk, en and the languages of countries where many Ukrainians live; translated by meaning); three points: pick your language · addressed the way you like · sessions in any language; a panel with one word ("Calm") rotating through all 8 languages (still with reduced motion) and links to each language version. |
-| 11 | FAQ | Heading + lead left, a "Didn't find an answer?" card with a mailto (below the list on phones); six numbered questions, one open at a time (`<details name>`), the first open: fortune-telling? · how long · who sees my entries · replacement for therapy? · free? · when the app is coming. |
+| 11 | FAQ | Heading + lead left, a "Didn't find an answer?" card with a mailto (below the list on phones); six numbered questions, one open at a time (`<details name>`), the first open: fortune-telling? · how long · who sees my entries · replacement for therapy? · free? · install an app? (no, it works in the browser). |
 | 12 | Footer | Logo, language switch, contact e-mail, "Write to the authors" (mailto for now), © Svity. |
 
 A floating help button (lifebuoy icon) is not needed on the landing; it belongs to the app.
@@ -104,7 +104,7 @@ Shadow candidates (26, 29, 65, 68, 69, 76, 81, 96, 100) and the 14 flagged quest
 7. I'm a psychologist. How do I start working with clients? / Я психолог. Як почати працювати з клієнтами? — Create an account as a psychologist, or turn on "Sessions with clients" in the profile; the cabinet opens right away.
 
 ## Forms
-- No forms on the landing: accounts are created on /signup (`?role=professional` preselects the psychologist choice). Signed-in state comes from `/v1/me` with a localStorage hint (`apps/web/src/lib/session.ts`).
+- No forms on the landing: accounts are created on /signup (personal only while `roomsOpen` is false; then `?role=professional` preselects the psychologist choice). Signed-in state comes from `/v1/me` with a localStorage hint (`apps/web/src/lib/session.ts`).
 
 ## Design and assets
 - Tokens from spec §13: Pearl Ivory background, Deep Ink text, Ocean Breeze buttons, gold decoration only, Night palette for evening. Fonts: Cormorant Garamond 500 (headings, questions, logo with 0.08em letter-spacing) and Manrope 400–700.

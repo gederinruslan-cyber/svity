@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { deleteCookie } from "hono/cookie";
 import { assertTimeZone, feelingStats } from "@svity/core";
-import { ProfilePatch, type Feeling, type ProfileStats } from "@svity/contracts";
+import { ProfilePatch, roomsOpen, type Feeling, type ProfileStats } from "@svity/contracts";
 import { asc, entries, eq, users, type Db } from "@svity/db";
 import { SESSION_COOKIE, toMe, type AuthEnv } from "./auth";
 import type { Deck } from "./deck";
@@ -20,6 +20,7 @@ export function meRoutes(db: Db, getDeck: () => Promise<Deck>) {
   app.patch("/", async (c) => {
     const parsed = ProfilePatch.safeParse(await c.req.json().catch(() => null));
     if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
+    if (!roomsOpen && parsed.data.role === "professional") return c.json({ ok: false, error: "forbidden" }, 403);
     if (parsed.data.timezone) {
       try {
         assertTimeZone(parsed.data.timezone);

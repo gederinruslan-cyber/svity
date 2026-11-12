@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, localeHref, usePathname } from "@/i18n/navigation";
 import { Star4 } from "../icons";
+import { roomsOpen } from "@svity/contracts";
 import { getMe } from "@/lib/api";
 import { HelpButton } from "./HelpSheet";
 
@@ -23,7 +24,7 @@ export function AppHeader() {
   const links: [string, string][] = [
     ["/today", t("today")],
     ["/diary", t("diary")],
-    ...(pro ? ([["/cabinet", t("cabinet")]] as [string, string][]) : []),
+    ...(pro && roomsOpen ? ([["/cabinet", t("cabinet")]] as [string, string][]) : []),
     ["/profile", t("profile")],
   ];
 

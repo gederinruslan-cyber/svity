@@ -13,14 +13,16 @@
     "theme": "Tema",
     "themeDay": "Día",
     "themeEvening": "Noche",
-    "tryShort": "Probar",
-    "tryLabel": "Probar la carta del día"
+    "start": "Svity: crea una cuenta o inicia sesión",
+    "startShort": "Empezar",
+    "open": "Abrir Svity",
+    "openShort": "Abrir"
   },
   "hero": {
     "eyebrow": "Cartas metafóricas para cada día",
     "title": "Una carta al día para encontrarte contigo",
     "sub": "…y una sala para el trabajo que haces con tu psicólogo o psicóloga.",
-    "cta1": "Probar una carta",
+    "cta1": "Empieza gratis",
     "cta2": "Para psicólogos",
     "askLabel": "Una pregunta de la baraja",
     "facts": {
@@ -31,8 +33,11 @@
       "minutesN": "3–5",
       "minutes": "minutos al día"
     },
-    "soon": "La app Svity llegará pronto. Ya puedes sacar la carta del día aquí mismo.",
-    "tryCard": "Ir a la carta del día"
+    "tryCard": "Ir a la carta del día",
+    "ctaToday": "Ir a la carta del día",
+    "ctaDiary": "Mi diario",
+    "haveAccount": "¿Ya tienes cuenta?",
+    "signin": "Inicia sesión"
   },
   "demo": {
     "eyebrow": "Pruébalo ahora",
@@ -47,7 +52,7 @@
     "continue": "Ya está",
     "after": "¿Cómo estás ahora?",
     "done": "Así se siente una carta al día.",
-    "doneSub": "Vuelve mañana: te espera una carta nueva.",
+    "doneSub": "Crea una cuenta para recibir tu carta cada día.",
     "again": "Empezar de nuevo",
     "privacy": "Nada de lo que escribes aquí sale de tu navegador.",
     "cardAlt": "Carta {n} de la baraja «Світи»",
@@ -64,7 +69,8 @@
       "card": "Carta",
       "question": "Pregunta",
       "after": "Después"
-    }
+    },
+    "cta": "Empieza gratis"
   },
   "feelings": {
     "calm": "Calma",
@@ -280,8 +286,8 @@
     "a4": "No. Svity es una herramienta de reflexión, no terapia ni un servicio de emergencias. Si las cosas se ponen difíciles, el botón de ayuda siempre está arriba en la pantalla.",
     "q5": "¿Es gratis?",
     "a5": "La carta del día, el diario, el registro de sentimientos y la ayuda son gratuitos. Más adelante llegarán prácticas extra con Svity Plus.",
-    "q6": "¿Cuándo estará lista la app?",
-    "a6": "Pronto. Funcionará en el navegador, en el móvil y en el ordenador. Ya puedes probar la carta del día ahora mismo, aquí en esta página."
+    "q6": "¿Tengo que instalar una app?",
+    "a6": "No, Svity funciona en el navegador, en el móvil y en el ordenador. La app para el móvil llegará más adelante."
   },
   "footer": {
     "tagline": "Una carta al día para encontrarte contigo.",
@@ -307,6 +313,8 @@
     "contact": "Escribe a sus autores",
     "rights": "© {year} Svity",
     "top": "Volver arriba",
-    "made": "Hecho con cariño en ucraniano e inglés"
+    "made": "Hecho con cariño en ucraniano e inglés",
+    "linkSignup": "Crear una cuenta",
+    "linkSignin": "Iniciar sesión"
   }
 }

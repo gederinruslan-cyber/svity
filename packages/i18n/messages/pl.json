@@ -13,14 +13,16 @@
     "theme": "Motyw",
     "themeDay": "Dzień",
     "themeEvening": "Wieczór",
-    "tryShort": "Wypróbuj",
-    "tryLabel": "Wypróbuj kartę dnia"
+    "start": "Svity: załóż konto lub zaloguj się",
+    "startShort": "Zacznij",
+    "open": "Otwórz Svity",
+    "openShort": "Otwórz"
   },
   "hero": {
     "eyebrow": "Karty metaforyczne na każdy dzień",
     "title": "Jedna karta dziennie, by spotkać się ze sobą",
     "sub": "…i pokój do pracy, którą wykonujesz razem z psychologiem.",
-    "cta1": "Wypróbuj kartę",
+    "cta1": "Zacznij za darmo",
     "cta2": "Dla psychologów",
     "askLabel": "Pytanie z talii",
     "facts": {
@@ -31,8 +33,11 @@
       "minutesN": "3–5",
       "minutes": "minut dziennie"
     },
-    "soon": "Aplikacja Svity już wkrótce. Kartę dnia możesz wylosować już teraz, tutaj.",
-    "tryCard": "Przejdź do karty dnia"
+    "tryCard": "Przejdź do karty dnia",
+    "ctaToday": "Do karty dnia",
+    "ctaDiary": "Mój dziennik",
+    "haveAccount": "Masz już konto?",
+    "signin": "Zaloguj się"
   },
   "demo": {
     "eyebrow": "Wypróbuj teraz",
@@ -47,7 +52,7 @@
     "continue": "Gotowe",
     "after": "Jak się czujesz teraz?",
     "done": "Tak właśnie wygląda karta dnia.",
-    "doneSub": "Wróć jutro – będzie na ciebie czekać nowa karta.",
+    "doneSub": "Załóż konto, aby dostawać swoją kartę każdego dnia.",
     "again": "Zacznij od nowa",
     "privacy": "To, co tu piszesz, nie opuszcza twojej przeglądarki.",
     "cardAlt": "Karta {n} z talii „Світи”",
@@ -64,7 +69,8 @@
       "card": "Karta",
       "question": "Pytanie",
       "after": "Potem"
-    }
+    },
+    "cta": "Zacznij za darmo"
   },
   "feelings": {
     "calm": "Spokój",
@@ -280,8 +286,8 @@
     "a4": "Nie. Svity to narzędzie do refleksji, nie terapia ani pomoc w nagłych wypadkach. Jeśli jest ci trudno, przycisk pomocy jest zawsze u góry ekranu.",
     "q5": "Czy to jest bezpłatne?",
     "a5": "Karta dnia, dziennik, zapisywanie uczuć i pomoc są bezpłatne. Dodatkowe praktyki pojawią się później w Svity Plus.",
-    "q6": "Kiedy aplikacja będzie gotowa?",
-    "a6": "Wkrótce. Będzie działać w przeglądarce, na telefonie i komputerze. Kartę dnia możesz wypróbować już teraz, tutaj, na tej stronie."
+    "q6": "Czy muszę instalować aplikację?",
+    "a6": "Nie, Svity działa w przeglądarce – na telefonie i komputerze. Aplikacja na telefon pojawi się później."
   },
   "footer": {
     "tagline": "Jedna karta dziennie, by spotkać się ze sobą.",
@@ -307,6 +313,8 @@
     "contact": "Napisz do autorów",
     "rights": "© {year} Svity",
     "top": "Do góry",
-    "made": "Stworzone z troską po ukraińsku i angielsku"
+    "made": "Stworzone z troską po ukraińsku i angielsku",
+    "linkSignup": "Załóż konto",
+    "linkSignin": "Zaloguj się"
   }
 }

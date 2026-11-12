@@ -13,14 +13,16 @@
     "theme": "Motiv",
     "themeDay": "Den",
     "themeEvening": "Večer",
-    "tryShort": "Vyzkoušet",
-    "tryLabel": "Vyzkoušet kartu dne"
+    "start": "Svity: vytvořit účet nebo se přihlásit",
+    "startShort": "Začít",
+    "open": "Otevřít Svity",
+    "openShort": "Otevřít"
   },
   "hero": {
     "eyebrow": "Metaforické karty na každý den",
     "title": "Jedna karta denně pro setkání se sebou",
     "sub": "…a místnost pro práci, kterou děláš spolu se svým psychologem.",
-    "cta1": "Vyzkoušet kartu",
+    "cta1": "Začít zdarma",
     "cta2": "Pro psychology",
     "askLabel": "Otázka z balíčku",
     "facts": {
@@ -31,8 +33,11 @@
       "minutesN": "3–5",
       "minutes": "minut denně"
     },
-    "soon": "Aplikace Svity bude brzy. Kartu dne si můžeš vytáhnout už teď, přímo tady.",
-    "tryCard": "Přejít ke kartě dne"
+    "tryCard": "Přejít ke kartě dne",
+    "ctaToday": "Na kartu dne",
+    "ctaDiary": "Můj deník",
+    "haveAccount": "Už máš účet?",
+    "signin": "Přihlásit se"
   },
   "demo": {
     "eyebrow": "Vyzkoušej to teď",
@@ -47,7 +52,7 @@
     "continue": "Hotovo",
     "after": "Jak ti je teď?",
     "done": "Takhle chutná karta dne.",
-    "doneSub": "Vrať se zítra: bude tě čekat nová karta.",
+    "doneSub": "Vytvoř si účet a dostávej svou kartu každý den.",
     "again": "Začít znovu",
     "privacy": "Nic z toho, co sem napíšeš, neopustí tvůj prohlížeč.",
     "cardAlt": "Karta {n} z balíčku „Світи“",
@@ -64,7 +69,8 @@
       "card": "Karta",
       "question": "Otázka",
       "after": "Potom"
-    }
+    },
+    "cta": "Začít zdarma"
   },
   "feelings": {
     "calm": "Klid",
@@ -280,8 +286,8 @@
     "a4": "Ne. Svity je nástroj k sebereflexi, ne terapie ani krizová služba. Když je ti těžko, tlačítko pomoci je vždy nahoře na obrazovce.",
     "q5": "Je to zdarma?",
     "a5": "Karta dne, deník, záznamy pocitů a pomoc jsou zdarma. Další praxe přibudou později se Svity Plus.",
-    "q6": "Kdy bude aplikace hotová?",
-    "a6": "Brzy. Bude fungovat v prohlížeči, na telefonu i na počítači. Kartu dne můžeš vyzkoušet už teď, tady na této stránce."
+    "q6": "Musím instalovat aplikaci?",
+    "a6": "Ne, Svity funguje v prohlížeči, v telefonu i na počítači. Aplikace do telefonu přijde později."
   },
   "footer": {
     "tagline": "Jedna karta denně pro setkání se sebou.",
@@ -307,6 +313,8 @@
     "contact": "Napsat autorům",
     "rights": "© {year} Svity",
     "top": "Nahoru",
-    "made": "Vytvořeno s péčí ukrajinsky a anglicky"
+    "made": "Vytvořeno s péčí ukrajinsky a anglicky",
+    "linkSignup": "Vytvořit účet",
+    "linkSignin": "Přihlásit se"
   }
 }

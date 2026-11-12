@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "@svity/tokens";
 import { RitualCard, type RitualStage } from "./ritual/RitualCard";
+import { Link } from "@/i18n/navigation";
 import { Ornament, Star4 } from "./icons";
 
 const FEELINGS = [
@@ -287,6 +288,9 @@ export function Demo() {
                   <p className="h3">{t("done")}</p>
                   <p className="demo__muted">{t("doneSub")}</p>
                   <div className="demo__actions demo__actions--center">
+                    <Link href="/signup" className="btn">
+                      {t("cta")}
+                    </Link>
                     <button
                       type="button"
                       className="link-btn"
