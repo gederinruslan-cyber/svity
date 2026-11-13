@@ -19,7 +19,8 @@ const app = createApp(db, {
   // Without a configured secret, image links simply stop working after a restart.
   imageSecret: process.env.CARD_IMAGE_SECRET ?? randomBytes(32).toString("base64url"),
 });
-const port = Number(process.env.API_PORT ?? 4000);
+// Railway (and most hosts) assign the port through PORT.
+const port = Number(process.env.PORT ?? process.env.API_PORT ?? 4000);
 
 // Rooms push live snapshots over WebSocket (spec §17 RoomEvent).
 serve({ fetch: app.fetch, port, websocket: { server: new WebSocketServer({ noServer: true }) } }, () =>

@@ -16,12 +16,12 @@
     "@svity/tokens": "workspace:*",
     "hono": "^4.13.17",
     "nodemailer": "^10.5.0",
+    "tsx": "^4.23.15",
     "ws": "^8.22.2"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
     "@types/nodemailer": "^8.0.2",
-    "@types/ws": "^8.18.2",
-    "tsx": "^4.23.15"
+    "@types/ws": "^8.18.2"
   }
 }
