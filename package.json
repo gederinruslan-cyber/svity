@@ -4,7 +4,7 @@
   "type": "module",
   "packageManager": "pnpm@11.1.2",
   "engines": {
-    "node": ">=22"
+    "node": ">=24.7"
   },
   "scripts": {
     "dev": "pnpm --parallel --filter @svity/api --filter @svity/web dev",
