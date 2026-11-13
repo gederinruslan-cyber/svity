@@ -18,7 +18,7 @@ const escape = (s: string) => s.replace(/[&<>"']/g, (ch) => `&#${ch.charCodeAt(0
 
 /** "Forgot password" e-mail in the account language. Text + simple HTML; no images, no tracking. */
 /** One layout for every e-mail: title, text, a button, small print. Colours from the day theme. */
-function layout(o: { locale: Locale; subject: string; title: string; body: string; button: string; link: string; notes: string[]; footer: string }, to: string): Email {
+function layout(o: { locale: Locale; subject: string; title: string; body: string; button: string; link: string; fallback: string; notes: string[]; footer: string }, to: string): Email {
   const c = themes.day;
   const text = [o.title, "", o.body, o.link, "", ...o.notes, "", "—", o.footer].join("\n");
   const notes = o.notes.map((n) => `<p style="margin:0 0 8px;font-size:14px;line-height:1.5;color:${c.textMuted}">${escape(n)}</p>`).join("\n");
@@ -28,6 +28,7 @@ function layout(o: { locale: Locale; subject: string; title: string; body: strin
 <h1 style="margin:0 0 12px;font-family:Georgia,serif;font-weight:500;font-size:24px">${escape(o.title)}</h1>
 <p style="margin:0 0 24px;line-height:1.5">${escape(o.body)}</p>
 <p style="margin:0 0 24px"><a href="${escape(o.link)}" style="display:inline-block;padding:12px 22px;border-radius:999px;background:${c.accent};color:${c.accentText};text-decoration:none;font-weight:600">${escape(o.button)}</a></p>
+<p style="margin:0 0 20px;font-size:13px;line-height:1.5;color:${c.textMuted}">${escape(o.fallback)}<br><a href="${escape(o.link)}" style="color:${c.text};word-break:break-all">${escape(o.link)}</a></p>
 ${notes}
 </div>
 <p style="text-align:center;font-size:12px;color:${c.textMuted};margin:16px 0 0">${escape(o.footer)}</p>
@@ -37,7 +38,7 @@ ${notes}
 
 export function passwordResetEmail(to: string, link: string, locale: Locale): Email {
   const m = messages[locale].email.reset;
-  return layout({ locale, subject: m.subject, title: m.title, body: m.body, button: m.button, link, notes: [m.expires, m.ignore], footer: m.footer }, to);
+  return layout({ locale, subject: m.subject, title: m.title, body: m.body, button: m.button, link, fallback: m.fallback, notes: [m.expires, m.ignore], footer: m.footer }, to);
 }
 
 /** Prints e-mails to the API console. */

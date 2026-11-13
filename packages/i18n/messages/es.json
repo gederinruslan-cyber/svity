@@ -822,7 +822,8 @@
       "button": "Crear una nueva contraseña",
       "expires": "El enlace funciona una vez, durante 30 minutos.",
       "ignore": "Si no has sido tú, ignora este correo: tu contraseña sigue igual.",
-      "footer": "Svity · cartas para la reflexión diaria"
+      "footer": "Svity · cartas para la reflexión diaria",
+      "fallback": "¿El botón no funciona? Copia este enlace en tu navegador:"
     }
   }
 }

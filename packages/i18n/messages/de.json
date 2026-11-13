@@ -822,7 +822,8 @@
       "button": "Neues Passwort festlegen",
       "expires": "Der Link funktioniert einmal, 30 Minuten lang.",
       "ignore": "Wenn du es nicht warst, ignoriere diese E-Mail: Dein Passwort bleibt unverändert.",
-      "footer": "Svity · Karten für die tägliche Selbstreflexion"
+      "footer": "Svity · Karten für die tägliche Selbstreflexion",
+      "fallback": "Der Button funktioniert nicht? Kopiere diesen Link in deinen Browser:"
     }
   }
 }

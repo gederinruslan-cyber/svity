@@ -822,7 +822,8 @@
       "button": "Set a new password",
       "expires": "The link works once, for 30 minutes.",
       "ignore": "If it wasn't you, ignore this e-mail: your password stays the same.",
-      "footer": "Svity · cards for daily reflection"
+      "footer": "Svity · cards for daily reflection",
+      "fallback": "Button not working? Copy this link into your browser:"
     }
   }
 }

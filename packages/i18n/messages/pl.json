@@ -822,7 +822,8 @@
       "button": "Ustaw nowe hasło",
       "expires": "Link działa raz, przez 30 minut.",
       "ignore": "Jeśli to nie ty, zignoruj tę wiadomość: twoje hasło pozostaje bez zmian.",
-      "footer": "Svity · karty do codziennej refleksji"
+      "footer": "Svity · karty do codziennej refleksji",
+      "fallback": "Przycisk nie działa? Skopiuj ten link do przeglądarki:"
     }
   }
 }

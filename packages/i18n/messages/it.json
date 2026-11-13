@@ -822,7 +822,8 @@
       "button": "Imposta una nuova password",
       "expires": "Il link funziona una sola volta, per 30 minuti.",
       "ignore": "Se non hai fatto tu la richiesta, ignora questa e-mail: la password resta invariata.",
-      "footer": "Svity · carte per la riflessione quotidiana"
+      "footer": "Svity · carte per la riflessione quotidiana",
+      "fallback": "Il pulsante non funziona? Copia questo link nel browser:"
     }
   }
 }

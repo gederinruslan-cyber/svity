@@ -822,7 +822,8 @@
       "button": "Choisir un nouveau mot de passe",
       "expires": "Le lien fonctionne une fois, pendant 30 minutes.",
       "ignore": "Si ce n’était pas toi, ignore cet e-mail : ton mot de passe reste le même.",
-      "footer": "Svity · des cartes pour la réflexion quotidienne"
+      "footer": "Svity · des cartes pour la réflexion quotidienne",
+      "fallback": "Le bouton ne marche pas ? Copie ce lien dans ton navigateur :"
     }
   }
 }

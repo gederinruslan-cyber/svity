@@ -822,7 +822,8 @@
       "button": "Nastavit nové heslo",
       "expires": "Odkaz funguje jednou, 30 minut.",
       "ignore": "Pokud jsi to nebyl(a) ty, tento e-mail ignoruj: heslo zůstane stejné.",
-      "footer": "Svity · karty pro každodenní sebereflexi"
+      "footer": "Svity · karty pro každodenní sebereflexi",
+      "fallback": "Tlačítko nefunguje? Zkopíruj tento odkaz do prohlížeče:"
     }
   }
 }
