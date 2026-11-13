@@ -824,6 +824,16 @@
       "ignore": "Si no has sido tú, ignora este correo: tu contraseña sigue igual.",
       "footer": "Svity · cartas para la reflexión diaria",
       "fallback": "¿El botón no funciona? Copia este enlace en tu navegador:"
+    },
+    "welcome": {
+      "subject": "Te damos la bienvenida a Svity",
+      "title": "Te damos la bienvenida a Svity",
+      "body": "Ahora tienes un lugar tranquilo para ti: una carta al día, una pregunta y unos minutos para escucharte.",
+      "button": "Sacar la carta del día",
+      "daily": "Cada día, una carta nueva: anota cómo te sientes, dale la vuelta a la carta y responde como quieras: con una palabra, una página o nada.",
+      "private": "Tu diario solo lo ves tú. Puedes descargarlo o borrarlo cuando quieras desde el perfil.",
+      "difficult": "En un día duro, abre «Un día difícil»: una carta sin preguntas, anclaje y respiración.",
+      "care": "Svity es una herramienta de reflexión, no un servicio de emergencias. Si estás en peligro, llama al 112."
     }
   }
 }

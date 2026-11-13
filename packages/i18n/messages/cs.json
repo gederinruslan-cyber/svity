@@ -824,6 +824,16 @@
       "ignore": "Pokud jsi to nebyl(a) ty, tento e-mail ignoruj: heslo zůstane stejné.",
       "footer": "Svity · karty pro každodenní sebereflexi",
       "fallback": "Tlačítko nefunguje? Zkopíruj tento odkaz do prohlížeče:"
+    },
+    "welcome": {
+      "subject": "Vítej ve Svity",
+      "title": "Vítej ve Svity",
+      "body": "Teď máš klidné místo jen pro sebe: jednu kartu denně, jednu otázku a pár minut, kdy se zaposloucháš do sebe.",
+      "button": "Vytáhnout kartu dne",
+      "daily": "Každý den nová karta: poznamenej si, jak ti je, otoč kartu a odpověz, jak chceš – slovem, stránkou nebo vůbec.",
+      "private": "Svůj deník vidíš jen ty. V profilu si ho můžeš kdykoli stáhnout nebo smazat.",
+      "difficult": "V těžký den otevři „Těžký den“: kartu bez otázek, uzemnění a dýchání.",
+      "care": "Svity je nástroj k sebereflexi, ne pohotovostní služba. Pokud jsi v nebezpečí, volej 112."
     }
   }
 }

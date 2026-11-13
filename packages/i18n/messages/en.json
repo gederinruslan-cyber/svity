@@ -824,6 +824,16 @@
       "ignore": "If it wasn't you, ignore this e-mail: your password stays the same.",
       "footer": "Svity · cards for daily reflection",
       "fallback": "Button not working? Copy this link into your browser:"
+    },
+    "welcome": {
+      "subject": "Welcome to Svity",
+      "title": "Welcome to Svity",
+      "body": "You now have a quiet place for yourself: one card a day, one question and a few minutes to listen to yourself.",
+      "button": "Draw today's card",
+      "daily": "Every day there's a new card: note how you feel, turn the card over and answer however you like – a word, a page or nothing at all.",
+      "private": "Only you can see your diary. You can download or delete it any time in your profile.",
+      "difficult": "On a hard day, open \"Difficult day\": a card with no questions, grounding and breathing.",
+      "care": "Svity is a tool for reflection, not an emergency service. If you are in danger, call your local emergency number (112 in the EU)."
     }
   }
 }

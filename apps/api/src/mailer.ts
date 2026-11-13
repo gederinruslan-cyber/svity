@@ -36,6 +36,13 @@ ${notes}
   return { to, subject: o.subject, text, html };
 }
 
+/** Right after sign-up: what Svity is, a button to the card of the day, the care note. */
+export function welcomeEmail(to: string, link: string, locale: Locale): Email {
+  const m = messages[locale].email.welcome;
+  const r = messages[locale].email.reset;
+  return layout({ locale, subject: m.subject, title: m.title, body: m.body, button: m.button, link, fallback: r.fallback, notes: [m.daily, m.private, m.difficult, m.care], footer: r.footer }, to);
+}
+
 export function passwordResetEmail(to: string, link: string, locale: Locale): Email {
   const m = messages[locale].email.reset;
   return layout({ locale, subject: m.subject, title: m.title, body: m.body, button: m.button, link, fallback: m.fallback, notes: [m.expires, m.ignore], footer: m.footer }, to);

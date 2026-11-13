@@ -824,6 +824,16 @@
       "ignore": "Si ce n’était pas toi, ignore cet e-mail : ton mot de passe reste le même.",
       "footer": "Svity · des cartes pour la réflexion quotidienne",
       "fallback": "Le bouton ne marche pas ? Copie ce lien dans ton navigateur :"
+    },
+    "welcome": {
+      "subject": "Bienvenue sur Svity",
+      "title": "Bienvenue sur Svity",
+      "body": "Tu as maintenant un endroit calme pour toi : une carte par jour, une question et quelques minutes pour t’écouter.",
+      "button": "Tirer la carte du jour",
+      "daily": "Chaque jour, une nouvelle carte : note comment tu te sens, retourne la carte et réponds comme tu veux – un mot, une page ou rien du tout.",
+      "private": "Ton journal n’est visible que par toi. Tu peux le télécharger ou le supprimer à tout moment dans ton profil.",
+      "difficult": "Les jours difficiles, ouvre « Journée difficile » : une carte sans questions, de l’ancrage et de la respiration.",
+      "care": "Svity est un outil de réflexion, pas un service d’urgence. Si tu es en danger, appelle le 112."
     }
   }
 }

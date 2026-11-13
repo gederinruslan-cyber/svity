@@ -824,6 +824,16 @@
       "ignore": "Jeśli to nie ty, zignoruj tę wiadomość: twoje hasło pozostaje bez zmian.",
       "footer": "Svity · karty do codziennej refleksji",
       "fallback": "Przycisk nie działa? Skopiuj ten link do przeglądarki:"
+    },
+    "welcome": {
+      "subject": "Witaj w Svity",
+      "title": "Witaj w Svity",
+      "body": "Masz teraz spokojne miejsce dla siebie: jedną kartę dziennie, jedno pytanie i kilka minut, by posłuchać siebie.",
+      "button": "Wylosuj kartę dnia",
+      "daily": "Każdego dnia nowa karta: zaznacz, jak się czujesz, odwróć kartę i odpowiedz, jak chcesz – słowem, stroną albo wcale.",
+      "private": "Twój dziennik widzisz tylko ty. W profilu możesz go w każdej chwili pobrać lub usunąć.",
+      "difficult": "W trudny dzień otwórz „Trudny dzień”: karta bez pytań, uziemienie i oddech.",
+      "care": "Svity to narzędzie do refleksji, a nie służba ratunkowa. Jeśli grozi ci niebezpieczeństwo, dzwoń pod 112."
     }
   }
 }

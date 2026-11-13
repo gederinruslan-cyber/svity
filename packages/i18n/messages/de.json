@@ -824,6 +824,16 @@
       "ignore": "Wenn du es nicht warst, ignoriere diese E-Mail: Dein Passwort bleibt unverändert.",
       "footer": "Svity · Karten für die tägliche Selbstreflexion",
       "fallback": "Der Button funktioniert nicht? Kopiere diesen Link in deinen Browser:"
+    },
+    "welcome": {
+      "subject": "Willkommen bei Svity",
+      "title": "Willkommen bei Svity",
+      "body": "Jetzt hast du einen ruhigen Ort für dich: eine Karte am Tag, eine Frage und ein paar Minuten, um in dich hineinzuhören.",
+      "button": "Tageskarte ziehen",
+      "daily": "Jeden Tag gibt es eine neue Karte: Halte fest, wie es dir geht, dreh die Karte um und antworte, wie du magst – mit einem Wort, einer Seite oder gar nicht.",
+      "private": "Dein Tagebuch siehst nur du. Du kannst es jederzeit im Profil herunterladen oder löschen.",
+      "difficult": "An einem schweren Tag öffne „Ein schwerer Tag“: eine Karte ohne Fragen, Erdung und Atmung.",
+      "care": "Svity ist ein Werkzeug zur Reflexion, kein Notdienst. Wenn du in Gefahr bist, ruf den Notruf 112 an."
     }
   }
 }

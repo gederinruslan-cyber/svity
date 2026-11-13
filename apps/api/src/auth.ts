@@ -5,7 +5,7 @@ import { ChangePasswordInput, ForgotPasswordInput, ResetPasswordInput, SignInInp
 import { and, eq, gt, isNull, ne, passwordResets, sessions, users, type Db } from "@svity/db";
 import { hashToken, newToken } from "./crypto";
 import { DUMMY_HASH, hashPassword, verifyPassword } from "./password";
-import { passwordResetEmail, type Mailer } from "./mailer";
+import { passwordResetEmail, welcomeEmail, type Mailer } from "./mailer";
 import { rateLimit } from "./rate-limit";
 
 const RESET_TTL_MS = 30 * 60_000;
@@ -113,6 +113,8 @@ export function authRoutes(db: Db, opts: { webOrigin: string; mailer: Mailer; se
     const [user] = await db.insert(users).values({ email, passwordHash, locale, timezone, role, addressForm }).onConflictDoNothing().returning();
     if (!user) return c.json({ ok: false, error: "email_taken" }, 409);
     await startSession(c, user.id);
+    // Not awaited: a slow or failing mail service must not hold up or break sign-up.
+    opts.mailer.send(welcomeEmail(email, `${opts.webOrigin}/${locale}/today`, locale)).catch((err) => console.error("welcome e-mail failed", err));
     return c.json({ ok: true, me: toMe(user) }, 201);
   });
 
