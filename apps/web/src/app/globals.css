@@ -1079,7 +1079,8 @@ section {
 }
 .mosaic__day {
   position: relative;
-  aspect-ratio: 4 / 5;
+  /* Card-shaped, so whole cards show without cropping. */
+  aspect-ratio: 9 / 16;
   border-radius: 5px;
   overflow: hidden;
   display: grid;
@@ -3102,7 +3103,8 @@ section {
 }
 .mosaic__day {
   position: relative;
-  aspect-ratio: 4 / 5;
+  /* Card-shaped, so whole cards show without cropping. */
+  aspect-ratio: 9 / 16;
   border-radius: 5px;
   overflow: hidden;
   display: grid;
@@ -6662,6 +6664,16 @@ label.profile__field {
 }
 .mosaic .mosaic__grid--week {
   margin-bottom: 4px;
+}
+/* Calendar cards in soft focus; in the diary a day sharpens on hover or focus. */
+.mosaic__day img {
+  filter: blur(1.2px);
+  transform: scale(1.04);
+  transition: filter 0.25s ease;
+}
+.mosaic--app a.mosaic__day:hover img,
+.mosaic--app a.mosaic__day:focus-visible img {
+  filter: none;
 }
 @media (min-width: 900px) {
   .mosaic {
