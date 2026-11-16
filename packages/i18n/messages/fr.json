@@ -189,20 +189,6 @@
     "mockEmpty": "En attente",
     "ctaSubject": "Svity : salle de séance"
   },
-  "safety": {
-    "eyebrow": "Doux par nature",
-    "title": "Le soin fait partie de tout",
-    "s1t": "De l’aide en un geste",
-    "s1": "Une bouée en haut de chaque écran et dans la salle de séance : le 112, les lignes d’écoute de ton pays, la respiration.",
-    "s2t": "Une journée difficile",
-    "s2": "Aucune question sur ce qui s’est passé : une carte douce, de la respiration et de l’aide à portée de main.",
-    "s3t": "Partir sans enregistrer",
-    "s3": "Chaque carte peut être fermée ou remise dans le jeu. Rien n’est gardé.",
-    "sub": "Svity est un outil de réflexion, pas une thérapie ni un service d’urgence. C’est pourquoi le soutien est sur chaque écran, pas seulement là où tu le cherches.",
-    "s4t": "Les ombres, seulement avec ton accord",
-    "s4": "Les cartes lourdes n’apparaissent jamais d’elles-mêmes. Si plusieurs jours d’affilée sont difficiles, nous ne les proposons pas.",
-    "mockCountry": "Ukraine"
-  },
   "faq": {
     "eyebrow": "Questions",
     "title": "Questions fréquentes",
@@ -230,7 +216,6 @@
     "linkTry": "Tirer une carte",
     "linkDeck": "Le jeu",
     "linkDiary": "Ton journal",
-    "linkSafety": "Soin et sécurité",
     "colPros": "Pour les psys",
     "linkRoom": "La salle de séance",
     "linkFaq": "Questions",

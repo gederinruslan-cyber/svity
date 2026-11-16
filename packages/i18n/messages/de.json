@@ -189,20 +189,6 @@
     "mockEmpty": "Wartet",
     "ctaSubject": "Svity: Sitzungsraum"
   },
-  "safety": {
-    "eyebrow": "Behutsam von Anfang an",
-    "title": "Fürsorge ist eingebaut",
-    "s1t": "Hilfe mit einem Tippen",
-    "s1": "Ein Rettungsring-Button oben auf jedem Bildschirm und im Raum der Klient:innen: 112, Hilfetelefone für dein Land, Atmen.",
-    "s2t": "Ein schwerer Tag",
-    "s2": "Keine Fragen dazu, was passiert ist: eine sanfte Karte, Atmen und Hilfe in der Nähe.",
-    "s3t": "Gehen, ohne zu speichern",
-    "s3": "Jede Karte lässt sich schließen oder zurück ins Deck legen. Nichts wird aufgezeichnet.",
-    "sub": "Svity ist ein Werkzeug zur Selbstreflexion, keine Therapie und kein Notdienst. Deshalb ist Unterstützung auf jedem Bildschirm da, nicht nur dort, wo du sie suchst.",
-    "s4t": "Schatten nur mit Zustimmung",
-    "s4": "Schwere Karten erscheinen nie von selbst. Wenn mehrere Tage hintereinander schwer sind, bieten wir sie nicht an.",
-    "mockCountry": "Ukraine"
-  },
   "faq": {
     "eyebrow": "Fragen",
     "title": "Häufige Fragen",
@@ -230,7 +216,6 @@
     "linkTry": "Eine Karte ziehen",
     "linkDeck": "Das Deck",
     "linkDiary": "Dein Tagebuch",
-    "linkSafety": "Fürsorge und Sicherheit",
     "colPros": "Für Psycholog:innen",
     "linkRoom": "Der Sitzungsraum",
     "linkFaq": "Fragen",

@@ -189,20 +189,6 @@
     "mockEmpty": "Waiting",
     "ctaSubject": "Svity: session room"
   },
-  "safety": {
-    "eyebrow": "Gentle by design",
-    "title": "Care is built in",
-    "s1t": "Help in one tap",
-    "s1": "A lifebuoy button at the top of every screen and in the client's room: 112, support lines for your country, breathing.",
-    "s2t": "A difficult day",
-    "s2": "No questions about what happened: a gentle card, breathing and help nearby.",
-    "s3t": "Leave without saving",
-    "s3": "Any card can be closed or returned to the deck. Nothing is recorded.",
-    "sub": "Svity is a tool for reflection, not therapy and not an emergency service. So support is on every screen, not only where you look for it.",
-    "s4t": "Shadows only with consent",
-    "s4": "Heavy cards never appear on their own. If several days in a row are hard, we don't offer them.",
-    "mockCountry": "Ukraine"
-  },
   "faq": {
     "eyebrow": "Questions",
     "title": "Frequently asked questions",
@@ -230,7 +216,6 @@
     "linkTry": "Try a card",
     "linkDeck": "The deck",
     "linkDiary": "Your diary",
-    "linkSafety": "Care and safety",
     "colPros": "For psychologists",
     "linkRoom": "The session room",
     "linkFaq": "Questions",

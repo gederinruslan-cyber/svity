@@ -189,20 +189,6 @@
     "mockEmpty": "In attesa",
     "ctaSubject": "Svity: stanza per le sedute"
   },
-  "safety": {
-    "eyebrow": "Delicato per natura",
-    "title": "La cura è già dentro",
-    "s1t": "Aiuto in un tocco",
-    "s1": "Un pulsante a forma di salvagente in cima a ogni schermata e nella stanza del cliente: 112, linee di supporto del tuo paese, respiro.",
-    "s2t": "Una giornata difficile",
-    "s2": "Nessuna domanda su che cosa è successo: una carta gentile, il respiro e l’aiuto a portata di mano.",
-    "s3t": "Esci senza salvare",
-    "s3": "Ogni carta si può chiudere o rimettere nel mazzo. Non resta traccia di nulla.",
-    "sub": "Svity è uno strumento di riflessione, non una terapia né un servizio di emergenza. Per questo il sostegno è su ogni schermata, non solo dove lo cerchi.",
-    "s4t": "Ombre solo con il consenso",
-    "s4": "Le carte pesanti non compaiono mai da sole. Se per diversi giorni di fila è dura, non le proponiamo.",
-    "mockCountry": "Ucraina"
-  },
   "faq": {
     "eyebrow": "Domande",
     "title": "Domande frequenti",
@@ -230,7 +216,6 @@
     "linkTry": "Prova una carta",
     "linkDeck": "Il mazzo",
     "linkDiary": "Il tuo diario",
-    "linkSafety": "Cura e sicurezza",
     "colPros": "Per psicologi",
     "linkRoom": "La stanza per le sedute",
     "linkFaq": "Domande",

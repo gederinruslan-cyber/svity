@@ -13,7 +13,6 @@ import {
   Faq,
   Hero,
   Pros,
-  Safety,
 } from "@/components/sections";
 
 export default async function Home({ params }: PageProps<"/[locale]">) {
@@ -31,7 +30,6 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
           <Deck />
           <Diary />
           <Pros />
-          <Safety />
           <Faq />
         </main>
       </ViewTransition>

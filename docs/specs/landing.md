@@ -28,7 +28,7 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 | 6 | Diary & month | A sample diary page (card, date, favourite, note; the question shown only as "the question is yours alone"), three features (card + question + note · favourites · private, download or delete any time), and a sample month: weekday header, 12 card thumbnails by the 20th, today outlined. |
 | 7 | ~~Shadow cards~~ | Removed from the landing (the feature stays in the app). |
 | 8 | For psychologists | Heading + three steps (create a room → the client draws on their phone → you see only shared cards), CTA "I'd like to try it with clients" (mailto) + "Rooms open soon"; playable room mock (pro screen on a solid surface, client phone beside it on desktop, below it on phones; "Waiting" in empty slots); six feature tiles: 1 or 3 cards · face down or up · prompts just for you · private notes · question for the week · link and PIN (24/72 h, no account for the client). |
-| 9 | Safety | Heading + lead (reflection tool, not therapy or an emergency service); four items: help in one tap · difficult day · leave without saving · shadows only with consent; a decorative help sheet as in the app ("I need help" pill, call 112, country, find a helpline, live breathing circle 4·4·6 that stays still with reduced motion, "not an emergency service"). No unverified helpline numbers. |
+| 9 | ~~Safety~~ | Removed from the landing; the footer keeps the "If it's hard right now" note (112, not an emergency service). |
 | 10 | ~~Languages~~ | Removed; the header language menu (and the phone menu) covers it. |
 | 11 | FAQ | Heading + lead left, a "Didn't find an answer?" card with a mailto (below the list on phones); six numbered questions, one open at a time (`<details name>`), the first open: fortune-telling? · how long · who sees my entries · replacement for therapy? · free? · install an app? (no, it works in the browser). |
 | 12 | Footer | Logo, contact e-mail, "Write to the authors" (mailto for now), © Svity. |
@@ -85,8 +85,6 @@ Shadow candidates (26, 29, 65, 68, 69, 76, 81, 96, 100) and the 14 flagged quest
 | pro.sub | Send a link. Your client draws cards on their phone; you see only the cards they choose to share. | Надішли посилання. Клієнт тягне карти на своєму телефоні, а ти бачиш лише ті, якими клієнт ділиться. |
 | pro.features | 1 or 3 cards: What is · What's in the way · What will help · Face-down or face-up choice · Prompts and deepening questions for you · Private session notes · A question for the week sent to the client's diary | 1 або 3 карти: Що є · Що заважає · Що допоможе · Вибір наосліп або відкрито · Підказки й поглиблювальні питання для тебе · Приватні нотатки сесії · Питання на тиждень – у щоденник клієнта |
 | pro.cta | Create a psychologist account | Створити акаунт психолога |
-| safety.title | Gentle by design | Бережно з першого дотику |
-| safety.sub | Help is one tap away on every screen. Any card can be closed without saving. On a hard day, Svity offers a soft card and a breath instead of a question. | Допомога – в один дотик на кожному екрані. Будь-яку карту можна закрити без збереження. У важкий день Svity запропонує м'яку карту й дихання замість питання. |
 | form.tab.user | For me | Для себе |
 | form.tab.pro | For my clients | Для моїх клієнтів |
 | form.success | Thank you. We'll write when Svity is ready for you. | Дякуємо. Ми напишемо, щойно Svity буде готова для тебе. |

@@ -189,20 +189,6 @@
     "mockEmpty": "Čekáme",
     "ctaSubject": "Svity: místnost pro sezení"
   },
-  "safety": {
-    "eyebrow": "Jemně od základu",
-    "title": "Péče je zabudovaná",
-    "s1t": "Pomoc jedním klepnutím",
-    "s1": "Tlačítko se záchranným kruhem nahoře na každé obrazovce i v klientově místnosti: 112, linky podpory pro tvou zemi, dýchání.",
-    "s2t": "Těžký den",
-    "s2": "Žádné otázky, co se stalo: jemná karta, dýchání a pomoc nablízku.",
-    "s3t": "Odejít bez uložení",
-    "s3": "Každou kartu můžeš zavřít nebo vrátit do balíčku. Nic se nezaznamená.",
-    "sub": "Svity je nástroj k sebereflexi, ne terapie ani krizová služba. Proto je podpora na každé obrazovce, ne jen tam, kde ji hledáš.",
-    "s4t": "Stíny jen se souhlasem",
-    "s4": "Těžké karty se nikdy neobjeví samy. Když je několik dní po sobě těžko, nenabízíme je.",
-    "mockCountry": "Ukrajina"
-  },
   "faq": {
     "eyebrow": "Otázky",
     "title": "Časté otázky",
@@ -230,7 +216,6 @@
     "linkTry": "Vyzkoušet kartu",
     "linkDeck": "Balíček",
     "linkDiary": "Tvůj deník",
-    "linkSafety": "Péče a bezpečí",
     "colPros": "Pro psychology",
     "linkRoom": "Místnost pro sezení",
     "linkFaq": "Otázky",

@@ -6,16 +6,11 @@ import { HeroFan } from "./HeroFan";
 import { HeroCtas } from "./HeroCtas";
 import { HeroQuestions } from "./HeroQuestions";
 import { RoomMock } from "./RoomMock";
-import { HelpMock } from "./HelpMock";
 import {
   Calendar,
-  Check,
-  DoorClose,
   Eye,
   Globe,
   Heart,
-  Leaf,
-  Lifebuoy,
   Cards,
   Lock,
   Ornament,
@@ -299,39 +294,6 @@ export async function Pros() {
             </article>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-export async function Safety() {
-  const t = await getTranslations("safety");
-  const items = [
-    [Lifebuoy, t("s1t"), t("s1")],
-    [Leaf, t("s2t"), t("s2")],
-    [DoorClose, t("s3t"), t("s3")],
-    [Lock, t("s4t"), t("s4")],
-  ] as const;
-  return (
-    <section className="section" id="safety" aria-labelledby="safety-title">
-      <div className="container safety">
-        <div>
-          <Head id="safety-title" eyebrow={t("eyebrow")} title={t("title")} sub={t("sub")} />
-          <ul className="safety__list">
-            {items.map(([Icon, title, body], i) => (
-              <li key={i} className="reveal" style={{ "--d": i } as React.CSSProperties}>
-                <span className="about__icon">
-                  <Icon size={20} />
-                </span>
-                <div>
-                  <h3 className="safety__t">{title}</h3>
-                  <p>{body}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <HelpMock />
       </div>
     </section>
   );

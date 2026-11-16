@@ -189,20 +189,6 @@
     "mockEmpty": "Czekamy",
     "ctaSubject": "Svity: pokój do sesji"
   },
-  "safety": {
-    "eyebrow": "Łagodnie od pierwszego dotyku",
-    "title": "Troska jest wbudowana",
-    "s1t": "Pomoc jednym dotknięciem",
-    "s1": "Przycisk z kołem ratunkowym u góry każdego ekranu i w pokoju klienta: 112, telefony wsparcia w twoim kraju, oddech.",
-    "s2t": "Trudny dzień",
-    "s2": "Bez pytań o to, co się stało: łagodna karta, oddech i pomoc obok.",
-    "s3t": "Wyjdź bez zapisywania",
-    "s3": "Każdą kartę można zamknąć lub odłożyć do talii. Nic się nie zapisuje.",
-    "sub": "Svity to narzędzie do refleksji, nie terapia ani pomoc w nagłych wypadkach. Dlatego wsparcie jest na każdym ekranie, a nie tylko tam, gdzie go szukasz.",
-    "s4t": "Cienie tylko za zgodą",
-    "s4": "Ciężkie karty nie pojawiają się same. Jeśli kilka dni z rzędu jest trudno, nie proponujemy ich.",
-    "mockCountry": "Ukraina"
-  },
   "faq": {
     "eyebrow": "Pytania",
     "title": "Najczęstsze pytania",
@@ -230,7 +216,6 @@
     "linkTry": "Wypróbuj kartę",
     "linkDeck": "Talia",
     "linkDiary": "Twój dziennik",
-    "linkSafety": "Troska i bezpieczeństwo",
     "colPros": "Dla psychologów",
     "linkRoom": "Pokój do sesji",
     "linkFaq": "Pytania",

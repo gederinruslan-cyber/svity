@@ -189,20 +189,6 @@
     "mockEmpty": "En espera",
     "ctaSubject": "Svity: sala de sesiones"
   },
-  "safety": {
-    "eyebrow": "Delicado por diseño",
-    "title": "El cuidado viene incluido",
-    "s1t": "Ayuda con un toque",
-    "s1": "Un botón salvavidas arriba en cada pantalla y en la sala del cliente: 112, líneas de apoyo de tu país, respiración.",
-    "s2t": "Un día difícil",
-    "s2": "Sin preguntas sobre lo que ha pasado: una carta amable, respiración y ayuda cerca.",
-    "s3t": "Salir sin guardar",
-    "s3": "Cualquier carta se puede cerrar o devolver a la baraja. No queda nada registrado.",
-    "sub": "Svity es una herramienta de reflexión, no terapia ni un servicio de emergencias. Por eso el apoyo está en cada pantalla, no solo donde lo buscas.",
-    "s4t": "Sombras solo con consentimiento",
-    "s4": "Las cartas difíciles nunca aparecen por sí solas. Si varios días seguidos son duros, no te las ofrecemos.",
-    "mockCountry": "Ucrania"
-  },
   "faq": {
     "eyebrow": "Preguntas",
     "title": "Preguntas frecuentes",
@@ -230,7 +216,6 @@
     "linkTry": "Probar una carta",
     "linkDeck": "La baraja",
     "linkDiary": "Tu diario",
-    "linkSafety": "Cuidado y seguridad",
     "colPros": "Para psicólogos",
     "linkRoom": "La sala de sesiones",
     "linkFaq": "Preguntas",
