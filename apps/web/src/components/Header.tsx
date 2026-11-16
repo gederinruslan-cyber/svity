@@ -10,7 +10,9 @@ import { ChevronRight, Close, Menu, Moon, SignOut, Star4, Sun } from "./icons";
 
 type ThemePref = "day" | "evening";
 
-const SECTIONS = ["how", "deck", "pros", "faq"] as const;
+/** Anchor ids on the landing; "How it works" lands on the demo. */
+const SECTIONS = ["try", "deck", "pros", "faq"] as const;
+const LABEL = { try: "how", deck: "deck", pros: "pros", faq: "faq" } as const;
 
 export function Header() {
   const t = useTranslations("nav");
@@ -100,7 +102,7 @@ export function Header() {
         <nav className="site-nav" aria-label={t("menu")}>
           {SECTIONS.map((id) => (
             <a key={id} href={`#${id}`} className={active === id ? "is-active" : ""} aria-current={active === id ? "location" : undefined}>
-              {t(id)}
+              {t(LABEL[id])}
             </a>
           ))}
         </nav>
@@ -132,7 +134,7 @@ export function Header() {
         <nav className="site-menu__links" aria-label={t("menu")}>
           {SECTIONS.map((id) => (
             <a key={id} href={`#${id}`} onClick={() => setOpen(false)}>
-              {t(id)}
+              {t(LABEL[id])}
               <ChevronRight size={18} />
             </a>
           ))}

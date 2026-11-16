@@ -124,25 +124,6 @@
       "Which window do you keep shut, and what would happen if you opened it?"
     ]
   },
-  "principles": {
-    "eyebrow": "What Svity is",
-    "title": "A mirror, not a prophecy",
-    "p1t": "It's not fortune-telling",
-    "p1": "Cards predict nothing. They are a mirror: an image and a question to meet yourself through.",
-    "p2t": "There are no right answers",
-    "p2": "Write a word, a page, or nothing. Every moment with a card counts.",
-    "p3t": "You decide what to share",
-    "p3": "Your diary is private, even from your psychologist.",
-    "lead": "A quiet space to meet yourself every day through an image and a question, and a room for the work you do with a psychologist. Three to five minutes, one card, no pressure.",
-    "a1t": "The image",
-    "a1": "Look at the card without hurrying. What do you notice first?",
-    "a2t": "The question",
-    "a3t": "Your answer",
-    "a3": "A word, a page, or nothing. It stays in your diary.",
-    "p4t": "Safe at every step",
-    "p4": "A help button on every screen, and any card can be closed without saving.",
-    "mak": "MAC stands for metaphorical associative cards. Psychologists use them to talk, through images, about what's hard to put into words. Not fortune-telling, not diagnosis."
-  },
   "deck": {
     "eyebrow": "The deck",
     "title": "“Svity”",
@@ -295,7 +276,6 @@
     "about": "An author's deck of 117 painted cards and 351 questions, with a diary that remembers how you felt and a room for sessions with your psychologist.",
     "colApp": "Svity",
     "linkTry": "Try a card",
-    "linkHow": "How it works",
     "linkDeck": "The deck",
     "linkDiary": "Your diary",
     "linkShadow": "Shadow cards",

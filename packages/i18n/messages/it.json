@@ -124,25 +124,6 @@
       "Quale finestra tieni chiusa, e che cosa succederebbe se la aprissi?"
     ]
   },
-  "principles": {
-    "eyebrow": "Che cos’è Svity",
-    "title": "Uno specchio, non una profezia",
-    "p1t": "Non è divinazione",
-    "p1": "Le carte non predicono nulla. Sono uno specchio: un’immagine e una domanda attraverso cui incontrarti.",
-    "p2t": "Non ci sono risposte giuste",
-    "p2": "Scrivi una parola, una pagina o niente. Ogni momento con una carta conta.",
-    "p3t": "Decidi tu che cosa condividere",
-    "p3": "Il tuo diario è privato, anche per il tuo psicologo.",
-    "lead": "Uno spazio tranquillo per incontrarti ogni giorno attraverso un’immagine e una domanda, e una stanza per il lavoro con lo psicologo. Da tre a cinque minuti, una carta, nessuna pressione.",
-    "a1t": "L’immagine",
-    "a1": "Guarda la carta senza fretta. Che cosa noti per prima cosa?",
-    "a2t": "La domanda",
-    "a3t": "La tua risposta",
-    "a3": "Una parola, una pagina o niente. Resta nel tuo diario.",
-    "p4t": "Al sicuro a ogni passo",
-    "p4": "Un pulsante di aiuto su ogni schermata, e ogni carta si può chiudere senza salvare.",
-    "mak": "Le carte MAC sono carte metaforiche associative. Gli psicologi le usano per parlare, attraverso le immagini, di ciò che è difficile dire a parole. Non è divinazione, non è una diagnosi."
-  },
   "deck": {
     "eyebrow": "Il mazzo",
     "title": "«Світи»",
@@ -295,7 +276,6 @@
     "about": "Un mazzo d’autore di 117 carte dipinte e 351 domande, con un diario che ricorda come ti sentivi e una stanza per le sedute con il tuo psicologo.",
     "colApp": "Svity",
     "linkTry": "Prova una carta",
-    "linkHow": "Come funziona",
     "linkDeck": "Il mazzo",
     "linkDiary": "Il tuo diario",
     "linkShadow": "Carte d’ombra",

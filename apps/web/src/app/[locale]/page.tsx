@@ -13,7 +13,6 @@ import {
   Faq,
   Hero,
   Languages,
-  Principles,
   Pros,
   Safety,
   Shadow,
@@ -30,7 +29,6 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       <ViewTransition>
         <main>
           <Hero />
-          <Principles />
           <Demo />
           <Deck />
           <Diary />

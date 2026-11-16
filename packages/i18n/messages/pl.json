@@ -124,25 +124,6 @@
       "Które okno trzymasz zamknięte – i co by się stało, gdyby je otworzyć?"
     ]
   },
-  "principles": {
-    "eyebrow": "Czym jest Svity",
-    "title": "Lustro, nie przepowiednia",
-    "p1t": "To nie wróżenie",
-    "p1": "Karty niczego nie przepowiadają. Są lustrem: obrazem i pytaniem, przez które można spotkać się ze sobą.",
-    "p2t": "Nie ma dobrych ani złych odpowiedzi",
-    "p2": "Napisz słowo, stronę albo nic. Każda chwila z kartą ma znaczenie.",
-    "p3t": "Ty decydujesz, czym się dzielisz",
-    "p3": "Twój dziennik jest prywatny, także przed psychologiem.",
-    "lead": "Cicha przestrzeń, by codziennie spotykać się ze sobą przez obraz i pytanie, oraz pokój do pracy z psychologiem. Trzy do pięciu minut, jedna karta, żadnej presji.",
-    "a1t": "Obraz",
-    "a1": "Przyjrzyj się karcie bez pośpiechu. Co zauważasz najpierw?",
-    "a2t": "Pytanie",
-    "a3t": "Twoja odpowiedź",
-    "a3": "Słowo, strona albo nic. Zostaje w twoim dzienniku.",
-    "p4t": "Bezpiecznie na każdym kroku",
-    "p4": "Przycisk pomocy na każdym ekranie, a każdą kartę można zamknąć bez zapisywania.",
-    "mak": "MAK to metaforyczne karty asocjacyjne. Psycholodzy pracują z nimi, by przez obrazy mówić o tym, co trudno ująć w słowa. To nie wróżenie ani diagnoza."
-  },
   "deck": {
     "eyebrow": "Talia",
     "title": "„Світи”",
@@ -295,7 +276,6 @@
     "about": "Autorska talia 117 malowanych kart i 351 pytań, dziennik, który pamięta twoje uczucia, i pokój do sesji z psychologiem.",
     "colApp": "Svity",
     "linkTry": "Wypróbuj kartę",
-    "linkHow": "Jak to działa",
     "linkDeck": "Talia",
     "linkDiary": "Twój dziennik",
     "linkShadow": "Karty cienia",

@@ -124,25 +124,6 @@
       "Welches Fenster hältst du geschlossen – und was würde geschehen, wenn du es öffnest?"
     ]
   },
-  "principles": {
-    "eyebrow": "Was Svity ist",
-    "title": "Ein Spiegel, keine Prophezeiung",
-    "p1t": "Es ist kein Wahrsagen",
-    "p1": "Die Karten sagen nichts voraus. Sie sind ein Spiegel: ein Bild und eine Frage, durch die du dir selbst begegnen kannst.",
-    "p2t": "Es gibt keine richtigen Antworten",
-    "p2": "Schreib ein Wort, eine Seite oder nichts. Jeder Moment mit einer Karte zählt.",
-    "p3t": "Du entscheidest, was du teilst",
-    "p3": "Dein Tagebuch bleibt privat, auch gegenüber deiner psychologischen Begleitung.",
-    "lead": "Ein stiller Raum, um dir jeden Tag durch ein Bild und eine Frage selbst zu begegnen, und ein Raum für die Arbeit in der psychologischen Begleitung. Drei bis fünf Minuten, eine Karte, kein Druck.",
-    "a1t": "Das Bild",
-    "a1": "Betrachte die Karte ohne Eile. Was fällt dir zuerst auf?",
-    "a2t": "Die Frage",
-    "a3t": "Deine Antwort",
-    "a3": "Ein Wort, eine Seite oder nichts. Sie bleibt in deinem Tagebuch.",
-    "p4t": "Sicher bei jedem Schritt",
-    "p4": "Ein Hilfe-Button auf jedem Bildschirm, und jede Karte lässt sich schließen, ohne dass etwas gespeichert wird.",
-    "mak": "MAK steht für metaphorische Assoziationskarten. Psycholog:innen nutzen sie, um über Bilder ins Gespräch zu kommen über das, was sich schwer in Worte fassen lässt. Kein Wahrsagen, keine Diagnose."
-  },
   "deck": {
     "eyebrow": "Das Deck",
     "title": "„Світи“",
@@ -295,7 +276,6 @@
     "about": "Ein eigenes Deck mit 117 gemalten Karten und 351 Fragen, dazu ein Tagebuch, das sich merkt, wie es dir ging, und ein Raum für Sitzungen in deiner psychologischen Begleitung.",
     "colApp": "Svity",
     "linkTry": "Eine Karte ziehen",
-    "linkHow": "So funktioniert es",
     "linkDeck": "Das Deck",
     "linkDiary": "Dein Tagebuch",
     "linkShadow": "Schattenkarten",

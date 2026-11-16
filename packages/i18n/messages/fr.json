@@ -124,25 +124,6 @@
       "Quelle fenêtre gardes-tu fermée, et que se passerait-il si tu l’ouvrais ?"
     ]
   },
-  "principles": {
-    "eyebrow": "Ce qu’est Svity",
-    "title": "Un miroir, pas une prophétie",
-    "p1t": "Ce n’est pas de la voyance",
-    "p1": "Les cartes ne prédisent rien. Elles sont un miroir : une image et une question pour te retrouver.",
-    "p2t": "Il n’y a pas de bonne réponse",
-    "p2": "Écris un mot, une page, ou rien. Chaque moment avec une carte compte.",
-    "p3t": "Tu choisis ce que tu partages",
-    "p3": "Ton journal est privé, même pour ton ou ta psy.",
-    "lead": "Un espace tranquille pour te retrouver chaque jour à travers une image et une question, et une salle pour le travail avec un psy. Trois à cinq minutes, une carte, aucune pression.",
-    "a1t": "L’image",
-    "a1": "Regarde la carte sans te presser. Qu’est-ce que tu remarques en premier ?",
-    "a2t": "La question",
-    "a3t": "Ta réponse",
-    "a3": "Un mot, une page, ou rien. Elle reste dans ton journal.",
-    "p4t": "En sécurité à chaque étape",
-    "p4": "Un bouton d’aide sur chaque écran, et chaque carte peut être fermée sans rien enregistrer.",
-    "mak": "Les cartes MAC sont des cartes associatives métaphoriques. Les psys s’en servent pour parler, à travers des images, de ce qui est difficile à mettre en mots. Ce n’est ni de la voyance, ni un diagnostic."
-  },
   "deck": {
     "eyebrow": "Le jeu",
     "title": "« Світи »",
@@ -295,7 +276,6 @@
     "about": "Un jeu d’auteur de 117 cartes peintes et 351 questions, avec un journal qui se souvient de tes ressentis et une salle pour les séances avec ton ou ta psy.",
     "colApp": "Svity",
     "linkTry": "Tirer une carte",
-    "linkHow": "Comment ça marche",
     "linkDeck": "Le jeu",
     "linkDiary": "Ton journal",
     "linkShadow": "Les cartes d’ombre",

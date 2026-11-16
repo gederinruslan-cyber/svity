@@ -124,25 +124,6 @@
       "Které okno držíš zavřené a co by se stalo, kdyby se otevřelo?"
     ]
   },
-  "principles": {
-    "eyebrow": "Co je Svity",
-    "title": "Zrcadlo, ne proroctví",
-    "p1t": "Není to věštění",
-    "p1": "Karty nic nepředpovídají. Jsou zrcadlem: obraz a otázka, skrze které se můžeš potkat se sebou.",
-    "p2t": "Správné odpovědi tu nejsou",
-    "p2": "Napiš slovo, stránku, nebo nic. Každá chvíle s kartou se počítá.",
-    "p3t": "Ty rozhoduješ, o co se podělíš",
-    "p3": "Tvůj deník je soukromý, i před psychologem.",
-    "lead": "Tichý prostor, kde se každý den můžeš potkat se sebou skrze obraz a otázku, a místnost pro práci s psychologem. Tři až pět minut, jedna karta, žádný tlak.",
-    "a1t": "Obraz",
-    "a1": "Podívej se na kartu bez spěchu. Čeho si všimneš jako prvního?",
-    "a2t": "Otázka",
-    "a3t": "Tvoje odpověď",
-    "a3": "Slovo, stránka, nebo nic. Zůstane ve tvém deníku.",
-    "p4t": "Bezpečně na každém kroku",
-    "p4": "Tlačítko pomoci na každé obrazovce a každou kartu můžeš zavřít bez uložení.",
-    "mak": "MAK znamená metaforické asociativní karty. Psychologové je používají, aby skrze obrazy mluvili o tom, co se těžko říká slovy. Není to věštění ani diagnostika."
-  },
   "deck": {
     "eyebrow": "Balíček",
     "title": "„Світи“",
@@ -295,7 +276,6 @@
     "about": "Autorský balíček 117 malovaných karet a 351 otázek, deník, který si pamatuje tvé pocity, a místnost pro sezení s psychologem.",
     "colApp": "Svity",
     "linkTry": "Vyzkoušet kartu",
-    "linkHow": "Jak to funguje",
     "linkDeck": "Balíček",
     "linkDiary": "Tvůj deník",
     "linkShadow": "Stínové karty",

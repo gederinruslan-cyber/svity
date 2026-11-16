@@ -124,25 +124,6 @@
       "¿Qué ventana mantienes cerrada, y qué pasaría si la abrieras?"
     ]
   },
-  "principles": {
-    "eyebrow": "Qué es Svity",
-    "title": "Un espejo, no una profecía",
-    "p1t": "No es adivinación",
-    "p1": "Las cartas no predicen nada. Son un espejo: una imagen y una pregunta para encontrarte contigo.",
-    "p2t": "No hay respuestas correctas",
-    "p2": "Escribe una palabra, una página o nada. Cada momento con una carta cuenta.",
-    "p3t": "Tú decides qué compartir",
-    "p3": "Tu diario es privado, incluso para tu psicólogo.",
-    "lead": "Un espacio tranquilo para encontrarte contigo cada día a través de una imagen y una pregunta, y una sala para trabajar con tu psicólogo o psicóloga. De tres a cinco minutos, una carta, sin presión.",
-    "a1t": "La imagen",
-    "a1": "Mira la carta sin prisa. ¿Qué es lo primero que te llama la atención?",
-    "a2t": "La pregunta",
-    "a3t": "Tu respuesta",
-    "a3": "Una palabra, una página o nada. Se queda en tu diario.",
-    "p4t": "Seguridad en cada paso",
-    "p4": "Un botón de ayuda en cada pantalla, y cualquier carta se puede cerrar sin guardar.",
-    "mak": "Las cartas MAC son cartas metafóricas asociativas. Se usan en psicología para hablar, a través de imágenes, de lo que cuesta poner en palabras. No es adivinación ni diagnóstico."
-  },
   "deck": {
     "eyebrow": "La baraja",
     "title": "«Світи»",
@@ -295,7 +276,6 @@
     "about": "Una baraja de autor con 117 cartas pintadas y 351 preguntas, con un diario que recuerda cómo te sentías y una sala para las sesiones con tu psicólogo o psicóloga.",
     "colApp": "Svity",
     "linkTry": "Probar una carta",
-    "linkHow": "Cómo funciona",
     "linkDeck": "La baraja",
     "linkDiary": "Tu diario",
     "linkShadow": "Cartas de sombra",

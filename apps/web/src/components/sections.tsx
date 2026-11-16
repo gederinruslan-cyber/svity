@@ -21,7 +21,6 @@ import {
   Lifebuoy,
   Cards,
   Lock,
-  Mirror,
   Ornament,
   Pen,
   Star4,
@@ -127,73 +126,6 @@ export async function Hero() {
           <HeroFan label={t("tryCard")} />
           <HeroQuestions />
         </div>
-      </div>
-    </section>
-  );
-}
-
-export async function Principles() {
-  const t = await getTranslations("principles");
-  const tc = await getTranslations("cards");
-  const td = await getTranslations("demo");
-  const question = (tc.raw("21") as string[])[0];
-  const items = [
-    [Mirror, t("p1t"), t("p1")],
-    [Leaf, t("p2t"), t("p2")],
-    [Lock, t("p3t"), t("p3")],
-    [Lifebuoy, t("p4t"), t("p4")],
-  ] as const;
-  return (
-    // id="how": the header's and footer's "How it works" links land here.
-    <section className="section about" id="how" aria-labelledby="principles-title">
-      <div className="container">
-        <Head id="principles-title" eyebrow={t("eyebrow")} title={t("title")} sub={t("lead")} />
-
-        {/* How the mirror works: a real card, its question, your answer. */}
-        <div className="about__mirror reveal">
-          <div className="about__card">
-            <Image src="/cards/demo-21.webp" alt={td("cardAlt", { n: 21 })} fill sizes="(max-width: 800px) 46vw, 240px" />
-          </div>
-          <ol className="about__steps">
-            <li>
-              <span className="about__n">1</span>
-              <div>
-                <h3 className="about__t">{t("a1t")}</h3>
-                <p>{t("a1")}</p>
-              </div>
-            </li>
-            <li>
-              <span className="about__n">2</span>
-              <div>
-                <h3 className="about__t">{t("a2t")}</h3>
-                <p className="about__q">{question}</p>
-              </div>
-            </li>
-            <li>
-              <span className="about__n">3</span>
-              <div>
-                <h3 className="about__t">{t("a3t")}</h3>
-                <p>{t("a3")}</p>
-              </div>
-            </li>
-          </ol>
-        </div>
-
-        <div className="about__grid">
-          {items.map(([Icon, title, body], i) => (
-            <article key={i} className="panel glass reveal about__item" style={{ "--d": i } as React.CSSProperties}>
-              <span className="about__icon">
-                <Icon size={22} />
-              </span>
-              <h3 className="h3">{title}</h3>
-              <p>{body}</p>
-            </article>
-          ))}
-        </div>
-
-        <p className="about__note reveal">
-          <Star4 size={10} className="about__note-star" /> {t("mak")}
-        </p>
       </div>
     </section>
   );

@@ -18,7 +18,6 @@ export async function Footer() {
         [`/${locale}/signup`, t("linkSignup")],
         [`/${locale}/signin`, t("linkSignin")],
         ["#try", t("linkTry")],
-        ["#how", t("linkHow")],
         ["#deck", t("linkDeck")],
         ["#diary", t("linkDiary")],
         ["#shadow", t("linkShadow")],
