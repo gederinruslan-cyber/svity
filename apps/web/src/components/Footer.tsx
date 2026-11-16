@@ -1,8 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server";
-import { siteLocales } from "@svity/contracts";
-import { localeHref } from "@/i18n/navigation";
-import { LANGUAGES } from "@/i18n/languages";
-import { Globe, Lifebuoy, Star4 } from "./icons";
+import { Lifebuoy, Star4 } from "./icons";
 
 const CONTACT = "hello@svity.app";
 
@@ -87,22 +84,6 @@ export async function Footer() {
         </aside>
 
         <div className="footer__bar">
-          <div className="footer__langs">
-            <Globe size={16} />
-            <span className="sr-only">{t("language")}</span>
-            {siteLocales.map((l) => (
-              <a
-                key={l}
-                href={localeHref(l, "/")}
-                hrefLang={l}
-                lang={l}
-                className={l === locale ? "is-active" : ""}
-                aria-current={l === locale ? "true" : undefined}
-              >
-                {LANGUAGES[l].name}
-              </a>
-            ))}
-          </div>
           <p className="footer__rights">
             {t("rights", { year: new Date().getFullYear() })} · {t("made")}
           </p>
