@@ -165,24 +165,6 @@
     "f3t": "Deins und nur deins",
     "f3": "Nur du siehst dein Tagebuch. Du kannst es jederzeit herunterladen oder löschen."
   },
-  "shadow": {
-    "eyebrow": "Wenn die Zeit gekommen ist",
-    "title": "Schattenkarten",
-    "sub": "Karten über Wut, Traurigkeit und Angst. Sie kommen nie von selbst ins Deck: Übung und deine Zustimmung öffnen sie, niemals eine Zahlung.",
-    "s1t": "Ein Monat Übung",
-    "s1": "30 Tage und 10 Tagebucheinträge. Bis dahin gibt es nur helle und neutrale Karten.",
-    "s2t": "Deine Zustimmung",
-    "s2": "Zuerst erklären wir, was diese Karten sind und was dabei hochkommen kann. Ob du sie öffnest, entscheidest allein du.",
-    "s3t": "Eine Schattenkarte",
-    "s3": "Der Bildschirm wird leise abendlich. Eine Frage und eine Notiz, wie immer.",
-    "s4t": "Zurück in den Körper",
-    "s4": "Atmen im Rhythmus 4 · 4 · 6 und eine stärkende Karte aus dem hellen Teil des Decks.",
-    "modesLabel": "Wie sie erscheinen",
-    "mode1": "Nur wenn ich darum bitte",
-    "mode2": "Manchmal als Karte des Tages",
-    "mode3": "Jederzeit abschaltbar",
-    "care": "Wenn sich mehrere Tage hintereinander schwer anfühlen, bieten wir keine Schattenkarten an, nur Unterstützung. Der Hilfe-Button ist immer oben."
-  },
   "pros": {
     "eyebrow": "Für Psycholog:innen und Coaches",
     "title": "Ein Raum für deine Sitzungen",
@@ -266,7 +248,6 @@
     "linkTry": "Eine Karte ziehen",
     "linkDeck": "Das Deck",
     "linkDiary": "Dein Tagebuch",
-    "linkShadow": "Schattenkarten",
     "linkSafety": "Fürsorge und Sicherheit",
     "colPros": "Für Psycholog:innen",
     "linkRoom": "Der Sitzungsraum",

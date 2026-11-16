@@ -165,24 +165,6 @@
     "f3t": "Tuo e solo tuo",
     "f3": "Il tuo diario lo vedi solo tu. Scaricalo o eliminalo quando vuoi."
   },
-  "shadow": {
-    "eyebrow": "Quando sarà il momento",
-    "title": "Carte d’ombra",
-    "sub": "Carte su rabbia, tristezza e paura. Non entrano mai nel mazzo da sole: le aprono la pratica e il tuo consenso, mai un pagamento.",
-    "s1t": "Un mese di pratica",
-    "s1": "30 giorni e 10 note nel diario. Fino ad allora, solo carte luminose e neutre.",
-    "s2t": "Il tuo consenso",
-    "s2": "Prima ti spieghiamo che cosa sono queste carte e che cosa può emergere. Aprirle è solo una tua decisione.",
-    "s3t": "Una carta d’ombra",
-    "s3": "Lo schermo passa piano alla sera. Una domanda e una nota, come sempre.",
-    "s4t": "Ritorno al corpo",
-    "s4": "Respiro 4 · 4 · 6 e una carta di sostegno dalla parte luminosa del mazzo.",
-    "modesLabel": "Come compaiono",
-    "mode1": "Solo quando lo chiedo",
-    "mode2": "A volte come carta del giorno",
-    "mode3": "Disattivabili in ogni momento",
-    "care": "Se per diversi giorni di fila tutto pesa, non proponiamo carte d’ombra, solo sostegno. Il pulsante di aiuto è sempre in alto."
-  },
   "pros": {
     "eyebrow": "Per psicologi e coach",
     "title": "Una stanza per le tue sedute",
@@ -266,7 +248,6 @@
     "linkTry": "Prova una carta",
     "linkDeck": "Il mazzo",
     "linkDiary": "Il tuo diario",
-    "linkShadow": "Carte d’ombra",
     "linkSafety": "Cura e sicurezza",
     "colPros": "Per psicologi",
     "linkRoom": "La stanza per le sedute",

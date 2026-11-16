@@ -165,24 +165,6 @@
     "f3t": "Tvůj a jen tvůj",
     "f3": "Deník vidíš jen ty. Kdykoli si ho můžeš stáhnout nebo smazat."
   },
-  "shadow": {
-    "eyebrow": "Až přijde čas",
-    "title": "Stínové karty",
-    "sub": "Karty o vzteku, smutku a strachu. Do balíčku se samy nikdy nedostanou: otevírá je praxe a tvůj souhlas, nikdy platba.",
-    "s1t": "Měsíc praxe",
-    "s1": "30 dní a 10 záznamů v deníku. Do té doby jen světlé a neutrální karty.",
-    "s2t": "Tvůj souhlas",
-    "s2": "Nejdřív vysvětlíme, co jsou to za karty a co se může vynořit. Otevřít je je jen tvoje rozhodnutí.",
-    "s3t": "Stínová karta",
-    "s3": "Obrazovka tiše přejde do večera. Otázka a poznámka, jako vždy.",
-    "s4t": "Zpátky do těla",
-    "s4": "Dýchání 4 · 4 · 6 a opěrná karta ze světlé části balíčku.",
-    "modesLabel": "Jak se objevují",
-    "mode1": "Jen když o ně požádám",
-    "mode2": "Občas jako karta dne",
-    "mode3": "Kdykoli vypnout",
-    "care": "Když je několik dní po sobě těžko, stínové karty nenabízíme, jen podporu. Tlačítko pomoci je vždy nahoře."
-  },
   "pros": {
     "eyebrow": "Pro psychology a kouče",
     "title": "Místnost pro tvá sezení",
@@ -266,7 +248,6 @@
     "linkTry": "Vyzkoušet kartu",
     "linkDeck": "Balíček",
     "linkDiary": "Tvůj deník",
-    "linkShadow": "Stínové karty",
     "linkSafety": "Péče a bezpečí",
     "colPros": "Pro psychology",
     "linkRoom": "Místnost pro sezení",

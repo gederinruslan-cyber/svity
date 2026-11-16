@@ -165,24 +165,6 @@
     "f3t": "Tuyo y solo tuyo",
     "f3": "Solo tú ves tu diario. Descárgalo o bórralo cuando quieras."
   },
-  "shadow": {
-    "eyebrow": "Cuando llegue el momento",
-    "title": "Cartas de sombra",
-    "sub": "Cartas sobre la rabia, la tristeza y el miedo. Nunca entran en la baraja por sí solas: las abren la práctica y tu consentimiento, nunca un pago.",
-    "s1t": "Un mes de práctica",
-    "s1": "30 días y 10 entradas en el diario. Hasta entonces, solo cartas luminosas y neutras.",
-    "s2t": "Tu consentimiento",
-    "s2": "Primero te explicamos qué son estas cartas y qué puede surgir. Abrirlas es solo decisión tuya.",
-    "s3t": "Una carta de sombra",
-    "s3": "La pantalla pasa en silencio al modo noche. Una pregunta y una nota, como siempre.",
-    "s4t": "Volver al cuerpo",
-    "s4": "Respiración 4 · 4 · 6 y una carta de apoyo de la parte luminosa de la baraja.",
-    "modesLabel": "Cómo aparecen",
-    "mode1": "Solo cuando las pido",
-    "mode2": "A veces, como carta del día",
-    "mode3": "Desactivarlas cuando quiera",
-    "care": "Si varios días seguidos se sienten pesados, no te ofrecemos cartas de sombra, solo apoyo. El botón de ayuda siempre está arriba."
-  },
   "pros": {
     "eyebrow": "Para psicólogos y coaches",
     "title": "Una sala para tus sesiones",
@@ -266,7 +248,6 @@
     "linkTry": "Probar una carta",
     "linkDeck": "La baraja",
     "linkDiary": "Tu diario",
-    "linkShadow": "Cartas de sombra",
     "linkSafety": "Cuidado y seguridad",
     "colPros": "Para psicólogos",
     "linkRoom": "La sala de sesiones",

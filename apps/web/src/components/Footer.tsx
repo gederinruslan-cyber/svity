@@ -17,7 +17,6 @@ export async function Footer() {
         ["#try", t("linkTry")],
         ["#deck", t("linkDeck")],
         ["#diary", t("linkDiary")],
-        ["#shadow", t("linkShadow")],
         ["#safety", t("linkSafety")],
       ],
     ],

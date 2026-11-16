@@ -165,24 +165,6 @@
     "f3t": "À toi, et à toi seulement",
     "f3": "Ton journal n’est visible que par toi. Télécharge-le ou supprime-le quand tu veux."
   },
-  "shadow": {
-    "eyebrow": "Quand le moment viendra",
-    "title": "Les cartes d’ombre",
-    "sub": "Des cartes sur la colère, la tristesse et la peur. Elles n’entrent jamais d’elles-mêmes dans le jeu : c’est la pratique et ton accord qui les ouvrent, jamais un paiement.",
-    "s1t": "Un mois de pratique",
-    "s1": "30 jours et 10 entrées dans le journal. D’ici là, seulement des cartes lumineuses et neutres.",
-    "s2t": "Ton accord",
-    "s2": "D’abord, nous t’expliquons ce que sont ces cartes et ce qui peut remonter. Les ouvrir ne dépend que de toi.",
-    "s3t": "Une carte d’ombre",
-    "s3": "L’écran passe doucement au soir. Une question et une note, comme toujours.",
-    "s4t": "Revenir au corps",
-    "s4": "Une respiration 4 · 4 · 6 et une carte de soutien tirée de la partie lumineuse du jeu.",
-    "modesLabel": "Comment elles apparaissent",
-    "mode1": "Seulement quand je le demande",
-    "mode2": "Parfois comme carte du jour",
-    "mode3": "Désactivables à tout moment",
-    "care": "Si plusieurs jours d’affilée sont lourds, nous ne proposons pas de cartes d’ombre, seulement du soutien. Le bouton d’aide est toujours en haut."
-  },
   "pros": {
     "eyebrow": "Pour les psys et les coachs",
     "title": "Une salle pour tes séances",
@@ -266,7 +248,6 @@
     "linkTry": "Tirer une carte",
     "linkDeck": "Le jeu",
     "linkDiary": "Ton journal",
-    "linkShadow": "Les cartes d’ombre",
     "linkSafety": "Soin et sécurité",
     "colPros": "Pour les psys",
     "linkRoom": "La salle de séance",

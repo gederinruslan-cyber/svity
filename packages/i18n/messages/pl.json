@@ -165,24 +165,6 @@
     "f3t": "Twój i tylko twój",
     "f3": "Dziennik widzisz tylko ty. Możesz go pobrać lub usunąć w każdej chwili."
   },
-  "shadow": {
-    "eyebrow": "Gdy przyjdzie czas",
-    "title": "Karty cienia",
-    "sub": "Karty o złości, smutku i lęku. Same nie trafiają do talii: otwiera je praktyka i twoja zgoda, nigdy płatność.",
-    "s1t": "Miesiąc praktyki",
-    "s1": "30 dni i 10 wpisów w dzienniku. Do tego czasu tylko jasne i neutralne karty.",
-    "s2t": "Twoja zgoda",
-    "s2": "Najpierw opowiemy, czym są te karty i co może się pojawić. Otwarcie ich to wyłącznie twoja decyzja.",
-    "s3t": "Karta cienia",
-    "s3": "Ekran cicho przechodzi w wieczór. Pytanie i notatka – jak zawsze.",
-    "s4t": "Powrót do ciała",
-    "s4": "Oddech 4 · 4 · 6 i karta wsparcia z jasnej części talii.",
-    "modesLabel": "Jak się pojawiają",
-    "mode1": "Tylko na moją prośbę",
-    "mode2": "Czasem jako karta dnia",
-    "mode3": "Wyłącz w każdej chwili",
-    "care": "Jeśli kilka dni z rzędu jest ciężko, nie proponujemy kart cienia – tylko wsparcie. Przycisk pomocy jest zawsze na górze."
-  },
   "pros": {
     "eyebrow": "Dla psychologów i coachów",
     "title": "Pokój na twoje sesje",
@@ -266,7 +248,6 @@
     "linkTry": "Wypróbuj kartę",
     "linkDeck": "Talia",
     "linkDiary": "Twój dziennik",
-    "linkShadow": "Karty cienia",
     "linkSafety": "Troska i bezpieczeństwo",
     "colPros": "Dla psychologów",
     "linkRoom": "Pokój do sesji",
