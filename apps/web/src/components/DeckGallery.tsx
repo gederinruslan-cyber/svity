@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 
 // Cards with demo art; shadow candidates excluded.
-const CARDS = ["21", "11", "25", "6", "20", "12", "23", "22"] as const;
+const CARDS = ["21", "11", "25", "31", "6", "20", "12", "75", "23", "22"] as const;
 // Three copies so the strip can loop endlessly; the middle one is "real".
 const COPIES = 3;
 const SPEED = 24; // px per second
