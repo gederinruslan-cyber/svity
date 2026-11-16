@@ -6323,11 +6323,6 @@ label.profile__field {
   text-wrap: balance;
   margin-bottom: 18px;
 }
-.hero__lead {
-  font-size: clamp(17px, 1.5vw, 19px);
-  line-height: 1.55;
-  text-wrap: pretty;
-}
 .hero__ctas-wrap {
   margin-top: 30px;
 }

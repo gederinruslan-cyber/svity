@@ -21,7 +21,7 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 | # | Section | Behavior |
 |---|---|---|
 | 1 | Header | Logo SVITY, anchors (Колода / Для психологів / Питання), language menu (8 languages; a grid in the phone menu), theme switch (day/evening; evening by default), one action button ("Get started" → /start, or "Open" → /today when signed in; hidden until `/v1/me` answers). Fixed full-width bar; after scrolling only a glass background fades in (no size or position change). |
-| 2 | Hero | Slogan, subline, two CTAs (Start free → /signup / for psychologists → #pros), "Already have an account? Sign in"; signed in: Go to today's card / My diary. Card back floats (6 s loop), the star glows softly, clouds drift with light parallax. |
+| 2 | Hero | Slogan, two CTAs (Start free → /signup / for psychologists → #pros), "Already have an account? Sign in"; signed in: Go to today's card / My diary. Card back floats (6 s loop), the star glows softly, clouds drift with light parallax. |
 | 3 | ~~What Svity is~~ | Removed, along with the nav's "How it works" link. |
 | 4 | Try today's card (demo) | The ritual, fully client-side, with a step tracker; see "Demo" below. |
 | 5 | The deck | A strip of card art inside the page width (max 1100 px, soft faded edges) that drifts on its own, pauses on hover, swipes on touch; cards are not interactive. Three features: 117 worlds · questions just for you (they open when the card is yours; never shown here) · two languages. |
@@ -64,7 +64,6 @@ Shadow candidates (26, 29, 65, 68, 69, 76, 81, 96, 100) and the 14 flagged quest
 | Key | EN | UK |
 |---|---|---|
 | hero.title | One card a day to explore your inner world | Одна карта на день, щоб дослідити свій внутрішній світ |
-| hero.sub | …and a room for the work you do together with your psychologist. | …і кімната для роботи, яку ви робите разом із психологом. |
 | hero.cta1 | Start free | Почати безкоштовно |
 | hero.cta2 | For psychologists | Для психологів |
 | demo.title | Try today's card | Спробуй карту дня |

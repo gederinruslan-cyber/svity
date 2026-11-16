@@ -108,7 +108,6 @@ export async function Hero() {
         <div className="hero__copy">
           <p className="eyebrow reveal">{t("eyebrow")}</p>
           <h1 className="h1 hero__title reveal">{t("title")}</h1>
-          <p className="lead hero__lead reveal">{t("sub")}</p>
           <HeroCtas />
           <dl className="hero__facts reveal">
             {(["cards", "questions", "minutes"] as const).map((k) => (
