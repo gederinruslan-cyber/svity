@@ -42,7 +42,6 @@
   "demo": {
     "eyebrow": "Pruébalo ahora",
     "title": "La carta del día",
-    "ask": "¿Cómo estás ahora?",
     "tap": "Toca la baraja",
     "deckLabel": "Baraja de cartas. Tócala para sacar tu carta.",
     "questionLabel": "Tu pregunta",
@@ -50,7 +49,6 @@
     "repick": "No es mi carta · sacar otra (quedan {n})",
     "lastCard": "Esta es tu carta de hoy",
     "continue": "Ya está",
-    "after": "¿Cómo estás ahora?",
     "done": "Así se siente una carta al día.",
     "doneSub": "Crea una cuenta para recibir tu carta cada día.",
     "again": "Empezar de nuevo",
@@ -61,14 +59,11 @@
     "cardN": "Carta {n}",
     "nextIn": "la carta de mañana en {time}",
     "hm": "{h} h {m} min",
-    "sub": "Un minuto para probar: elige un sentimiento, saca una carta, quédate con una pregunta.",
-    "askHint": "Elige lo que más se acerque. No hay respuestas correctas.",
+    "sub": "Un minuto para probar: saca una carta, quédate con una pregunta.",
     "stepsLabel": "Pasos",
     "steps": {
-      "feeling": "Sentimiento",
       "card": "Carta",
-      "question": "Pregunta",
-      "after": "Después"
+      "question": "Pregunta"
     },
     "cta": "Empieza gratis"
   },

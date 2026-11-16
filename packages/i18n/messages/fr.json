@@ -42,7 +42,6 @@
   "demo": {
     "eyebrow": "Essaie maintenant",
     "title": "La carte du jour",
-    "ask": "Comment te sens-tu en ce moment ?",
     "tap": "Touche le jeu",
     "deckLabel": "Jeu de cartes. Touche-le pour tirer ta carte.",
     "questionLabel": "Ta question",
@@ -50,7 +49,6 @@
     "repick": "Pas ma carte · en prendre une autre (encore {n})",
     "lastCard": "Voici ta carte pour aujourd’hui",
     "continue": "C’est fait",
-    "after": "Et maintenant, comment te sens-tu ?",
     "done": "Voilà ce que fait une carte par jour.",
     "doneSub": "Crée un compte pour recevoir ta carte chaque jour.",
     "again": "Recommencer",
@@ -61,14 +59,11 @@
     "cardN": "Carte {n}",
     "nextIn": "carte de demain dans {time}",
     "hm": "{h} h {m} min",
-    "sub": "Une minute pour essayer : choisis un ressenti, tire une carte, prends le temps d’une question.",
-    "askHint": "Choisis ce qui est le plus proche. Il n’y a pas de bonne réponse.",
+    "sub": "Une minute pour essayer : tire une carte, prends le temps d’une question.",
     "stepsLabel": "Étapes",
     "steps": {
-      "feeling": "Ressenti",
       "card": "Carte",
-      "question": "Question",
-      "after": "Après"
+      "question": "Question"
     },
     "cta": "Commencer gratuitement"
   },

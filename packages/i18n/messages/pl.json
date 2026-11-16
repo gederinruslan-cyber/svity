@@ -42,7 +42,6 @@
   "demo": {
     "eyebrow": "Wypróbuj teraz",
     "title": "Karta dnia",
-    "ask": "Jak się teraz czujesz?",
     "tap": "Dotknij talii",
     "deckLabel": "Talia kart. Dotknij, aby wylosować swoją kartę.",
     "questionLabel": "Twoje pytanie",
@@ -50,7 +49,6 @@
     "repick": "Nie moja karta · weź inną (jeszcze {n})",
     "lastCard": "To twoja karta na dziś",
     "continue": "Gotowe",
-    "after": "Jak się czujesz teraz?",
     "done": "Tak właśnie wygląda karta dnia.",
     "doneSub": "Załóż konto, aby dostawać swoją kartę każdego dnia.",
     "again": "Zacznij od nowa",
@@ -61,14 +59,11 @@
     "cardN": "Karta {n}",
     "nextIn": "jutrzejsza karta za {time}",
     "hm": "{h} godz. {m} min",
-    "sub": "Minuta, by spróbować: wybierz uczucie, wylosuj kartę, zatrzymaj się przy pytaniu.",
-    "askHint": "Wybierz to, co najbliższe. Nie ma dobrych ani złych odpowiedzi.",
+    "sub": "Minuta, by spróbować: wylosuj kartę, zatrzymaj się przy pytaniu.",
     "stepsLabel": "Kroki",
     "steps": {
-      "feeling": "Uczucie",
       "card": "Karta",
-      "question": "Pytanie",
-      "after": "Potem"
+      "question": "Pytanie"
     },
     "cta": "Zacznij za darmo"
   },

@@ -42,7 +42,6 @@
   "demo": {
     "eyebrow": "Try it now",
     "title": "Today's card",
-    "ask": "How are you right now?",
     "tap": "Tap the deck",
     "deckLabel": "Deck of cards. Tap to draw your card.",
     "questionLabel": "Your question",
@@ -50,7 +49,6 @@
     "repick": "Not my card · take another ({n} more)",
     "lastCard": "This is your card for today",
     "continue": "I'm done",
-    "after": "How are you now?",
     "done": "This is how a card a day feels.",
     "doneSub": "Create an account to get yours every day.",
     "again": "Start over",
@@ -61,14 +59,11 @@
     "cardN": "Card {n}",
     "nextIn": "tomorrow's card in {time}",
     "hm": "{h} h {m} min",
-    "sub": "A minute to try it: pick a feeling, draw a card, sit with a question.",
-    "askHint": "Pick what's closest. There are no right answers.",
+    "sub": "A minute to try it: draw a card, sit with a question.",
     "stepsLabel": "Steps",
     "steps": {
-      "feeling": "Feeling",
       "card": "Card",
-      "question": "Question",
-      "after": "After"
+      "question": "Question"
     },
     "cta": "Start free"
   },

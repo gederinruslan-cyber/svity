@@ -992,10 +992,6 @@ section {
 .demo__done {
   text-align: center;
 }
-.demo__feelings {
-  margin: 8px 0 12px;
-  color: var(--text-muted);
-}
 .saved-star {
   display: inline-block;
   color: var(--gold);
@@ -3035,10 +3031,6 @@ section {
 }
 .demo__done {
   text-align: center;
-}
-.demo__feelings {
-  margin: 8px 0 12px;
-  color: var(--text-muted);
 }
 .saved-star {
   display: inline-block;
@@ -6526,10 +6518,6 @@ label.profile__field {
 .demo__steps li.is-done .demo__step-n {
   border-color: var(--accent);
   color: var(--accent);
-}
-.demo__hint-text {
-  margin: 6px 0 0;
-  font-size: 14px;
 }
 .demo__panel .demo__privacy {
   margin: 0;

@@ -42,7 +42,6 @@
   "demo": {
     "eyebrow": "Vyzkoušej to teď",
     "title": "Karta dne",
-    "ask": "Jak ti je právě teď?",
     "tap": "Klepni na balíček",
     "deckLabel": "Balíček karet. Klepni a vytáhni si svou kartu.",
     "questionLabel": "Tvoje otázka",
@@ -50,7 +49,6 @@
     "repick": "Není to moje karta · vzít jinou (ještě {n})",
     "lastCard": "Tohle je tvoje karta pro dnešek",
     "continue": "Hotovo",
-    "after": "Jak ti je teď?",
     "done": "Takhle chutná karta dne.",
     "doneSub": "Vytvoř si účet a dostávej svou kartu každý den.",
     "again": "Začít znovu",
@@ -61,14 +59,11 @@
     "cardN": "Karta {n}",
     "nextIn": "zítřejší karta za {time}",
     "hm": "{h} h {m} min",
-    "sub": "Minuta na vyzkoušení: vyber pocit, vytáhni kartu, pobuď s otázkou.",
-    "askHint": "Vyber, co je ti nejblíž. Správné odpovědi tu nejsou.",
+    "sub": "Minuta na vyzkoušení: vytáhni kartu, pobuď s otázkou.",
     "stepsLabel": "Kroky",
     "steps": {
-      "feeling": "Pocit",
       "card": "Karta",
-      "question": "Otázka",
-      "after": "Potom"
+      "question": "Otázka"
     },
     "cta": "Začít zdarma"
   },

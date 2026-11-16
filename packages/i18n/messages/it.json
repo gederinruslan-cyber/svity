@@ -42,7 +42,6 @@
   "demo": {
     "eyebrow": "Prova adesso",
     "title": "La carta di oggi",
-    "ask": "Come va in questo momento?",
     "tap": "Tocca il mazzo",
     "deckLabel": "Mazzo di carte. Tocca per pescare la tua carta.",
     "questionLabel": "La tua domanda",
@@ -50,7 +49,6 @@
     "repick": "Non è la mia carta · prendine un’altra (ancora {n})",
     "lastCard": "Questa è la tua carta per oggi",
     "continue": "Ho finito",
-    "after": "Come va adesso?",
     "done": "Ecco com’è una carta al giorno.",
     "doneSub": "Crea un account per ricevere la tua carta ogni giorno.",
     "again": "Ricomincia",
@@ -61,14 +59,11 @@
     "cardN": "Carta {n}",
     "nextIn": "la carta di domani tra {time}",
     "hm": "{h} h {m} min",
-    "sub": "Un minuto per provare: scegli un sentimento, pesca una carta, resta con una domanda.",
-    "askHint": "Scegli ciò che senti più vicino. Non ci sono risposte giuste.",
+    "sub": "Un minuto per provare: pesca una carta, resta con una domanda.",
     "stepsLabel": "Passaggi",
     "steps": {
-      "feeling": "Sentimento",
       "card": "Carta",
-      "question": "Domanda",
-      "after": "Dopo"
+      "question": "Domanda"
     },
     "cta": "Inizia gratis"
   },

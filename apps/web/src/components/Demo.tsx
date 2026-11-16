@@ -7,30 +7,17 @@ import { RitualCard, type RitualStage } from "./ritual/RitualCard";
 import { Link } from "@/i18n/navigation";
 import { Ornament, Star4 } from "./icons";
 
-const FEELINGS = [
-  "calm",
-  "hope",
-  "tenderness",
-  "tiredness",
-  "sadness",
-  "anxiety",
-  "anger",
-] as const;
-type Feeling = (typeof FEELINGS)[number];
-
 const DEMO_CARDS = ["11", "12", "20", "21", "22"] as const;
 type DemoCard = (typeof DEMO_CARDS)[number];
 const DEMO_REPICKS = 2;
 
-type Phase = "before" | "draw" | "card" | "after" | "done";
+type Phase = "draw" | "card" | "done";
 
-const STEPS = ["feeling", "card", "question", "after"] as const;
+const STEPS = ["card", "question"] as const;
 const STEP_OF: Record<Phase, number> = {
-  before: 0,
-  draw: 1,
-  card: 2,
-  after: 3,
-  done: 4,
+  draw: 0,
+  card: 1,
+  done: 2,
 };
 
 function shuffle<T>(xs: readonly T[]): T[] {
@@ -68,24 +55,21 @@ function untilMidnight(now = new Date()) {
 
 export function Demo() {
   const t = useTranslations("demo");
-  const tf = useTranslations("feelings");
   const tc = useTranslations("cards");
 
-  const [phase, setPhase] = useState<Phase>("before");
+  const [phase, setPhase] = useState<Phase>("draw");
   const [stage, setStage] = useState<RitualStage>("deck");
   const [order, setOrder] = useState<DemoCard[]>([...DEMO_CARDS]);
   const [idx, setIdx] = useState(0);
   const [qIndex, setQIndex] = useState(0);
   const [repicks, setRepicks] = useState(DEMO_REPICKS);
-  const [before, setBefore] = useState<Feeling | null>(null);
-  const [after, setAfter] = useState<Feeling | null>(null);
   const [note, setNote] = useState("");
   const busy = useRef(false);
   const panel = useRef<HTMLDivElement>(null);
 
   // On narrow screens the panel sits under the card: bring each new step into view.
   useEffect(() => {
-    if (phase === "before" || !panel.current || window.innerWidth >= 860)
+    if (phase === "draw" || !panel.current || window.innerWidth >= 860)
       return;
     panel.current.scrollIntoView({
       behavior: reduced() ? "auto" : "smooth",
@@ -142,11 +126,9 @@ export function Demo() {
     setOrder(todaysOrder(day));
     setIdx(0);
     setRepicks(DEMO_REPICKS);
-    setBefore(null);
-    setAfter(null);
     setNote("");
     setStage("deck");
-    setPhase("before");
+    setPhase("draw");
   }
 
   const questions = tc.raw(card) as string[];
@@ -173,13 +155,13 @@ export function Demo() {
                 src: `/cards/demo-${card}.webp`,
                 alt: t("cardAlt", { n: card }),
               }}
-              stacked={phase === "before" || phase === "draw"}
+              stacked={phase === "draw"}
             />
             {phase === "draw" && <p className="demo__hint">{t("tap")}</p>}
-            {(phase === "before" || phase === "draw") && (
+            {phase === "draw" && (
               <p className="demo__shared">{t("shared")}</p>
             )}
-            {(phase === "card" || phase === "after" || phase === "done") && (
+            {(phase === "card" || phase === "done") && (
               <p className="demo__shared">
                 {idx === 0
                   ? t("sharedCard", { n: card })
@@ -208,23 +190,8 @@ export function Demo() {
               })}
             </ol>
             <div className="demo__body">
-              {phase === "before" && (
-                <FeelingPicker
-                  title={t("ask")}
-                  hint={t("askHint")}
-                  label={(f) => tf(f)}
-                  selected={before}
-                  onPick={(f) => {
-                    setBefore(f);
-                    setPhase("draw");
-                  }}
-                />
-              )}
-
               {phase === "draw" && (
                 <div className="demo__step">
-                  <p className="demo__label">{t("ask")}</p>
-                  <p className="chip chip--selected">{before && tf(before)}</p>
                   <p className="demo__big">{t("tap")}</p>
                 </div>
               )}
@@ -256,7 +223,7 @@ export function Demo() {
                     <button
                       type="button"
                       className="btn"
-                      onClick={() => setPhase("after")}
+                      onClick={() => setPhase("done")}
                     >
                       {t("continue")}
                     </button>
@@ -264,27 +231,11 @@ export function Demo() {
                 </div>
               )}
 
-              {phase === "after" && (
-                <FeelingPicker
-                  title={t("after")}
-                  label={(f) => tf(f)}
-                  selected={after}
-                  onPick={(f) => {
-                    setAfter(f);
-                    setPhase("done");
-                  }}
-                />
-              )}
-
               {phase === "done" && (
                 <div className="demo__step demo__done">
                   <span className="saved-star" aria-hidden="true">
                     <Star4 size={44} />
                   </span>
-                  <p className="demo__feelings">
-                    {before && tf(before)} <span aria-hidden="true">→</span>{" "}
-                    {after && tf(after)}
-                  </p>
                   <p className="h3">{t("done")}</p>
                   <p className="demo__muted">{t("doneSub")}</p>
                   <div className="demo__actions demo__actions--center">
@@ -309,39 +260,5 @@ export function Demo() {
         </div>
       </div>
     </section>
-  );
-}
-
-function FeelingPicker({
-  title,
-  hint,
-  label,
-  selected,
-  onPick,
-}: {
-  title: string;
-  hint?: string;
-  label: (f: Feeling) => string;
-  selected: Feeling | null;
-  onPick: (f: Feeling) => void;
-}) {
-  return (
-    <div className="demo__step">
-      <p className="h3">{title}</p>
-      {hint && <p className="demo__muted demo__hint-text">{hint}</p>}
-      <div className="chips" role="group" aria-label={title}>
-        {FEELINGS.map((f) => (
-          <button
-            key={f}
-            type="button"
-            className={`chip chip--${f} ${selected === f ? "chip--selected" : ""}`}
-            aria-pressed={selected === f}
-            onClick={() => onPick(f)}
-          >
-            {label(f)}
-          </button>
-        ))}
-      </div>
-    </div>
   );
 }
