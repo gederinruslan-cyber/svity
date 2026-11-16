@@ -41,16 +41,14 @@ export interface ShadowAccess {
 }
 
 /**
- * Spec §8: shadows open by practice and consent, never by payment; the soft stop overrides
- * everything. "On request" means only the separate button; "sometimes" also lets them into the
+ * Spec §8: shadows open by practice and consent, never by payment. "On request" means only the separate button; "sometimes" also lets them into the
  * card of the day (the button keeps working).
  */
 export function shadowAccess(input: {
   progress: ShadowProgress;
   consentAt: Date | null;
   mode: ShadowMode | null;
-  softStop: boolean;
 }): ShadowAccess {
-  const open = input.progress.eligible && input.consentAt !== null && input.mode !== null && !input.softStop;
+  const open = input.progress.eligible && input.consentAt !== null && input.mode !== null;
   return { daily: open && input.mode === "sometimes", onRequest: open };
 }

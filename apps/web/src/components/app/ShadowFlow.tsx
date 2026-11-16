@@ -3,11 +3,9 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { shadowModes, type Feeling, type ProfileStats, type ShadowMode, type ShadowView } from "@svity/contracts";
+import { shadowModes, type ProfileStats, type ShadowMode, type ShadowView } from "@svity/contracts";
 import { Link, useRouter } from "@/i18n/navigation";
 import { api, ApiError } from "@/lib/api";
-import { FeelingPicker } from "./Today";
-import { HelpButton } from "./HelpSheet";
 import { AfterShadow, useEvening } from "./ShadowSteps";
 
 type Stats = ProfileStats["shadow"];
@@ -56,13 +54,12 @@ export function ShadowFlow() {
   }
 
   // The whole shadow space is in the evening theme (spec §8.5).
-  useEvening(!!stats?.consented && !!stats.mode && !stats.softStop);
+  useEvening(!!stats?.consented && !!stats.mode);
 
   if (!stats || !view) return <p className="app-loading">{error ? tt("error") : tt("loading")}</p>;
 
   let body: React.ReactNode;
-  if (stats.softStop) body = <SoftStop />;
-  else if (!stats.eligible) body = <Locked stats={stats} />;
+  if (!stats.eligible) body = <Locked stats={stats} />;
   else if (!stats.consented) body = <Consent onAccept={(mode) => setMode(mode, true)} />;
   else if (!stats.mode) body = <TurnedOff onTurnOn={(mode) => setMode(mode)} />;
   else body = <Flow view={view} onView={setView} onError={fail} />;
@@ -71,7 +68,7 @@ export function ShadowFlow() {
     <section className="shadow-page container container--narrow">
       <h1 className="h2">{t("title")}</h1>
       {body}
-      {stats.consented && stats.mode && !stats.softStop && view.state !== "open" && (
+      {stats.consented && stats.mode && view.state !== "open" && (
         <div className="shadow-page__settings">
           <p className="field-label">{t("modeTitle")}</p>
           <ModePicker value={stats.mode} onChange={(m) => setMode(m)} />
@@ -82,24 +79,6 @@ export function ShadowFlow() {
       )}
       {error && <p className="form-error">{tt("error")}</p>}
     </section>
-  );
-}
-
-function SoftStop() {
-  const t = useTranslations("app.shadow");
-  const td = useTranslations("app.difficult");
-  return (
-    <div className="shadow-page__panel glass">
-      <h2 className="h3">{t("softTitle")}</h2>
-      <p>{t("soft")}</p>
-      <p className="app-muted">{t("softPsych")}</p>
-      <div className="difficult__actions">
-        <HelpButton withLabel />
-        <Link href="/difficult-day" className="link-btn">
-          {td("link")}
-        </Link>
-      </div>
-    </div>
   );
 }
 
@@ -173,12 +152,11 @@ function TurnedOff({ onTurnOn }: { onTurnOn: (mode: ShadowMode) => void }) {
   );
 }
 
-type Step = "card" | "after-shadow" | "after";
+type Step = "card" | "after-shadow";
 
 function Flow({ view, onView, onError }: { view: ShadowView; onView: (v: ShadowView) => void; onError: (e: unknown) => void }) {
   const t = useTranslations("app.shadow");
   const tt = useTranslations("app.today");
-  const tf = useTranslations("feelings");
   const locale = useLocale();
   const [step, setStep] = useState<Step>("card");
   const [note, setNote] = useState("");
@@ -199,7 +177,10 @@ function Flow({ view, onView, onError }: { view: ShadowView; onView: (v: ShadowV
     return (
       <div className="shadow-page__panel glass">
         <h2 className="h3">{t("drawTitle")}</h2>
-        <FeelingPicker title={t("drawSub")} label={(f) => tf(f)} selected={null} onPick={(f: Feeling) => post("draw", { feelingBefore: f })} />
+        <p className="app-muted">{t("drawSub")}</p>
+        <button type="button" className="btn" onClick={() => post("draw")}>
+          {t("draw")}
+        </button>
       </div>
     );
   }
@@ -262,10 +243,7 @@ function Flow({ view, onView, onError }: { view: ShadowView; onView: (v: ShadowV
             )}
           </div>
         )}
-        {step === "after-shadow" && <AfterShadow support={view.support} onDone={() => setStep("after")} />}
-        {step === "after" && (
-          <FeelingPicker title={tt("after")} label={(f) => tf(f)} selected={null} onPick={(f) => post("save", { feelingAfter: f, note: note.trim() || undefined })} />
-        )}
+        {step === "after-shadow" && <AfterShadow support={view.support} onDone={() => post("save", { note: note.trim() || undefined })} />}
       </div>
     </div>
   );

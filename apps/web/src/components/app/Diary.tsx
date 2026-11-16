@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { feelings, type EntryView, type Feeling, type ProfileStats } from "@svity/contracts";
+import { type EntryView, type ProfileStats } from "@svity/contracts";
 import { Link, useRouter } from "@/i18n/navigation";
 import { ApiError, getEntries } from "@/lib/api";
 import { Heart } from "../icons";
@@ -12,16 +12,14 @@ import { Sky } from "../Sky";
 import type { SessionSummaryView } from "@svity/contracts";
 import { api } from "@/lib/api";
 
-/** The diary (spec §7): newest first, filter by feeling (before or after). */
+/** The diary (spec §7): newest first, filter by favourites. */
 export function Diary() {
   const t = useTranslations("app.diary");
   const tt = useTranslations("app.today");
-  const tf = useTranslations("feelings");
   const ts = useTranslations("app.shadow");
   const locale = useLocale();
   const router = useRouter();
 
-  const [feeling, setFeeling] = useState<Feeling | null>(null);
   const [favorite, setFavorite] = useState(false);
   const [items, setItems] = useState<EntryView[] | null>(null);
   const [next, setNext] = useState<string | null>(null);
@@ -30,7 +28,7 @@ export function Diary() {
   const load = useCallback(
     async (before?: string) => {
       try {
-        const page = await getEntries(locale, { before, feeling: feeling ?? undefined, favorite });
+        const page = await getEntries(locale, { before, favorite });
         setItems((xs) => (before && xs ? [...xs, ...page.entries] : page.entries));
         setNext(page.next);
         setError(false);
@@ -39,7 +37,7 @@ export function Diary() {
         setError(true);
       }
     },
-    [locale, feeling, favorite, router],
+    [locale, favorite, router],
   );
 
   useEffect(() => {
@@ -61,7 +59,7 @@ export function Diary() {
     }
     groups.at(-1)!.items.push(e);
   }
-  const filtered = feeling !== null || favorite;
+  const filtered = favorite;
 
   return (
     <section className="diary-page">
@@ -82,27 +80,13 @@ export function Diary() {
                 type="button"
                 className={`chip ${!filtered ? "chip--selected" : ""}`}
                 aria-pressed={!filtered}
-                onClick={() => {
-                  setFeeling(null);
-                  setFavorite(false);
-                }}
+                onClick={() => setFavorite(false)}
               >
                 {t("all")}
               </button>
               <button type="button" className={`chip chip--icon ${favorite ? "chip--selected" : ""}`} aria-pressed={favorite} onClick={() => setFavorite((x) => !x)}>
                 <Heart size={14} filled={favorite} /> {t("favorites")}
               </button>
-              {feelings.map((f) => (
-                <button
-                  key={f}
-                  type="button"
-                  className={`chip chip--${f} ${feeling === f ? "chip--selected" : ""}`}
-                  aria-pressed={feeling === f}
-                  onClick={() => setFeeling(feeling === f ? null : f)}
-                >
-                  {tf(f)}
-                </button>
-              ))}
             </div>
           </div>
         </aside>
@@ -145,11 +129,6 @@ export function Diary() {
                         <p className="entry__q">{e.card.question}</p>
                         {e.request && <p className="today__req-text">“{e.request}”</p>}
                         <p className={`entry__note diary-entry__note ${e.note ? "" : "is-empty"}`}>{e.note ?? t("noNote")}</p>
-                        <p className="entry__feel">
-                          <span className="chip chip--sm">{tf(e.feelingBefore)}</span>
-                          <span aria-hidden="true">→</span>
-                          <span className="chip chip--sm chip--sage">{tf(e.feelingAfter)}</span>
-                        </p>
                       </div>
                       {e.isFavorite && (
                         <span className="entry__fav" aria-hidden="true">
@@ -174,10 +153,9 @@ export function Diary() {
   );
 }
 
-/** A few numbers about the practice: entries, "lighter after the card", the most frequent feeling after. */
+/** How many entries the diary holds. */
 function Stats() {
   const t = useTranslations("app.diary");
-  const tf = useTranslations("feelings");
   const [stats, setStats] = useState<ProfileStats | null>(null);
   useEffect(() => {
     api<ProfileStats>("/v1/me/stats")
@@ -185,23 +163,12 @@ function Stats() {
       .catch(() => {});
   }, []);
   if (!stats || stats.entries === 0) return null;
-  const top = stats.topAfter[0];
   return (
     <dl className="diary-stats glass">
       <div>
         <dt>{t("statEntries")}</dt>
         <dd>{stats.entries}</dd>
       </div>
-      <div>
-        <dt>{t("statLighter")}</dt>
-        <dd>{Math.round((100 * stats.lighter) / stats.entries)}%</dd>
-      </div>
-      {top && (
-        <div>
-          <dt>{t("statTop")}</dt>
-          <dd className="diary-stats__feeling">{tf(top.feeling)}</dd>
-        </div>
-      )}
     </dl>
   );
 }

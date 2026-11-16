@@ -6,11 +6,10 @@ import {
   pickQuestion,
   shadowAccess,
   shadowProgress,
-  softStop,
   type ShadowAccess,
 } from "@svity/core";
-import { ShadowDrawInput, ShadowSettings, SaveInput, type EntryView, type Feeling, type Locale, type ShadowView } from "@svity/contracts";
-import { and, count, desc, entries, eq, gt, shadowDraws, sql, users, type Db } from "@svity/db";
+import { ShadowSettings, SaveInput, type EntryView, type Locale, type ShadowView } from "@svity/contracts";
+import { and, count, desc, entries, eq, shadowDraws, sql, users, type Db } from "@svity/db";
 import type { AuthEnv, User } from "./auth";
 import { cardView, type Deck, type ImageSigner } from "./deck";
 import { localeOf } from "./today";
@@ -20,14 +19,9 @@ type EntryRow = typeof entries.$inferSelect;
 /** Everything that decides whether shadow cards may be shown to this user right now. */
 export async function shadowState(db: Db, user: User, now = new Date()) {
   const [{ n }] = (await db.select({ n: count() }).from(entries).where(eq(entries.userId, user.id))) as [{ n: number }];
-  const recent = await db
-    .select({ at: entries.createdAt, before: entries.feelingBefore, after: entries.feelingAfter })
-    .from(entries)
-    .where(and(eq(entries.userId, user.id), gt(entries.createdAt, new Date(now.getTime() - 14 * 864e5))));
   const progress = shadowProgress({ registeredAt: user.createdAt, entries: n, now, tz: user.timezone });
-  const stop = softStop(recent, now, user.timezone);
-  const access: ShadowAccess = shadowAccess({ progress, consentAt: user.shadowConsentAt, mode: user.shadowMode, softStop: stop });
-  return { progress, softStop: stop, access };
+  const access: ShadowAccess = shadowAccess({ progress, consentAt: user.shadowConsentAt, mode: user.shadowMode });
+  return { progress, access };
 }
 
 export function shadowRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageSigner, entryView: (deck: Deck, e: EntryRow, locale: Locale) => EntryView) {
@@ -38,14 +32,13 @@ export function shadowRoutes(db: Db, getDeck: () => Promise<Deck>, signer: Image
 
   async function view(user: User, locale: Locale, now = new Date()): Promise<ShadowView> {
     const deck = await getDeck();
-    const { access, softStop } = await shadowState(db, user, now);
+    const { access } = await shadowState(db, user, now);
     const draw = await today(user.id, localDateKey(now, user.timezone));
     if (draw?.status === "open") {
       return {
         state: "open",
         card: cardView(deck, signer, draw.cardId, draw.questionIndex, locale),
         support: cardView(deck, signer, SUPPORT_CARD.cardId, SUPPORT_CARD.questionIndex, locale),
-        feelingBefore: draw.feelingBefore as Feeling,
       };
     }
     if (draw) {
@@ -57,22 +50,21 @@ export function shadowRoutes(db: Db, getDeck: () => Promise<Deck>, signer: Image
         .limit(1);
       return { state: "used", entry: draw.status === "saved" && entry ? entryView(deck, entry, locale) : null };
     }
-    if (!access.onRequest) return { state: "locked", softStop };
+    if (!access.onRequest) return { state: "locked" };
     return { state: "ready" };
   }
 
   app.get("/", async (c) => c.json(await view(c.get("user"), localeOf(c))));
 
-  // Consent, mode and "turn off" (spec §8.2–8.4). Turning on needs the thresholds and no soft stop.
+  // Consent, mode and "turn off" (spec §8.2–8.4). Turning on needs the thresholds.
   app.put("/settings", async (c) => {
     const parsed = ShadowSettings.safeParse(await c.req.json().catch(() => null));
     if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
     const user = c.get("user");
     const { mode, understood } = parsed.data;
     if (mode) {
-      const { progress, softStop } = await shadowState(db, user);
+      const { progress } = await shadowState(db, user);
       if (!progress.eligible) return c.json({ ok: false, error: "not_eligible" }, 409);
-      if (softStop) return c.json({ ok: false, error: "soft_stop" }, 409);
       if (!user.shadowConsentAt && !understood) return c.json({ ok: false, error: "consent_required" }, 400);
     }
     await db
@@ -90,8 +82,6 @@ export function shadowRoutes(db: Db, getDeck: () => Promise<Deck>, signer: Image
     });
 
   app.post("/draw", async (c) => {
-    const parsed = ShadowDrawInput.safeParse(await c.req.json().catch(() => null));
-    if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
     const user = c.get("user");
     const now = new Date();
     const { access } = await shadowState(db, user, now);
@@ -109,7 +99,6 @@ export function shadowRoutes(db: Db, getDeck: () => Promise<Deck>, signer: Image
         day,
         cardId: card.id,
         questionIndex: pickQuestion(card.questions, { hasRequest: false, allowShadow: true }),
-        feelingBefore: parsed.data.feelingBefore,
       });
     });
     return c.json(await view(user, localeOf(c), now));
@@ -133,8 +122,6 @@ export function shadowRoutes(db: Db, getDeck: () => Promise<Deck>, signer: Image
         userId: user.id,
         cardId: draw.cardId,
         questionIndex: draw.questionIndex,
-        feelingBefore: draw.feelingBefore,
-        feelingAfter: parsed.data.feelingAfter,
         note: parsed.data.note || null,
         isShadow: true,
         source: "shadow",

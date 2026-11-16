@@ -101,7 +101,6 @@ export const dailyDraws = pgTable(
     status: text("status", { enum: ["open", "saved", "closed"] }).notNull().default("open"),
     /** Question shown for the current card. */
     questionIndex: smallint("question_index").notNull(),
-    feelingBefore: text("feeling_before").notNull(),
     requestText: text("request_text"),
   },
   (t) => [index("daily_draws_user_flip").on(t.userId, t.firstFlipAt)],
@@ -120,8 +119,6 @@ export const entries = pgTable(
       .references(() => cards.id),
     questionIndex: smallint("question_index").notNull(),
     requestText: text("request_text"),
-    feelingBefore: text("feeling_before").notNull(),
-    feelingAfter: text("feeling_after").notNull(),
     note: text("note"),
     isShadow: boolean("is_shadow").notNull().default(false),
     isFavorite: boolean("is_favorite").notNull().default(false),
@@ -146,7 +143,6 @@ export const shadowDraws = pgTable(
       .notNull()
       .references(() => cards.id),
     questionIndex: integer("question_index").notNull(),
-    feelingBefore: text("feeling_before").notNull(),
     status: text("status", { enum: ["open", "saved", "closed"] }).notNull().default("open"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },

@@ -54,10 +54,9 @@ export const getMe = () =>
     },
   );
 export const getToday = (locale: string) => api<TodayView>(`/v1/today?locale=${locale}`);
-export const getEntries = (locale: string, opts: { before?: string; feeling?: string; favorite?: boolean } = {}) => {
+export const getEntries = (locale: string, opts: { before?: string; favorite?: boolean } = {}) => {
   const q = new URLSearchParams({ locale });
   if (opts.before) q.set("before", opts.before);
-  if (opts.feeling) q.set("feeling", opts.feeling);
   if (opts.favorite) q.set("favorite", "1");
   return api<EntriesPage>(`/v1/entries?${q}`);
 };

@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { localDateKey, monthRange, toLocal } from "@svity/core";
-import { EntryPatch, Feeling, type EntriesPage, type MonthView } from "@svity/contracts";
-import { and, asc, desc, entries, eq, gte, lt, or, type Db } from "@svity/db";
+import { EntryPatch, type EntriesPage, type MonthView } from "@svity/contracts";
+import { and, asc, desc, entries, eq, gte, lt, type Db } from "@svity/db";
 import type { AuthEnv } from "./auth";
 import { cardView, type Deck, type ImageSigner } from "./deck";
 import { localeOf, type todayRoutes } from "./today";
@@ -17,11 +17,10 @@ export function entryRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
   const mine = (userId: string, id: string) => and(eq(entries.userId, userId), eq(entries.id, id));
   const isUuid = (id: string) => /^[0-9a-f-]{36}$/i.test(id);
 
-  // Newest first; `?feeling=` matches the feeling before or after; `?favorite=1` only favourites.
+  // Newest first; `?favorite=1` only favourites.
   app.get("/", async (c) => {
     const user = c.get("user");
     const before = c.req.query("before");
-    const f = Feeling.safeParse(c.req.query("feeling"));
     const rows = await db
       .select()
       .from(entries)
@@ -29,7 +28,6 @@ export function entryRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
         and(
           eq(entries.userId, user.id),
           before && !Number.isNaN(Date.parse(before)) ? lt(entries.createdAt, new Date(before)) : undefined,
-          f.success ? or(eq(entries.feelingBefore, f.data), eq(entries.feelingAfter, f.data)) : undefined,
           c.req.query("favorite") === "1" ? eq(entries.isFavorite, true) : undefined,
         ),
       )

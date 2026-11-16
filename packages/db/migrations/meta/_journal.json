@@ -71,6 +71,13 @@
       "when": 1794416071242,
       "tag": "0009_fine_the_stranger",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1794865399343,
+      "tag": "0010_icy_reavers",
+      "breakpoints": true
     }
   ]
 }

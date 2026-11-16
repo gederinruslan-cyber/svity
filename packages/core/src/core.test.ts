@@ -160,16 +160,12 @@ describe("shadow cards (spec §8)", () => {
     const progress = shadowProgress({ registeredAt, entries: 40, now: at("2027-01-01 12:00"), tz: KYIV });
     expect(progress).toMatchObject({ days: 30, entries: 10, eligible: true });
     const consentAt = new Date();
-    expect(shadowAccess({ progress, consentAt: null, mode: "sometimes", softStop: false })).toEqual({ daily: false, onRequest: false });
-    expect(shadowAccess({ progress, consentAt, mode: null, softStop: false })).toEqual({ daily: false, onRequest: false });
-    expect(shadowAccess({ progress, consentAt, mode: "on_request", softStop: false })).toEqual({ daily: false, onRequest: true });
-    expect(shadowAccess({ progress, consentAt, mode: "sometimes", softStop: false })).toEqual({ daily: true, onRequest: true });
+    expect(shadowAccess({ progress, consentAt: null, mode: "sometimes" })).toEqual({ daily: false, onRequest: false });
+    expect(shadowAccess({ progress, consentAt, mode: null })).toEqual({ daily: false, onRequest: false });
+    expect(shadowAccess({ progress, consentAt, mode: "on_request" })).toEqual({ daily: false, onRequest: true });
+    expect(shadowAccess({ progress, consentAt, mode: "sometimes" })).toEqual({ daily: true, onRequest: true });
   });
 
-  it("the soft stop closes them even with consent", () => {
-    const progress = shadowProgress({ registeredAt, entries: 40, now: at("2027-01-01 12:00"), tz: KYIV });
-    expect(shadowAccess({ progress, consentAt: new Date(), mode: "sometimes", softStop: true })).toEqual({ daily: false, onRequest: false });
-  });
 });
 
 describe("month range", () => {
@@ -184,55 +180,6 @@ describe("month range", () => {
 
   it("rolls over the year", () => {
     expect(local(monthRange(2026, 12, KYIV).end)).toBe("2027-01-01 00:00");
-  });
-});
-
-import { feelingStats, softStop } from "./wellbeing";
-
-describe("soft stop (spec §8)", () => {
-  const ci = (local: string, after: string, before = "tiredness") => ({ at: at(local), before, after });
-  const now = at("2026-11-10 20:00");
-
-  it("three distressed days in a row, up to today or yesterday", () => {
-    expect(softStop([ci("2026-11-08 10:00", "sadness"), ci("2026-11-09 10:00", "anxiety"), ci("2026-11-10 10:00", "anger")], now, KYIV)).toBe(true);
-    expect(softStop([ci("2026-11-07 10:00", "sadness"), ci("2026-11-08 10:00", "anxiety"), ci("2026-11-09 10:00", "anger")], now, KYIV)).toBe(true);
-  });
-
-  it("a calm day, a gap, or an old run breaks it", () => {
-    expect(softStop([ci("2026-11-08 10:00", "sadness"), ci("2026-11-09 10:00", "calm"), ci("2026-11-10 10:00", "anger")], now, KYIV)).toBe(false);
-    expect(softStop([ci("2026-11-07 10:00", "sadness"), ci("2026-11-09 10:00", "anxiety"), ci("2026-11-10 10:00", "anger")], now, KYIV)).toBe(false);
-    expect(softStop([ci("2026-11-01 10:00", "sadness"), ci("2026-11-02 10:00", "anxiety"), ci("2026-11-03 10:00", "anger")], now, KYIV)).toBe(false);
-  });
-
-  it("a day counts only if every check-in that day ended in distress", () => {
-    const xs = [ci("2026-11-08 10:00", "sadness"), ci("2026-11-09 10:00", "anxiety"), ci("2026-11-10 09:00", "anger"), ci("2026-11-10 19:00", "calm")];
-    expect(softStop(xs, now, KYIV)).toBe(false);
-  });
-
-  it("uses local days: 23:30 and 00:30 are different days", () => {
-    const xs = [ci("2026-11-08 23:30", "sadness"), ci("2026-11-09 00:30", "anxiety"), ci("2026-11-10 10:00", "anger")];
-    expect(softStop(xs, now, KYIV)).toBe(true);
-  });
-});
-
-describe("feeling stats", () => {
-  it("counts lighter entries and the top feelings after", () => {
-    const xs = [
-      { at: new Date(), before: "anxiety", after: "calm" },
-      { at: new Date(), before: "tiredness", after: "calm" },
-      { at: new Date(), before: "calm", after: "calm" },
-      { at: new Date(), before: "hope", after: "sadness" },
-      { at: new Date(), before: "sadness", after: "hope" },
-    ];
-    expect(feelingStats(xs)).toEqual({
-      total: 5,
-      lighter: 3,
-      topAfter: [
-        { feeling: "calm", count: 3 },
-        { feeling: "hope", count: 1 },
-        { feeling: "sadness", count: 1 },
-      ],
-    });
   });
 });
 

@@ -170,7 +170,6 @@ export async function Diary() {
   // Day → gallery image.
   const withCards: Record<number, number> = { 2: 1, 3: 2, 5: 4, 6: 6, 7: 7, 9: 8, 10: 9, 12: 3, 14: 10, 16: 5, 18: 11, 19: 12 };
   const today = 20;
-  const lighter = 9;
   const total = Object.keys(withCards).length;
   const weekdays = (t.raw("weekdays") as string[]).slice(0, 7);
   const features = [
@@ -200,11 +199,6 @@ export async function Diary() {
                 <Lock size={14} /> {t("entryPrivate")}
               </p>
               <p className="diary-sample__note">{t("entryNote")}</p>
-              <p className="entry__feel">
-                <span className="chip chip--sm">{t("entryBefore")}</span>
-                <span aria-hidden="true">→</span>
-                <span className="chip chip--sm chip--sage">{t("entryAfter")}</span>
-              </p>
             </div>
           </article>
 
@@ -251,12 +245,6 @@ export async function Diary() {
             })}
           </div>
           <p className="mosaic__count">{t("monthCount", { n: total })}</p>
-          <div className="mosaic__lighter">
-            <span className="mosaic__bar" aria-hidden="true">
-              <span style={{ width: `${(lighter / total) * 100}%` }} />
-            </span>
-            <span className="mosaic__insight">{t("insight", { n: lighter, total })}</span>
-          </div>
         </div>
       </div>
     </section>

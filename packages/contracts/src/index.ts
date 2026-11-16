@@ -63,9 +63,6 @@ export type ProfilePatch = z.infer<typeof ProfilePatch>;
 
 export interface ProfileStats {
   entries: number;
-  /** "After a card it felt lighter in X of Y entries". */
-  lighter: number;
-  topAfter: { feeling: Feeling; count: number }[];
   shadow: {
     days: number;
     daysNeeded: number;
@@ -74,8 +71,6 @@ export interface ProfileStats {
     eligible: boolean;
     consented: boolean;
     mode: ShadowMode | null;
-    /** Several days of strong distress: shadows aren't offered, support is (spec §8). */
-    softStop: boolean;
   };
 }
 
@@ -95,19 +90,13 @@ export type ApiError = { ok: false; error: string };
 
 // ---------- daily card ----------
 
-export const feelings = ["calm", "hope", "tenderness", "tiredness", "sadness", "anxiety", "anger"] as const;
-export const Feeling = z.enum(feelings);
-export type Feeling = z.infer<typeof Feeling>;
-
 export const DrawInput = z.object({
-  feelingBefore: Feeling,
   /** Optional "question to myself" (spec §6 step 2). */
   request: z.string().trim().max(500).optional(),
 });
 export type DrawInput = z.infer<typeof DrawInput>;
 
 export const SaveInput = z.object({
-  feelingAfter: Feeling,
   note: z.string().trim().max(10_000).optional(),
 });
 export type SaveInput = z.infer<typeof SaveInput>;
@@ -130,7 +119,6 @@ export type TodayView =
       state: "open";
       card: CardView;
       repicksLeft: number;
-      feelingBefore: Feeling;
       request: string | null;
       nextAvailableAt: string;
       /** After a shadow card: breathing, then this support card (spec §8.6–8.7). */
@@ -143,8 +131,6 @@ export interface EntryView {
   id: string;
   card: CardView;
   request: string | null;
-  feelingBefore: Feeling;
-  feelingAfter: Feeling;
   note: string | null;
   isShadow: boolean;
   isFavorite: boolean;
@@ -189,13 +175,11 @@ export const ShadowSettings = z.object({
 });
 export type ShadowSettings = z.infer<typeof ShadowSettings>;
 
-export const ShadowDrawInput = z.object({ feelingBefore: Feeling });
-
 /** The separate shadow-card flow (spec §8), one card per local day. */
 export type ShadowView =
-  | { state: "locked"; softStop: boolean }
+  | { state: "locked" }
   | { state: "ready" }
-  | { state: "open"; card: CardView; support: CardView; feelingBefore: Feeling }
+  | { state: "open"; card: CardView; support: CardView }
   | { state: "used"; entry: EntryView | null };
 
 // ---------- rooms (spec §10) ----------

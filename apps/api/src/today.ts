@@ -17,7 +17,6 @@ import {
   Locale,
   SaveInput,
   type EntryView,
-  type Feeling,
   type TodayView,
 } from "@svity/contracts";
 import { dailyDraws, desc, eq, entries, sql, type Db } from "@svity/db";
@@ -54,8 +53,6 @@ export function todayRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
     id: e.id,
     card: cardView(deck, signer, e.cardId, e.questionIndex, locale),
     request: e.requestText,
-    feelingBefore: e.feelingBefore as Feeling,
-    feelingAfter: e.feelingAfter as Feeling,
     note: e.note,
     isShadow: e.isShadow,
     isFavorite: e.isFavorite,
@@ -74,7 +71,6 @@ export function todayRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
         card,
         support: card.isShadow ? cardView(deck, signer, SUPPORT_CARD.cardId, SUPPORT_CARD.questionIndex, locale) : null,
         repicksLeft: last.repicksLeft,
-        feelingBefore: last.feelingBefore as Feeling,
         request: last.requestText,
         nextAvailableAt: last.nextAvailableAt.toISOString(),
       };
@@ -129,7 +125,6 @@ export function todayRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
         userId: user.id,
         ...draw,
         questionIndex: question(deck, card, request, withShadow),
-        feelingBefore: parsed.data.feelingBefore,
         requestText: request,
       });
     });
@@ -173,8 +168,6 @@ export function todayRoutes(db: Db, getDeck: () => Promise<Deck>, signer: ImageS
         cardId: currentCard(saved),
         questionIndex: row.questionIndex,
         requestText: row.requestText,
-        feelingBefore: row.feelingBefore,
-        feelingAfter: parsed.data.feelingAfter,
         note: parsed.data.note || null,
         isShadow: shown.isShadow,
       });

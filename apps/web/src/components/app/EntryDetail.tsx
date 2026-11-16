@@ -8,11 +8,10 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { ApiError, deleteEntry, getEntry, patchEntry } from "@/lib/api";
 import { ChevronLeft, Heart, Share, Trash } from "../icons";
 
-/** One diary entry (spec §7): card, question, feelings, editable note, favourite, share, delete in two steps. */
+/** One diary entry (spec §7): card, question, editable note, favourite, share, delete in two steps. */
 export function EntryDetail({ id }: { id: string }) {
   const t = useTranslations("app.diary");
   const tt = useTranslations("app.today");
-  const tf = useTranslations("feelings");
   const ts = useTranslations("app.shadow");
   const locale = useLocale();
   const router = useRouter();
@@ -105,11 +104,6 @@ export function EntryDetail({ id }: { id: string }) {
               <span className="sr-only">{t("request")}: </span>“{entry.request}”
             </p>
           )}
-          <p className="entry__feel" aria-label={t("feelings")}>
-            <span className="chip chip--sm">{tf(entry.feelingBefore)}</span>
-            <span aria-hidden="true">→</span>
-            <span className="chip chip--sm chip--sage">{tf(entry.feelingAfter)}</span>
-          </p>
 
           {editing ? (
             <div className="entry-page__edit">

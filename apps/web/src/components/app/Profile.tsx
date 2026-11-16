@@ -13,10 +13,9 @@ import { Star4 } from "../icons";
 type ThemePref = "day" | "evening";
 const CONTACT = "hello@svity.app";
 
-/** Profile (spec §7): settings, feelings, shadow-card progress, data, sign out. */
+/** Profile (spec §7): settings, shadow-card progress, data, sign out. */
 export function Profile() {
   const t = useTranslations("app.profile");
-  const tf = useTranslations("feelings");
   const tw = useTranslations("footer");
   const tt = useTranslations("app.today");
   const ts = useTranslations("app.shadow");
@@ -123,19 +122,7 @@ export function Profile() {
                     <dt>{t("statEntries")}</dt>
                     <dd>{stats.entries}</dd>
                   </div>
-                  <div>
-                    <dt>{t("statLighter")}</dt>
-                    <dd>{Math.round((100 * stats.lighter) / stats.entries)}%</dd>
-                  </div>
                 </dl>
-                <p className="field-label">{t("topAfter")}</p>
-                <ol className="profile__top">
-                  {stats.topAfter.map((x) => (
-                    <li key={x.feeling} className={`chip chip--sm chip--${x.feeling}`}>
-                      {tf(x.feeling)} · {x.count}
-                    </li>
-                  ))}
-                </ol>
               </>
             ) : (
               <p className="app-muted profile-card__empty">{t("noStats")}</p>
@@ -147,9 +134,7 @@ export function Profile() {
               <h2 className="h3">{t("shadow")}</h2>
               <Progress label={t("shadowDays")} value={stats.shadow.days} max={stats.shadow.daysNeeded} />
               <Progress label={t("shadowEntries")} value={stats.shadow.entries} max={stats.shadow.entriesNeeded} />
-              {stats.shadow.softStop ? (
-                <p className="app-muted">{ts("soft")}</p>
-              ) : !stats.shadow.eligible ? (
+              {!stats.shadow.eligible ? (
                 <p className="app-muted">{t("shadowLocked")}</p>
               ) : (
                 <>

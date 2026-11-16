@@ -108,7 +108,7 @@ export function currentCard(draw: DailyDraw): number {
   return draw.cardsSeen[draw.cardsSeen.length - 1]!;
 }
 
-/** The feelings check-in "after" saves the entry. */
+/** "Save to the diary" records the entry. */
 export function saveDraw(draw: DailyDraw): DailyDraw {
   if (draw.status !== "open") throw new DrawError("not-open");
   return { ...draw, status: "saved" };

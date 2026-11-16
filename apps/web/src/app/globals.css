@@ -299,11 +299,6 @@ section {
   font-size: 14px;
   cursor: default;
 }
-.chip--sage {
-  background: var(--sage);
-  color: #26364a;
-  border-color: transparent;
-}
 
 .field {
   width: 100%;
@@ -1066,13 +1061,6 @@ section {
   color: var(--text-muted);
   font-size: 15px;
 }
-.entry__feel {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-  color: var(--text-muted);
-}
 .mosaic {
   padding: 18px;
   max-width: 420px;
@@ -1116,11 +1104,6 @@ section {
 .mosaic__count {
   margin: 12px 0 2px;
   font-weight: 600;
-}
-.mosaic__insight {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 14px;
 }
 
 .ticks {
@@ -2339,11 +2322,6 @@ section {
   font-size: 14px;
   cursor: default;
 }
-.chip--sage {
-  background: var(--sage);
-  color: #26364a;
-  border-color: transparent;
-}
 
 .field {
   width: 100%;
@@ -3106,13 +3084,6 @@ section {
   color: var(--text-muted);
   font-size: 15px;
 }
-.entry__feel {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-  color: var(--text-muted);
-}
 .mosaic {
   padding: 18px;
   max-width: 420px;
@@ -3156,11 +3127,6 @@ section {
 .mosaic__count {
   margin: 12px 0 2px;
   font-weight: 600;
-}
-.mosaic__insight {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 14px;
 }
 
 .ticks {
@@ -4713,10 +4679,6 @@ section {
   font-size: 30px;
   line-height: 1.1;
 }
-.diary-stats .diary-stats__feeling {
-  font-size: 22px;
-  padding-top: 5px;
-}
 
 /* months and entries */
 .diary-month + .diary-month {
@@ -4828,9 +4790,6 @@ section {
   }
   .diary-stats dd {
     font-size: 26px;
-  }
-  .diary-stats .diary-stats__feeling {
-    font-size: 19px;
   }
 }
 
@@ -5345,14 +5304,6 @@ label.profile__field {
   background: var(--accent);
   border-color: transparent;
   color: var(--accent-text);
-}
-.profile__top {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 .progress {
   margin: 10px 0;
@@ -6694,24 +6645,6 @@ label.profile__field {
   margin: 0;
   font-size: 15px;
   color: var(--text-muted);
-}
-.mosaic__lighter {
-  display: grid;
-  gap: 6px;
-  margin-top: 4px;
-}
-.mosaic__bar {
-  display: block;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--line);
-  overflow: hidden;
-}
-.mosaic__bar span {
-  display: block;
-  height: 100%;
-  border-radius: inherit;
-  background: color-mix(in srgb, var(--accent) 80%, transparent);
 }
 .mosaic .mosaic__grid--week {
   margin-bottom: 4px;

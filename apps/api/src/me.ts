@@ -1,8 +1,8 @@
 import { Hono } from "hono";
 import { deleteCookie } from "hono/cookie";
-import { assertTimeZone, feelingStats } from "@svity/core";
-import { ProfilePatch, accountLocale, roomsOpen, type Feeling, type ProfileStats } from "@svity/contracts";
-import { asc, entries, eq, users, type Db } from "@svity/db";
+import { assertTimeZone } from "@svity/core";
+import { ProfilePatch, accountLocale, roomsOpen, type ProfileStats } from "@svity/contracts";
+import { asc, count, entries, eq, users, type Db } from "@svity/db";
 import { SESSION_COOKIE, toMe, type AuthEnv } from "./auth";
 import type { Deck } from "./deck";
 import { shadowState } from "./shadow";
@@ -32,17 +32,11 @@ export function meRoutes(db: Db, getDeck: () => Promise<Deck>) {
 
   app.get("/stats", async (c) => {
     const user = c.get("user");
-    const rows = await db
-      .select({ at: entries.createdAt, before: entries.feelingBefore, after: entries.feelingAfter })
-      .from(entries)
-      .where(eq(entries.userId, user.id));
-    const stats = feelingStats(rows);
-    const { progress, softStop } = await shadowState(db, user);
+    const [{ n }] = (await db.select({ n: count() }).from(entries).where(eq(entries.userId, user.id))) as [{ n: number }];
+    const { progress } = await shadowState(db, user);
     return c.json<ProfileStats>({
-      entries: stats.total,
-      lighter: stats.lighter,
-      topAfter: stats.topAfter as { feeling: Feeling; count: number }[],
-      shadow: { ...progress, consented: user.shadowConsentAt !== null, mode: user.shadowMode, softStop },
+      entries: n,
+      shadow: { ...progress, consented: user.shadowConsentAt !== null, mode: user.shadowMode },
     });
   });
 
@@ -59,7 +53,6 @@ export function meRoutes(db: Db, getDeck: () => Promise<Deck>) {
         `${date.format(e.createdAt)} · #${e.cardId}${e.isShadow ? ` · ${messages[locale].app.profile.exportShadow}` : ""}`,
         q && `? ${q}`,
         e.requestText && `» ${e.requestText}`,
-        `${messages[locale].feelings[e.feelingBefore as Feeling]} → ${messages[locale].feelings[e.feelingAfter as Feeling]}`,
         e.note ?? "",
       ]
         .filter(Boolean)

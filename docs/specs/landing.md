@@ -25,7 +25,7 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 | 3 | ~~What Svity is~~ | Removed, along with the nav's "How it works" link. |
 | 4 | Try today's card (demo) | The ritual, fully client-side, with a step tracker; see "Demo" below. |
 | 5 | The deck | A strip of card art inside the page width (max 1100 px, soft faded edges) that drifts on its own, pauses on hover, swipes on touch; cards are not interactive. Three features: 117 worlds · questions just for you (they open when the card is yours; never shown here) · two languages. |
-| 6 | Diary & month | A sample diary page (card, date, favourite, note, before → after; the question shown only as "the question is yours alone"), three features (card + note + feelings · favourites · private, download or delete any time), and a sample month: weekday header, 12 card thumbnails by the 20th, today outlined, "lighter after the card" bar (9 of 12). |
+| 6 | Diary & month | A sample diary page (card, date, favourite, note; the question shown only as "the question is yours alone"), three features (card + question + note · favourites · private, download or delete any time), and a sample month: weekday header, 12 card thumbnails by the 20th, today outlined. |
 | 7 | ~~Shadow cards~~ | Removed from the landing (the feature stays in the app). |
 | 8 | For psychologists | Heading + three steps (create a room → the client draws on their phone → you see only shared cards), CTA "I'd like to try it with clients" (mailto) + "Rooms open soon"; playable room mock (pro screen on a solid surface, client phone beside it on desktop, below it on phones; "Waiting" in empty slots); six feature tiles: 1 or 3 cards · face down or up · prompts just for you · private notes · question for the week · link and PIN (24/72 h, no account for the client). |
 | 9 | Safety | Heading + lead (reflection tool, not therapy or an emergency service); four items: help in one tap · difficult day · leave without saving · shadows only with consent; a decorative help sheet as in the app ("I need help" pill, call 112, country, find a helpline, live breathing circle 4·4·6 that stays still with reduced motion, "not an emergency service"). No unverified helpline numbers. |
@@ -38,11 +38,12 @@ A floating help button (lifebuoy icon) is not needed on the landing; it belongs 
 ## Demo: "Try today's card"
 Reuses the ritual component that M1 will use in the product (build it as a real component, not a one-off).
 
-1. "How are you right now?" — 7 feeling chips: Спокій, Надія, Ніжність, Втома, Сум, Тривога, Злість / Calm, Hope, Tenderness, Tiredness, Sadness, Anxiety, Anger. One tap → step 2.
-2. Deck with the card back. Hover lifts 4 px, lower cards fan out. Tap → ritual moment: deck lifts, gold glow from the star, 6 gold sparks (1.1 s) → flip (rotateY 180°, 0.9 s, `cubic-bezier(.2,.75,.2,1)`) → `navigator.vibrate(12)` where supported.
-3. Card + one random question of its three, in the page language. Optional note field (not stored).
-4. "Not my card · take another (N more)" — up to 2 repicks in the demo, no repeats.
-5. "How are you now?" — same chips → golden star unfolds (0.9 s) + "This is how a card a day feels. Create an account to get yours every day." + CTA.
+No feeling check-ins (removed from the product).
+
+1. Deck with the card back. Hover lifts 4 px, lower cards fan out. Tap → ritual moment: deck lifts, gold glow from the star, 6 gold sparks (1.1 s) → flip (rotateY 180°, 0.9 s, `cubic-bezier(.2,.75,.2,1)`) → `navigator.vibrate(12)` where supported.
+2. Card + one random question of its three, in the page language. Optional note field (not stored).
+3. "Not my card · take another (N more)" — up to 2 repicks in the demo, no repeats.
+4. "I'm done" → golden star unfolds (0.9 s) + "This is how a card a day feels. Create an account to get yours every day." + CTA.
 - Nothing is sent to the server. Reload starts over.
 - `prefers-reduced-motion`: no glow, sparks or flip; a cross-fade instead.
 
