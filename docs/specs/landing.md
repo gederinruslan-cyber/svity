@@ -29,7 +29,7 @@ The landing page is the first thing we ship. It is rich from day one: every sect
 | 7 | Shadow cards | Follows the page theme (no colour change on scroll). Door illustration (311:5) with a slow gold glow; lead (anger, sadness, fear; opened by practice and consent, never payment); a four-step path (a month of practice → your consent → a shadow card in evening mode → back to the body: breathing 4·4·6 + support card), horizontal on desktop, vertical on phones; a care strip: how they appear (only when I ask · sometimes as the daily card · turn off any time) + the soft stop and the help button. |
 | 8 | For psychologists | Heading + three steps (create a room → the client draws on their phone → you see only shared cards), CTA "I'd like to try it with clients" (mailto) + "Rooms open soon"; playable room mock (pro screen on a solid surface, client phone beside it on desktop, below it on phones; "Waiting" in empty slots); six feature tiles: 1 or 3 cards · face down or up · prompts just for you · private notes · question for the week · link and PIN (24/72 h, no account for the client). |
 | 9 | Safety | Heading + lead (reflection tool, not therapy or an emergency service); four items: help in one tap · difficult day · leave without saving · shadows only with consent; a decorative help sheet as in the app ("I need help" pill, call 112, country, find a helpline, live breathing circle 4·4·6 that stays still with reduced motion, "not an emergency service"). No unverified helpline numbers. |
-| 10 | Languages | "Eight languages": lead (uk, en and the languages of countries where many Ukrainians live; translated by meaning); three points: pick your language · addressed the way you like · sessions in any language; a panel with one word ("Calm") rotating through all 8 languages (still with reduced motion) and links to each language version. |
+| 10 | ~~Languages~~ | Removed; the header language menu and the footer switch cover it. |
 | 11 | FAQ | Heading + lead left, a "Didn't find an answer?" card with a mailto (below the list on phones); six numbered questions, one open at a time (`<details name>`), the first open: fortune-telling? · how long · who sees my entries · replacement for therapy? · free? · install an app? (no, it works in the browser). |
 | 12 | Footer | Logo, language switch, contact e-mail, "Write to the authors" (mailto for now), © Svity. |
 
@@ -89,7 +89,6 @@ Shadow candidates (26, 29, 65, 68, 69, 76, 81, 96, 100) and the 14 flagged quest
 | pro.cta | Create a psychologist account | Створити акаунт психолога |
 | safety.title | Gentle by design | Бережно з першого дотику |
 | safety.sub | Help is one tap away on every screen. Any card can be closed without saving. On a hard day, Svity offers a soft card and a breath instead of a question. | Допомога – в один дотик на кожному екрані. Будь-яку карту можна закрити без збереження. У важкий день Svity запропонує м'яку карту й дихання замість питання. |
-| langs.title | In your language | Твоєю мовою |
 | form.tab.user | For me | Для себе |
 | form.tab.pro | For my clients | Для моїх клієнтів |
 | form.success | Thank you. We'll write when Svity is ready for you. | Дякуємо. Ми напишемо, щойно Svity буде готова для тебе. |

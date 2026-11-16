@@ -239,17 +239,6 @@
     "s4": "Těžké karty se nikdy neobjeví samy. Když je několik dní po sobě těžko, nenabízíme je.",
     "mockCountry": "Ukrajina"
   },
-  "langs": {
-    "eyebrow": "Ve tvém jazyce",
-    "title": "Osm jazyků",
-    "sub": "Ukrajinština a angličtina a k tomu jazyky zemí, kde dnes žije mnoho Ukrajinců: němčina, polština, čeština, italština, španělština a francouzština. Otázky jsou přeložené podle smyslu, ne slovo od slova.",
-    "p1t": "Vyber si jazyk",
-    "p1": "Přepnout ho můžeš kdykoli nahoře na stránce.",
-    "p2t": "Oslovení, jaké ti sedí",
-    "p2": "Ženský, mužský nebo neutrální rod, aby texty mluvily právě k tobě.",
-    "p3t": "Sezení v jakémkoli jazyce",
-    "p3": "V místnosti psycholog vybere jazyk otázek podle klienta."
-  },
   "faq": {
     "eyebrow": "Otázky",
     "title": "Časté otázky",

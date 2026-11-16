@@ -239,17 +239,6 @@
     "s4": "Las cartas difíciles nunca aparecen por sí solas. Si varios días seguidos son duros, no te las ofrecemos.",
     "mockCountry": "Ucrania"
   },
-  "langs": {
-    "eyebrow": "En tu idioma",
-    "title": "Ocho idiomas",
-    "sub": "Ucraniano e inglés, y los idiomas de los países donde ahora viven muchas personas ucranianas: alemán, polaco, checo, italiano, español y francés. Las preguntas se traducen por su sentido, no palabra por palabra.",
-    "p1t": "Elige tu idioma",
-    "p1": "Cámbialo cuando quieras en la parte superior de la página.",
-    "p2t": "Como prefieras que te hablen",
-    "p2": "Formas femeninas, masculinas o neutras, para que los textos te hablen a ti.",
-    "p3t": "Sesiones en cualquier idioma",
-    "p3": "En la sala, el psicólogo elige el idioma de las preguntas según su cliente."
-  },
   "faq": {
     "eyebrow": "Preguntas",
     "title": "Preguntas frecuentes",

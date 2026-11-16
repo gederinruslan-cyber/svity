@@ -12,7 +12,6 @@ import {
   Diary,
   Faq,
   Hero,
-  Languages,
   Pros,
   Safety,
   Shadow,
@@ -35,7 +34,6 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
           <Shadow />
           <Pros />
           <Safety />
-          <Languages />
           <Faq />
         </main>
       </ViewTransition>

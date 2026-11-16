@@ -1,7 +1,5 @@
 import Image from "next/image";
-import { getLocale, getTranslations } from "next-intl/server";
-import { siteLocales } from "@svity/contracts";
-import { LANGUAGES } from "@/i18n/languages";
+import { getTranslations } from "next-intl/server";
 import { CountUp } from "./CountUp";
 import { DeckGallery } from "./DeckGallery";
 import { HeroFan } from "./HeroFan";
@@ -9,7 +7,6 @@ import { HeroCtas } from "./HeroCtas";
 import { HeroQuestions } from "./HeroQuestions";
 import { RoomMock } from "./RoomMock";
 import { HelpMock } from "./HelpMock";
-import { LangWord } from "./LangWord";
 import {
   Calendar,
   Check,
@@ -391,51 +388,6 @@ export async function Safety() {
           </ul>
         </div>
         <HelpMock />
-      </div>
-    </section>
-  );
-}
-
-
-export async function Languages() {
-  const t = await getTranslations("langs");
-  const locale = await getLocale();
-  const points = [
-    [Globe, t("p1t"), t("p1")],
-    [Heart, t("p2t"), t("p2")],
-    [Cards, t("p3t"), t("p3")],
-  ] as const;
-  return (
-    <section className="section" id="langs" aria-labelledby="langs-title">
-      <div className="container langs-wrap">
-        <div>
-          <Head id="langs-title" eyebrow={t("eyebrow")} title={t("title")} sub={t("sub")} />
-          <ul className="safety__list">
-            {points.map(([Icon, title, body], i) => (
-              <li key={i} className="reveal" style={{ "--d": i } as React.CSSProperties}>
-                <span className="about__icon">
-                  <Icon size={20} />
-                </span>
-                <div>
-                  <h3 className="safety__t">{title}</h3>
-                  <p>{body}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="langs-panel glass reveal">
-          <LangWord />
-          <ul className="langs">
-            {siteLocales.map((l) => (
-              <li key={l} lang={l}>
-                <a href={`/${l}`} hrefLang={l} className={`lang ${l === locale ? "is-live" : ""}`} aria-current={l === locale ? "true" : undefined}>
-                  {LANGUAGES[l].name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
     </section>
   );
