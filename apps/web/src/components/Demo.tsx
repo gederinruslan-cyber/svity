@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { useTranslations } from "next-intl";
 import { motion } from "@svity/tokens";
 import { RitualCard, type RitualStage } from "./ritual/RitualCard";
@@ -27,6 +28,16 @@ function shuffle<T>(xs: readonly T[]): T[] {
     [a[i], a[j]] = [a[j]!, a[i]!];
   }
   return a;
+}
+
+/**
+ * Animates the deck → card-and-panel layout change with a view transition. Desktop only: on
+ * phones the panel simply appears below the card, and transition layers would cover the header.
+ */
+function morph(update: () => void) {
+  const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.innerWidth < 860;
+  if (!document.startViewTransition || still) return update();
+  document.startViewTransition(() => flushSync(update));
 }
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -69,8 +80,7 @@ export function Demo() {
 
   // On narrow screens the panel sits under the card: bring each new step into view.
   useEffect(() => {
-    if (phase === "draw" || !panel.current || window.innerWidth >= 860)
-      return;
+    if (phase === "draw" || !panel.current || window.innerWidth >= 860) return;
     panel.current.scrollIntoView({
       behavior: reduced() ? "auto" : "smooth",
       block: "center",
@@ -105,7 +115,8 @@ export function Demo() {
     setStage("flipped");
     navigator.vibrate?.(motion.haptic.flipMs);
     if (!reduced()) await wait(motion.flip.durationMs);
-    setPhase("card");
+    // The deck stands alone until the flip; then the card slides aside and the panel joins it.
+    morph(() => setPhase("card"));
     busy.current = false;
   }
 
@@ -128,7 +139,7 @@ export function Demo() {
     setRepicks(DEMO_REPICKS);
     setNote("");
     setStage("deck");
-    setPhase("draw");
+    morph(() => setPhase("draw"));
   }
 
   const questions = tc.raw(card) as string[];
@@ -158,9 +169,7 @@ export function Demo() {
               stacked={phase === "draw"}
             />
             {phase === "draw" && <p className="demo__hint">{t("tap")}</p>}
-            {phase === "draw" && (
-              <p className="demo__shared">{t("shared")}</p>
-            )}
+            {phase === "draw" && <p className="demo__shared">{t("shared")}</p>}
             {(phase === "card" || phase === "done") && (
               <p className="demo__shared">
                 {idx === 0
@@ -171,92 +180,88 @@ export function Demo() {
             )}
           </div>
 
-          <div ref={panel} className="demo__panel glass" aria-live="polite">
-            <ol className="demo__steps" aria-label={t("stepsLabel")}>
-              {STEPS.map((k, i) => {
-                const at = STEP_OF[phase];
-                return (
-                  <li
-                    key={k}
-                    className={
-                      i < at ? "is-done" : i === at ? "is-current" : ""
-                    }
-                    aria-current={i === at ? "step" : undefined}
-                  >
-                    <span className="demo__step-n">{i + 1}</span>
-                    <span className="demo__step-t">{t(`steps.${k}`)}</span>
-                  </li>
-                );
-              })}
-            </ol>
-            <div className="demo__body">
-              {phase === "draw" && (
-                <div className="demo__step">
-                  <p className="demo__big">{t("tap")}</p>
-                </div>
-              )}
+          {phase !== "draw" && (
+            <div ref={panel} className="demo__panel glass" aria-live="polite">
+              <ol className="demo__steps" aria-label={t("stepsLabel")}>
+                {STEPS.map((k, i) => {
+                  const at = STEP_OF[phase];
+                  return (
+                    <li
+                      key={k}
+                      className={
+                        i < at ? "is-done" : i === at ? "is-current" : ""
+                      }
+                      aria-current={i === at ? "step" : undefined}
+                    >
+                      <span className="demo__step-n">{i + 1}</span>
+                      <span className="demo__step-t">{t(`steps.${k}`)}</span>
+                    </li>
+                  );
+                })}
+              </ol>
+              <div className="demo__body">
+                {phase === "card" && (
+                  <div className="demo__step">
+                    <p className="demo__label">{t("questionLabel")}</p>
+                    <p className="question">{questions[qIndex]}</p>
+                    <textarea
+                      className="field field--area"
+                      rows={3}
+                      value={note}
+                      onChange={(e) => setNote(e.target.value)}
+                      placeholder={t("note")}
+                      aria-label={t("note")}
+                    />
+                    <div className="demo__actions">
+                      {repicks > 0 ? (
+                        <button
+                          type="button"
+                          className="link-btn"
+                          onClick={repick}
+                        >
+                          {t("repick", { n: repicks })}
+                        </button>
+                      ) : (
+                        <span className="demo__muted">{t("lastCard")}</span>
+                      )}
+                      <button
+                        type="button"
+                        className="btn"
+                        onClick={() => setPhase("done")}
+                      >
+                        {t("continue")}
+                      </button>
+                    </div>
+                  </div>
+                )}
 
-              {phase === "card" && (
-                <div className="demo__step">
-                  <p className="demo__label">{t("questionLabel")}</p>
-                  <p className="question">{questions[qIndex]}</p>
-                  <textarea
-                    className="field field--area"
-                    rows={3}
-                    value={note}
-                    onChange={(e) => setNote(e.target.value)}
-                    placeholder={t("note")}
-                    aria-label={t("note")}
-                  />
-                  <div className="demo__actions">
-                    {repicks > 0 ? (
+                {phase === "done" && (
+                  <div className="demo__step demo__done">
+                    <span className="saved-star" aria-hidden="true">
+                      <Star4 size={44} />
+                    </span>
+                    <p className="h3">{t("done")}</p>
+                    <p className="demo__muted">{t("doneSub")}</p>
+                    <div className="demo__actions demo__actions--center">
+                      <Link href="/signup" className="btn">
+                        {t("cta")}
+                      </Link>
                       <button
                         type="button"
                         className="link-btn"
-                        onClick={repick}
+                        onClick={restart}
                       >
-                        {t("repick", { n: repicks })}
+                        {t("again")}
                       </button>
-                    ) : (
-                      <span className="demo__muted">{t("lastCard")}</span>
-                    )}
-                    <button
-                      type="button"
-                      className="btn"
-                      onClick={() => setPhase("done")}
-                    >
-                      {t("continue")}
-                    </button>
+                    </div>
                   </div>
-                </div>
-              )}
-
-              {phase === "done" && (
-                <div className="demo__step demo__done">
-                  <span className="saved-star" aria-hidden="true">
-                    <Star4 size={44} />
-                  </span>
-                  <p className="h3">{t("done")}</p>
-                  <p className="demo__muted">{t("doneSub")}</p>
-                  <div className="demo__actions demo__actions--center">
-                    <Link href="/signup" className="btn">
-                      {t("cta")}
-                    </Link>
-                    <button
-                      type="button"
-                      className="link-btn"
-                      onClick={restart}
-                    >
-                      {t("again")}
-                    </button>
-                  </div>
-                </div>
+                )}
+              </div>
+              {phase !== "done" && (
+                <p className="demo__privacy">{t("privacy")}</p>
               )}
             </div>
-            {phase !== "done" && (
-              <p className="demo__privacy">{t("privacy")}</p>
-            )}
-          </div>
+          )}
         </div>
       </div>
     </section>

@@ -6489,6 +6489,25 @@ label.profile__field {
     min-height: 100%;
   }
 }
+/* Before the draw the deck stands alone, centred; after the flip the card slides aside
+   and the question panel fades in (a view transition where supported). */
+.demo .demo__stage--draw {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+.demo .demo__card-col {
+  view-transition-name: demo-card;
+}
+.demo .demo__panel {
+  view-transition-name: demo-panel;
+}
+::view-transition-group(demo-card) {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+::view-transition-new(demo-panel) {
+  animation: enter 0.5s 0.15s ease both;
+}
 @media (max-width: 479px) {
   .demo__steps {
     flex-wrap: nowrap;
