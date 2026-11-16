@@ -25,11 +25,11 @@
     "cta2": "Pour les psys",
     "askLabel": "Une question du jeu",
     "facts": {
-      "cardsN": "117",
+      "cardsN": "100+",
       "cards": "cartes",
-      "questionsN": "351",
-      "questions": "questions",
-      "minutesN": "3–5",
+      "questionsN": "500",
+      "questions": "questions-guides",
+      "minutesN": "5",
       "minutes": "minutes par jour"
     },
     "tryCard": "Aller à la carte du jour",
@@ -124,7 +124,7 @@
   "diary": {
     "eyebrow": "Ton journal",
     "title": "Ton mois en cartes",
-    "sub": "Chaque carte reste dans ton journal, avec ta note et ce que tu ressentais avant et après. Le mois forme une mosaïque.",
+    "sub": "Chaque carte reste dans ton journal, avec sa question et ta note. Le mois forme une mosaïque.",
     "entryDate": "7 novembre",
     "entryCard": "Carte 25",
     "entryNote": "Mes soirées. Peut-être une promenade après le travail, sans le téléphone…",
@@ -225,7 +225,7 @@
   },
   "footer": {
     "tagline": "Une carte par jour pour explorer ton monde intérieur.",
-    "about": "Un jeu d’auteur de 117 cartes peintes et 351 questions, avec un journal qui garde tes pensées et une salle pour les séances avec ton ou ta psy.",
+    "about": "Un jeu d’auteur de plus de 100 cartes peintes et 500 questions-guides, avec un journal qui garde tes pensées et une salle pour les séances avec ton ou ta psy.",
     "colApp": "Svity",
     "linkTry": "Tirer une carte",
     "linkDeck": "Le jeu",

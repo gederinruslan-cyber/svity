@@ -25,11 +25,11 @@
     "cta2": "For psychologists",
     "askLabel": "A question from the deck",
     "facts": {
-      "cardsN": "117",
+      "cardsN": "100+",
       "cards": "cards",
-      "questionsN": "351",
-      "questions": "questions",
-      "minutesN": "3–5",
+      "questionsN": "500",
+      "questions": "prompt questions",
+      "minutesN": "5",
       "minutes": "minutes a day"
     },
     "tryCard": "Go to today's card",
@@ -124,7 +124,7 @@
   "diary": {
     "eyebrow": "Your diary",
     "title": "Your month in cards",
-    "sub": "Every card stays in your diary, with your note and how you felt before and after. The month adds up to a mosaic.",
+    "sub": "Every card stays in your diary, with its question and your note. The month adds up to a mosaic.",
     "entryDate": "November 7",
     "entryCard": "Card 25",
     "entryNote": "My evenings. Maybe a walk after work, without the phone…",
@@ -225,7 +225,7 @@
   },
   "footer": {
     "tagline": "One card a day to explore your inner world.",
-    "about": "An author's deck of 117 painted cards and 351 questions, with a diary that keeps your thoughts and a room for sessions with your psychologist.",
+    "about": "An author's deck of 100+ painted cards and 500 prompt questions, with a diary that keeps your thoughts and a room for sessions with your psychologist.",
     "colApp": "Svity",
     "linkTry": "Try a card",
     "linkDeck": "The deck",

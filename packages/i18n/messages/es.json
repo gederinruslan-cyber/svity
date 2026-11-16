@@ -25,11 +25,11 @@
     "cta2": "Para psicólogos",
     "askLabel": "Una pregunta de la baraja",
     "facts": {
-      "cardsN": "117",
+      "cardsN": "100+",
       "cards": "cartas",
-      "questionsN": "351",
-      "questions": "preguntas",
-      "minutesN": "3–5",
+      "questionsN": "500",
+      "questions": "preguntas guía",
+      "minutesN": "5",
       "minutes": "minutos al día"
     },
     "tryCard": "Ir a la carta del día",
@@ -124,7 +124,7 @@
   "diary": {
     "eyebrow": "Tu diario",
     "title": "Tu mes en cartas",
-    "sub": "Cada carta se queda en tu diario, con tu nota y cómo te sentías antes y después. El mes se convierte en un mosaico.",
+    "sub": "Cada carta se queda en tu diario, con su pregunta y tu nota. El mes se convierte en un mosaico.",
     "entryDate": "7 de noviembre",
     "entryCard": "Carta 25",
     "entryNote": "Mis tardes. Quizá un paseo después del trabajo, sin el móvil…",
@@ -225,7 +225,7 @@
   },
   "footer": {
     "tagline": "Una carta al día para explorar tu mundo interior.",
-    "about": "Una baraja de autor con 117 cartas pintadas y 351 preguntas, con un diario que guarda tus pensamientos y una sala para las sesiones con tu psicólogo o psicóloga.",
+    "about": "Una baraja de autor con más de 100 cartas pintadas y 500 preguntas guía, con un diario que guarda tus pensamientos y una sala para las sesiones con tu psicólogo o psicóloga.",
     "colApp": "Svity",
     "linkTry": "Probar una carta",
     "linkDeck": "La baraja",

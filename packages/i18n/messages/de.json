@@ -25,11 +25,11 @@
     "cta2": "Für Psycholog:innen",
     "askLabel": "Eine Frage aus dem Deck",
     "facts": {
-      "cardsN": "117",
+      "cardsN": "100+",
       "cards": "Karten",
-      "questionsN": "351",
-      "questions": "Fragen",
-      "minutesN": "3–5",
+      "questionsN": "500",
+      "questions": "Impulsfragen",
+      "minutesN": "5",
       "minutes": "Minuten am Tag"
     },
     "tryCard": "Zur Karte des Tages",
@@ -124,7 +124,7 @@
   "diary": {
     "eyebrow": "Dein Tagebuch",
     "title": "Dein Monat in Karten",
-    "sub": "Jede Karte bleibt in deinem Tagebuch, mit deiner Notiz und dem, was du davor und danach gefühlt hast. Der Monat fügt sich zu einem Mosaik.",
+    "sub": "Jede Karte bleibt in deinem Tagebuch, mit ihrer Frage und deiner Notiz. Der Monat fügt sich zu einem Mosaik.",
     "entryDate": "7. November",
     "entryCard": "Karte 25",
     "entryNote": "Meine Abende. Vielleicht ein Spaziergang nach der Arbeit, ohne Handy…",
@@ -225,7 +225,7 @@
   },
   "footer": {
     "tagline": "Eine Karte am Tag, um deine innere Welt zu erkunden.",
-    "about": "Ein eigenes Deck mit 117 gemalten Karten und 351 Fragen, dazu ein Tagebuch, das deine Gedanken bewahrt, und ein Raum für Sitzungen in deiner psychologischen Begleitung.",
+    "about": "Ein eigenes Deck mit über 100 gemalten Karten und 500 Impulsfragen, dazu ein Tagebuch, das deine Gedanken bewahrt, und ein Raum für Sitzungen in deiner psychologischen Begleitung.",
     "colApp": "Svity",
     "linkTry": "Eine Karte ziehen",
     "linkDeck": "Das Deck",

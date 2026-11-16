@@ -25,11 +25,11 @@
     "cta2": "Per psicologi",
     "askLabel": "Una domanda dal mazzo",
     "facts": {
-      "cardsN": "117",
+      "cardsN": "100+",
       "cards": "carte",
-      "questionsN": "351",
-      "questions": "domande",
-      "minutesN": "3–5",
+      "questionsN": "500",
+      "questions": "domande guida",
+      "minutesN": "5",
       "minutes": "minuti al giorno"
     },
     "tryCard": "Vai alla carta di oggi",
@@ -124,7 +124,7 @@
   "diary": {
     "eyebrow": "Il tuo diario",
     "title": "Il tuo mese in carte",
-    "sub": "Ogni carta resta nel tuo diario, con la tua nota e con ciò che hai sentito prima e dopo. Il mese diventa un mosaico.",
+    "sub": "Ogni carta resta nel tuo diario, con la sua domanda e la tua nota. Il mese diventa un mosaico.",
     "entryDate": "7 novembre",
     "entryCard": "Carta 25",
     "entryNote": "Le mie sere. Forse una passeggiata dopo il lavoro, senza telefono…",
@@ -225,7 +225,7 @@
   },
   "footer": {
     "tagline": "Una carta al giorno per esplorare il tuo mondo interiore.",
-    "about": "Un mazzo d’autore di 117 carte dipinte e 351 domande, con un diario che custodisce i tuoi pensieri e una stanza per le sedute con il tuo psicologo.",
+    "about": "Un mazzo d’autore di oltre 100 carte dipinte e 500 domande guida, con un diario che custodisce i tuoi pensieri e una stanza per le sedute con il tuo psicologo.",
     "colApp": "Svity",
     "linkTry": "Prova una carta",
     "linkDeck": "Il mazzo",

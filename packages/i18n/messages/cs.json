@@ -25,11 +25,11 @@
     "cta2": "Pro psychology",
     "askLabel": "Otázka z balíčku",
     "facts": {
-      "cardsN": "117",
+      "cardsN": "100+",
       "cards": "karet",
-      "questionsN": "351",
-      "questions": "otázek",
-      "minutesN": "3–5",
+      "questionsN": "500",
+      "questions": "podnětných otázek",
+      "minutesN": "5",
       "minutes": "minut denně"
     },
     "tryCard": "Přejít ke kartě dne",
@@ -124,7 +124,7 @@
   "diary": {
     "eyebrow": "Tvůj deník",
     "title": "Tvůj měsíc v kartách",
-    "sub": "Každá karta zůstane v deníku, s tvou poznámkou i s tím, jak ti bylo před ní a po ní. Z měsíce se složí mozaika.",
+    "sub": "Každá karta zůstane v deníku, s otázkou a tvou poznámkou. Z měsíce se složí mozaika.",
     "entryDate": "7. listopadu",
     "entryCard": "Karta 25",
     "entryNote": "Moje večery. Možná procházka po práci, bez telefonu…",
@@ -225,7 +225,7 @@
   },
   "footer": {
     "tagline": "Jedna karta denně k objevování tvého vnitřního světa.",
-    "about": "Autorský balíček 117 malovaných karet a 351 otázek, deník, který uchová tvé myšlenky, a místnost pro sezení s psychologem.",
+    "about": "Autorský balíček více než 100 malovaných karet a 500 podnětných otázek, deník, který uchová tvé myšlenky, a místnost pro sezení s psychologem.",
     "colApp": "Svity",
     "linkTry": "Vyzkoušet kartu",
     "linkDeck": "Balíček",

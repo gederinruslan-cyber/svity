@@ -144,7 +144,7 @@ export async function Deck() {
         <div className="deck-features">
           {(
             [
-              [Cards, <><CountUp to={117} /> {t("f1t")}</>, t("f1")],
+              [Cards, <><CountUp to={100} />+ {t("f1t")}</>, t("f1")],
               [Lock, t("f2t"), t("f2")],
               [Globe, t("f3t"), t("f3")],
             ] as const

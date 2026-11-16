@@ -25,11 +25,11 @@
     "cta2": "Dla psychologów",
     "askLabel": "Pytanie z talii",
     "facts": {
-      "cardsN": "117",
+      "cardsN": "100+",
       "cards": "kart",
-      "questionsN": "351",
-      "questions": "pytań",
-      "minutesN": "3–5",
+      "questionsN": "500",
+      "questions": "pytań-podpowiedzi",
+      "minutesN": "5",
       "minutes": "minut dziennie"
     },
     "tryCard": "Przejdź do karty dnia",
@@ -124,7 +124,7 @@
   "diary": {
     "eyebrow": "Twój dziennik",
     "title": "Twój miesiąc w kartach",
-    "sub": "Każda karta zostaje w dzienniku – z notatką i tym, co czujesz przed i po. Miesiąc układa się w mozaikę.",
+    "sub": "Każda karta zostaje w dzienniku – z pytaniem i twoją notatką. Miesiąc układa się w mozaikę.",
     "entryDate": "7 listopada",
     "entryCard": "Karta 25",
     "entryNote": "Moje wieczory. Może spacer po pracy – bez telefonu…",
@@ -225,7 +225,7 @@
   },
   "footer": {
     "tagline": "Jedna karta dziennie, by odkrywać swój wewnętrzny świat.",
-    "about": "Autorska talia 117 malowanych kart i 351 pytań, dziennik, który przechowuje twoje myśli, i pokój do sesji z psychologiem.",
+    "about": "Autorska talia ponad 100 malowanych kart i 500 pytań-podpowiedzi, dziennik, który przechowuje twoje myśli, i pokój do sesji z psychologiem.",
     "colApp": "Svity",
     "linkTry": "Wypróbuj kartę",
     "linkDeck": "Talia",
