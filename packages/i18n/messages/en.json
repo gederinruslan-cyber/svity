@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Svity — one card a day to meet yourself",
+    "title": "Svity — one card a day to explore your inner world",
     "description": "A quiet daily ritual with the metaphorical card deck “Svity”: a card, a question, a few minutes for yourself. And a room where psychologists work with the cards together with their clients."
   },
   "nav": {
@@ -20,7 +20,7 @@
   },
   "hero": {
     "eyebrow": "Metaphorical cards for every day",
-    "title": "One card a day to meet yourself",
+    "title": "One card a day to explore your inner world",
     "sub": "…and a room for the work you do together with your psychologist.",
     "cta1": "Start free",
     "cta2": "For psychologists",
@@ -225,7 +225,7 @@
     "a6": "No, Svity works in the browser, on your phone and computer. A phone app will come later."
   },
   "footer": {
-    "tagline": "One card a day to meet yourself.",
+    "tagline": "One card a day to explore your inner world.",
     "about": "An author's deck of 117 painted cards and 351 questions, with a diary that keeps your thoughts and a room for sessions with your psychologist.",
     "colApp": "Svity",
     "linkTry": "Try a card",

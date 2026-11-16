@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Svity — una carta al día para encontrarte contigo",
+    "title": "Svity — una carta al día para explorar tu mundo interior",
     "description": "Un ritual diario y tranquilo con la baraja metafórica «Світи»: una carta, una pregunta, unos minutos para ti. Y una sala para trabajar con las cartas en terapia."
   },
   "nav": {
@@ -20,7 +20,7 @@
   },
   "hero": {
     "eyebrow": "Cartas metafóricas para cada día",
-    "title": "Una carta al día para encontrarte contigo",
+    "title": "Una carta al día para explorar tu mundo interior",
     "sub": "…y una sala para el trabajo que haces con tu psicólogo o psicóloga.",
     "cta1": "Empieza gratis",
     "cta2": "Para psicólogos",
@@ -225,7 +225,7 @@
     "a6": "No, Svity funciona en el navegador, en el móvil y en el ordenador. La app para el móvil llegará más adelante."
   },
   "footer": {
-    "tagline": "Una carta al día para encontrarte contigo.",
+    "tagline": "Una carta al día para explorar tu mundo interior.",
     "about": "Una baraja de autor con 117 cartas pintadas y 351 preguntas, con un diario que guarda tus pensamientos y una sala para las sesiones con tu psicólogo o psicóloga.",
     "colApp": "Svity",
     "linkTry": "Probar una carta",

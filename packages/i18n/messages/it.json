@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Svity — una carta al giorno per incontrarti",
+    "title": "Svity — una carta al giorno per esplorare il tuo mondo interiore",
     "description": "Un rituale quotidiano con il mazzo di carte metaforiche «Світи»: una carta, una domanda, qualche minuto per te. E una stanza per le sedute con lo psicologo."
   },
   "nav": {
@@ -20,7 +20,7 @@
   },
   "hero": {
     "eyebrow": "Carte metaforiche per ogni giorno",
-    "title": "Una carta al giorno per incontrarti",
+    "title": "Una carta al giorno per esplorare il tuo mondo interiore",
     "sub": "…e una stanza per il lavoro che fai insieme al tuo psicologo.",
     "cta1": "Inizia gratis",
     "cta2": "Per psicologi",
@@ -225,7 +225,7 @@
     "a6": "No, Svity funziona nel browser, sul telefono e sul computer. Un’app per il telefono arriverà più avanti."
   },
   "footer": {
-    "tagline": "Una carta al giorno per incontrarti.",
+    "tagline": "Una carta al giorno per esplorare il tuo mondo interiore.",
     "about": "Un mazzo d’autore di 117 carte dipinte e 351 domande, con un diario che custodisce i tuoi pensieri e una stanza per le sedute con il tuo psicologo.",
     "colApp": "Svity",
     "linkTry": "Prova una carta",

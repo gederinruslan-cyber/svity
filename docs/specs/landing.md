@@ -63,7 +63,7 @@ Shadow candidates (26, 29, 65, 68, 69, 76, 81, 96, 100) and the 14 flagged quest
 
 | Key | EN | UK |
 |---|---|---|
-| hero.title | One card a day to meet yourself | Одна карта на день, щоб зустрітися із собою |
+| hero.title | One card a day to explore your inner world | Одна карта на день, щоб дослідити свій внутрішній світ |
 | hero.sub | …and a room for the work you do together with your psychologist. | …і кімната для роботи, яку ви робите разом із психологом. |
 | hero.cta1 | Start free | Почати безкоштовно |
 | hero.cta2 | For psychologists | Для психологів |

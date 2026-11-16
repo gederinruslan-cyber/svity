@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Svity — jedna karta denně pro setkání se sebou",
+    "title": "Svity — jedna karta denně k objevování tvého vnitřního světa",
     "description": "Tichý každodenní rituál s metaforickými kartami „Світи“: karta, otázka a pár minut pro sebe. A místnost, kde psychologové pracují s kartami spolu s klienty."
   },
   "nav": {
@@ -20,7 +20,7 @@
   },
   "hero": {
     "eyebrow": "Metaforické karty na každý den",
-    "title": "Jedna karta denně pro setkání se sebou",
+    "title": "Jedna karta denně k objevování tvého vnitřního světa",
     "sub": "…a místnost pro práci, kterou děláš spolu se svým psychologem.",
     "cta1": "Začít zdarma",
     "cta2": "Pro psychology",
@@ -225,7 +225,7 @@
     "a6": "Ne, Svity funguje v prohlížeči, v telefonu i na počítači. Aplikace do telefonu přijde později."
   },
   "footer": {
-    "tagline": "Jedna karta denně pro setkání se sebou.",
+    "tagline": "Jedna karta denně k objevování tvého vnitřního světa.",
     "about": "Autorský balíček 117 malovaných karet a 351 otázek, deník, který uchová tvé myšlenky, a místnost pro sezení s psychologem.",
     "colApp": "Svity",
     "linkTry": "Vyzkoušet kartu",

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Svity — eine Karte am Tag, um dir selbst zu begegnen",
+    "title": "Svity — eine Karte am Tag, um deine innere Welt zu erkunden",
     "description": "Ein stilles tägliches Ritual mit dem Metaphernkarten-Deck „Світи“: eine Karte, eine Frage, ein paar Minuten für dich. Und ein Raum für Sitzungen mit Karten."
   },
   "nav": {
@@ -20,7 +20,7 @@
   },
   "hero": {
     "eyebrow": "Metaphorische Karten für jeden Tag",
-    "title": "Eine Karte am Tag, um dir selbst zu begegnen",
+    "title": "Eine Karte am Tag, um deine innere Welt zu erkunden",
     "sub": "…und ein Raum für die gemeinsame Arbeit in deiner psychologischen Begleitung.",
     "cta1": "Kostenlos starten",
     "cta2": "Für Psycholog:innen",
@@ -225,7 +225,7 @@
     "a6": "Nein, Svity läuft im Browser, auf dem Handy und am Computer. Eine App fürs Handy kommt später."
   },
   "footer": {
-    "tagline": "Eine Karte am Tag, um dir selbst zu begegnen.",
+    "tagline": "Eine Karte am Tag, um deine innere Welt zu erkunden.",
     "about": "Ein eigenes Deck mit 117 gemalten Karten und 351 Fragen, dazu ein Tagebuch, das deine Gedanken bewahrt, und ein Raum für Sitzungen in deiner psychologischen Begleitung.",
     "colApp": "Svity",
     "linkTry": "Eine Karte ziehen",
