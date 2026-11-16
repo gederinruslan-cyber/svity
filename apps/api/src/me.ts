@@ -36,7 +36,7 @@ export function meRoutes(db: Db, getDeck: () => Promise<Deck>) {
     const { progress } = await shadowState(db, user);
     return c.json<ProfileStats>({
       entries: n,
-      shadow: { ...progress, consented: user.shadowConsentAt !== null, mode: user.shadowMode },
+      shadow: { ...progress, mode: user.shadowMode },
     });
   });
 

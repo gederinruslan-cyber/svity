@@ -44,9 +44,9 @@ export function ShadowFlow() {
     load();
   }, [load]);
 
-  async function setMode(mode: ShadowMode | null, understood?: true) {
+  async function setMode(mode: ShadowMode | null) {
     try {
-      await api("/v1/shadow/settings", { method: "PUT", body: { mode, understood } });
+      await api("/v1/shadow/settings", { method: "PUT", body: { mode } });
       await load();
     } catch (err) {
       fail(err);
@@ -54,13 +54,12 @@ export function ShadowFlow() {
   }
 
   // The whole shadow space is in the evening theme (spec §8.5).
-  useEvening(!!stats?.consented && !!stats.mode);
+  useEvening(!!stats?.eligible && !!stats.mode);
 
   if (!stats || !view) return <p className="app-loading">{error ? tt("error") : tt("loading")}</p>;
 
   let body: React.ReactNode;
   if (!stats.eligible) body = <Locked stats={stats} />;
-  else if (!stats.consented) body = <Consent onAccept={(mode) => setMode(mode, true)} />;
   else if (!stats.mode) body = <TurnedOff onTurnOn={(mode) => setMode(mode)} />;
   else body = <Flow view={view} onView={setView} onError={fail} />;
 
@@ -68,7 +67,7 @@ export function ShadowFlow() {
     <section className="shadow-page container container--narrow">
       <h1 className="h2">{t("title")}</h1>
       {body}
-      {stats.consented && stats.mode && view.state !== "open" && (
+      {stats.eligible && stats.mode && view.state !== "open" && (
         <div className="shadow-page__settings">
           <p className="field-label">{t("modeTitle")}</p>
           <ModePicker value={stats.mode} onChange={(m) => setMode(m)} />
@@ -90,7 +89,7 @@ function Locked({ stats }: { stats: Stats }) {
       <h2 className="h3">{t("lockedTitle")}</h2>
       <p className="app-muted">{t("locked")}</p>
       <p>
-        {tp("shadowDays")}: {stats.days}/{stats.daysNeeded} · {tp("shadowEntries")}: {stats.entries}/{stats.entriesNeeded}
+        {tp("shadowDays")}: {stats.days}/{stats.daysNeeded}
       </p>
     </div>
   );
@@ -110,36 +109,9 @@ function ModePicker({ value, onChange }: { value: ShadowMode | null; onChange: (
   );
 }
 
-function Consent({ onAccept }: { onAccept: (mode: ShadowMode) => void }) {
-  const t = useTranslations("app.shadow");
-  const [ok, setOk] = useState(false);
-  const [mode, setMode] = useState<ShadowMode>("on_request");
-  return (
-    <div className="shadow-page__panel glass">
-      <Image src="/brand/door.webp" alt="" width={120} height={120} className="shadow-page__art" />
-      <h2 className="h3">{t("consentTitle")}</h2>
-      <p className="app-muted">{t("sub")}</p>
-      <ul className="shadow-page__points">
-        {(["c1", "c2", "c3", "c4"] as const).map((k) => (
-          <li key={k}>{t(k)}</li>
-        ))}
-      </ul>
-      <p className="field-label">{t("modeTitle")}</p>
-      <ModePicker value={mode} onChange={setMode} />
-      <label className="shadow-page__check">
-        <input type="checkbox" checked={ok} onChange={(e) => setOk(e.target.checked)} />
-        <span>{t("understood")}</span>
-      </label>
-      <button type="button" className="btn btn--block" disabled={!ok} onClick={() => onAccept(mode)}>
-        {t("open")}
-      </button>
-    </div>
-  );
-}
-
 function TurnedOff({ onTurnOn }: { onTurnOn: (mode: ShadowMode) => void }) {
   const t = useTranslations("app.shadow");
-  const [mode, setMode] = useState<ShadowMode>("on_request");
+  const [mode, setMode] = useState<ShadowMode>("sometimes");
   return (
     <div className="shadow-page__panel glass">
       <p className="app-muted">{t("off")}</p>

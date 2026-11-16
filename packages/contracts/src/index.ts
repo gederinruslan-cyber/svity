@@ -66,10 +66,8 @@ export interface ProfileStats {
   shadow: {
     days: number;
     daysNeeded: number;
-    entries: number;
-    entriesNeeded: number;
     eligible: boolean;
-    consented: boolean;
+    /** Null: turned off. New accounts start with "sometimes". */
     mode: ShadowMode | null;
   };
 }
@@ -170,8 +168,6 @@ export type ShadowMode = (typeof shadowModes)[number];
 
 export const ShadowSettings = z.object({
   mode: z.enum(shadowModes).nullable(),
-  /** Required the first time: "I understand and want to try" (spec §8.3). */
-  understood: z.literal(true).optional(),
 });
 export type ShadowSettings = z.infer<typeof ShadowSettings>;
 

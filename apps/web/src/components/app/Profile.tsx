@@ -133,14 +133,13 @@ export function Profile() {
             <div className="profile__block glass" id="shadow">
               <h2 className="h3">{t("shadow")}</h2>
               <Progress label={t("shadowDays")} value={stats.shadow.days} max={stats.shadow.daysNeeded} />
-              <Progress label={t("shadowEntries")} value={stats.shadow.entries} max={stats.shadow.entriesNeeded} />
               {!stats.shadow.eligible ? (
                 <p className="app-muted">{t("shadowLocked")}</p>
               ) : (
                 <>
-                  <p className="app-muted">{stats.shadow.mode ? ts(stats.shadow.mode) : stats.shadow.consented ? ts("off") : ts("sub")}</p>
+                  <p className="app-muted">{stats.shadow.mode ? ts(stats.shadow.mode) : ts("off")}</p>
                   <Link href="/shadow" className="btn btn--ghost">
-                    {stats.shadow.mode ? ts("drawTitle") : stats.shadow.consented ? ts("manage") : ts("open")}
+                    {stats.shadow.mode ? ts("drawTitle") : ts("manage")}
                   </Link>
                 </>
               )}

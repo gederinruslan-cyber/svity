@@ -5601,17 +5601,6 @@ label.profile__field {
   line-height: 1;
   color: var(--link);
 }
-.shadow-page__art {
-  border-radius: 20px;
-  margin-bottom: 6px;
-}
-.shadow-page__points {
-  text-align: left;
-  margin: 8px 0 14px;
-  padding-left: 20px;
-  display: grid;
-  gap: 8px;
-}
 .shadow-modes {
   display: grid;
   gap: 8px;
@@ -5640,20 +5629,6 @@ label.profile__field {
 .shadow-mode__hint {
   font-size: 13px;
   color: var(--text-muted);
-}
-.shadow-page__check {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  text-align: left;
-  margin: 0 0 16px;
-  font-weight: 600;
-}
-.shadow-page__check input {
-  width: 20px;
-  height: 20px;
-  margin: 1px 0 0;
-  accent-color: var(--accent);
 }
 .btn:disabled {
   opacity: 0.45;

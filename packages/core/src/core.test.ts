@@ -150,20 +150,19 @@ describe("question choice", () => {
 describe("shadow cards (spec §8)", () => {
   const registeredAt = at("2026-10-01 22:00");
 
-  it("needs 30 calendar days and 10 entries", () => {
-    expect(shadowProgress({ registeredAt, entries: 10, now: at("2026-10-30 23:59"), tz: KYIV }).eligible).toBe(false);
-    expect(shadowProgress({ registeredAt, entries: 10, now: at("2026-10-31 00:00"), tz: KYIV }).eligible).toBe(true);
-    expect(shadowProgress({ registeredAt, entries: 9, now: at("2026-12-01 12:00"), tz: KYIV }).eligible).toBe(false);
+  it("opens 8 local calendar days after sign-up", () => {
+    expect(shadowProgress({ registeredAt, now: at("2026-10-08 23:59"), tz: KYIV }).eligible).toBe(false);
+    expect(shadowProgress({ registeredAt, now: at("2026-10-09 00:00"), tz: KYIV }).eligible).toBe(true);
   });
 
-  it("caps progress at the thresholds and needs consent and the switch", () => {
-    const progress = shadowProgress({ registeredAt, entries: 40, now: at("2027-01-01 12:00"), tz: KYIV });
-    expect(progress).toMatchObject({ days: 30, entries: 10, eligible: true });
-    const consentAt = new Date();
-    expect(shadowAccess({ progress, consentAt: null, mode: "sometimes" })).toEqual({ daily: false, onRequest: false });
-    expect(shadowAccess({ progress, consentAt, mode: null })).toEqual({ daily: false, onRequest: false });
-    expect(shadowAccess({ progress, consentAt, mode: "on_request" })).toEqual({ daily: false, onRequest: true });
-    expect(shadowAccess({ progress, consentAt, mode: "sometimes" })).toEqual({ daily: true, onRequest: true });
+  it("joins the card of the day by default, with no consent; off or button-only by choice", () => {
+    const early = shadowProgress({ registeredAt, now: at("2026-10-05 12:00"), tz: KYIV });
+    const progress = shadowProgress({ registeredAt, now: at("2027-01-01 12:00"), tz: KYIV });
+    expect(progress).toMatchObject({ days: 8, eligible: true });
+    expect(shadowAccess({ progress: early, mode: "sometimes" })).toEqual({ daily: false, onRequest: false });
+    expect(shadowAccess({ progress, mode: "sometimes" })).toEqual({ daily: true, onRequest: true });
+    expect(shadowAccess({ progress, mode: "on_request" })).toEqual({ daily: false, onRequest: true });
+    expect(shadowAccess({ progress, mode: null })).toEqual({ daily: false, onRequest: false });
   });
 
 });

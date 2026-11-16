@@ -9,7 +9,7 @@ import {
   type ShadowAccess,
 } from "@svity/core";
 import { ShadowSettings, SaveInput, type EntryView, type Locale, type ShadowView } from "@svity/contracts";
-import { and, count, desc, entries, eq, shadowDraws, sql, users, type Db } from "@svity/db";
+import { and, desc, entries, eq, shadowDraws, sql, users, type Db } from "@svity/db";
 import type { AuthEnv, User } from "./auth";
 import { cardView, type Deck, type ImageSigner } from "./deck";
 import { localeOf } from "./today";
@@ -18,9 +18,8 @@ type EntryRow = typeof entries.$inferSelect;
 
 /** Everything that decides whether shadow cards may be shown to this user right now. */
 export async function shadowState(db: Db, user: User, now = new Date()) {
-  const [{ n }] = (await db.select({ n: count() }).from(entries).where(eq(entries.userId, user.id))) as [{ n: number }];
-  const progress = shadowProgress({ registeredAt: user.createdAt, entries: n, now, tz: user.timezone });
-  const access: ShadowAccess = shadowAccess({ progress, consentAt: user.shadowConsentAt, mode: user.shadowMode });
+  const progress = shadowProgress({ registeredAt: user.createdAt, now, tz: user.timezone });
+  const access: ShadowAccess = shadowAccess({ progress, mode: user.shadowMode });
   return { progress, access };
 }
 
@@ -56,20 +55,19 @@ export function shadowRoutes(db: Db, getDeck: () => Promise<Deck>, signer: Image
 
   app.get("/", async (c) => c.json(await view(c.get("user"), localeOf(c))));
 
-  // Consent, mode and "turn off" (spec §8.2–8.4). Turning on needs the thresholds.
+  // Mode and "turn off". Turning on needs the days.
   app.put("/settings", async (c) => {
     const parsed = ShadowSettings.safeParse(await c.req.json().catch(() => null));
     if (!parsed.success) return c.json({ ok: false, error: "invalid" }, 400);
     const user = c.get("user");
-    const { mode, understood } = parsed.data;
+    const { mode } = parsed.data;
     if (mode) {
       const { progress } = await shadowState(db, user);
       if (!progress.eligible) return c.json({ ok: false, error: "not_eligible" }, 409);
-      if (!user.shadowConsentAt && !understood) return c.json({ ok: false, error: "consent_required" }, 400);
     }
     await db
       .update(users)
-      .set({ shadowMode: mode, ...(mode && !user.shadowConsentAt ? { shadowConsentAt: new Date() } : {}) })
+      .set({ shadowMode: mode })
       .where(eq(users.id, user.id));
     return c.json({ ok: true });
   });

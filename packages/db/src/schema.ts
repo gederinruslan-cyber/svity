@@ -30,9 +30,8 @@ export const users = pgTable("users", {
   /** Local time of the daily reminder ("09:00", "12:00", "20:00") or null for off. Delivery comes with the app. */
   reminderTime: text("reminder_time"),
   /** Spec §8.3: "I understand and want to try". Kept when shadows are switched off. */
-  shadowConsentAt: timestamp("shadow_consent_at", { withTimezone: true }),
   /** null = off. */
-  shadowMode: text("shadow_mode", { enum: ["on_request", "sometimes"] }),
+  shadowMode: text("shadow_mode", { enum: ["on_request", "sometimes"] }).default("sometimes"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 

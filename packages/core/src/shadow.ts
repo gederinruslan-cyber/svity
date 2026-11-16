@@ -1,29 +1,24 @@
 import { calendarDaysBetween } from "./time";
 
-/** Spec §8: 30 days with Svity and at least 10 diary entries (thresholds are a hypothesis). */
+/** Shadow cards join the deck 8 calendar days after sign-up, with no consent step. */
 export const SHADOW_RULES = {
-  daysNeeded: 30,
-  entriesNeeded: 10,
+  daysNeeded: 8,
 } as const;
 
 export interface ShadowProgress {
-  /** The invitation to open shadow cards can be shown. They still need explicit consent. */
+  /** Enough days have passed: shadow cards are in the deck (unless turned off). */
   eligible: boolean;
   days: number;
-  entries: number;
   daysNeeded: number;
-  entriesNeeded: number;
 }
 
-/** Progress toward the shadow-cards invitation ("Days with Svity N/30", "Entries N/10"). */
-export function shadowProgress(input: { registeredAt: Date; entries: number; now: Date; tz: string }): ShadowProgress {
+/** Progress toward shadow cards ("Days with Svity N/8"). */
+export function shadowProgress(input: { registeredAt: Date; now: Date; tz: string }): ShadowProgress {
   const days = Math.max(0, calendarDaysBetween(input.registeredAt, input.now, input.tz));
   return {
-    eligible: days >= SHADOW_RULES.daysNeeded && input.entries >= SHADOW_RULES.entriesNeeded,
+    eligible: days >= SHADOW_RULES.daysNeeded,
     days: Math.min(days, SHADOW_RULES.daysNeeded),
-    entries: Math.min(input.entries, SHADOW_RULES.entriesNeeded),
     daysNeeded: SHADOW_RULES.daysNeeded,
-    entriesNeeded: SHADOW_RULES.entriesNeeded,
   };
 }
 
@@ -41,14 +36,13 @@ export interface ShadowAccess {
 }
 
 /**
- * Spec §8: shadows open by practice and consent, never by payment. "On request" means only the separate button; "sometimes" also lets them into the
- * card of the day (the button keeps working).
+ * Shadows open by time, never by payment. "Sometimes" (the default) lets them into the card of
+ * the day and the separate button works; "on request" means only the button; null means off.
  */
 export function shadowAccess(input: {
   progress: ShadowProgress;
-  consentAt: Date | null;
   mode: ShadowMode | null;
 }): ShadowAccess {
-  const open = input.progress.eligible && input.consentAt !== null && input.mode !== null;
+  const open = input.progress.eligible && input.mode !== null;
   return { daily: open && input.mode === "sometimes", onRequest: open };
 }
