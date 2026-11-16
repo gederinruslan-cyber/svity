@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 /** Languages of the site, the app, accounts and card questions. */
-export const siteLocales = ["uk", "en", "de", "pl", "cs", "it", "es", "fr"] as const;
+export const siteLocales = ["uk", "en", "de", "pl", "cs", "it", "es", "fr", "nl", "da", "nb", "ro"] as const;
 export type SiteLocale = (typeof siteLocales)[number];
 export const locales = siteLocales;
 /** The account language for a page language (unknown ones become English). */

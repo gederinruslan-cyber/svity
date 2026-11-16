@@ -1,10 +1,14 @@
 import cs from "../messages/cs.json";
+import da from "../messages/da.json";
 import de from "../messages/de.json";
 import en from "../messages/en.json";
 import es from "../messages/es.json";
 import fr from "../messages/fr.json";
 import it from "../messages/it.json";
+import nb from "../messages/nb.json";
+import nl from "../messages/nl.json";
 import pl from "../messages/pl.json";
+import ro from "../messages/ro.json";
 import uk from "../messages/uk.json";
 
 export type Messages = typeof en;
@@ -34,5 +38,9 @@ export const messages = {
   it: withEnglish(it),
   es: withEnglish(es),
   fr: withEnglish(fr),
+  nl: withEnglish(nl),
+  da: withEnglish(da),
+  nb: withEnglish(nb),
+  ro: withEnglish(ro),
 } as const;
 export * from "./helplines";

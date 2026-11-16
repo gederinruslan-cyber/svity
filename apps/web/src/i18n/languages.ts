@@ -10,4 +10,8 @@ export const LANGUAGES: Record<SiteLocale, { name: string; short: string }> = {
   it: { name: "Italiano", short: "IT" },
   es: { name: "Español", short: "ES" },
   fr: { name: "Français", short: "FR" },
+  nl: { name: "Nederlands", short: "NL" },
+  da: { name: "Dansk", short: "DA" },
+  nb: { name: "Norsk", short: "NO" },
+  ro: { name: "Română", short: "RO" },
 };

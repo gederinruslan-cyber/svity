@@ -11,7 +11,7 @@ Web app for daily reflection with the metaphorical card deck "Світи" (117 c
 ## Scope rules
 - Do not build GDPR/legal/compliance machinery (consent audit, DPA, envelope encryption, double opt-in, watermarking) unless asked. Basic security only: hashed secrets, rate limiting, standard auth, HTTPS, signed image URLs.
 - Product safety features from the spec are in scope (help button, "Трудний день" mode, safe exit).
-- Languages: 8 everywhere (`uk`, `en`, `de`, `pl`, `cs`, `it`, `es`, `fr`; `siteLocales` = `locales` in contracts): landing, app, e-mails, accounts and the 351 card questions (`text` per language in `deck.json`). `uk` and `en` are the author's; the other six (UI and questions) are machine-translated: get native review, and the author's review of the questions, before relying on them. A key missing in a language falls back to English. The account language follows the page language the user opens the app in. All UI text goes through i18n; no hard-coded strings, no text in images.
+- Languages: 12 everywhere (`uk`, `en`, `de`, `pl`, `cs`, `it`, `es`, `fr`, `nl`, `da`, `nb`, `ro`; `siteLocales` = `locales` in contracts): landing, app, e-mails, accounts and the 351 card questions (`text` per language in `deck.json`). `uk` and `en` are the author's; the other ten (UI and questions) are machine-translated: get native review, and the author's review of the questions, before relying on them. A key missing in a language falls back to English. The account language follows the page language the user opens the app in. All UI text goes through i18n; no hard-coded strings, no text in images.
 
 ## Architecture (pnpm monorepo, TypeScript strict)
 ```
@@ -20,7 +20,7 @@ apps/web            Next.js: marketing/landing (SSG) + app UI
 packages/core       pure domain rules (timer, card selection, repicks, shadow access, entitlements); `pnpm --filter @svity/core test`
 packages/contracts  Zod schemas = API contract (web now, mobile later)
 packages/db         Drizzle schema, migrations, deck import
-packages/i18n       ICU messages in 8 languages (missing keys fall back to English); gendered forms via `select`
+packages/i18n       ICU messages in 12 languages (missing keys fall back to English); gendered forms via `select`
 packages/tokens     design tokens (colors, radii, motion) as TS
 docs/specs          feature specs
 ```
